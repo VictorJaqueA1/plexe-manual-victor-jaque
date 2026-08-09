@@ -1,5 +1,8 @@
 # Introducción
 
-*Sección en construcción.*
+Este manual documenta el uso del framework **Plexe** aplicado a la simulación
+de pelotones vehiculares con controladores cooperativos.
 
-Aquí irá el contexto general de Plexe, su motivación, y su lugar en el ecosistema de simuladores de tráfico vehicular.
+## Prueba de actualización
+
+Esta línea es una prueba del ciclo de publicación — {{ 09-08-2026 }}
