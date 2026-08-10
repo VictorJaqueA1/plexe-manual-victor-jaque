@@ -19,9 +19,6 @@ Plexe es una extensión de **Veins** (que a su vez corre sobre **OMNeT++** y **S
 
 <div class="grid cards" markdown>
 
-- **Introducción**
-  Contexto, motivación y ecosistema de Plexe.
-
 - **Instalación**
   Guía paso a paso para dejar Plexe corriendo en tu máquina.
 
@@ -38,14 +35,6 @@ Plexe es una extensión de **Veins** (que a su vez corre sobre **OMNeT++** y **S
   Escenarios listos para correr y modificar.
 
 </div>
-
----
-
-!!! info "Sobre este manual"
-    Este documento está pensado como referencia práctica para investigadores y estudiantes que trabajan con Plexe. Se actualiza continuamente.
-
-!!! tip "Cómo navegar"
-    Usa el menú lateral izquierdo para moverte entre secciones, el buscador (arriba a la derecha) para encontrar términos específicos, y el índice de la derecha para saltar dentro de una misma página.
 
 ---
 

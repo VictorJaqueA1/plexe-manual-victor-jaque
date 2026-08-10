@@ -67,7 +67,6 @@ markdown_extensions:
 
 nav:
   - Inicio: index.md
-  - Introducción: introduccion.md
   - Instalación: instalacion.md
   - Arquitectura: arquitectura.md
   - Módulos: modulos.md
