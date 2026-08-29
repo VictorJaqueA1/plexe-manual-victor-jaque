@@ -1,3 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+         <loc>https://VictorJaqueA1.github.io/plexe-manual-victor-jaque/</loc>
+         <lastmod>2026-08-29</lastmod>
+    </url>
+    <url>
+         <loc>https://VictorJaqueA1.github.io/plexe-manual-victor-jaque/arquitectura/</loc>
+         <lastmod>2026-08-29</lastmod>
+    </url>
+    <url>
+         <loc>https://VictorJaqueA1.github.io/plexe-manual-victor-jaque/controladores/</loc>
+         <lastmod>2026-08-29</lastmod>
+    </url>
+    <url>
+         <loc>https://VictorJaqueA1.github.io/plexe-manual-victor-jaque/ejemplos/</loc>
+         <lastmod>2026-08-29</lastmod>
+    </url>
+    <url>
+         <loc>https://VictorJaqueA1.github.io/plexe-manual-victor-jaque/instalacion/</loc>
+         <lastmod>2026-08-29</lastmod>
+    </url>
+    <url>
+         <loc>https://VictorJaqueA1.github.io/plexe-manual-victor-jaque/modulos/</loc>
+         <lastmod>2026-08-29</lastmod>
+    </url>
 </urlset>
