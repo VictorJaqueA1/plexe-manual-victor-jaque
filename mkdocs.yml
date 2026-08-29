@@ -1,6 +1,8 @@
 site_name: Manual de Plexe
 site_description: Documentación completa del framework Plexe para simulación de platooning vehicular
 site_author: Víctor Jaque
+site_url: https://VictorJaqueA1.github.io/plexe-manual-victor-jaque/
+repo_url: https://github.com/VictorJaqueA1/plexe-manual-victor-jaque
 copyright: "© 2026 - Manual de Plexe"
 
 theme:
