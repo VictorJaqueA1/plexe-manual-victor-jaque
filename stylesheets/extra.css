@@ -138,3 +138,16 @@
 @media screen and (max-width: 76.1875em) {
   .mp-brand__inner { padding: .7rem .8rem; }
 }
+
+/* =========================================================
+   Menú lateral izquierdo oculto en escritorio
+   La navegación ya vive en las pestañas de la cabecera, así que esa
+   columna solo repetía el nombre de la página actual. Al ocultarla,
+   el texto se expande hacia la izquierda por sí solo: Material reparte
+   el ancho sobrante al contenido, sin tocar tipografía ni tamaños.
+   En pantallas angostas NO se oculta: ahí esa misma columna es el
+   menú hamburguesa y es la única forma de navegar.
+   ========================================================= */
+@media screen and (min-width: 76.25em) {
+  .md-sidebar--primary { display: none; }
+}
