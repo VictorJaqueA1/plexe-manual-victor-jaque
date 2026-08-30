@@ -1,0 +1,19 @@
+{#-
+  Reemplaza la barra de pestanas original por la franja de marca
+  (logo + nombre del manual), que ahora va debajo de la cabecera.
+-#}
+{% extends "base.html" %}
+
+{% block tabs %}
+  <div class="mp-brand">
+    <div class="md-grid mp-brand__inner">
+      <a class="mp-brand__logo"
+         href="{{ config.extra.homepage | d(nav.homepage.url, true) | url }}"
+         title="{{ config.site_name | e }}"
+         aria-label="{{ config.site_name }}">
+        {% include "partials/logo.html" %}
+      </a>
+      <span class="mp-brand__name">{{ config.site_name }}</span>
+    </div>
+  </div>
+{% endblock %}

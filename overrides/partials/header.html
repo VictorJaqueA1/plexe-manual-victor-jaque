@@ -1,0 +1,56 @@
+{#-
+  Cabecera propia del Manual de Plexe.
+  Cambia el orden respecto al tema Material original:
+    Fila 1 (fija al hacer scroll): opciones de navegacion + buscador + tema + GitHub
+    Fila 2 (definida en overrides/main.html): logo + nombre del manual
+-#}
+{% import "partials/tabs-item.html" as item with context %}
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="{{ lang.t('header') }}">
+
+    {#- Boton de menu, solo visible en pantallas angostas -#}
+    <label class="md-header__button md-icon" for="__drawer">
+      {% set icon = config.theme.icon.menu or "material/menu" %}
+      {% include ".icons/" ~ icon ~ ".svg" %}
+    </label>
+
+    {#- Opciones de navegacion (antes iban en la barra de abajo) -#}
+    <div class="md-tabs mp-nav" aria-label="{{ lang.t('tabs') }}">
+      <ul class="md-tabs__list">
+        {% for nav_item in nav.items %}
+          {{ item.render(nav_item) }}
+        {% endfor %}
+      </ul>
+    </div>
+
+    {#- Selector de modo claro / oscuro -#}
+    {% if config.theme.palette %}
+      {% if not config.theme.palette is mapping %}
+        {% include "partials/palette.html" %}
+      {% endif %}
+    {% endif %}
+    {% if not config.theme.palette is mapping %}
+      {% include "partials/javascripts/palette.html" %}
+    {% endif %}
+
+    {#- Buscador -#}
+    {% if "material/search" in config.plugins %}
+      {% set search = config.plugins["material/search"] | attr("config") %}
+      {% if search.enabled %}
+        <label class="md-header__button md-icon" for="__search">
+          {% set icon = config.theme.icon.search or "material/magnify" %}
+          {% include ".icons/" ~ icon ~ ".svg" %}
+        </label>
+        {% include "partials/search.html" %}
+      {% endif %}
+    {% endif %}
+
+    {#- Enlace al repositorio -#}
+    {% if config.repo_url %}
+      <div class="md-header__source">
+        {% include "partials/source.html" %}
+      </div>
+    {% endif %}
+
+  </nav>
+</header>
