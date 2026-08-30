@@ -1088,11 +1088,11 @@
   
 
 
-<h1 id="instalacion">Instalación<a class="headerlink" href="#instalacion" title="Permanent link">&para;</a></h1>
+<h1 id="instalacion">Instalación</h1>
 <p>Esta guía cubre la instalación completa de Plexe y todas sus dependencias en <strong>Ubuntu 24.04</strong> (incluyendo WSL).</p>
 <p>Si solo quieres probar Plexe rápidamente sin instalar nada, revisa la <a href="#ruta-rapida-instant-plexe">ruta rápida</a> al final de esta página.</p>
 <hr />
-<h2 id="vision-general">Visión general<a class="headerlink" href="#vision-general" title="Permanent link">&para;</a></h2>
+<h2 id="vision-general">Visión general</h2>
 <p>Plexe no es un programa único: es un ecosistema de cuatro componentes que se instalan en orden, porque cada uno depende del anterior:</p>
 <table>
 <thead>
@@ -1135,7 +1135,7 @@
 <p>No instales una versión de SUMO superior a <strong>1.22.0</strong>. Las versiones más nuevas usan una API que no es compatible con Veins 5.3.1.</p>
 </div>
 <hr />
-<h2 id="paso-0-dependencias-del-sistema">Paso 0 — Dependencias del sistema<a class="headerlink" href="#paso-0-dependencias-del-sistema" title="Permanent link">&para;</a></h2>
+<h2 id="paso-0-dependencias-del-sistema">Paso 0 — Dependencias del sistema</h2>
 <p>Instala todas las librerías y herramientas necesarias:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>make<span class="w"> </span>diffutils<span class="w"> </span>pkg-config<span class="w"> </span>ccache<span class="w"> </span>clang<span class="w"> </span>lld<span class="w"> </span>gdb<span class="w"> </span>lldb<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span>bison<span class="w"> </span>flex<span class="w"> </span>perl<span class="w"> </span>sed<span class="w"> </span>gawk<span class="w"> </span><span class="se">\</span>
@@ -1145,14 +1145,14 @@
 </span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">  </span>libwebkit2gtk-4.1-0<span class="w"> </span>r-base
 </span></code></pre></div>
 <hr />
-<h2 id="paso-1-omnet-62">Paso 1 — OMNeT++ 6.2<a class="headerlink" href="#paso-1-omnet-62" title="Permanent link">&para;</a></h2>
+<h2 id="paso-1-omnet-62">Paso 1 — OMNeT++ 6.2</h2>
 <p>OMNeT++ es el motor sobre el que corre todo lo demás.</p>
-<h3 id="11-descargar">1.1 Descargar<a class="headerlink" href="#11-descargar" title="Permanent link">&para;</a></h3>
+<h3 id="11-descargar">1.1 Descargar</h3>
 <p>Descarga OMNeT++ 6.2 desde <a href="https://omnetpp.org/">omnetpp.org</a> y descomprime en <code>~/src/</code>:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">cd</span><span class="w"> </span>~/src
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>tar<span class="w"> </span>xvf<span class="w"> </span>omnetpp-6.2-linux-x86_64.tgz
 </span></code></pre></div>
-<h3 id="12-configurar-el-entorno">1.2 Configurar el entorno<a class="headerlink" href="#12-configurar-el-entorno" title="Permanent link">&para;</a></h3>
+<h3 id="12-configurar-el-entorno">1.2 Configurar el entorno</h3>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nb">cd</span><span class="w"> </span>~/src/omnetpp-6.2
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nb">source</span><span class="w"> </span>setenv
 </span></code></pre></div>
@@ -1160,61 +1160,61 @@
 <p class="admonition-title">setenv</p>
 <p>El comando <code>source setenv</code> configura las variables de entorno necesarias (como <code>PATH</code>). Debes ejecutarlo <strong>cada vez que abras una terminal nueva</strong>, o agregarlo a tu <code>~/.bashrc</code> para que sea automático.</p>
 </div>
-<h3 id="13-compilar">1.3 Compilar<a class="headerlink" href="#13-compilar" title="Permanent link">&para;</a></h3>
+<h3 id="13-compilar">1.3 Compilar</h3>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>./configure
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>make<span class="w"> </span>-j<span class="w"> </span><span class="k">$(</span>nproc<span class="k">)</span>
 </span></code></pre></div>
 <p><code>$(nproc)</code> usa todos los núcleos de tu CPU para compilar más rápido. La compilación puede tomar varios minutos.</p>
-<h3 id="14-verificar">1.4 Verificar<a class="headerlink" href="#14-verificar" title="Permanent link">&para;</a></h3>
+<h3 id="14-verificar">1.4 Verificar</h3>
 <p>Ejecuta el IDE para confirmar que funciona:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>omnetpp
 </span></code></pre></div>
 <hr />
-<h2 id="paso-2-sumo-1220">Paso 2 — SUMO ≤ 1.22.0<a class="headerlink" href="#paso-2-sumo-1220" title="Permanent link">&para;</a></h2>
+<h2 id="paso-2-sumo-1220">Paso 2 — SUMO ≤ 1.22.0</h2>
 <p>SUMO es el simulador de tráfico que genera el movimiento de los vehículos.</p>
 <p>Instálalo siguiendo las instrucciones oficiales en <a href="https://sumo.dlr.de/docs/Installing/index.html">sumo.dlr.de</a>. Asegúrate de que la versión instalada sea <strong>1.22.0 o inferior</strong>.</p>
 <p>Verifica la versión instalada:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>sumo<span class="w"> </span>--version
 </span></code></pre></div>
 <hr />
-<h2 id="paso-3-veins-531">Paso 3 — Veins 5.3.1<a class="headerlink" href="#paso-3-veins-531" title="Permanent link">&para;</a></h2>
+<h2 id="paso-3-veins-531">Paso 3 — Veins 5.3.1</h2>
 <p>Veins es la capa de comunicación vehicular que conecta OMNeT++ con SUMO.</p>
-<h3 id="31-descargar-y-descomprimir">3.1 Descargar y descomprimir<a class="headerlink" href="#31-descargar-y-descomprimir" title="Permanent link">&para;</a></h3>
+<h3 id="31-descargar-y-descomprimir">3.1 Descargar y descomprimir</h3>
 <p>Descarga Veins 5.3.1 desde <a href="http://veins.car2x.org/">veins.car2x.org</a> y descomprime en <code>~/src/</code>:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nb">cd</span><span class="w"> </span>~/src
 </span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>tar<span class="w"> </span>xvf<span class="w"> </span>veins-5.3.1.tgz
 </span></code></pre></div>
-<h3 id="32-compilar">3.2 Compilar<a class="headerlink" href="#32-compilar" title="Permanent link">&para;</a></h3>
+<h3 id="32-compilar">3.2 Compilar</h3>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nb">cd</span><span class="w"> </span>~/src/veins-veins-5.3.1
 </span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>./configure
 </span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>make<span class="w"> </span>-j<span class="w"> </span><span class="k">$(</span>nproc<span class="k">)</span>
 </span></code></pre></div>
 <hr />
-<h2 id="paso-4-plexe-32">Paso 4 — Plexe 3.2<a class="headerlink" href="#paso-4-plexe-32" title="Permanent link">&para;</a></h2>
+<h2 id="paso-4-plexe-32">Paso 4 — Plexe 3.2</h2>
 <p>Plexe es la extensión que agrega la funcionalidad de platooning.</p>
-<h3 id="41-descargar">4.1 Descargar<a class="headerlink" href="#41-descargar" title="Permanent link">&para;</a></h3>
+<h3 id="41-descargar">4.1 Descargar</h3>
 <p>Clona el repositorio desde GitHub:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nb">cd</span><span class="w"> </span>~/src
 </span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>git<span class="w"> </span>clone<span class="w"> </span>-b<span class="w"> </span>plexe-3.2<span class="w"> </span>https://github.com/michele-segata/plexe.git
 </span></code></pre></div>
-<h3 id="42-compilar">4.2 Compilar<a class="headerlink" href="#42-compilar" title="Permanent link">&para;</a></h3>
+<h3 id="42-compilar">4.2 Compilar</h3>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nb">cd</span><span class="w"> </span>~/src/plexe
 </span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>./configure<span class="w"> </span>--with-veins<span class="o">=</span>../veins-veins-5.3.1
 </span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>make<span class="w"> </span>-j<span class="w"> </span><span class="k">$(</span>nproc<span class="k">)</span>
 </span></code></pre></div>
 <p>El flag <code>--with-veins</code> le indica a Plexe dónde encontrar Veins. Ajusta la ruta si tu carpeta de Veins tiene otro nombre.</p>
 <hr />
-<h2 id="paso-5-r-y-python-para-analisis-de-resultados">Paso 5 — R y Python (para análisis de resultados)<a class="headerlink" href="#paso-5-r-y-python-para-analisis-de-resultados" title="Permanent link">&para;</a></h2>
+<h2 id="paso-5-r-y-python-para-analisis-de-resultados">Paso 5 — R y Python (para análisis de resultados)</h2>
 <p>Estos paquetes no son necesarios para correr simulaciones, pero sí para graficar y analizar los resultados.</p>
-<h3 id="r">R<a class="headerlink" href="#r" title="Permanent link">&para;</a></h3>
+<h3 id="r">R</h3>
 <p>Abre R e instala los paquetes:</p>
 <div class="language-r highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nf">install.packages</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;ggplot2&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;data.table&quot;</span><span class="p">))</span>
 </span></code></pre></div>
-<h3 id="python">Python<a class="headerlink" href="#python" title="Permanent link">&para;</a></h3>
+<h3 id="python">Python</h3>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>pip<span class="w"> </span>install<span class="w"> </span>--user<span class="w"> </span>pandas<span class="w"> </span>scipy<span class="w"> </span>matplotlib
 </span></code></pre></div>
 <hr />
-<h2 id="ruta-rapida-instant-plexe">Ruta rápida: Instant Plexe<a class="headerlink" href="#ruta-rapida-instant-plexe" title="Permanent link">&para;</a></h2>
+<h2 id="ruta-rapida-instant-plexe">Ruta rápida: Instant Plexe</h2>
 <p>Si no quieres instalar cada componente por separado, puedes descargar <strong>Instant Plexe</strong>: una máquina virtual (archivo <code>.ova</code>) con todo preinstalado y listo para usar.</p>
 <ol>
 <li>Descarga el archivo <code>.ova</code> desde la <a href="https://plexe.car2x.org/download/">página de descargas de Plexe</a>.</li>
@@ -1226,7 +1226,7 @@
 <p>Al momento de escribir este manual, Instant Plexe está disponible para la <strong>versión 3.0</strong> (con OMNeT++ 5.6.2, Veins 5.1, SUMO 1.7.0). Para la versión 3.2 se requiere instalación manual.</p>
 </div>
 <hr />
-<h2 id="otros-sistemas-operativos">Otros sistemas operativos<a class="headerlink" href="#otros-sistemas-operativos" title="Permanent link">&para;</a></h2>
+<h2 id="otros-sistemas-operativos">Otros sistemas operativos</h2>
 <p>Este manual se centra en Ubuntu 24.04. Si necesitas instalar Plexe en <strong>macOS</strong> o <strong>Windows</strong>, consulta la <a href="https://plexe.car2x.org/building/">guía oficial de compilación</a>.</p>
 
 
