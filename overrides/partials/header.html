@@ -18,7 +18,29 @@
     <div class="md-tabs mp-nav" aria-label="{{ lang.t('tabs') }}">
       <ul class="md-tabs__list">
         {% for nav_item in nav.items %}
-          {{ item.render(nav_item) }}
+          {%- if nav_item.title == "Ejemplos" -%}
+            {#- Pestana con menu desplegable de casos. Los casos aun no son enlaces. -#}
+            <li class="md-tabs__item mp-drop">
+              <a href="{{ nav_item.url | url }}"
+                 class="md-tabs__link{% if nav_item.active %} md-tabs__link--active{% endif %}">
+                {{ nav_item.title }}
+                <span class="mp-drop__chev">
+                  {% include ".icons/material/chevron-down.svg" %}
+                </span>
+              </a>
+              <ul class="mp-drop__menu">
+                <li>Cambios en la potencia de transmisión de los autos</li>
+                <li>Uso del FER para simular pérdida artificial de paquetes</li>
+                <li>Creación de un nuevo perfil de aceleración y velocidad del líder</li>
+                <li>Uso de más de un pelotón</li>
+                <li>Introducción de retardo estocástico de comunicación</li>
+                <li>Implementación de un event-triggered control sobre el envío de frames</li>
+                <li>Simulaciones con ETC y retardo en conjunto</li>
+              </ul>
+            </li>
+          {%- else -%}
+            {{ item.render(nav_item) }}
+          {%- endif -%}
         {% endfor %}
       </ul>
     </div>
