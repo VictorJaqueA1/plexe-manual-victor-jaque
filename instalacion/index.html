@@ -577,15 +577,26 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-instalacion-paso-a-paso" class="md-nav__link">
+  <a href="#4-el-camino-de-este-manual" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4 · Instalación paso a paso
+        4 · El camino de este manual
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="4 · Instalación paso a paso">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-instalacion-paso-a-paso-ubuntu-2404-wsl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5 · Instalación paso a paso (Ubuntu 24.04 / WSL)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5 · Instalación paso a paso (Ubuntu 24.04 / WSL)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -827,10 +838,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-otros-sistemas" class="md-nav__link">
+  <a href="#6-otros-sistemas" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5 · Otros sistemas
+        6 · Otros sistemas
       
     </span>
   </a>
@@ -838,10 +849,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#6-alternativa-instant-plexe" class="md-nav__link">
+  <a href="#7-alternativa-instant-plexe" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6 · Alternativa: Instant Plexe
+        7 · Alternativa: Instant Plexe
       
     </span>
   </a>
@@ -849,10 +860,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#7-problemas-frecuentes" class="md-nav__link">
+  <a href="#8-problemas-frecuentes" class="md-nav__link">
     <span class="md-ellipsis">
       
-        7 · Problemas frecuentes
+        8 · Problemas frecuentes
       
     </span>
   </a>
@@ -1141,15 +1152,26 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-instalacion-paso-a-paso" class="md-nav__link">
+  <a href="#4-el-camino-de-este-manual" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4 · Instalación paso a paso
+        4 · El camino de este manual
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="4 · Instalación paso a paso">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-instalacion-paso-a-paso-ubuntu-2404-wsl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5 · Instalación paso a paso (Ubuntu 24.04 / WSL)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5 · Instalación paso a paso (Ubuntu 24.04 / WSL)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1391,10 +1413,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-otros-sistemas" class="md-nav__link">
+  <a href="#6-otros-sistemas" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5 · Otros sistemas
+        6 · Otros sistemas
       
     </span>
   </a>
@@ -1402,10 +1424,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#6-alternativa-instant-plexe" class="md-nav__link">
+  <a href="#7-alternativa-instant-plexe" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6 · Alternativa: Instant Plexe
+        7 · Alternativa: Instant Plexe
       
     </span>
   </a>
@@ -1413,10 +1435,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#7-problemas-frecuentes" class="md-nav__link">
+  <a href="#8-problemas-frecuentes" class="md-nav__link">
     <span class="md-ellipsis">
       
-        7 · Problemas frecuentes
+        8 · Problemas frecuentes
       
     </span>
   </a>
@@ -1563,7 +1585,7 @@
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Si consultas la documentación oficial</p>
-<p>El sitio de Plexe separa estas dos operaciones en dos páginas distintas: <strong>Download</strong> y <strong>Building</strong>. Es útil saber que la página <em>Download</em> cubre <strong>únicamente Plexe</strong>, porque tanto el ZIP como el repositorio contienen Plexe y nada más. OMNeT++, SUMO y Veins se descargan cada uno de su propio sitio, y esas indicaciones están en la página <em>Building</em>, no en <em>Download</em>.</p>
+<p>El sitio de Plexe separa estas dos operaciones en dos páginas distintas: <strong>Download</strong> y <strong>Building</strong>. Es útil saber que la página <em>Download</em> cubre <strong>únicamente Plexe</strong>, porque tanto el ZIP como el repositorio contienen Plexe y nada más. OMNeT++, SUMO y Veins se descargan cada uno de su propio sitio, y esas indicaciones están en la página <em>Building</em>, no en <em>Download</em>. La única excepción es <strong>Instant Plexe</strong>, que está en esa misma página y sí trae los cuatro componentes ya instalados.</p>
 </div>
 <h3 id="como-se-compila-en-cada-sistema-operativo">Cómo se compila en cada sistema operativo</h3>
 <p>De los cuatro componentes, <strong>tres se compilan</strong> (OMNeT++, Veins y Plexe) y SUMO llega ya construido. Los tres siguen exactamente el mismo patrón de dos etapas: primero se configura, es decir se detecta qué hay instalado en tu máquina, y después se construye.</p>
@@ -1649,8 +1671,42 @@
 <p>Si trabajas con WSL, es tentador dejar el código en una carpeta de Windows accesible desde <code>/mnt/c/...</code>. <strong>No lo hagas.</strong> El acceso a disco entre los dos sistemas es muy lento y la compilación puede tardar varias veces más. <code>~/src/</code> vive en el disco de Linux, que es donde debe estar.</p>
 </div>
 <hr />
-<h2 id="4-instalacion-paso-a-paso">4 · Instalación paso a paso</h2>
+<h2 id="4-el-camino-de-este-manual">4 · El camino de este manual</h2>
+<p>A partir de aquí el manual documenta <strong>un solo camino</strong>: Ubuntu 24.04, sea instalado directamente o corriendo dentro de Windows mediante WSL. Es el entorno del laboratorio y el único verificado.</p>
+<table>
+<thead>
+<tr>
+<th>Tu situación</th>
+<th>Qué hacer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Windows</strong></td>
+<td>Sección 5, empezando por el paso 0, que instala Ubuntu dentro de Windows.</td>
+</tr>
+<tr>
+<td><strong>Ubuntu o cualquier Linux</strong></td>
+<td>Sección 5, saltándote el paso 0.</td>
+</tr>
+<tr>
+<td><strong>macOS o Windows nativo</strong></td>
+<td>Sección 6.</td>
+</tr>
+<tr>
+<td><strong>Solo quieres probar Plexe</strong></td>
+<td>Sección 7, Instant Plexe.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Instant Plexe</strong> es una máquina virtual con los cuatro componentes ya instalados y compilados: sirve para tener Plexe corriendo en minutos sin compilar nada, pero trae la versión 3.0 y no la 3.2 que documenta este manual. Se describe en la <a href="#7-alternativa-instant-plexe">sección 7</a>.</p>
+<hr />
+<h2 id="5-instalacion-paso-a-paso-ubuntu-2404-wsl">5 · Instalación paso a paso (Ubuntu 24.04 / WSL)</h2>
 <p>A partir de aquí empieza el procedimiento. Cada paso incluye descargar el componente y dejarlo construido antes de pasar al siguiente.</p>
+<div class="admonition note">
+<p class="admonition-title">La numeración no coincide con la del sitio oficial</p>
+<p>Este manual reordena dos cosas respecto de la <a href="https://plexe.car2x.org/building/">guía oficial</a>: adelanta SUMO antes de Veins, y separa en dos pasos lo que allí es uno solo (<em>Install Plexe and Veins</em>). El resultado es el mismo; el motivo está en la sección 1.</p>
+</div>
 <h3 id="paso-0-wsl-solo-si-vienes-de-windows">Paso 0: WSL (solo si vienes de Windows)</h3>
 <p>Si tu computador tiene Windows, este es tu verdadero primer paso y no aparece en la documentación oficial de Plexe.</p>
 <p><strong>WSL no es un emulador.</strong> Corre un núcleo Linux real en paralelo a Windows, así que el Ubuntu que instalas aquí es Ubuntu de verdad: mismo <code>apt</code>, mismo compilador, mismos binarios. Plexe no distingue entre este Ubuntu y uno instalado directamente en el disco, y por eso <strong>todas las instrucciones de esta página se aplican sin ninguna modificación</strong>.</p>
@@ -1778,22 +1834,26 @@
 </span></code></pre></div>
 <p>Si esto funciona, la instalación está terminada. Los escenarios de ejemplo se describen en detalle en la sección <a href="../ejemplos/">Ejemplos</a>.</p>
 <hr />
-<h2 id="5-otros-sistemas">5 · Otros sistemas</h2>
+<h2 id="6-otros-sistemas">6 · Otros sistemas</h2>
 <p>Este manual documenta Ubuntu 24.04 porque es el entorno del laboratorio. Para referencia, así se sitúan los demás casos:</p>
+<div class="admonition warning">
+<p class="admonition-title">Ninguno de estos caminos fue verificado</p>
+<p>Lo que sigue es orientación general, no un procedimiento probado. Si vas por alguno de ellos, la referencia válida es la <a href="https://plexe.car2x.org/building/">guía oficial de compilación</a>, no este manual.</p>
+</div>
 <p><strong>macOS.</strong> El procedimiento es prácticamente el mismo que en Linux. Las diferencias se concentran al principio: hay que instalar el gestor de paquetes MacPorts, que a su vez puede requerir Xcode, y en equipos con procesador Apple hay que ajustar un par de configuraciones para que OMNeT++ encuentre las librerías gráficas. Hecho eso, los pasos 2 a 7 de esta página se aplican tal cual.</p>
 <p><strong>Windows (nativo).</strong> Es posible compilar en Windows sin Linux, usando MinGW, pero <strong>no es recomendable</strong>: requiere pasos manuales, la documentación oficial está desactualizada y su propio autor lo desaconseja. Si tu equipo es Windows, la vía correcta es WSL, como se explica en el paso 0.</p>
 <p><strong>Ubuntu, Linux y WSL son lo mismo para efectos de esta guía.</strong> Ubuntu es una distribución de Linux, y WSL corre Ubuntu real. No son tres caminos distintos: son un solo camino, el de esta página.</p>
 <hr />
-<h2 id="6-alternativa-instant-plexe">6 · Alternativa: Instant Plexe</h2>
+<h2 id="7-alternativa-instant-plexe">7 · Alternativa: Instant Plexe</h2>
 <p><strong>Instant Plexe</strong> es una máquina virtual con todos los componentes ya instalados y compilados. Se descarga como un archivo de virtualización y se importa en VirtualBox o similar, lo que permite tener Plexe funcionando en minutos y sin compilar nada, en cualquier sistema operativo.</p>
 <p>Sirve para probar Plexe rápidamente o para una clase de demostración. <strong>No es el entorno de trabajo del laboratorio</strong>, por dos razones:</p>
 <ul>
 <li>La versión disponible es la <strong>3.0</strong>, con OMNeT++ 5.6.2, Veins 5.1 y SUMO 1.7.0. No existe una imagen para Plexe 3.2, que es la versión que documenta este manual, y las diferencias entre 3.0 y 3.2 son sustanciales.</li>
 <li>Al correr dentro de una máquina virtual el rendimiento es menor, y el desarrollo de código propio resulta más incómodo.</li>
 </ul>
-<p>Si tu objetivo es trabajar sobre Plexe, es decir modificar controladores, escribir protocolos o correr experimentos, la instalación de la sección 4 es el camino.</p>
+<p>Si tu objetivo es trabajar sobre Plexe, es decir modificar controladores, escribir protocolos o correr experimentos, la instalación de la sección 5 es el camino.</p>
 <hr />
-<h2 id="7-problemas-frecuentes">7 · Problemas frecuentes</h2>
+<h2 id="8-problemas-frecuentes">8 · Problemas frecuentes</h2>
 <p><strong>Un comando no se encuentra, o la compilación falla sin razón aparente.</strong>
 Casi siempre es el entorno de OMNeT++ sin cargar en esa terminal. Vuelve al paso 2.2. Ocurre especialmente al abrir una terminal nueva o al reiniciar el computador.</p>
 <p><strong>La configuración de Plexe no encuentra Veins.</strong>
