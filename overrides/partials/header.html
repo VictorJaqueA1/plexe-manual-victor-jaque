@@ -19,7 +19,19 @@
       <ul class="md-tabs__list">
         {% for nav_item in nav.items %}
           {%- if nav_item.title == "Ejemplos" -%}
-            {#- Pestana con menu desplegable de casos. Los casos aun no son enlaces. -#}
+            {#- Pestana con menu desplegable de casos.
+               Los slugs son los que MkDocs genera para los encabezados de
+               ejemplos.md. Cuando cada caso pase a tener su propia pagina,
+               basta con cambiar el href de esta lista. -#}
+            {%- set casos = [
+              ("caso-1-potencia-de-transmision",                        "Caso 1 · Potencia de transmisión"),
+              ("caso-2-perdida-artificial-de-paquetes-con-fer",         "Caso 2 · Pérdida artificial de paquetes con FER"),
+              ("caso-3-nuevo-perfil-de-aceleracion-y-velocidad-del-lider", "Caso 3 · Nuevo perfil de aceleración y velocidad del líder"),
+              ("caso-4-mas-de-un-peloton",                              "Caso 4 · Más de un pelotón"),
+              ("caso-5-retardo-estocastico-de-comunicacion",            "Caso 5 · Retardo estocástico de comunicación"),
+              ("caso-6-event-triggered-control-sobre-el-envio-de-frames", "Caso 6 · Event-triggered control sobre el envío de frames"),
+              ("caso-7-etc-y-retardo-en-conjunto",                      "Caso 7 · ETC y retardo en conjunto")
+            ] -%}
             <li class="md-tabs__item mp-drop">
               <a href="{{ nav_item.url | url }}"
                  class="md-tabs__link{% if nav_item.active %} md-tabs__link--active{% endif %}">
@@ -29,13 +41,11 @@
                 </span>
               </a>
               <ul class="mp-drop__menu">
-                <li>Cambios en la potencia de transmisión de los autos</li>
-                <li>Uso del FER para simular pérdida artificial de paquetes</li>
-                <li>Creación de un nuevo perfil de aceleración y velocidad del líder</li>
-                <li>Uso de más de un pelotón</li>
-                <li>Introducción de retardo estocástico de comunicación</li>
-                <li>Implementación de un event-triggered control sobre el envío de frames</li>
-                <li>Simulaciones con ETC y retardo en conjunto</li>
+                {%- for slug, titulo in casos %}
+                  <li>
+                    <a href="{{ nav_item.url | url }}#{{ slug }}">{{ titulo }}</a>
+                  </li>
+                {%- endfor %}
               </ul>
             </li>
           {%- else -%}

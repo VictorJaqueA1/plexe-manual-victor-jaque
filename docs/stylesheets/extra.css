@@ -170,6 +170,16 @@
    Menú desplegable en la pestaña "Ejemplos"
    La estructura vive en overrides/partials/header.html
    ========================================================= */
+/* Material recorta cualquier hijo que sobresalga de las pestanas:
+   .md-tabs__list trae overflow:auto y contain:content (este ultimo
+   implica paint containment, que amputa lo que se salga de la caja).
+   Sin anular ambos, el desplegable se construye pero nunca se ve. */
+.md-tabs,
+.md-tabs__list {
+  overflow: visible;
+  contain: none;
+}
+
 .mp-drop { position: relative; }
 
 .mp-drop > .md-tabs__link {
@@ -192,7 +202,10 @@
   display: none;
   position: absolute;
   top: calc(100% + .3rem);
-  left: 0;
+  /* Ejemplos es la ultima pestana: anclando por la derecha el menu crece
+     hacia adentro y no se sale de la ventana. */
+  right: 0;
+  left: auto;
   z-index: 20;
   min-width: 22rem;
   margin: 0;
@@ -203,18 +216,29 @@
   border-radius: 4px;
   box-shadow: 0 6px 22px rgba(0,0,0,.22);
 }
-.mp-drop:hover .mp-drop__menu,
-.mp-drop:focus-within .mp-drop__menu { display: block; }
+/* El menu se abre con un clic, no al posar el cursor. La clase la
+   pone y la quita docs/javascripts/dropdown.js. Ya no hace falta el
+   puente que tapaba el hueco: con clic el menu no se cierra al
+   moverse el cursor. */
+.mp-drop--abierto .mp-drop__menu { display: block; }
 
-.mp-drop__menu li {
+/* La flecha gira mientras el menu esta abierto. */
+.mp-drop__chev { transition: transform .15s ease; }
+.mp-drop--abierto .mp-drop__chev { transform: rotate(180deg); }
+
+.mp-drop__menu li { margin: 0; }
+
+.mp-drop__menu a {
+  display: block;
   padding: .4rem .85rem;
   font-size: .66rem;
   line-height: 1.45;
   color: var(--md-default-fg-color--light);
   white-space: nowrap;
-  cursor: default;
+  text-decoration: none;
 }
-.mp-drop__menu li:hover {
+.mp-drop__menu a:hover,
+.mp-drop__menu a:focus {
   background: var(--fondo-suave);
   color: var(--md-default-fg-color);
 }
