@@ -151,3 +151,75 @@
 @media screen and (min-width: 76.25em) {
   .md-sidebar--primary { display: none; }
 }
+
+/* =========================================================
+   Figuras SVG de estructura de archivos
+   Se dibujan con las variables de color del tema, así que
+   se adaptan solas al modo claro y oscuro.
+   ========================================================= */
+.plx-fig {
+  margin: 1.5em 0;
+  overflow-x: auto;
+}
+.plx-fig svg {
+  display: block;
+  min-width: 34rem;   /* evita que el texto se vuelva ilegible en pantallas angostas */
+}
+
+/* =========================================================
+   Menú desplegable en la pestaña "Ejemplos"
+   La estructura vive en overrides/partials/header.html
+   ========================================================= */
+.mp-drop { position: relative; }
+
+.mp-drop > .md-tabs__link {
+  display: inline-flex;
+  align-items: center;
+  gap: .18rem;
+}
+.mp-drop__chev {
+  display: flex;
+  width: .8rem;
+  height: .8rem;
+}
+.mp-drop__chev svg {
+  width: 100%;
+  height: 100%;
+  fill: currentcolor;
+}
+
+.mp-drop__menu {
+  display: none;
+  position: absolute;
+  top: calc(100% + .3rem);
+  left: 0;
+  z-index: 20;
+  min-width: 22rem;
+  margin: 0;
+  padding: .35rem 0;
+  list-style: none;
+  background: var(--md-default-bg-color);
+  border: 1px solid var(--linea);
+  border-radius: 4px;
+  box-shadow: 0 6px 22px rgba(0,0,0,.22);
+}
+.mp-drop:hover .mp-drop__menu,
+.mp-drop:focus-within .mp-drop__menu { display: block; }
+
+.mp-drop__menu li {
+  padding: .4rem .85rem;
+  font-size: .66rem;
+  line-height: 1.45;
+  color: var(--md-default-fg-color--light);
+  white-space: nowrap;
+  cursor: default;
+}
+.mp-drop__menu li:hover {
+  background: var(--fondo-suave);
+  color: var(--md-default-fg-color);
+}
+
+/* En pantallas angostas no hay pestañas, así que el menú no aplica */
+@media screen and (max-width: 76.1875em) {
+  .mp-drop__menu { display: none !important; }
+}
