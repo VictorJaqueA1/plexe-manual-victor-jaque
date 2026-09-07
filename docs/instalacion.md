@@ -66,7 +66,7 @@ Dos observaciones importantes:
 - **SUMO es la excepción a toda la lógica anterior: no se compila.** Desde su versión 1.2.0, los modelos que Plexe necesita vienen incluidos en la distribución oficial, así que basta instalar el paquete ya construido. La excepción a esta excepción está en el paso 3.
 
 !!! note "Si consultas la documentación oficial"
-    El sitio de Plexe separa estas dos operaciones en dos páginas distintas: **Download** y **Building**. Es útil saber que la página *Download* cubre **únicamente Plexe**, porque tanto el ZIP como el repositorio contienen Plexe y nada más. OMNeT++, SUMO y Veins se descargan cada uno de su propio sitio, y esas indicaciones están en la página *Building*, no en *Download*.
+    El sitio de Plexe separa estas dos operaciones en dos páginas distintas: **Download** y **Building**. Es útil saber que la página *Download* cubre **únicamente Plexe**, porque tanto el ZIP como el repositorio contienen Plexe y nada más. OMNeT++, SUMO y Veins se descargan cada uno de su propio sitio, y esas indicaciones están en la página *Building*, no en *Download*. La única excepción es **Instant Plexe**, que está en esa misma página y sí trae los cuatro componentes ya instalados.
 
 ### Cómo se compila en cada sistema operativo
 
@@ -143,9 +143,27 @@ Todo vive dentro de una sola carpeta, `~/src/`. Al terminar la instalación debe
 
 ---
 
-## 4 · Instalación paso a paso
+## 4 · El camino de este manual
+
+A partir de aquí el manual documenta **un solo camino**: Ubuntu 24.04, sea instalado directamente o corriendo dentro de Windows mediante WSL. Es el entorno del laboratorio y el único verificado.
+
+| Tu situación | Qué hacer |
+|--------------|-----------|
+| **Windows** | Sección 5, empezando por el paso 0, que instala Ubuntu dentro de Windows. |
+| **Ubuntu o cualquier Linux** | Sección 5, saltándote el paso 0. |
+| **macOS o Windows nativo** | Sección 6. |
+| **Solo quieres probar Plexe** | Sección 7, Instant Plexe. |
+
+**Instant Plexe** es una máquina virtual con los cuatro componentes ya instalados y compilados: sirve para tener Plexe corriendo en minutos sin compilar nada, pero trae la versión 3.0 y no la 3.2 que documenta este manual. Se describe en la [sección 7](#7-alternativa-instant-plexe).
+
+---
+
+## 5 · Instalación paso a paso (Ubuntu 24.04 / WSL)
 
 A partir de aquí empieza el procedimiento. Cada paso incluye descargar el componente y dejarlo construido antes de pasar al siguiente.
+
+!!! note "La numeración no coincide con la del sitio oficial"
+    Este manual reordena dos cosas respecto de la [guía oficial](https://plexe.car2x.org/building/): adelanta SUMO antes de Veins, y separa en dos pasos lo que allí es uno solo (*Install Plexe and Veins*). El resultado es el mismo; el motivo está en la sección 1.
 
 ### Paso 0: WSL (solo si vienes de Windows)
 
@@ -349,9 +367,12 @@ Si esto funciona, la instalación está terminada. Los escenarios de ejemplo se 
 
 ---
 
-## 5 · Otros sistemas
+## 6 · Otros sistemas
 
 Este manual documenta Ubuntu 24.04 porque es el entorno del laboratorio. Para referencia, así se sitúan los demás casos:
+
+!!! warning "Ninguno de estos caminos fue verificado"
+    Lo que sigue es orientación general, no un procedimiento probado. Si vas por alguno de ellos, la referencia válida es la [guía oficial de compilación](https://plexe.car2x.org/building/), no este manual.
 
 **macOS.** El procedimiento es prácticamente el mismo que en Linux. Las diferencias se concentran al principio: hay que instalar el gestor de paquetes MacPorts, que a su vez puede requerir Xcode, y en equipos con procesador Apple hay que ajustar un par de configuraciones para que OMNeT++ encuentre las librerías gráficas. Hecho eso, los pasos 2 a 7 de esta página se aplican tal cual.
 
@@ -361,7 +382,7 @@ Este manual documenta Ubuntu 24.04 porque es el entorno del laboratorio. Para re
 
 ---
 
-## 6 · Alternativa: Instant Plexe
+## 7 · Alternativa: Instant Plexe
 
 **Instant Plexe** es una máquina virtual con todos los componentes ya instalados y compilados. Se descarga como un archivo de virtualización y se importa en VirtualBox o similar, lo que permite tener Plexe funcionando en minutos y sin compilar nada, en cualquier sistema operativo.
 
@@ -370,11 +391,11 @@ Sirve para probar Plexe rápidamente o para una clase de demostración. **No es 
 - La versión disponible es la **3.0**, con OMNeT++ 5.6.2, Veins 5.1 y SUMO 1.7.0. No existe una imagen para Plexe 3.2, que es la versión que documenta este manual, y las diferencias entre 3.0 y 3.2 son sustanciales.
 - Al correr dentro de una máquina virtual el rendimiento es menor, y el desarrollo de código propio resulta más incómodo.
 
-Si tu objetivo es trabajar sobre Plexe, es decir modificar controladores, escribir protocolos o correr experimentos, la instalación de la sección 4 es el camino.
+Si tu objetivo es trabajar sobre Plexe, es decir modificar controladores, escribir protocolos o correr experimentos, la instalación de la sección 5 es el camino.
 
 ---
 
-## 7 · Problemas frecuentes
+## 8 · Problemas frecuentes
 
 **Un comando no se encuentra, o la compilación falla sin razón aparente.**
 Casi siempre es el entorno de OMNeT++ sin cargar en esa terminal. Vuelve al paso 2.2. Ocurre especialmente al abrir una terminal nueva o al reiniciar el computador.
