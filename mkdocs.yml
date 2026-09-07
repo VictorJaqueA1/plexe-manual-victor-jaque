@@ -81,6 +81,5 @@ nav:
   - Inicio: index.md
   - Instalación: instalacion.md
   - Arquitectura: arquitectura.md
-  - Módulos: modulos.md
   - Controladores: controladores.md
   - Ejemplos: ejemplos.md
