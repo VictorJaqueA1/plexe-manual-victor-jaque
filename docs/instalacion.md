@@ -178,7 +178,32 @@ Lo que necesitas dejar listo:
 - Verificar que las aplicaciones con ventana gráfica se abren, porque el IDE de OMNeT++ y `sumo-gui` la necesitan. En Windows 11 esto funciona sin configuración adicional gracias a WSLg.
 
 ```bash
-# PENDIENTE: comandos para instalar WSL 2 con Ubuntu 24.04 y verificar la versión
+# En PowerShell de Windows, como administrador:
+wsl --install -d Ubuntu-24.04
+
+# Reiniciar si lo pide. Luego, en PowerShell, verificar que es WSL 2:
+wsl -l -v
+
+# Dentro de la terminal de Ubuntu, verificar la versión:
+lsb_release -a
+
+# Probar que se abren ventanas gráficas (WSLg):
+sudo apt install -y x11-apps
+xeyes
+```
+
+**Así debería verse tu terminal:**
+
+```text
+PS C:\> wsl -l -v
+  NAME            STATE           VERSION
+* Ubuntu-24.04    Running         2
+
+$ lsb_release -a
+Distributor ID: Ubuntu
+Description:    Ubuntu 24.04.3 LTS
+Release:        24.04
+Codename:       noble
 ```
 
 !!! info "Dos mundos, un computador"
@@ -194,7 +219,14 @@ Lo que necesitas dejar listo:
 Antes de compilar cualquier componente hay que instalar el compilador, las herramientas de construcción y las librerías de las que dependen OMNeT++ y Veins. Es una sola instrucción larga que incluye compilador, herramientas de construcción, Python, librerías XML y de compresión, generación de documentación, las librerías gráficas Qt6 que necesita el IDE, y R.
 
 ```bash
-# PENDIENTE: instalación de dependencias del sistema con apt
+sudo apt update
+sudo apt install -y make diffutils pkg-config ccache clang lld gdb lldb \
+    bison flex perl sed gawk python3 python3-pip python3-venv python3-dev \
+    libxml2-dev zlib1g-dev doxygen graphviz xdg-utils libdw-dev \
+    qt6-base-dev qt6-base-dev-tools qmake6 libqt6svg6 qt6-wayland libwebkit2gtk-4.1-0 \
+    libopenscenegraph-dev \
+    r-base r-base-dev
+sudo apt clean
 ```
 
 Este paso se ejecuta una única vez por máquina.
@@ -210,7 +242,10 @@ OMNeT++ es el motor de simulación. Todo lo demás corre encima, así que va pri
 Se baja como archivo comprimido desde el sitio oficial y se descomprime dentro de `~/src/`. La carpeta resultante conserva el número de versión completo.
 
 ```bash
-# PENDIENTE: descarga y descompresión de OMNeT++ en ~/src/
+mkdir -p ~/src
+cd ~/src
+wget https://github.com/omnetpp/omnetpp/releases/download/omnetpp-6.2.0/omnetpp-6.2.0-linux-x86_64.tgz
+tar xvfz omnetpp-6.2.0-linux-x86_64.tgz
 ```
 
 #### 2.2 Cargar el entorno
@@ -218,7 +253,15 @@ Se baja como archivo comprimido desde el sitio oficial y se descomprime dentro d
 Antes de compilar hay que cargar las variables de entorno de OMNeT++ en la terminal actual.
 
 ```bash
-# PENDIENTE: cargar el entorno de OMNeT++ (source setenv)
+cd ~/src/omnetpp-6.2.0
+
+# Solo la primera vez: entorno virtual de Python con las librerías que pide OMNeT++
+python3 -m venv .venv --upgrade-deps --clear --prompt "omnetpp/.venv"
+source .venv/bin/activate
+python3 -m pip install -r python/requirements.txt
+
+# En cada terminal nueva:
+source setenv
 ```
 
 !!! danger "Esto se repite en cada terminal nueva"
@@ -229,7 +272,9 @@ Antes de compilar hay que cargar las variables de entorno de OMNeT++ en la termi
 La compilación se hace en dos etapas: primero se detecta la configuración de tu sistema, después se construye. Es la compilación más larga de todo el proceso, del orden de varios minutos, y conviene aprovechar todos los núcleos del procesador.
 
 ```bash
-# PENDIENTE: configurar y compilar OMNeT++ usando todos los núcleos
+cd ~/src/omnetpp-6.2.0
+./configure
+make -j$(nproc)
 ```
 
 !!! note "Si la configuración falla"
@@ -240,7 +285,28 @@ La compilación se hace en dos etapas: primero se detecta la configuración de t
 Antes de seguir, comprueba que OMNeT++ quedó bien construido abriendo su entorno gráfico. Si la ventana se abre, este paso está terminado.
 
 ```bash
-# PENDIENTE: abrir el IDE de OMNeT++ para verificar la instalación
+# Abrir el IDE:
+omnetpp
+
+# Verificación rápida por terminal:
+opp_run -v
+```
+
+**Así debería verse tu terminal:**
+
+```text
+$ opp_run -v
+OMNeT++ Discrete Event Simulation  (C) 1992-2025 Andras Varga, OpenSim Ltd.
+Version: 6.2.0, build: 250714-83e173e93a, edition: Academic Public License -- NOT FOR COMMERCIAL USE
+See the license for distribution terms and warranty disclaimer
+
+Setting up Qtenv...
+
+Build: omnetpp-6.2.0 250714-83e173e93a
+Compiler: CLANG 18.1.3 (1ubuntu1)
+Options: 64-bit ARCH_X86_64 RELEASE WITH_NETBUILDER WITH_QTENV
+
+End.
 ```
 
 ---
@@ -363,7 +429,7 @@ Qué deberías ver si todo está bien:
 # PENDIENTE: correr un escenario de ejemplo de Plexe y verificar la salida
 ```
 
-Si esto funciona, la instalación está terminada. Los escenarios de ejemplo se describen en detalle en la sección [Ejemplos](ejemplos.md).
+Si esto funciona, la instalación está terminada. Los escenarios de ejemplo se describen en detalle en la sección [Ejemplos](ejemplos/index.md).
 
 ---
 
