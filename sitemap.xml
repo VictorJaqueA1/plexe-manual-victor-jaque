@@ -2,22 +2,50 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://VictorJaqueA1.github.io/plexe-manual-victor-jaque/</loc>
-         <lastmod>2026-09-07</lastmod>
+         <lastmod>2026-09-21</lastmod>
     </url>
     <url>
          <loc>https://VictorJaqueA1.github.io/plexe-manual-victor-jaque/arquitectura/</loc>
-         <lastmod>2026-09-07</lastmod>
+         <lastmod>2026-09-21</lastmod>
     </url>
     <url>
          <loc>https://VictorJaqueA1.github.io/plexe-manual-victor-jaque/controladores/</loc>
-         <lastmod>2026-09-07</lastmod>
-    </url>
-    <url>
-         <loc>https://VictorJaqueA1.github.io/plexe-manual-victor-jaque/ejemplos/</loc>
-         <lastmod>2026-09-07</lastmod>
+         <lastmod>2026-09-21</lastmod>
     </url>
     <url>
          <loc>https://VictorJaqueA1.github.io/plexe-manual-victor-jaque/instalacion/</loc>
-         <lastmod>2026-09-07</lastmod>
+         <lastmod>2026-09-21</lastmod>
+    </url>
+    <url>
+         <loc>https://VictorJaqueA1.github.io/plexe-manual-victor-jaque/ejemplos/</loc>
+         <lastmod>2026-09-21</lastmod>
+    </url>
+    <url>
+         <loc>https://VictorJaqueA1.github.io/plexe-manual-victor-jaque/ejemplos/caso-1/</loc>
+         <lastmod>2026-09-21</lastmod>
+    </url>
+    <url>
+         <loc>https://VictorJaqueA1.github.io/plexe-manual-victor-jaque/ejemplos/caso-2/</loc>
+         <lastmod>2026-09-21</lastmod>
+    </url>
+    <url>
+         <loc>https://VictorJaqueA1.github.io/plexe-manual-victor-jaque/ejemplos/caso-3/</loc>
+         <lastmod>2026-09-21</lastmod>
+    </url>
+    <url>
+         <loc>https://VictorJaqueA1.github.io/plexe-manual-victor-jaque/ejemplos/caso-4/</loc>
+         <lastmod>2026-09-21</lastmod>
+    </url>
+    <url>
+         <loc>https://VictorJaqueA1.github.io/plexe-manual-victor-jaque/ejemplos/caso-5/</loc>
+         <lastmod>2026-09-21</lastmod>
+    </url>
+    <url>
+         <loc>https://VictorJaqueA1.github.io/plexe-manual-victor-jaque/ejemplos/caso-6/</loc>
+         <lastmod>2026-09-21</lastmod>
+    </url>
+    <url>
+         <loc>https://VictorJaqueA1.github.io/plexe-manual-victor-jaque/ejemplos/caso-7/</loc>
+         <lastmod>2026-09-21</lastmod>
     </url>
 </urlset>

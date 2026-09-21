@@ -178,26 +178,29 @@
                 </span>
               </a>
               <ul class="mp-drop__menu">
+                <li>
+                  <a href="../ejemplos/">Todos los ejemplos</a>
+                </li>
                   <li>
-                    <a href="../ejemplos/#caso-1-potencia-de-transmision">Caso 1 · Potencia de transmisión</a>
+                    <a href="../ejemplos/caso-1/">Caso 1 · Potencia de transmisión</a>
                   </li>
                   <li>
-                    <a href="../ejemplos/#caso-2-perdida-artificial-de-paquetes-con-fer">Caso 2 · Pérdida artificial de paquetes con FER</a>
+                    <a href="../ejemplos/caso-2/">Caso 2 · Pérdida artificial de paquetes con FER</a>
                   </li>
                   <li>
-                    <a href="../ejemplos/#caso-3-nuevo-perfil-de-aceleracion-y-velocidad-del-lider">Caso 3 · Nuevo perfil de aceleración y velocidad del líder</a>
+                    <a href="../ejemplos/caso-3/">Caso 3 · Nuevo perfil de aceleración y velocidad del líder</a>
                   </li>
                   <li>
-                    <a href="../ejemplos/#caso-4-mas-de-un-peloton">Caso 4 · Más de un pelotón</a>
+                    <a href="../ejemplos/caso-4/">Caso 4 · Más de un pelotón</a>
                   </li>
                   <li>
-                    <a href="../ejemplos/#caso-5-retardo-estocastico-de-comunicacion">Caso 5 · Retardo estocástico de comunicación</a>
+                    <a href="../ejemplos/caso-5/">Caso 5 · Retardo estocástico de comunicación</a>
                   </li>
                   <li>
-                    <a href="../ejemplos/#caso-6-event-triggered-control-sobre-el-envio-de-frames">Caso 6 · Event-triggered control sobre el envío de frames</a>
+                    <a href="../ejemplos/caso-6/">Caso 6 · Event-triggered control sobre el envío de frames</a>
                   </li>
                   <li>
-                    <a href="../ejemplos/#caso-7-etc-y-retardo-en-conjunto">Caso 7 · ETC y retardo en conjunto</a>
+                    <a href="../ejemplos/caso-7/">Caso 7 · ETC y retardo en conjunto</a>
                   </li>
               </ul>
             </li>
@@ -500,10 +503,276 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#ejemplo-configuracion-de-cacc-en-omnetppini" class="md-nav__link">
+  <a href="#1-donde-viven-los-controladores" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Ejemplo: configuración de CACC en omnetpp.ini
+        1. Dónde viven los controladores
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Dónde viven los controladores">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#en-sumo-el-calculo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        En SUMO: el cálculo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#en-plexe-configuracion-y-comunicacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        En Plexe: configuración y comunicación
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lista-de-controladores" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lista de controladores
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-como-se-elige-el-controlador-en-omnetppini" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Cómo se elige el controlador en omnetpp.ini
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Cómo se elige el controlador en omnetpp.ini">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#que-valor-manda" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Qué valor manda
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-cadena-comun-saturacion-y-motor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Cadena común: saturación y motor
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-que-hacer-cuando-modificas-algo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Qué hacer cuando modificas algo
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Qué hacer cuando modificas algo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#recompilar-sumo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recompilar SUMO
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recompilar-plexe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recompilar Plexe
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#agregar-un-controlador-nuevo-aun-no-implementado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Agregar un controlador nuevo (aún no implementado)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-controlador-ploeg" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Controlador Ploeg
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Controlador Ploeg">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#espaciamiento-deseado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Espaciamiento deseado
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ley-de-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ley de control
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementacion-en-sumo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Implementación en SUMO
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#datos-que-usa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Datos que usa
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parametros" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parámetros
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#seguridad-y-consistencia-con-plexe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Seguridad y consistencia con Plexe
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-cacc-path" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. CACC (PATH)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-acc-y-cc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. ACC y CC
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-flatbed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Flatbed
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-consensus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Consensus
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-faked-cacc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Faked CACC
       
     </span>
   </a>
@@ -524,9 +793,48 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../ejemplos/" class="md-nav__link">
+    
+    
+      
         
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../ejemplos/" class="md-nav__link ">
+              
   
   
   <span class="md-ellipsis">
@@ -540,7 +848,227 @@
   
   
 
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Ejemplos
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ejemplos/caso-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Caso 1 · Potencia de transmisión
+  
+
+    
+  </span>
+  
+  
+
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ejemplos/caso-2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Caso 2 · Pérdida artificial de paquetes con FER
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ejemplos/caso-3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Caso 3 · Nuevo perfil de aceleración y velocidad del líder
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ejemplos/caso-4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Caso 4 · Más de un pelotón
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ejemplos/caso-5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Caso 5 · Retardo estocástico de comunicación
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ejemplos/caso-6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Caso 6 · Event-triggered control sobre el envío de frames
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ejemplos/caso-7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Caso 7 · ETC y retardo en conjunto
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -572,10 +1100,276 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#ejemplo-configuracion-de-cacc-en-omnetppini" class="md-nav__link">
+  <a href="#1-donde-viven-los-controladores" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Ejemplo: configuración de CACC en omnetpp.ini
+        1. Dónde viven los controladores
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Dónde viven los controladores">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#en-sumo-el-calculo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        En SUMO: el cálculo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#en-plexe-configuracion-y-comunicacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        En Plexe: configuración y comunicación
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lista-de-controladores" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lista de controladores
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-como-se-elige-el-controlador-en-omnetppini" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Cómo se elige el controlador en omnetpp.ini
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Cómo se elige el controlador en omnetpp.ini">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#que-valor-manda" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Qué valor manda
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-cadena-comun-saturacion-y-motor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Cadena común: saturación y motor
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-que-hacer-cuando-modificas-algo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Qué hacer cuando modificas algo
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Qué hacer cuando modificas algo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#recompilar-sumo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recompilar SUMO
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recompilar-plexe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recompilar Plexe
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#agregar-un-controlador-nuevo-aun-no-implementado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Agregar un controlador nuevo (aún no implementado)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-controlador-ploeg" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Controlador Ploeg
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Controlador Ploeg">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#espaciamiento-deseado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Espaciamiento deseado
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ley-de-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ley de control
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementacion-en-sumo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Implementación en SUMO
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#datos-que-usa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Datos que usa
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parametros" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parámetros
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#seguridad-y-consistencia-con-plexe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Seguridad y consistencia con Plexe
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-cacc-path" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. CACC (PATH)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-acc-y-cc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. ACC y CC
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-flatbed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Flatbed
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-consensus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Consensus
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-faked-cacc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Faked CACC
       
     </span>
   </a>
@@ -603,35 +1397,690 @@
 
 
 <h1 id="controladores">Controladores</h1>
-<p>Plexe incluye varios controladores longitudinales cooperativos listos para usar.</p>
-<h2 id="ejemplo-configuracion-de-cacc-en-omnetppini">Ejemplo: configuración de CACC en <code>omnetpp.ini</code></h2>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">CACC</label><label for="__tabbed_1_2">PLOEG</label><label for="__tabbed_1_3">CONSENSUS</label></div>
+<p>Los controladores de Plexe son leyes de control longitudinal: en cada paso de simulación calculan la aceleración de cada vehículo del pelotón.</p>
+<div class="admonition note">
+<p class="admonition-title">Notación de rutas</p>
+<p>Cada usuario tiene SUMO y Plexe en carpetas distintas. Las rutas de esta página son relativas a:</p>
+<ul>
+<li><code>$SUMO_HOME</code>: carpeta raíz de SUMO (contiene <code>src/</code> y <code>bin/</code>).</li>
+<li><code>&lt;PLEXE&gt;</code>: carpeta raíz de Plexe (contiene <code>src/</code>, <code>examples/</code> y <code>Makefile</code>).</li>
+</ul>
+</div>
+<h2 id="1-donde-viven-los-controladores">1. Dónde viven los controladores</h2>
+<p>Las fórmulas <strong>viven en SUMO, no en Plexe</strong>. Todos los controladores están dentro de un único modelo de seguimiento de SUMO, <code>CC</code> (<code>carFollowModel="CC"</code> en el <code>vType</code>), y se elige uno u otro con un número.</p>
+<h3 id="en-sumo-el-calculo">En SUMO: el cálculo</h3>
+<table>
+<thead>
+<tr>
+<th>Archivo (en <code>$SUMO_HOME</code>)</th>
+<th>Qué contiene</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>src/microsim/cfmodels/MSCFModel_CC.cpp</code></td>
+<td>Fórmulas de todos los controladores: <code>_ploeg()</code>, <code>_cacc()</code>, <code>_acc()</code>, <code>_cc()</code>, <code>_flatbed()</code>, <code>_consensus()</code>. La función <code>_v()</code> elige cuál se usa.</td>
+</tr>
+<tr>
+<td><code>src/microsim/cfmodels/MSCFModel_CC.h</code></td>
+<td>Declaración de la clase.</td>
+</tr>
+<tr>
+<td><code>src/microsim/cfmodels/CC_VehicleVariables.cpp</code></td>
+<td>Valores iniciales de cada vehículo y matrices del controlador Consensus.</td>
+</tr>
+<tr>
+<td><code>src/microsim/cfmodels/CC_Const.h</code></td>
+<td>Lista de controladores (<code>enum ACTIVE_CONTROLLER</code>) y claves TraCI de los parámetros (<code>ccph</code>, <code>ccpkp</code>, …).</td>
+</tr>
+<tr>
+<td><code>src/microsim/engine/FirstOrderLagModel.cpp</code></td>
+<td>Retardo del motor, común a todos los controladores.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="en-plexe-configuracion-y-comunicacion">En Plexe: configuración y comunicación</h3>
+<p>Plexe no calcula aceleraciones. Elige el controlador, envía sus parámetros a SUMO por TraCI y le entrega los datos recibidos por beacons.</p>
+<table>
+<thead>
+<tr>
+<th>Archivo (en <code>&lt;PLEXE&gt;</code>)</th>
+<th>Qué hace</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>src/plexe/scenarios/BBaseScenario.ned</code></td>
+<td>Parámetros de los controladores y sus valores por defecto.</td>
+</tr>
+<tr>
+<td><code>src/plexe/scenarios/BaseScenario.cc</code></td>
+<td><code>initializeControllers()</code>: envía esos parámetros a SUMO al crear cada vehículo.</td>
+</tr>
+<tr>
+<td><code>src/plexe/mobility/TraCIBaseTrafficManager.cc</code></td>
+<td><code>strToController()</code>: convierte el texto del <code>.ini</code> (<code>"PLOEG"</code>) en el número del controlador.</td>
+</tr>
+<tr>
+<td><code>src/plexe/apps/SimplePlatooningApp.cc</code></td>
+<td>Al recibir un beacon, entrega a SUMO los datos del vehículo de adelante y del líder.</td>
+</tr>
+<tr>
+<td><code>src/plexe/CC_Const.h</code></td>
+<td>Copia de las constantes de SUMO. Debe coincidir con la de SUMO.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="lista-de-controladores">Lista de controladores</h3>
+<table>
+<thead>
+<tr>
+<th>Número</th>
+<th>Nombre</th>
+<th>Función en <code>MSCFModel_CC.cpp</code></th>
+<th>¿Se elige desde el <code>.ini</code>?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td><code>DRIVER</code></td>
+<td>Modelo humano de SUMO (Krauss)</td>
+<td>No</td>
+</tr>
+<tr>
+<td>1</td>
+<td><code>ACC</code></td>
+<td><code>_cc()</code> + <code>_acc()</code></td>
+<td>Sí</td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>CACC</code></td>
+<td><code>_cacc()</code></td>
+<td>Sí</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>FAKED_CACC</code></td>
+<td><code>_cc()</code> + <code>_cacc()</code></td>
+<td>No (lo usa la maniobra de unión)</td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>PLOEG</code></td>
+<td><code>_ploeg()</code></td>
+<td>Sí</td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>CONSENSUS</code></td>
+<td><code>_consensus()</code></td>
+<td>Sí</td>
+</tr>
+<tr>
+<td>6</td>
+<td><code>FLATBED</code></td>
+<td><code>_flatbed()</code></td>
+<td>Sí</td>
+</tr>
+</tbody>
+</table>
+<h2 id="2-como-se-elige-el-controlador-en-omnetppini">2. Cómo se elige el controlador en <code>omnetpp.ini</code></h2>
+<p>El controlador se asigna con <code>**.traffic.controller</code>. Sus parámetros van en <code>*.node[*].scenario.*</code>. Los valores de estos ejemplos son los por defecto de Plexe.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:5"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><input id="__tabbed_1_5" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">PLOEG</label><label for="__tabbed_1_2">CACC</label><label for="__tabbed_1_3">ACC</label><label for="__tabbed_1_4">FLATBED</label><label for="__tabbed_1_5">CONSENSUS</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="language-ini highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="na">*.node[*].scenario.controller</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;CACC&quot;</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="na">*.node[*].scenario.caccC1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0.5</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="na">*.node[*].scenario.caccXi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">1</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="na">*.node[*].scenario.caccOmegaN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0.2 Hz</span>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="na">**.traffic.controller</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;PLOEG&quot;</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="na">*.node[*].scenario.ploegH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0.5 s</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="na">*.node[*].scenario.ploegKp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0.2</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="na">*.node[*].scenario.ploegKd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0.7</span>
 </span></code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="language-ini highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="na">*.node[*].scenario.controller</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;PLOEG&quot;</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="na">*.node[*].scenario.ploegH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0.5 s</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="na">*.node[*].scenario.ploegKp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0.2</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="na">*.node[*].scenario.ploegKd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0.7</span>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="na">**.traffic.controller</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;CACC&quot;</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="na">*.node[*].scenario.caccC1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0.5</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="na">*.node[*].scenario.caccXi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">1</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="na">*.node[*].scenario.caccOmegaN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0.2 Hz</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="na">*.node[*].scenario.caccSpacing</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">5 m</span>
 </span></code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="language-ini highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="na">*.node[*].scenario.controller</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;CONSENSUS&quot;</span>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="na">**.traffic.controller</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;ACC&quot;</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="na">*.node[*].scenario.accHeadway</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">1.2 s</span>
 </span></code></pre></div>
 </div>
+<div class="tabbed-block">
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="na">**.traffic.controller</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;FLATBED&quot;</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="na">*.node[*].scenario.flatbedKa</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">2.4</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="na">*.node[*].scenario.flatbedKv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0.6</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="na">*.node[*].scenario.flatbedKp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">12</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="na">*.node[*].scenario.flatbedH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">4</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="na">*.node[*].scenario.flatbedD</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">5</span>
+</span></code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="na">**.traffic.controller</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;CONSENSUS&quot;</span>
+</span></code></pre></div>
+<p>Sus ganancias no se configuran desde el <code>.ini</code> (ver <a href="#9-consensus">Consensus</a>).</p>
 </div>
 </div>
-<div class="admonition note">
-<p class="admonition-title">Copiar código</p>
-<p>Pasa el cursor sobre cualquier bloque de código y aparece un botón para copiar al portapapeles.</p>
 </div>
-<p><em>Sección en construcción — se documentará cada controlador en detalle.</em></p>
+<ul>
+<li><code>controller</code> define el controlador de los <strong>miembros</strong> del pelotón. Con <code>PlatoonsTrafficManager</code> (el del ejemplo <code>platooning</code>), el <strong>líder siempre usa ACC</strong>, con tiempo de separación <code>leaderHeadway</code>.</li>
+<li>En <code>&lt;PLEXE&gt;/examples/platooning/omnetpp.ini</code> el controlador no es un texto fijo: se recorre con la variable <code>${controller}</code>, que también ajusta la distancia y el tiempo de separación al insertar los vehículos. Sus valores son 0 = ACC (0.3 s), 1 = ACC (1.2 s), 2 = CACC, 3 = PLOEG, 4 = CONSENSUS y 5 = FLATBED.</li>
+</ul>
+<h3 id="que-valor-manda">Qué valor manda</h3>
+<p>Un mismo parámetro puede aparecer en tres lugares. Gana el primero de esta lista:</p>
+<ol>
+<li><strong><code>.ini</code></strong>, o si no está, el valor por defecto de <code>BBaseScenario.ned</code>. Plexe lo envía a SUMO al crear cada vehículo.</li>
+<li><strong>Atributo del <code>vType</code></strong> en el <code>.rou.xml</code> (por ejemplo <code>ploegH="0.5"</code>).</li>
+<li><strong>Valor por defecto de SUMO</strong>, en el constructor de <code>MSCFModel_CC.cpp</code>.</li>
+</ol>
+<p>Plexe <strong>no envía</strong> <code>lambda</code>, <code>kp</code> (del CC), <code>ccAccel</code>, <code>ccDecel</code> ni <code>lanesCount</code>, así que estos solo se definen en el <code>vType</code>. <code>lanesCount</code> es obligatorio: sin él, SUMO se detiene con error.</p>
+<h2 id="3-cadena-comun-saturacion-y-motor">3. Cadena común: saturación y motor</h2>
+<p>Todos los controladores, salvo <code>DRIVER</code>, terminan igual (función <code>finalizeSpeed()</code>):</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>1. El controlador calcula u (aceleración deseada).
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>2. u se recorta a [uMin, uMax].
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>3. Motor (retardo de primer orden):
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>     a_real = α·u + (1 − α)·a_anterior,   con α = Δt / (τ + Δt)
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>   a_real se recorta a [−decel, accel] del vType.
+</span></code></pre></div>
+<p><code>Δt</code> es el paso de simulación de SUMO.</p>
+<table>
+<thead>
+<tr>
+<th>Parámetro <code>.ini</code></th>
+<th>Qué es</th>
+<th>Por defecto</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>engineTau</code></td>
+<td>Constante de tiempo τ del motor</td>
+<td>0.5 s</td>
+</tr>
+<tr>
+<td><code>uMin</code>, <code>uMax</code></td>
+<td>Saturación de u</td>
+<td>−10⁶ / 10⁶ m/s² (sin límite práctico)</td>
+</tr>
+<tr>
+<td><code>useControllerAcceleration</code></td>
+<td>Por beacon se envía la aceleración pedida por el controlador (<code>true</code>) o la real (<code>false</code>)</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>usePrediction</code></td>
+<td>Extrapola las velocidades recibidas entre beacons (CACC y Flatbed)</td>
+<td><code>true</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="4-que-hacer-cuando-modificas-algo">4. Qué hacer cuando modificas algo</h2>
+<table>
+<thead>
+<tr>
+<th>Qué cambias</th>
+<th>Dónde</th>
+<th>¿Recompilar?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Valor de un parámetro (<code>ploegH</code>, <code>caccC1</code>, …)</td>
+<td><code>omnetpp.ini</code></td>
+<td><strong>No.</strong> Basta con volver a correr la simulación.</td>
+</tr>
+<tr>
+<td>Atributo del <code>vType</code> (<code>lambda</code>, <code>ccAccel</code>, …)</td>
+<td><code>.rou.xml</code> del escenario</td>
+<td><strong>No.</strong></td>
+</tr>
+<tr>
+<td>Una fórmula o una constante fija en el código</td>
+<td><code>$SUMO_HOME/src/microsim/cfmodels/</code></td>
+<td><strong>Sí: SUMO.</strong></td>
+</tr>
+<tr>
+<td>Lógica de Plexe (apps, escenarios, maniobras)</td>
+<td><code>&lt;PLEXE&gt;/src/plexe/</code></td>
+<td><strong>Sí: Plexe.</strong></td>
+</tr>
+<tr>
+<td>Nueva clave TraCI o nuevo controlador</td>
+<td>Ambos <code>CC_Const.h</code>, entre otros (ver abajo)</td>
+<td><strong>Sí: SUMO y Plexe.</strong></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Requisito para modificar controladores</p>
+<p>Solo se puede si SUMO fue <strong>compilado desde el código fuente</strong>. Un SUMO instalado con <code>apt</code> no trae los archivos <code>.cpp</code>.</p>
+</div>
+<h3 id="recompilar-sumo">Recompilar SUMO</h3>
+<p>Desde la carpeta donde se corrió <code>cmake</code> al instalar SUMO (por ejemplo, <code>$SUMO_HOME/build</code>):</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nb">cd</span><span class="w"> </span><span class="nv">$SUMO_HOME</span>/build
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>cmake<span class="w"> </span>--build<span class="w"> </span>.<span class="w"> </span>-j<span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>nproc<span class="k">)</span><span class="s2">&quot;</span>
+</span></code></pre></div>
+<p>Los ejecutables nuevos quedan en <code>$SUMO_HOME/bin</code>.</p>
+<h3 id="recompilar-plexe">Recompilar Plexe</h3>
+<p>Con el entorno de OMNeT++ cargado:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nb">cd</span><span class="w"> </span>&lt;PLEXE&gt;
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>make
+</span></code></pre></div>
+<h3 id="agregar-un-controlador-nuevo-aun-no-implementado">Agregar un controlador nuevo (aún no implementado)</h3>
+<p>Hay que tocar, como mínimo:</p>
+<ul>
+<li><code>enum ACTIVE_CONTROLLER</code> en <strong>los dos</strong> <code>CC_Const.h</code> (SUMO y Plexe).</li>
+<li>En <code>MSCFModel_CC.cpp</code>: un <code>case</code> en <code>_v()</code> y otro en <code>getSecureGap()</code>. Si falta este último, SUMO lanza error.</li>
+<li>En Plexe: <code>strToController()</code> en <code>TraCIBaseTrafficManager.cc</code>, y <code>getStandstillDistance()</code> y <code>getHeadway()</code> en <code>BaseScenario.cc</code>. Si faltan, lanzan error.</li>
+<li>Si tiene parámetros nuevos:<ul>
+<li>una clave en ambos <code>CC_Const.h</code>;</li>
+<li>su lectura en <code>setParameter()</code> de <code>MSCFModel_CC.cpp</code>;</li>
+<li>el parámetro en <code>BaseScenario.ned</code> y <code>BBaseScenario.ned</code>;</li>
+<li>su envío en <code>initializeControllers()</code>.</li>
+</ul>
+</li>
+</ul>
+<p>Después, recompilar SUMO y Plexe.</p>
+<h2 id="5-controlador-ploeg">5. Controlador Ploeg</h2>
+<p>Referencia: J. Ploeg, B. T. M. Scheepers, E. van Nunen, N. van de Wouw y H. Nijmeijer, <em>Design and Experimental Evaluation of Cooperative Adaptive Cruise Control</em>, IEEE ITSC 2011, pp. 260–265.</p>
+<p>CACC que sigue <strong>solo al vehículo de adelante</strong>, con espaciamiento de <strong>tiempo constante</strong>. Combina el radar (distancia y velocidad del vehículo de adelante) con la comunicación (aceleración deseada del vehículo de adelante). No usa datos del líder.</p>
+<h3 id="espaciamiento-deseado">Espaciamiento deseado</h3>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>d_ref = 2 + h·v
+</span></code></pre></div>
+<p>La distancia deseada crece con la velocidad propia. Por ejemplo, a 100 km/h con <code>h = 0.5 s</code>, <code>d_ref ≈ 15.9 m</code>.</p>
+<h3 id="ley-de-control">Ley de control</h3>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>e  = d − (2 + h·v)                  error de espaciamiento
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>ė  = v_(i−1) − v − h·a              derivada de e (porque ḋ = v_(i−1) − v)
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>h·u̇ + u = kp·e + kd·ė + u_(i−1)
+</span></code></pre></div>
+<ul>
+<li><code>u</code> es un <strong>estado</strong> del controlador: Ploeg no calcula <code>u</code> directamente, sino su derivada <code>u̇</code>.</li>
+<li>La ecuación es un filtro de primer orden con constante de tiempo <code>h</code>: <code>u</code> sigue a <code>kp·e + kd·ė + u_(i−1)</code>, donde:<ul>
+<li><code>kp·e + kd·ė</code> es la parte proporcional-derivativa sobre el error de espaciamiento;</li>
+<li><code>u_(i−1)</code> es la prealimentación con la aceleración deseada del vehículo de adelante (la parte cooperativa).</li>
+</ul>
+</li>
+<li>En régimen (velocidad constante): <code>u = u_(i−1) = 0</code> y <code>e = 0</code>, es decir, <code>d = d_ref</code>.</li>
+</ul>
+<h3 id="implementacion-en-sumo">Implementación en SUMO</h3>
+<p>En cada paso, <code>_v()</code> (caso <code>PLOEG</code>) integra <code>u̇</code> con Euler explícito:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>u_k = u_(k−1) + Δt·u̇
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>    = (1 − Δt/h)·u_(k−1) + (Δt/h)·(kp·e + kd·ė + u_(i−1))
+</span></code></pre></div>
+<ul>
+<li><code>Δt</code> es el paso de SUMO (0.01 s en el ejemplo <code>platooning</code>). Con <code>h = 0.5 s</code>, cada paso pesa <code>Δt/h = 0.02</code>.</li>
+<li><code>u_(k−1)</code> es lo que <code>finalizeSpeed()</code> registró en el paso anterior: <code>(vPos − v)/Δt</code>, recortado a <code>[uMin, uMax]</code>, donde <code>vPos</code> es la velocidad que SUMO eligió en ese paso. Si SUMO limitó la velocidad, el estado lo refleja.</li>
+<li><code>h</code> debe ser mayor que 0, porque el código divide por <code>h</code>.</li>
+<li>Después, <code>u</code> pasa por la <a href="#3-cadena-comun-saturacion-y-motor">cadena común</a> de saturación y motor.</li>
+</ul>
+<h3 id="datos-que-usa">Datos que usa</h3>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Fuente</th>
+<th>Actualización</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>d</code></td>
+<td>Radar de SUMO: distancia de parachoques a parachoques menos <code>minGap</code> (0 en el <code>vType</code> de Plexe). Alcance: 250 m.</td>
+<td>Cada paso</td>
+</tr>
+<tr>
+<td><code>v_(i−1)</code></td>
+<td>Radar de SUMO: velocidad real del vehículo de adelante.</td>
+<td>Cada paso</td>
+</tr>
+<tr>
+<td><code>u_(i−1)</code></td>
+<td>Beacon del vehículo de adelante: su <code>u</code> si <code>useControllerAcceleration = true</code>, o su aceleración real si es <code>false</code>.</td>
+<td>Cada beacon (<code>beaconingInterval</code>, 0.1 s por defecto). Entre beacons, o si se pierden, se usa el último recibido. No se extrapola ni se corrige por retardo.</td>
+</tr>
+<tr>
+<td><code>v</code>, <code>a</code></td>
+<td>Vehículo propio (<code>a</code> es la aceleración real del último paso).</td>
+<td>Cada paso</td>
+</tr>
+<tr>
+<td><code>u_(k−1)</code></td>
+<td>Estado del controlador.</td>
+<td>Cada paso</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>La comunicación solo afecta a <code>u_(i−1)</code>: <code>d</code> y <code>v_(i−1)</code> no dependen de la red.</li>
+<li>Antes del primer beacon del vehículo de adelante, <code>u = 0</code>.</li>
+<li>Con <code>enableAutoFeed()</code>, <code>u_(i−1)</code> se lee directamente de SUMO en cada paso, sin pasar por la red. Lo usa <code>AutoLaneChangeScenario</code>.</li>
+</ul>
+<h3 id="parametros">Parámetros</h3>
+<table>
+<thead>
+<tr>
+<th>Parámetro <code>.ini</code></th>
+<th>Clave TraCI</th>
+<th>Atributo <code>vType</code></th>
+<th>Por defecto</th>
+<th>Unidad</th>
+<th>Qué es</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ploegH</code></td>
+<td><code>ccph</code></td>
+<td><code>ploegH</code></td>
+<td>0.5</td>
+<td>s</td>
+<td>Tiempo de separación <code>h</code>; también es la constante de tiempo del filtro</td>
+</tr>
+<tr>
+<td><code>ploegKp</code></td>
+<td><code>ccpkp</code></td>
+<td><code>ploegKp</code></td>
+<td>0.2</td>
+<td>1/s²</td>
+<td>Ganancia sobre <code>e</code></td>
+</tr>
+<tr>
+<td><code>ploegKd</code></td>
+<td><code>ccpkd</code></td>
+<td><code>ploegKd</code></td>
+<td>0.7</td>
+<td>1/s</td>
+<td>Ganancia sobre <code>ė</code></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>
+<p>Los parámetros son <strong>por vehículo</strong>. Para dar a un vehículo valores distintos, su línea va <strong>antes</strong> de la línea con <code>*</code>, porque en OMNeT++ gana la primera coincidencia:</p>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="na">*.node[3].scenario.ploegH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0.8 s</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="na">*.node[*].scenario.ploegH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0.5 s</span>
+</span></code></pre></div>
+</li>
+<li>
+<p>Se pueden cambiar durante la simulación desde Plexe con <code>setPloegCACCParameters(kp, kd, h)</code>. Si un valor es negativo, ese parámetro queda sin cambio.</p>
+</li>
+</ul>
+<h3 id="seguridad-y-consistencia-con-plexe">Seguridad y consistencia con Plexe</h3>
+<ul>
+<li><code>getSecureGap()</code>: SUMO considera segura una brecha de <code>0.8·(2 + h·v)</code> y la usa al evaluar cambios de pista y cruces.</li>
+<li>La distancia de 2 m está fija en <code>MSCFModel_CC.cpp</code>, en <code>_ploeg()</code> y en <code>getSecureGap()</code>. Para cambiarla hay que editar los dos lugares y recompilar SUMO.</li>
+<li>En Plexe, <code>BaseScenario::getHeadway(PLOEG)</code> devuelve <code>ploegH</code> y <code>getStandstillDistance(PLOEG)</code> devuelve 2 m. Las maniobras, como <code>JoinAtBack</code>, calculan con ellos la distancia objetivo.</li>
+<li>El ejemplo <code>platooning</code> inserta los vehículos con <code>platoonInsertDistance = 2 m</code> y <code>platoonInsertHeadway = 0.5 s</code>. Si cambias <code>ploegH</code>, cambia también <code>platoonInsertHeadway</code>; si no, el pelotón parte fuera del equilibrio.</li>
+</ul>
+<h2 id="6-cacc-path">6. CACC (PATH)</h2>
+<p>Referencias: R. Rajamani, H.-S. Tan, B. K. Law y W.-B. Zhang, IEEE Transactions on Control Systems Technology, 2000; y la ecuación 7.39 de Rajamani, <em>Vehicle Dynamics and Control</em>.</p>
+<p>Usa datos del <strong>líder</strong> (<code>0</code>) y del <strong>vehículo de adelante</strong> (<code>i−1</code>). El espaciamiento es <strong>constante</strong>: <code>d_ref = spacing</code>, sin importar la velocidad.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>ε  = spacing − d
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>ε̇  = v − v_(i−1)
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>u  = α1·a_(i−1) + α2·a_0 + α3·ε̇ + α4·(v − v_0) + α5·ε
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>α1 = 1 − C1
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>α2 = C1
+</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>α3 = −(2ξ − C1·(ξ + √(ξ² − 1)))·ωn
+</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>α4 = −C1·(ξ + √(ξ² − 1))·ωn
+</span><span id="__span-12-9"><a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>α5 = −ωn²
+</span></code></pre></div>
+<ul>
+<li><code>α1·a_(i−1) + α2·a_0</code> es la prealimentación con las aceleraciones del vehículo de adelante y del líder. Como <code>α1 + α2 = 1</code>, <code>C1</code> reparte el peso entre ambos.</li>
+<li><code>α3·ε̇ + α5·ε</code> corrige el error de velocidad y de distancia respecto del vehículo de adelante.</li>
+<li><code>α4·(v − v_0)</code> corrige el error de velocidad respecto del líder.</li>
+<li>Con los valores por defecto (<code>C1 = 0.5</code>, <code>ξ = 1</code>, <code>ωn = 0.2</code>) quedan <code>α1 = 0.5</code>, <code>α2 = 0.5</code>, <code>α3 = −0.3</code>, <code>α4 = −0.1</code> y <code>α5 = −0.04</code>.</li>
+<li>Al cambiar <code>C1</code>, <code>ξ</code> o <code>ωn</code>, SUMO recalcula los <code>α</code> automáticamente (<code>recomputeParameters()</code>).</li>
+<li><code>ξ</code> debe ser ≥ 1; si no, la raíz queda negativa.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Fuente</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>d</code></td>
+<td>Radar de SUMO</td>
+</tr>
+<tr>
+<td><code>v_(i−1)</code>, <code>v_0</code></td>
+<td>Beacons, no el radar. Con <code>usePrediction</code> se extrapolan: <code>v + (t − t_beacon)·a</code></td>
+</tr>
+<tr>
+<td><code>a_(i−1)</code>, <code>a_0</code></td>
+<td>Beacons: <code>u</code> o aceleración real, según <code>useControllerAcceleration</code></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Mientras no lleguen beacons del líder y del vehículo de adelante, <code>u = 0</code>.</li>
+<li><code>getSecureGap()</code>: la brecha segura es <code>0.8·spacing</code>.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Parámetro <code>.ini</code></th>
+<th>Clave TraCI</th>
+<th>Atributo <code>vType</code></th>
+<th>Por defecto</th>
+<th>Qué es</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>caccC1</code></td>
+<td><code>ccc1</code></td>
+<td><code>c1</code></td>
+<td>0.5</td>
+<td>Peso de la aceleración del líder frente a la del vehículo de adelante</td>
+</tr>
+<tr>
+<td><code>caccXi</code></td>
+<td><code>ccxi</code></td>
+<td><code>xi</code></td>
+<td>1</td>
+<td>Amortiguamiento <code>ξ</code></td>
+</tr>
+<tr>
+<td><code>caccOmegaN</code></td>
+<td><code>ccon</code></td>
+<td><code>omegaN</code></td>
+<td>0.2 Hz</td>
+<td>Ancho de banda <code>ωn</code></td>
+</tr>
+<tr>
+<td><code>caccSpacing</code></td>
+<td><code>ccsp</code></td>
+<td><code>constSpacing</code></td>
+<td>5 m</td>
+<td>Distancia deseada</td>
+</tr>
+</tbody>
+</table>
+<h2 id="7-acc-y-cc">7. ACC y CC</h2>
+<p>Referencia: ecuaciones 5.5 (CC) y 6.18 (ACC) de Rajamani, <em>Vehicle Dynamics and Control</em>.</p>
+<p>No usa comunicación, solo el radar. El espaciamiento es de tiempo constante: <code>d_ref = 2 + T·v</code>. Es el controlador del líder.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>CC:   u_cc  = −kp·(v − v_des), recortado a [−ccDecel, ccAccel]
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>ACC:  u_acc = −(1/T)·( v − v_(i−1) + λ·(T·v + 2 − d) )
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>u = min(u_cc, u_acc)    (si d &gt; 250 m, u = u_cc)
+</span></code></pre></div>
+<ul>
+<li>CC es un control proporcional hacia la velocidad deseada <code>v_des</code> (clave TraCI <code>ccds</code>).</li>
+<li>En el ACC, <code>λ</code> pondera el error de distancia <code>(T·v + 2 − d)</code> frente a la diferencia de velocidad <code>(v − v_(i−1))</code>.</li>
+<li>Se aplica la menor de las dos aceleraciones.</li>
+<li><code>d</code> y <code>v_(i−1)</code> salen del radar, que tiene 250 m de alcance. Si no hay vehículo adelante, actúa solo el CC.</li>
+<li>El código advierte posibles inestabilidades según el valor de <code>T</code>. El ejemplo <code>platooning</code> compara <code>T = 0.3 s</code> con <code>T = 1.2 s</code>.</li>
+<li><code>getSecureGap()</code>: la brecha segura es <code>0.8·(T·v + 2)</code>.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Parámetro <code>.ini</code></th>
+<th>Clave TraCI</th>
+<th>Atributo <code>vType</code></th>
+<th>Por defecto</th>
+<th>Qué es</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>accHeadway</code></td>
+<td><code>ccaht</code></td>
+<td>—</td>
+<td>1.2 s</td>
+<td>Tiempo de separación <code>T</code> de los miembros con ACC</td>
+</tr>
+<tr>
+<td><code>leaderHeadway</code></td>
+<td><code>ccaht</code></td>
+<td>—</td>
+<td>1.2 s</td>
+<td>Tiempo de separación <code>T</code> del líder</td>
+</tr>
+<tr>
+<td>—</td>
+<td>—</td>
+<td><code>lambda</code></td>
+<td>0.1</td>
+<td>Ganancia <code>λ</code></td>
+</tr>
+<tr>
+<td>—</td>
+<td>—</td>
+<td><code>kp</code></td>
+<td>1</td>
+<td>Ganancia del CC</td>
+</tr>
+<tr>
+<td>—</td>
+<td>—</td>
+<td><code>ccAccel</code> / <code>ccDecel</code></td>
+<td>1.5 / 1.5 m/s²</td>
+<td>Límites del CC</td>
+</tr>
+</tbody>
+</table>
+<h2 id="8-flatbed">8. Flatbed</h2>
+<p>Referencia: A. Ali, G. Garcia y P. Martinet, <em>The Flatbed Platoon Towing Model for Safe and Dense Platooning on Highways</em>, IEEE Intelligent Transportation Systems Magazine, 2015.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>d_ref = D + H·(v − v_0)
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>u     = −ka·a + kv·(v_(i−1) − v) + kp·(d − d_ref)
+</span></code></pre></div>
+<ul>
+<li>En régimen (<code>v = v_0</code>), <code>d_ref = D</code>, una distancia constante. Si el vehículo va más rápido que el líder, la distancia deseada aumenta.</li>
+<li><code>−ka·a</code> amortigua con la aceleración propia; <code>kv·(v_(i−1) − v)</code> iguala la velocidad del vehículo de adelante; <code>kp·(d − d_ref)</code> corrige la distancia.</li>
+<li>No usa las aceleraciones de otros vehículos.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Fuente</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>d</code></td>
+<td>Radar de SUMO</td>
+</tr>
+<tr>
+<td><code>v_(i−1)</code>, <code>v_0</code></td>
+<td>Beacons (con <code>usePrediction</code>, extrapoladas)</td>
+</tr>
+<tr>
+<td><code>a</code></td>
+<td>Aceleración real propia</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Mientras no lleguen beacons del líder y del vehículo de adelante, <code>u = 0</code>.</li>
+<li><code>getSecureGap()</code>: la brecha segura es <code>0.8·(D − H·(v − v_0))</code>.</li>
+<li>En Plexe, <code>getStandstillDistance(FLATBED)</code> devuelve <code>caccSpacing</code>, no <code>flatbedD</code>, y <code>getHeadway(FLATBED)</code> devuelve 0. Si cambias <code>flatbedD</code>, ajusta también <code>caccSpacing</code> y <code>platoonInsertDistance</code>.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Parámetro <code>.ini</code></th>
+<th>Clave TraCI</th>
+<th>Atributo <code>vType</code></th>
+<th>Por defecto</th>
+<th>Qué es</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>flatbedKa</code></td>
+<td><code>ccfka</code></td>
+<td><code>flatbedKa</code></td>
+<td>2.4</td>
+<td>Ganancia sobre la aceleración propia</td>
+</tr>
+<tr>
+<td><code>flatbedKv</code></td>
+<td><code>ccfkv</code></td>
+<td><code>flatbedKv</code></td>
+<td>0.6</td>
+<td>Ganancia sobre la diferencia de velocidad con el vehículo de adelante</td>
+</tr>
+<tr>
+<td><code>flatbedKp</code></td>
+<td><code>ccfkp</code></td>
+<td><code>flatbedKp</code></td>
+<td>12</td>
+<td>Ganancia del error de distancia</td>
+</tr>
+<tr>
+<td><code>flatbedH</code></td>
+<td><code>ccfh</code></td>
+<td><code>flatbedH</code></td>
+<td>4</td>
+<td>Factor sobre la diferencia de velocidad con el líder</td>
+</tr>
+<tr>
+<td><code>flatbedD</code></td>
+<td><code>ccfd</code></td>
+<td><code>flatbedD</code></td>
+<td>5</td>
+<td>Distancia deseada (m)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="9-consensus">9. Consensus</h2>
+<p>Referencia: S. Santini, A. Salvi, A. S. Valente, A. Pescapè, M. Segata y R. Lo Cigno, <em>A Consensus-based Approach for Platooning with Inter-Vehicular Communications and its Validation in Realistic Scenarios</em>, IEEE Transactions on Vehicular Technology, 2017.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>u_i   = [ −b_i·(v_i − v_0) + (1/d_i)·Σ_j k_ij·l_ij·(s_ij − s*_ij) ] / 1000
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>d_i   = Σ_j l_ij
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>s*_ij = Σ_k ( h_k·v_0 + largo_k + 15 )     (k recorre los vehículos entre i y j)
+</span></code></pre></div>
+<ul>
+<li><strong>No usa el radar</strong>: todos los datos llegan por beacon.</li>
+<li><code>s_ij</code> es la distancia real entre <code>i</code> y <code>j</code>, calculada con posiciones GPS. Es positiva si <code>j</code> va adelante. La posición de <code>j</code> se extrapola al instante actual (<code>x_j + (t − t_j)·vx_j</code>) y la propia se predice un paso adelante.</li>
+<li><code>l_ij</code> vale 1 si <code>i</code> usa datos de <code>j</code>. Por defecto, cada vehículo usa los del líder y los del vehículo de adelante.</li>
+<li><code>k_ij</code>, <code>b_i</code> y <code>h_k</code> son ganancias fijas. Los 15 m de distancia en detención están fijos en <code>d_i_j()</code>.</li>
+<li><code>getSecureGap()</code>: la brecha segura es <code>0.8·s*_(1,0)</code>.</li>
+</ul>
+<p>Valores por defecto, en <code>CC_VehicleVariables.cpp</code>:</p>
+<ul>
+<li><code>b = 1800</code> y <code>h = 0.8 s</code> para todos los vehículos.</li>
+<li><code>k</code>: 460 para el vehículo 1 respecto del líder. Para los demás, 80 respecto del líder y 860 respecto del vehículo de adelante.</li>
+</ul>
+<p>Limitaciones:</p>
+<ul>
+<li><strong>No tiene parámetros en el <code>.ini</code>.</strong> Cambiar <code>K</code>, <code>L</code>, <code>b</code> o <code>h</code> obliga a recompilar SUMO.</li>
+<li>Admite como máximo 8 vehículos (<code>MAX_N_CARS</code>).</li>
+<li>Espera datos de todos los vehículos antes de actuar; mientras tanto, <code>u = 0</code>.</li>
+<li>Según un comentario del código, solo funciona con vehículos que avanzan en línea recta de oeste a este (eje X).</li>
+</ul>
+<h2 id="10-faked-cacc">10. Faked CACC</h2>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>u = min(u_cc, u_cacc con datos entregados por TraCI)
+</span></code></pre></div>
+<p>Los datos del líder y del vehículo de adelante no salen del radar ni de los beacons: se entregan por TraCI (claves <code>cclfd</code> y <code>ccffd</code>). Lo usa la maniobra de unión (<code>JoinAtBack.cc</code>) para acercarse a un pelotón sin superar la velocidad del control de crucero. No se elige desde el <code>.ini</code>.</p>
 
 
 
