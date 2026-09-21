@@ -14,6 +14,25 @@ Las fórmulas **viven en SUMO, no en Plexe**. Todos los controladores están den
 
 ### En SUMO: el cálculo
 
+```mermaid
+flowchart TB
+    S["SUMO<br/>$SUMO_HOME"]
+    S --> SRC["src/<br/>código fuente"]
+    S --> BIN["bin/<br/>sumo, sumo-gui"]
+    SRC --> MS["microsim/<br/>simulación microscópica"]
+    SRC --> TS["traci-server/<br/>recibe comandos TraCI"]
+    SRC --> LS["libsumo/<br/>API de vehículos"]
+    MS --> CF["cfmodels/<br/>modelos de seguimiento"]
+    MS --> EN["engine/<br/>modelos de motor"]
+    MS --> LC["lcmodels/<br/>cambio de pista"]
+    CF --> CC["<b>MSCFModel_CC.cpp</b><br/>controladores de Plexe"]
+    CF --> VV["CC_VehicleVariables.cpp<br/>valores por vehículo"]
+    CF --> K["CC_Const.h<br/>lista y claves"]
+    CF --> OT["Krauss, IDM, ACC, CACC…<br/>otros modelos de SUMO"]
+    EN --> FO["FirstOrderLagModel.cpp<br/>retardo del motor"]
+    LC --> LCC["MSLCM_LC2013_CC.cpp<br/>cambio de pista usado por Plexe"]
+```
+
 | Archivo (en `$SUMO_HOME`) | Qué contiene |
 |---|---|
 | `src/microsim/cfmodels/MSCFModel_CC.cpp` | Fórmulas de todos los controladores: `_ploeg()`, `_cacc()`, `_acc()`, `_cc()`, `_flatbed()`, `_consensus()`. La función `_v()` elige cuál se usa. |
@@ -33,6 +52,27 @@ Plexe no calcula aceleraciones. Elige el controlador, envía sus parámetros a S
 | `src/plexe/mobility/TraCIBaseTrafficManager.cc` | `strToController()`: convierte el texto del `.ini` (`"PLOEG"`) en el número del controlador. |
 | `src/plexe/apps/SimplePlatooningApp.cc` | Al recibir un beacon, entrega a SUMO los datos del vehículo de adelante y del líder. |
 | `src/plexe/CC_Const.h` | Copia de las constantes de SUMO. Debe coincidir con la de SUMO. |
+
+Cómo llega un parámetro o un beacon desde Plexe hasta el controlador, y cómo se calcula la velocidad en cada paso:
+
+```mermaid
+flowchart TB
+    subgraph P["Plexe (OMNeT++)"]
+        INI["omnetpp.ini<br/>ploegH = 0.5 s"] --> BS["BaseScenario<br/>initializeControllers()"]
+        BC["beacon recibido<br/>SimplePlatooningApp"]
+    end
+    subgraph S["SUMO"]
+        TS["traci-server"] --> LV["libsumo::Vehicle<br/>setParameter()"]
+        LV --> CCP["MSCFModel_CC<br/>setParameter()"]
+        CCP --> VV["CC_VehicleVariables<br/>guarda h, kp, kd y datos"]
+        STEP["cada paso<br/>MSVehicle"] --> FS["followSpeed() / freeSpeed()"] --> V["_v()<br/>elige controlador"]
+        V --> CTRL["<b>_ploeg() · _cacc() · _acc()<br/>_flatbed() · _consensus()</b>"]
+        VV -.-> CTRL
+        CTRL --> FIN["finalizeSpeed()<br/>saturación + motor"] --> VEL["nueva velocidad"]
+    end
+    BS -->|"TraCI: carFollowModel.ccph"| TS
+    BC -->|"TraCI: carFollowModel.ccpsa / cclsa"| TS
+```
 
 ### Lista de controladores
 
