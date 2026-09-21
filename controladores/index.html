@@ -1409,6 +1409,22 @@
 <h2 id="1-donde-viven-los-controladores">1. Dónde viven los controladores</h2>
 <p>Las fórmulas <strong>viven en SUMO, no en Plexe</strong>. Todos los controladores están dentro de un único modelo de seguimiento de SUMO, <code>CC</code> (<code>carFollowModel="CC"</code> en el <code>vType</code>), y se elige uno u otro con un número.</p>
 <h3 id="en-sumo-el-calculo">En SUMO: el cálculo</h3>
+<pre class="mermaid"><code>flowchart TB
+    S["SUMO&lt;br/&gt;$SUMO_HOME"]
+    S --&gt; SRC["src/&lt;br/&gt;código fuente"]
+    S --&gt; BIN["bin/&lt;br/&gt;sumo, sumo-gui"]
+    SRC --&gt; MS["microsim/&lt;br/&gt;simulación microscópica"]
+    SRC --&gt; TS["traci-server/&lt;br/&gt;recibe comandos TraCI"]
+    SRC --&gt; LS["libsumo/&lt;br/&gt;API de vehículos"]
+    MS --&gt; CF["cfmodels/&lt;br/&gt;modelos de seguimiento"]
+    MS --&gt; EN["engine/&lt;br/&gt;modelos de motor"]
+    MS --&gt; LC["lcmodels/&lt;br/&gt;cambio de pista"]
+    CF --&gt; CC["&lt;b&gt;MSCFModel_CC.cpp&lt;/b&gt;&lt;br/&gt;controladores de Plexe"]
+    CF --&gt; VV["CC_VehicleVariables.cpp&lt;br/&gt;valores por vehículo"]
+    CF --&gt; K["CC_Const.h&lt;br/&gt;lista y claves"]
+    CF --&gt; OT["Krauss, IDM, ACC, CACC…&lt;br/&gt;otros modelos de SUMO"]
+    EN --&gt; FO["FirstOrderLagModel.cpp&lt;br/&gt;retardo del motor"]
+    LC --&gt; LCC["MSLCM_LC2013_CC.cpp&lt;br/&gt;cambio de pista usado por Plexe"]</code></pre>
 <table>
 <thead>
 <tr>
@@ -1471,6 +1487,23 @@
 </tr>
 </tbody>
 </table>
+<p>Cómo llega un parámetro o un beacon desde Plexe hasta el controlador, y cómo se calcula la velocidad en cada paso:</p>
+<pre class="mermaid"><code>flowchart TB
+    subgraph P["Plexe (OMNeT++)"]
+        INI["omnetpp.ini&lt;br/&gt;ploegH = 0.5 s"] --&gt; BS["BaseScenario&lt;br/&gt;initializeControllers()"]
+        BC["beacon recibido&lt;br/&gt;SimplePlatooningApp"]
+    end
+    subgraph S["SUMO"]
+        TS["traci-server"] --&gt; LV["libsumo::Vehicle&lt;br/&gt;setParameter()"]
+        LV --&gt; CCP["MSCFModel_CC&lt;br/&gt;setParameter()"]
+        CCP --&gt; VV["CC_VehicleVariables&lt;br/&gt;guarda h, kp, kd y datos"]
+        STEP["cada paso&lt;br/&gt;MSVehicle"] --&gt; FS["followSpeed() / freeSpeed()"] --&gt; V["_v()&lt;br/&gt;elige controlador"]
+        V --&gt; CTRL["&lt;b&gt;_ploeg() · _cacc() · _acc()&lt;br/&gt;_flatbed() · _consensus()&lt;/b&gt;"]
+        VV -.-&gt; CTRL
+        CTRL --&gt; FIN["finalizeSpeed()&lt;br/&gt;saturación + motor"] --&gt; VEL["nueva velocidad"]
+    end
+    BS --&gt;|"TraCI: carFollowModel.ccph"| TS
+    BC --&gt;|"TraCI: carFollowModel.ccpsa / cclsa"| TS</code></pre>
 <h3 id="lista-de-controladores">Lista de controladores</h3>
 <table>
 <thead>
