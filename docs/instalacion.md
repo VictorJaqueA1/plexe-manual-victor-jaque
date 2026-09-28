@@ -547,16 +547,101 @@ El `pip install` terminó bien cuando aparece *Successfully installed*, seguido 
 
 #### 2.3 Compilar
 
-La compilación se hace en dos etapas: primero se detecta la configuración de tu sistema, después se construye. Es la compilación más larga de todo el proceso, del orden de varios minutos, y conviene aprovechar todos los núcleos del procesador.
+La compilación se hace en dos etapas: primero `./configure` detecta qué hay instalado en tu sistema, y después `make` construye OMNeT++. Las dos se ejecutan dentro de `~/src/omnetpp-6.2.0`, en la misma terminal donde cargaste el entorno en el paso 2.2. Si abriste una terminal nueva, repite antes `cd ~/src/omnetpp-6.2.0` y `source setenv`.
+
+**Configurar**
 
 ```bash
-cd ~/src/omnetpp-6.2.0
 ./configure
+```
+
+**Fuente:** guía oficial de Plexe ([*Step 1: Install OMNeT++*](https://plexe.car2x.org/building/#step-1-install-omnet)) y [guía de instalación de OMNeT++](https://doc.omnetpp.org/omnetpp/InstallGuide.pdf), capítulo *Linux*, sección *Configuring and Building OMNeT++*.
+
+!!! failure "Error: Cannot find OpenSceneGraph 3.2 or later"
+    **Cuándo aparece:** la primera vez que se ejecuta `./configure`, si en el paso 1 se instalaron solo los paquetes de la guía de Plexe.
+
+    **Qué significa:** OpenSceneGraph es la librería de la vista 3D de Qtenv. OMNeT++ 6.2.0 viene con esa vista activada (`WITH_OSG=yes` en el archivo `configure.user`), pero la lista de paquetes de la guía de Plexe no instala OpenSceneGraph, así que `./configure` se detiene. Plexe no necesita la vista 3D.
+
+    ```text
+    checking for OpenSceneGraph with CFLAGS=... no
+    configure: error: Cannot find OpenSceneGraph 3.2 or later - 3D view in Qtenv will not be available. Set WITH_OSG=no in configure.user to disable this feature or install the development package for OpenSceneGraph.
+    ```
+
+    **Ejemplo real: así apareció el error en el equipo de referencia**
+
+    ![Error de ./configure por falta de OpenSceneGraph, en el equipo de referencia](img/instalacion-paso-2-error-osg.png)
+
+**Solución: desactivar la vista 3D**
+
+Hay dos salidas oficiales: desactivar la vista 3D o instalar OpenSceneGraph (`libopenscenegraph-dev`, un paquete opcional de la guía de OMNeT++). Este manual desactiva la vista 3D, que es lo que sugiere la guía de Plexe y lo que pide el propio mensaje de error.
+
+```bash
+sed -i 's/^WITH_OSG=yes/WITH_OSG=no/' configure.user
+grep ^WITH_OSG configure.user
+```
+
+**Fuente:** qué hacer lo indican la guía de Plexe (nota del [*Step 1*](https://plexe.car2x.org/building/#step-1-install-omnet): editar `configure.user` para desactivar OpenSceneGraph), la [guía de instalación de OMNeT++](https://doc.omnetpp.org/omnetpp/InstallGuide.pdf), capítulo *Build Options*, que incluye la opción `WITH_OSG=no` (versión 6.2.0: [ch-build-options.rst](https://github.com/omnetpp/omnetpp/blob/omnetpp-6.2.0/doc/src/installguide/ch-build-options.rst)), y el propio mensaje de error. Cómo hacerlo desde la terminal lo agrega este manual: `sed` cambia la línea `WITH_OSG=yes` por `WITH_OSG=no`, y `grep` la muestra para comprobar el cambio.
+
+**Así debería verse tu terminal:**
+
+```text
+(omnetpp/.venv) victorjaque@DESKTOP-6VI5783:~/src/omnetpp-6.2.0$ sed -i 's/^WITH_OSG=yes/WITH_OSG=no/' configure.user
+(omnetpp/.venv) victorjaque@DESKTOP-6VI5783:~/src/omnetpp-6.2.0$ grep ^WITH_OSG configure.user
+WITH_OSG=no
+WITH_OSGEARTH=no
+```
+
+`sed` no muestra nada. El `grep` muestra dos líneas porque también encuentra `WITH_OSGEARTH`, otra opción de la vista 3D que ya venía desactivada. Si alguna vez quieres volver a la configuración original, `configure.user.dist` es una copia intacta del archivo que trae OMNeT++.
+
+Después de cambiar `configure.user` hay que volver a configurar:
+
+```bash
+./configure
+```
+
+**Fuente:** [guía de instalación de OMNeT++](https://doc.omnetpp.org/omnetpp/InstallGuide.pdf), capítulo *Build Options*: después de cambiar `configure.user` siempre hay que volver a ejecutar `./configure`.
+
+**Así debería verse tu terminal** (inicio y final, abreviado):
+
+```text
+(omnetpp/.venv) victorjaque@DESKTOP-6VI5783:~/src/omnetpp-6.2.0$ ./configure
+configure: Environment variables (PATH and PYTHONPATH) are correctly set.
+configure: Reading configure.user for your custom settings.
+configure: Creating a backup of 'Makefile.inc'.
+mv: cannot stat './Makefile.inc': No such file or directory
+checking build system type... x86_64-pc-linux-gnu
+...
+checking for ccache... ccache
+configure: creating ./config.status
+config.status: creating Makefile.inc
+config.status: creating include/omnetpp/platdep/config.h
+
+Configuration phase finished. Use 'make' to build OMNeT++.
+```
+
+- *Configuration phase finished* indica que la configuración terminó bien.
+- La línea `mv: cannot stat './Makefile.inc'` no es un error: `configure` intenta respaldar un archivo que todavía no existe, porque el primer intento se detuvo antes de crearlo.
+- Varias líneas terminan en `no` o `unsupported` (por ejemplo, la de OpenMP): son opciones que `configure` revisa pero que OMNeT++ no necesita. Lo que importa es la línea final.
+
+**Ejemplo real: la corrección y el inicio del segundo `./configure` en el equipo de referencia**
+
+![Error de OpenSceneGraph, corrección con sed y grep, e inicio del segundo ./configure, en el equipo de referencia](img/instalacion-paso-2-configure-inicio.png)
+
+**Ejemplo real: así termina el segundo `./configure` en el equipo de referencia**
+
+![Final del segundo ./configure, con el mensaje Configuration phase finished, en el equipo de referencia](img/instalacion-paso-2-configure-fin.png)
+
+**Construir**
+
+```bash
 make -j$(nproc)
 ```
 
-!!! note "Si la configuración falla"
-    Si la detección de configuración se detiene por una librería ausente, hay dos salidas habituales: instalar un entorno virtual de Python con las librerías que pida, o desactivar componentes opcionales que no necesitas (como OpenSceneGraph, usado solo para visualización 3D) editando el archivo de configuración del usuario antes de reintentar.
+**Fuente:** guía oficial de Plexe ([*Step 1: Install OMNeT++*](https://plexe.car2x.org/building/#step-1-install-omnet)), que indica `make -j <number of cores of your PC>`. El `$(nproc)` lo agrega este manual: escribe solo la cantidad de núcleos disponibles (28 en el equipo de referencia).
+
+```text
+# PENDIENTE: salida real de make
+```
 
 #### 2.4 Verificar
 
@@ -750,8 +835,8 @@ La ruta que pasaste no coincide con el nombre real de tu carpeta de Veins. Verif
 **La simulación falla al arrancar aunque todo compiló bien.**
 Revisa la versión de SUMO. Si es posterior a la 1.22.0, la API de TraCI es incompatible con Veins 5.3.1 y el error aparece solo en tiempo de ejecución, no al compilar.
 
-**La compilación de OMNeT++ se detiene por una librería ausente.**
-Instala la librería que pide, o desactiva el componente opcional correspondiente en el archivo de configuración del usuario antes de reintentar.
+**`./configure` de OMNeT++ se detiene con *Cannot find OpenSceneGraph 3.2 or later*.**
+Falta la librería de la vista 3D, que la guía de Plexe no instala. Desactívala con `WITH_OSG=no` en `configure.user` y vuelve a ejecutar `./configure`, como se explica en el [paso 2.3](#23-compilar). Si `./configure` se detiene por otra librería ausente, la salida es la misma: instalarla, o desactivar la opción correspondiente en `configure.user`.
 
 **Error al instalar el paquete de resultados en R.**
 Es la incompatibilidad con compiladores modernos de C++ descrita en el paso 6.2. Se resuelve forzando un estándar de C++ anterior en la configuración de compilación de R.
