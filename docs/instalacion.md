@@ -267,19 +267,43 @@ La última línea indica que ya estás dentro de Ubuntu, con la forma `usuario@n
 
 La captura muestra los pasos 0.2 y 0.3 tal como ocurrieron, incluidos los dos errores del recuadro «Si te equivocas»: el nombre de usuario rechazado dos veces y las contraseñas que no coincidieron en el primer intento.
 
-#### 0.4 Actualizar Ubuntu
+#### 0.4 Abrir la terminal de Ubuntu
+
+Desde ahora, cada vez que trabajes con Plexe empezarás abriendo la terminal de Ubuntu. Hay dos formas.
+
+**Forma 1: desde el menú Inicio**
+
+1. Presiona la tecla **Windows**.
+2. Escribe `Ubuntu`.
+3. Presiona **Enter**, o haz clic en **Ubuntu-24.04**.
+
+Se abre la terminal de Ubuntu.
+
+**Forma 2: anclada a la barra de tareas, a un clic**
+
+1. Presiona la tecla **Windows** y escribe `Ubuntu`.
+2. Haz clic derecho sobre **Ubuntu-24.04**.
+3. Elige **Anclar a la barra de tareas**.
+
+El ícono de Ubuntu queda en la barra de tareas, abajo en la pantalla. Desde entonces, un clic sobre ese ícono abre la terminal.
+
+**Ejemplo real: anclar Ubuntu a la barra de tareas en el equipo de referencia**
+
+![Clic derecho sobre Ubuntu-24.04 en la búsqueda de Windows, con la opción Anclar a la barra de tareas](img/instalacion-paso-0-anclar-ubuntu.png)
+
+#### 0.5 Actualizar Ubuntu
 
 ```bash
 # PENDIENTE: actualizar la lista de paquetes y el sistema
 ```
 
-#### 0.5 Verificar la instalación
+#### 0.6 Verificar la instalación
 
 ```bash
 # PENDIENTE: verificar que es WSL 2 y la versión de Ubuntu
 ```
 
-#### 0.6 Probar las ventanas gráficas (WSLg)
+#### 0.7 Probar las ventanas gráficas (WSLg)
 
 ```bash
 # PENDIENTE: probar que se abren ventanas gráficas
