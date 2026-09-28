@@ -291,6 +291,8 @@ El ícono de Ubuntu queda en la barra de tareas, abajo en la pantalla. Desde ent
 
 ![Clic derecho sobre Ubuntu-24.04 en la búsqueda de Windows, con la opción Anclar a la barra de tareas](img/instalacion-paso-0-anclar-ubuntu.png)
 
+Con cualquiera de las dos formas, la terminal se abre en tu carpeta de Linux: la línea termina en `:~$` (en el equipo de referencia, `victorjaque@DESKTOP-6VI5783:~$`). Ya no quedas en una carpeta de Windows, como pasó en el paso 0.3.
+
 #### 0.5 Actualizar Ubuntu
 
 ```bash
@@ -319,20 +321,108 @@ El ícono de Ubuntu queda en la barra de tareas, abajo en la pantalla. Desde ent
 
 ### Paso 1: Dependencias del sistema
 
-Antes de compilar cualquier componente hay que instalar el compilador, las herramientas de construcción y las librerías de las que dependen OMNeT++ y Veins. Es una sola instrucción larga que incluye compilador, herramientas de construcción, Python, librerías XML y de compresión, generación de documentación, las librerías gráficas Qt6 que necesita el IDE, y R.
+Antes de compilar cualquier componente hay que instalar el compilador, las herramientas de construcción y las librerías de las que dependen OMNeT++, Veins y Plexe. Todo se instala con `apt`, el instalador de paquetes de Ubuntu, en dos comandos. La lista de paquetes es exactamente la de la [guía oficial](https://plexe.car2x.org/building/) (*Install required libraries and tools*): compilador, herramientas de construcción, Python, librerías XML y de compresión, generación de documentación, las librerías Qt6 de Qtenv (la ventana gráfica donde corre la simulación) y R.
+
+Este paso se ejecuta una única vez por máquina.
+
+!!! warning "sudo pide tu contraseña de Ubuntu"
+    Los dos comandos empiezan con `sudo`, así que la terminal pedirá la contraseña que creaste en el paso 0.3 (`[sudo] password for ...`). Igual que entonces, **no se ve nada mientras la escribes**. `sudo` la recuerda unos 15 minutos y solo en esa ventana: si pasa más tiempo, o abres otra ventana, la vuelve a pedir.
+
+#### 1.1 Actualizar la lista de paquetes
+
+Descarga la lista actualizada de paquetes disponibles. No instala nada.
 
 ```bash
 sudo apt update
+```
+
+**Así debería verse tu terminal** (abreviado):
+
+```text
+victorjaque@DESKTOP-6VI5783:~$ sudo apt update
+[sudo] password for victorjaque:
+Get:1 http://security.ubuntu.com/ubuntu noble-security InRelease [126 kB]
+Hit:2 http://archive.ubuntu.com/ubuntu noble InRelease
+Get:3 http://archive.ubuntu.com/ubuntu noble-updates InRelease [126 kB]
+...
+Get:52 http://archive.ubuntu.com/ubuntu noble-backports/multiverse amd64 c-n-f Metadata [116 B]
+Fetched 37.3 MB in 6s (5995 kB/s)
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+43 packages can be upgraded. Run 'apt list --upgradable' to see them.
+```
+
+El aviso final (*43 packages can be upgraded*) es normal y no impide seguir: esas actualizaciones corresponden al paso 0.5.
+
+**Ejemplo real: así se vio `sudo apt update` en el equipo de referencia**
+
+![Salida completa de sudo apt update en la terminal de Ubuntu, en el equipo de referencia](img/instalacion-paso-1-apt-update.png)
+
+#### 1.2 Instalar las dependencias
+
+```bash
 sudo apt install -y make diffutils pkg-config ccache clang lld gdb lldb \
     bison flex perl sed gawk python3 python3-pip python3-venv python3-dev \
     libxml2-dev zlib1g-dev doxygen graphviz xdg-utils libdw-dev \
     qt6-base-dev qt6-base-dev-tools qmake6 libqt6svg6 qt6-wayland libwebkit2gtk-4.1-0 \
-    libopenscenegraph-dev \
-    r-base r-base-dev
-sudo apt clean
+    r-base
 ```
 
-Este paso se ejecuta una única vez por máquina.
+La opción `-y` responde «sí» sola a la confirmación de instalar, así que el comando corre de principio a fin sin preguntar nada.
+
+**Así debería verse tu terminal** (inicio, abreviado):
+
+```text
+victorjaque@DESKTOP-6VI5783:~$ sudo apt install -y make diffutils pkg-config ccache clang lld gdb lldb bison flex perl sed gawk python3 python3-pip python3-venv python3-dev libxml2-dev zlib1g-dev doxygen graphviz xdg-utils libdw-dev qt6-base-dev qt6-base-dev-tools qmake6 libqt6svg6 qt6-wayland libwebkit2gtk-4.1-0 r-base
+[sudo] password for victorjaque:
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+diffutils is already the newest version (1:3.10-1ubuntu0.1).
+sed is already the newest version (4.9-2ubuntu0.24.04.1).
+sed set to manually installed.
+gawk is already the newest version (1:5.2.1-2ubuntu0.1).
+gawk set to manually installed.
+python3 is already the newest version (3.12.3-0ubuntu2.1).
+python3 set to manually installed.
+The following additional packages will be installed:
+  alsa-topology-conf alsa-ucm-conf aspell aspell-en bubblewrap build-essential bzip2 ...
+```
+
+Cómo leer esa salida:
+
+- **«is already the newest version»**: ese paquete ya venía con Ubuntu. No es un error.
+- **«The following additional packages will be installed»**: son dependencias que `apt` agrega por su cuenta. Entre ellas llegan `build-essential`, `g++` y `r-base-dev`, que otras guías piden por separado.
+- En el equipo de referencia se instalaron **385 paquetes nuevos** y se actualizaron **14**.
+
+El paso terminó bien cuando vuelve a aparecer la línea `victorjaque@...:~$` y no hay ningún mensaje que empiece con `E:`.
+
+#### 1.3 Verificar
+
+Comprueba que las herramientas principales quedaron instaladas:
+
+```bash
+clang --version | head -1
+qmake6 --version | tail -1
+python3 --version
+R --version | head -1
+```
+
+**Así debería verse tu terminal:**
+
+```text
+victorjaque@DESKTOP-6VI5783:~$ clang --version | head -1
+Ubuntu clang version 18.1.3 (1ubuntu1)
+victorjaque@DESKTOP-6VI5783:~$ qmake6 --version | tail -1
+Using Qt version 6.4.2 in /usr/lib/x86_64-linux-gnu
+victorjaque@DESKTOP-6VI5783:~$ python3 --version
+Python 3.12.3
+victorjaque@DESKTOP-6VI5783:~$ R --version | head -1
+R version 4.3.3 (2024-02-29) -- "Angel Food Cake"
+```
+
+Después de este paso, el disco de Ubuntu ocupa en total unos 3,2 GB en el equipo de referencia.
 
 ---
 
