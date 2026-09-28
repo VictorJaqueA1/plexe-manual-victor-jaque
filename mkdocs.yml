@@ -85,7 +85,7 @@ nav:
   - Casos prácticos:
     - ejemplos/index.md
     - Caso 1 · Variar el tiempo de separación h de Ploeg: ejemplos/caso-1.md
-    - Caso 2 · Potencia de transmisión: ejemplos/caso-2.md
+    - Caso 2 · Variar la potencia de transmisión: ejemplos/caso-2.md
     - Caso 3 · Pérdida artificial de paquetes con FER: ejemplos/caso-3.md
     - Caso 4 · Nuevo perfil de aceleración y velocidad del líder: ejemplos/caso-4.md
     - Caso 5 · Más de un pelotón: ejemplos/caso-5.md

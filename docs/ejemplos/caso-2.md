@@ -1,4 +1,4 @@
-# Caso 2 · Potencia de transmisión
+# Caso 2 · Variar la potencia de transmisión
 
 En el [Caso 1](caso-1.md) se cambió un parámetro del controlador. Aquí se cambia uno de la radio: la potencia con que cada auto transmite sus mensajes. Si todavía no hiciste el Caso 1, empieza por ahí, porque este caso usa su script de gráficos y su receta.
 
