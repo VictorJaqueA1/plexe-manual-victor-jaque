@@ -29,7 +29,7 @@
     
     
       
-        <title>Caso 2 · Potencia de transmisión - Manual de Plexe</title>
+        <title>Caso 2 · Variar la potencia de transmisión - Manual de Plexe</title>
       
     
     
@@ -82,7 +82,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#caso-2-potencia-de-transmision" class="md-skip">
+        <a href="#caso-2-variar-la-potencia-de-transmision" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -183,7 +183,7 @@
                     <a href="../caso-1/">Caso 1 · Variar el tiempo de separación h de Ploeg</a>
                   </li>
                   <li>
-                    <a href="./">Caso 2 · Potencia de transmisión</a>
+                    <a href="./">Caso 2 · Variar la potencia de transmisión</a>
                   </li>
                   <li>
                     <a href="../caso-3/">Caso 3 · Pérdida artificial de paquetes con FER</a>
@@ -596,6 +596,24 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Caso 2 · Variar la potencia de transmisión
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -603,7 +621,7 @@
   <span class="md-ellipsis">
     
   
-    Caso 2 · Potencia de transmisión
+    Caso 2 · Variar la potencia de transmisión
   
 
     
@@ -612,6 +630,241 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-antes-de-empezar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1 · Antes de empezar
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-fundamentos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2 · Fundamentos
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2 · Fundamentos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#que-es-la-potencia-de-transmision" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Qué es la potencia de transmisión
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bitrate-y-beacons" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bitrate y beacons
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#por-que-la-radio-le-importa-a-ploeg" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Por qué la radio le importa a Ploeg
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#que-esperamos-ver" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Qué esperamos ver
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-donde-vive-cada-cosa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3 · Dónde vive cada cosa
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-como-se-hizo-paso-a-paso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4 · Cómo se hizo, paso a paso
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4 · Cómo se hizo, paso a paso">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#paso-1-correr-el-caso-base" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 1 · Correr el caso base
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-2-primer-intento-bajar-a-10-mw" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 2 · Primer intento: bajar a 10 mW
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-3-forzar-el-escenario-barrido-de-potencia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 3 · Forzar el escenario: barrido de potencia
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-4-separar-mas-los-autos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 4 · Separar más los autos
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-resultados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5 · Resultados
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5 · Resultados">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#barrido-de-potencia-h-05-s" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Barrido de potencia (h = 0.5 s)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#potencia-y-separacion-frenado-en-t-20-s" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Potencia y separación (frenado en t = 20 s)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-errores-frecuentes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6 · Errores frecuentes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-pendientes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7 · Pendientes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-siguiente-paso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8 · Siguiente paso
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -813,6 +1066,230 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-antes-de-empezar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1 · Antes de empezar
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-fundamentos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2 · Fundamentos
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2 · Fundamentos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#que-es-la-potencia-de-transmision" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Qué es la potencia de transmisión
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bitrate-y-beacons" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bitrate y beacons
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#por-que-la-radio-le-importa-a-ploeg" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Por qué la radio le importa a Ploeg
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#que-esperamos-ver" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Qué esperamos ver
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-donde-vive-cada-cosa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3 · Dónde vive cada cosa
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-como-se-hizo-paso-a-paso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4 · Cómo se hizo, paso a paso
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4 · Cómo se hizo, paso a paso">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#paso-1-correr-el-caso-base" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 1 · Correr el caso base
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-2-primer-intento-bajar-a-10-mw" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 2 · Primer intento: bajar a 10 mW
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-3-forzar-el-escenario-barrido-de-potencia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 3 · Forzar el escenario: barrido de potencia
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-4-separar-mas-los-autos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 4 · Separar más los autos
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-resultados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5 · Resultados
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5 · Resultados">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#barrido-de-potencia-h-05-s" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Barrido de potencia (h = 0.5 s)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#potencia-y-separacion-frenado-en-t-20-s" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Potencia y separación (frenado en t = 20 s)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-errores-frecuentes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6 · Errores frecuentes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-pendientes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7 · Pendientes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-siguiente-paso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8 · Siguiente paso
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -831,13 +1308,366 @@
   
 
 
-<h1 id="caso-2-potencia-de-transmision">Caso 2 · Potencia de transmisión</h1>
-<p><strong>Qué se hizo.</strong> Variar la potencia de transmisión de la radio 802.11p de los vehículos del pelotón, barriendo varios valores en simulaciones sucesivas.</p>
-<p><strong>Para qué.</strong> La potencia determina el alcance efectivo de la comunicación. Al reducirla, los vehículos más alejados dentro del pelotón dejan de recibir los mensajes del líder de forma confiable, y el controlador cooperativo empieza a operar con información incompleta. El objetivo es encontrar a partir de qué punto la degradación de la red se traduce en degradación del control, y si el pelotón mantiene la estabilidad.</p>
-<p><strong>Cómo se implementa.</strong> La potencia se fija como parámetro de la interfaz de red (<code>nic</code>) de cada nodo desde <code>omnetpp.ini</code>, sin tocar código C++. Como el efecto depende también de la sensibilidad del receptor y del modelo de propagación, ambos deben quedar fijos para que la potencia sea la única variable.</p>
-<div class="language-ini highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># PENDIENTE: parámetro de potencia de transmisión y valores del barrido</span>
+<h1 id="caso-2-variar-la-potencia-de-transmision">Caso 2 · Variar la potencia de transmisión</h1>
+<p>En el <a href="../caso-1/">Caso 1</a> se cambió un parámetro del controlador. Aquí se cambia uno de la radio: la potencia con que cada auto transmite sus mensajes. Si todavía no hiciste el Caso 1, empieza por ahí, porque este caso usa su script de gráficos y su receta.</p>
+<div class="admonition abstract">
+<p class="admonition-title">Resumen</p>
+<ul>
+<li><strong>Pregunta:</strong> ¿cuánta potencia necesita la radio para que el pelotón siga funcionando?</li>
+<li><strong>Escenario:</strong> <code>Braking</code>, del ejemplo <code>human</code> (el Ejemplo 5 de Plexe). Es el mismo pelotón de 8 autos, más un auto humano que interfiere en la red.</li>
+<li><strong>Controlador:</strong> Ploeg (<code>-r 3</code>).</li>
+<li><strong>Parámetros:</strong> la potencia de transmisión, el bitrate y, al final, el tiempo de separación <code>h</code>.</li>
+<li><strong>Resultado principal:</strong> con la separación por defecto (unos 16 m), el pelotón choca al bajar de 0.02 a 0.01 mW. Con más separación, hace falta más potencia.</li>
+<li><strong>Qué se toca:</strong> solo <code>omnetpp.ini</code>. No hay que recompilar.</li>
+</ul>
+</div>
+<h2 id="1-antes-de-empezar">1 · Antes de empezar</h2>
+<p>Carga los entornos como en el <a href="../caso-1/#1-antes-de-empezar">Caso 1</a>.</p>
+<p>El ejemplo <code>human</code> no trae carpeta <code>analysis/</code>. Cópiala desde <code>platooning</code>, que ya incluye el script <code>plot-braking-ploeg.R</code> del Caso 1:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>cp<span class="w"> </span>-r<span class="w"> </span>~/src/plexe/examples/platooning/analysis<span class="w"> </span>~/src/plexe/examples/human/
 </span></code></pre></div>
-<p><strong>Cómo se mide.</strong> Tres indicadores en conjunto: la tasa de recepción de mensajes por vehículo, que muestra el efecto en la red; el error de espaciamiento respecto de la distancia objetivo, que muestra el efecto en el control; y la distancia real entre vehículos a lo largo del tiempo, que muestra si hubo riesgo de colisión.</p>
+<p>La copia también trae los PDF que hayas generado en <code>platooning</code>. Por eso, más adelante se revisa la hora del PDF antes de mirarlo.</p>
+<h2 id="2-fundamentos">2 · Fundamentos</h2>
+<h3 id="que-es-la-potencia-de-transmision">Qué es la potencia de transmisión</h3>
+<p>Es la fuerza con que la radio emite cada mensaje, en milivatios (mW). Con más potencia, la señal llega más lejos. Un mensaje se recibe solo si llega con fuerza suficiente por sobre el ruido y la interferencia, así que el resultado depende de la potencia <strong>y</strong> de la distancia entre los autos.</p>
+<p>Los valores de este caso cubren cuatro órdenes de magnitud, así que conviene verlos también en dBm, que es la potencia en decibeles respecto de 1 mW (<code>dBm = 10·log10(mW)</code>):</p>
+<table>
+<thead>
+<tr>
+<th>mW</th>
+<th>dBm</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>100 (por defecto)</td>
+<td>20</td>
+</tr>
+<tr>
+<td>10</td>
+<td>10</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>0.1</td>
+<td>−10</td>
+</tr>
+<tr>
+<td>0.02</td>
+<td>−17</td>
+</tr>
+<tr>
+<td>0.01</td>
+<td>−20</td>
+</tr>
+</tbody>
+</table>
+<h3 id="bitrate-y-beacons">Bitrate y beacons</h3>
+<ul>
+<li><strong>Bitrate:</strong> qué tan rápido la radio emite los bits de un mensaje. No es cada cuánto envía. 802.11p solo acepta tasas fijas: 3, 4.5, 6, 9, 12, 18, 24 y 27 Mbps. Por defecto se usan 6 Mbps.</li>
+<li><strong>Beacons:</strong> los mensajes periódicos con que cada auto informa su estado. En este ejemplo se envían cada 0.1 s y pesan 200 bytes.</li>
+</ul>
+<h3 id="por-que-la-radio-le-importa-a-ploeg">Por qué la radio le importa a Ploeg</h3>
+<p>Ploeg usa el radar para medir la distancia y la velocidad del auto de adelante, pero la aceleración de ese auto le llega <strong>por radio</strong>, en los beacons. Si los beacons dejan de llegar:</p>
+<ul>
+<li>entre beacons, o si se pierden, Ploeg usa el último que recibió;</li>
+<li>si nunca recibió uno, pide aceleración cero (<code>u = 0</code>).</li>
+</ul>
+<p>El detalle está en <a href="../../controladores/#datos-que-usa">Controladores › Datos que usa</a>.</p>
+<h3 id="que-esperamos-ver">Qué esperamos ver</h3>
+<p>Con menos potencia, los mensajes alcanzan menos distancia. En algún punto dejarán de llegar al auto de atrás, Ploeg perderá la información de la radio y el pelotón dejará de frenar de forma coordinada.</p>
+<h2 id="3-donde-vive-cada-cosa">3 · Dónde vive cada cosa</h2>
+<p>Todo está en <code>~/src/plexe/examples/human/omnetpp.ini</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Línea</th>
+<th>Qué controla</th>
+<th>Por defecto</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>*.**.nic.mac1609_4.txPower</code></td>
+<td>La potencia de la radio de <strong>todos</strong> los autos</td>
+<td>100 mW</td>
+</tr>
+<tr>
+<td><code>*.**.nic.mac1609_4.bitrate</code></td>
+<td>El bitrate de todos los autos</td>
+<td>6 Mbps</td>
+</tr>
+<tr>
+<td><code>*.human[*].prot.txPower</code></td>
+<td>La potencia de los mensajes del auto humano</td>
+<td>100 mW</td>
+</tr>
+<tr>
+<td><code>*.human[*].prot.bitrate</code></td>
+<td>El bitrate de los mensajes del auto humano</td>
+<td>3 Mbps</td>
+</tr>
+<tr>
+<td><code>*.node[*].scenario.ploegH</code></td>
+<td>El tiempo de separación <code>h</code></td>
+<td>0.5 s</td>
+</tr>
+<tr>
+<td><code>*.node[*].scenario.startBraking</code></td>
+<td>El instante en que frena el líder</td>
+<td>5 s</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><code>*.**.nic.mac1609_4</code> apunta a la tarjeta de red (<code>nic</code>) de cada vehículo y, dentro de ella, a la capa MAC de 802.11p, el módulo <code>Mac1609_4</code>. Ese módulo es de Veins, así que la potencia y el bitrate son parámetros de Veins, no de Plexe.</li>
+<li>El auto humano tiene sus propias líneas, las de <code>*.human[*].prot</code>. Este caso no las cambia.</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">También se puede desde C++</p>
+<p>La potencia también se puede cambiar desde el código, por ejemplo con <code>setTxPower()</code> de la MAC, para un auto en particular o mensaje por mensaje. Este caso no lo necesita: basta con el <code>.ini</code>.</p>
+</div>
+<h2 id="4-como-se-hizo-paso-a-paso">4 · Cómo se hizo, paso a paso</h2>
+<h3 id="paso-1-correr-el-caso-base">Paso 1 · Correr el caso base</h3>
+<p>Sin cambiar nada (100 mW y 6 Mbps):</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">cd</span><span class="w"> </span>~/src/plexe/examples/human
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>./run<span class="w"> </span>-u<span class="w"> </span>Cmdenv<span class="w"> </span>-c<span class="w"> </span>BrakingNoGui<span class="w"> </span>-r<span class="w"> </span><span class="m">3</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="nb">cd</span><span class="w"> </span>analysis
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>genmakefile.py<span class="w"> </span>parse-config<span class="w"> </span>&gt;<span class="w"> </span>Makefile<span class="w">    </span><span class="c1"># solo la primera vez</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>make<span class="w"> </span>Braking.Rdata
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>Rscript<span class="w"> </span>plot-braking-ploeg.R
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>cp<span class="w"> </span>braking-ploeg.pdf<span class="w"> </span>braking-ploeg-100mW.pdf
+</span></code></pre></div>
+<p>El ejemplo <code>human</code> tiene cinco controladores, porque no incluye FLATBED, pero Ploeg sigue siendo la corrida <code>-r 3</code>. Para mirar la simulación, usa <code>-c Braking</code>, que abre <code>sumo-gui</code>.</p>
+<h3 id="paso-2-primer-intento-bajar-a-10-mw">Paso 2 · Primer intento: bajar a 10 mW</h3>
+<p>En <code>omnetpp.ini</code>:</p>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="na">*.**.nic.mac1609_4.txPower</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">10mW</span>
+</span></code></pre></div>
+<p>Al correr y graficar como en el paso 1, los gráficos salen <strong>idénticos</strong> a los del caso base.</p>
+<div class="admonition note">
+<p class="admonition-title">Por qué no cambió nada</p>
+<p>Bajar la potencia solo importa si la señal deja de alcanzar. Con 10 mW, los mensajes siguen llegando entre autos separados por 16 m, así que Ploeg recibe la misma información. Para ver un efecto hay que forzar el escenario.</p>
+</div>
+<h3 id="paso-3-forzar-el-escenario-barrido-de-potencia">Paso 3 · Forzar el escenario: barrido de potencia</h3>
+<p>Primero, baja el bitrate al mínimo que acepta 802.11p:</p>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="na">*.**.nic.mac1609_4.bitrate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">3Mbps</span>
+</span></code></pre></div>
+<p>Con un valor menor, por ejemplo 0.5 Mbps, la simulación se detiene con este error:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>Chosen Bitrate is not valid for 802.11p: Valid rates are: 3Mbps, 4.5Mbps, 6Mbps, 9Mbps, 12Mbps, 18Mbps, 24Mbps and 27Mbps.
+</span></code></pre></div>
+<p>Después, baja la potencia paso a paso: 100, 50, 10, 1, 0.1 y 0.01 mW. Como el choque aparece en 0.01 mW, se afina entre 0.1 y 0.01 con 0.05, 0.03 y 0.02 mW. Por ejemplo:</p>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="na">*.**.nic.mac1609_4.txPower</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0.01mW</span>
+</span></code></pre></div>
+<p>En cada valor, limpia los resultados, corre, grafica y guarda el PDF con su nombre:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nb">cd</span><span class="w"> </span>~/src/plexe/examples/human
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>rm<span class="w"> </span>-rf<span class="w"> </span>results
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>results
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>./run<span class="w"> </span>-u<span class="w"> </span>Cmdenv<span class="w"> </span>-c<span class="w"> </span>BrakingNoGui<span class="w"> </span>-r<span class="w"> </span><span class="m">3</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="nb">cd</span><span class="w"> </span>analysis
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>make<span class="w"> </span>Braking.Rdata
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>Rscript<span class="w"> </span>plot-braking-ploeg.R
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>ls<span class="w"> </span>-lht<span class="w"> </span>braking-ploeg.pdf<span class="w">    </span><span class="c1"># la hora debe ser la de recién</span>
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>cp<span class="w"> </span>braking-ploeg.pdf<span class="w"> </span>braking-ploeg-0.01mW.pdf
+</span></code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Por qué limpiar <code>results/</code></p>
+<p>Si una corrida falla, <code>results/</code> conserva los archivos de la corrida anterior y el script grafica esos datos viejos sin avisar. Con el PDF pasa lo mismo: si el script falla, queda el de antes. Borrar <code>results/</code> y revisar la hora del PDF evita confundir una corrida con otra. <code>rm -rf results</code> borra todos los resultados, así que copia antes los que quieras guardar.</p>
+</div>
+<h3 id="paso-4-separar-mas-los-autos">Paso 4 · Separar más los autos</h3>
+<p>La hipótesis del profesor fue que con 0.02 o 0.03 mW quizás no había choque solo porque los autos iban muy cerca, a unos 16 m. Si se separan más, la señal podría no alcanzar. Para probarlo se cambian dos líneas más:</p>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="na">*.node[*].scenario.ploegH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">${ploegH = 1.5}s</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="na">*.node[*].scenario.startBraking</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">20 s</span>
+</span></code></pre></div>
+<ul>
+<li>Con <code>h = 1.5 s</code>, la distancia deseada a 100 km/h es de unos 44 m (ver <a href="../caso-1/#que-es-h">Caso 1</a>).</li>
+<li>Frenar en <code>t = 20 s</code>, en vez de 5 s, deja más tiempo para que el pelotón se reacomode a la nueva separación. Como se vio en el <a href="../caso-1/#6-partir-del-equilibrio">Caso 1</a>, los autos se insertan preparados para <code>h = 0.5 s</code>.</li>
+</ul>
+<p>Con eso se prueban varias combinaciones de <code>h</code> y potencia, mirando cada corrida en <code>sumo-gui</code>.</p>
+<h2 id="5-resultados">5 · Resultados</h2>
+<h3 id="barrido-de-potencia-h-05-s">Barrido de potencia (<code>h = 0.5 s</code>)</h3>
+<table>
+<thead>
+<tr>
+<th>Potencia (mW)</th>
+<th>dBm</th>
+<th>Resultado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>100 (con 6 y con 3 Mbps)</td>
+<td>20</td>
+<td>Sin choque</td>
+</tr>
+<tr>
+<td>50</td>
+<td>17</td>
+<td>Sin choque</td>
+</tr>
+<tr>
+<td>10</td>
+<td>10</td>
+<td>Sin choque</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>Sin choque</td>
+</tr>
+<tr>
+<td>0.1</td>
+<td>−10</td>
+<td>Sin choque</td>
+</tr>
+<tr>
+<td>0.05</td>
+<td>−13</td>
+<td>Sin choque</td>
+</tr>
+<tr>
+<td>0.03</td>
+<td>−15</td>
+<td>Sin choque</td>
+</tr>
+<tr>
+<td>0.02</td>
+<td>−17</td>
+<td>Sin choque</td>
+</tr>
+<tr>
+<td><strong>0.01</strong></td>
+<td><strong>−20</strong></td>
+<td><strong>Choque</strong></td>
+</tr>
+<tr>
+<td>0.001</td>
+<td>−30</td>
+<td>Choque</td>
+</tr>
+</tbody>
+</table>
+<p><strong>El umbral está entre 0.02 y 0.01 mW.</strong> Además, los gráficos con 0.02 mW son idénticos, píxel a píxel, a los de 100 mW. Todo indica que, hasta 0.02 mW, llegan todos los mensajes y que en 0.01 mW dejan de llegar. En este ejemplo no se ve una degradación gradual.</p>
+<p>Los gráficos se leen como en el <a href="../caso-1/#5-resultados">Caso 1</a>.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">100 mW · caso base</label><label for="__tabbed_1_2">0.01 mW · choque</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><img alt="Velocidad con 100 mW" src="../img/caso-2-100mw-velocidad.png" /></p>
+<p><img alt="Distancia al auto de adelante con 100 mW" src="../img/caso-2-100mw-distancia.png" /></p>
+<ul>
+<li>El pelotón frena de forma ordenada, como en el caso base del Caso 1.</li>
+<li>
+<p><strong>Ojo con el gráfico de distancia.</strong> La línea que sube hasta 3000 m es la del líder (auto 0). En este ejemplo, el líder sí tiene un vehículo adelante, el auto humano, que sigue avanzando mientras el pelotón se detiene. Esa línea aplasta a las demás. Para ver solo el pelotón, excluye al líder en <code>plot-braking-ploeg.R</code>:</p>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">p.distance</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">ggplot</span><span class="p">(</span><span class="nf">subset</span><span class="p">(</span><span class="n">ploegData</span><span class="p">,</span><span class="w"> </span><span class="n">distance</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="m">-1</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">nodeId</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="s">&quot;0&quot;</span><span class="p">),</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">time</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="n">distance</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="o">=</span><span class="n">nodeId</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">  </span><span class="nf">geom_line</span><span class="p">()</span>
+</span></code></pre></div>
+</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<p><img alt="Velocidad con 0.01 mW" src="../img/caso-2-001mw-velocidad.png" /></p>
+<p><img alt="Distancia al auto de adelante con 0.01 mW" src="../img/caso-2-001mw-distancia.png" /></p>
+<ul>
+<li>Los seguidores no reaccionan cuando el líder frena en <code>t = 5 s</code>: siguen a 100 km/h.</li>
+<li>El auto 1 recién empieza a frenar cerca de <code>t = 6.7 s</code>, ya encima del líder. Su distancia llega a 0 y la simulación termina en <code>t ≈ 7.7 s</code>: <strong>hubo un choque</strong>.</li>
+<li>Es lo que se espera si no llega ningún beacon: sin la información de la radio, Ploeg pide aceleración cero (ver <a href="#por-que-la-radio-le-importa-a-ploeg">Fundamentos</a>).</li>
+</ul>
+</div>
+</div>
+</div>
+<h3 id="potencia-y-separacion-frenado-en-t-20-s">Potencia y separación (frenado en <code>t = 20 s</code>)</h3>
+<table>
+<thead>
+<tr>
+<th><code>h</code></th>
+<th>Potencia (mW)</th>
+<th>Resultado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.5 s</td>
+<td>0.02</td>
+<td>Sin choque</td>
+</tr>
+<tr>
+<td>1.5 s</td>
+<td>0.01</td>
+<td>Choque. El pelotón ni siquiera se separa</td>
+</tr>
+<tr>
+<td>1.5 s</td>
+<td>0.02</td>
+<td>El pelotón se separa, pero choca</td>
+</tr>
+<tr>
+<td>1.5 s</td>
+<td>0.05</td>
+<td>Choca, aunque se nota mejor conexión</td>
+</tr>
+<tr>
+<td>1.5 s</td>
+<td>0.1</td>
+<td>Sin choque</td>
+</tr>
+</tbody>
+</table>
+<p>Con <code>h = 0.5 s</code> (unos 16 m entre autos), el umbral estaba entre 0.02 y 0.01 mW. Con <code>h = 1.5 s</code> (unos 44 m) sube a entre 0.05 y 0.1 mW: <strong>más distancia exige más potencia</strong>. Que con 0.01 mW el pelotón ni siquiera se separe es coherente con lo anterior: sin beacons, Ploeg no ajusta la distancia.</p>
+<div class="admonition warning">
+<p class="admonition-title">Límites de estos resultados</p>
+<ul>
+<li>Los umbrales valen para el modelo de radio de este ejemplo, no para cualquier escenario.</li>
+<li>"Choca o no choca" es una medida gruesa: no dice cuántos mensajes se perdieron.</li>
+<li>Los resultados de la última tabla se observaron en <code>sumo-gui</code>. Hay videos de esas corridas, pero no gráficos.</li>
+</ul>
+</div>
+<h2 id="6-errores-frecuentes">6 · Errores frecuentes</h2>
+<table>
+<thead>
+<tr>
+<th>Síntoma</th>
+<th>Causa</th>
+<th>Solución</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Chosen Bitrate is not valid for 802.11p</code></td>
+<td>El bitrate no está en la lista de 802.11p</td>
+<td>Usa una tasa válida. La mínima es 3 Mbps</td>
+</tr>
+<tr>
+<td>Bajas la potencia y nada cambia</td>
+<td>La señal todavía alcanza</td>
+<td>Sigue bajando o separa más los autos</td>
+</tr>
+<tr>
+<td>El gráfico no cambia entre corridas</td>
+<td>Se graficaron resultados o un PDF viejos</td>
+<td>Limpia <code>results/</code> y revisa la hora del PDF</td>
+</tr>
+<tr>
+<td>Cambias la potencia y no pasa nada, aunque la bajaste mucho</td>
+<td>Editaste la línea del auto humano</td>
+<td>La potencia de todos es <code>*.**.nic.mac1609_4.txPower</code></td>
+</tr>
+<tr>
+<td>En la distancia, una línea sube hasta miles de metros</td>
+<td>Es el líder midiendo la distancia al auto humano</td>
+<td>Excluye al auto 0 del gráfico de distancia</td>
+</tr>
+</tbody>
+</table>
+<h2 id="7-pendientes">7 · Pendientes</h2>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a># PENDIENTE: medir la tasa de recepción de beacons de cada auto, para pasar de &quot;choca o no choca&quot; a una curva
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a># PENDIENTE: gráficos de las corridas con h = 1.5 s (hoy solo hay videos)
+</span></code></pre></div>
+<h2 id="8-siguiente-paso">8 · Siguiente paso</h2>
+<p>El <a href="../caso-3/">Caso 3</a> provoca pérdidas de otra forma: en vez de debilitar la señal, descarta mensajes con una probabilidad fija (FER), sin importar la distancia.</p>
 
 
 
