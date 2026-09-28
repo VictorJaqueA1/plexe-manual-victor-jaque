@@ -338,7 +338,7 @@ Descarga la lista actualizada de paquetes disponibles. No instala nada.
 sudo apt update
 ```
 
-**Fuente:** agregado en este manual. La guía de Plexe no lo incluye: es el paso habitual antes de instalar con `apt`, para que Ubuntu conozca las versiones disponibles.
+**Fuente:** [guía de instalación de OMNeT++](https://doc.omnetpp.org/omnetpp/InstallGuide.pdf), capítulo *Ubuntu* (versión 6.2.0: [ch-ubuntu.rst](https://github.com/omnetpp/omnetpp/blob/omnetpp-6.2.0/doc/src/installguide/ch-ubuntu.rst)), que lo recomienda antes de instalar paquetes. La guía de Plexe no lo incluye.
 
 **Así debería verse tu terminal** (abreviado):
 
@@ -466,7 +466,7 @@ tar xzf omnetpp-6.2.0-linux-x86_64.tgz
 ls ~/src
 ```
 
-**Fuente:** agregado en este manual. La guía de Plexe solo dice que hay que descomprimirlo; `tar xzf` es el comando estándar de Linux para un archivo `.tgz`, y `ls` muestra el contenido de `~/src` para comprobar el resultado.
+**Fuente:** [guía de instalación de OMNeT++](https://doc.omnetpp.org/omnetpp/InstallGuide.pdf), capítulo *Linux*, sección *Downloading and Unpacking* (versión 6.2.0: [ch-supported-linux.rst](https://github.com/omnetpp/omnetpp/blob/omnetpp-6.2.0/doc/src/installguide/ch-supported-linux.rst)). El comando oficial es `tar xvfz omnetpp-6.2.0-linux-x86_64.tgz`; aquí se quita la `v` para que no liste en pantalla los miles de archivos que descomprime, y el resultado es el mismo. El `ls` lo agrega este manual, para comprobar el resultado.
 
 **Así debería verse tu terminal:**
 
@@ -486,19 +486,61 @@ Las líneas amontonadas de la barra de progreso son solo un efecto visual: la ba
 
 #### 2.2 Cargar el entorno
 
-Antes de compilar hay que cargar las variables de entorno de OMNeT++ en la terminal actual.
+Antes de compilar hay que preparar la terminal en dos partes: un entorno de Python propio de OMNeT++, que se crea una sola vez, y las variables de entorno de OMNeT++, que se cargan en cada terminal nueva.
 
 ```bash
 cd ~/src/omnetpp-6.2.0
+```
 
-# Solo la primera vez: entorno virtual de Python con las librerías que pide OMNeT++
+**Fuente:** guía oficial de Plexe ([*Step 1: Install OMNeT++*](https://plexe.car2x.org/building/#step-1-install-omnet)).
+
+**Solo la primera vez: el entorno de Python de OMNeT++**
+
+```bash
 python3 -m venv .venv --upgrade-deps --clear --prompt "omnetpp/.venv"
 source .venv/bin/activate
 python3 -m pip install -r python/requirements.txt
+```
 
-# En cada terminal nueva:
+**Fuente:** [guía de instalación de OMNeT++](https://doc.omnetpp.org/omnetpp/InstallGuide.pdf), capítulo *Ubuntu* (versión 6.2.0: [ch-ubuntu.rst](https://github.com/omnetpp/omnetpp/blob/omnetpp-6.2.0/doc/src/installguide/ch-ubuntu.rst)). La guía de Plexe solo avisa que puede hacer falta un entorno virtual de Python.
+
+- `python3 -m venv ...` crea el entorno en la carpeta `.venv`, dentro de la carpeta de OMNeT++.
+- `source .venv/bin/activate` lo activa: desde ese momento la línea empieza con `(omnetpp/.venv)`.
+- `pip install` instala en ese entorno las librerías de Python que pide OMNeT++: matplotlib, numpy, pandas, scipy e ipython.
+
+**Ejemplo real: creación del entorno de Python en el equipo de referencia**
+
+![Creación y activación del entorno de Python de OMNeT++ e inicio de la instalación de sus librerías, en el equipo de referencia](img/instalacion-paso-2-venv-pip.png)
+
+La primera línea del `pip install`, *Ignoring setuptools*, es normal: ese paquete solo se usa en Windows.
+
+**En cada terminal nueva: las variables de OMNeT++**
+
+```bash
 source setenv
 ```
+
+**Fuente:** guía oficial de Plexe ([*Step 1: Install OMNeT++*](https://plexe.car2x.org/building/#step-1-install-omnet)) y [guía de instalación de OMNeT++](https://doc.omnetpp.org/omnetpp/InstallGuide.pdf), capítulo *Linux*, sección *Environment Variables*.
+
+**Así debería verse tu terminal:**
+
+```text
+(omnetpp/.venv) victorjaque@DESKTOP-6VI5783:~/src/omnetpp-6.2.0$ source setenv
+Activating python virtual environment in '/home/victorjaque/src/omnetpp-6.2.0/.venv'
+Environment for 'omnetpp-6.2.0' in directory '/home/victorjaque/src/omnetpp-6.2.0' is ready.
+
+Type "./configure" and "make" to build the simulation libraries.
+When done, type "omnetpp" to start the IDE.
+```
+
+- *Environment for 'omnetpp-6.2.0' … is ready* indica que el entorno quedó cargado.
+- `setenv` también activa solo el entorno de Python (*Activating python virtual environment*). Por eso, en una terminal nueva basta con `cd ~/src/omnetpp-6.2.0` y `source setenv`: no hace falta repetir `source .venv/bin/activate`.
+
+**Ejemplo real: final del `pip install` y `source setenv` en el equipo de referencia**
+
+![Final de la instalación de las librerías de Python y carga del entorno de OMNeT++ con source setenv, en el equipo de referencia](img/instalacion-paso-2-setenv.png)
+
+El `pip install` terminó bien cuando aparece *Successfully installed*, seguido de la lista de librerías instaladas.
 
 !!! danger "Esto se repite en cada terminal nueva"
     Cargar el entorno **no es permanente**: afecta solo a la terminal donde lo ejecutas. Si cierras la terminal o abres otra, hay que volver a hacerlo. Olvidarlo es, por lejos, la causa más frecuente de errores durante la instalación y de comandos que "no existen" cuando en realidad sí están instalados. Para no depender de la memoria, se puede añadir a la configuración del intérprete de comandos y quedará automático.
