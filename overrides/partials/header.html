@@ -18,9 +18,9 @@
     <div class="md-tabs mp-nav" aria-label="{{ lang.t('tabs') }}">
       <ul class="md-tabs__list">
         {% for nav_item in nav.items %}
-          {%- if nav_item.title == "Ejemplos" -%}
+          {%- if nav_item.title == "Casos prácticos" -%}
             {#- Pestana con menu desplegable de casos.
-               "Ejemplos" es una seccion del nav de mkdocs.yml: su primera
+               "Casos practicos" es una seccion del nav de mkdocs.yml: su primera
                pagina (ejemplos/index.md) es la portada y las demas son los
                casos. Los titulos del menu salen de ese nav. El clic en la
                pestana solo abre el menu, asi que la portada va como primera
@@ -36,7 +36,7 @@
               </a>
               <ul class="mp-drop__menu">
                 <li>
-                  <a href="{{ portada.url | url }}">Todos los ejemplos</a>
+                  <a href="{{ portada.url | url }}">Todos los casos</a>
                 </li>
                 {%- for caso in nav_item.children[1:] %}
                   <li>

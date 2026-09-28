@@ -136,7 +136,7 @@ El controlador se asigna con `**.traffic.controller`. Sus parámetros van en `*.
     Sus ganancias no se configuran desde el `.ini` (ver [Consensus](#9-consensus)).
 
 - `controller` define el controlador de los **miembros** del pelotón. Con `PlatoonsTrafficManager` (el del ejemplo `platooning`), el **líder siempre usa ACC**, con tiempo de separación `leaderHeadway`.
-- En `<PLEXE>/examples/platooning/omnetpp.ini` el controlador no es un texto fijo: se recorre con la variable `${controller}`, que también ajusta la distancia y el tiempo de separación al insertar los vehículos. Sus valores son 0 = ACC (0.3 s), 1 = ACC (1.2 s), 2 = CACC, 3 = PLOEG, 4 = CONSENSUS y 5 = FLATBED.
+- En `<PLEXE>/examples/platooning/omnetpp.ini` el controlador no es un texto fijo: se recorre con la variable de iteración `${controller = 0, 0, 1, 2, 3, 4}`, que también ajusta la distancia y el tiempo de separación al insertar los vehículos. Eso da seis corridas: `-r 0` = ACC (0.3 s), `-r 1` = ACC (1.2 s), `-r 2` = CACC, `-r 3` = PLOEG, `-r 4` = CONSENSUS y `-r 5` = FLATBED. El número de corrida no coincide con el valor de `${controller}`, que es el que aparece en el nombre de los archivos de resultados: PLOEG es la corrida 3, pero su archivo es `Braking_2_...` (ver [Caso 1](ejemplos/caso-1.md#paso-1-identificar-la-corrida-de-ploeg)).
 
 ### Qué valor manda
 

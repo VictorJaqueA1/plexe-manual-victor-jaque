@@ -31,7 +31,7 @@ Plexe es una extensión de **Veins** (que a su vez corre sobre **OMNeT++** y **S
 - **Controladores**
   CACC, PLOEG, Consensus, ETC y cómo implementar los tuyos.
 
-- **Ejemplos**
+- **Casos prácticos**
   Escenarios listos para correr y modificar.
 
 </div>

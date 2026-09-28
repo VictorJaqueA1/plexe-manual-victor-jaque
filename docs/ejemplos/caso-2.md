@@ -1,13 +1,13 @@
-# Caso 2 · Pérdida artificial de paquetes con FER
+# Caso 2 · Potencia de transmisión
 
-**Qué se hizo.** Introducir una tasa de error de trama (*Frame Error Rate*) configurable, que descarta mensajes recibidos con una probabilidad fija antes de entregarlos a la capa superior.
+**Qué se hizo.** Variar la potencia de transmisión de la radio 802.11p de los vehículos del pelotón, barriendo varios valores en simulaciones sucesivas.
 
-**Para qué.** Es la contraparte metodológica del caso 1. Con potencia, la pérdida depende de la distancia, del modelo de propagación y de la posición del vehículo en el pelotón, o sea que la variable independiente no está bajo control directo. Con FER, la pérdida se fija como un número y es idéntica para todos los vehículos. Eso permite responder la pregunta pura: cuánta pérdida tolera el controlador, sin que la geometría del escenario contamine el resultado.
+**Para qué.** La potencia determina el alcance efectivo de la comunicación. Al reducirla, los vehículos más alejados dentro del pelotón dejan de recibir los mensajes del líder de forma confiable, y el controlador cooperativo empieza a operar con información incompleta. El objetivo es encontrar a partir de qué punto la degradación de la red se traduce en degradación del control, y si el pelotón mantiene la estabilidad.
 
-**Cómo se implementa.** Se descarta la trama recibida con probabilidad configurable, en el punto del camino de recepción donde el mensaje ya llegó íntegro pero todavía no fue procesado por la aplicación. La probabilidad se expone como parámetro para poder barrerla desde `omnetpp.ini`.
+**Cómo se implementa.** La potencia se fija como parámetro de la interfaz de red (`nic`) de cada nodo desde `omnetpp.ini`, sin tocar código C++. Como el efecto depende también de la sensibilidad del receptor y del modelo de propagación, ambos deben quedar fijos para que la potencia sea la única variable.
 
 ```ini
-# PENDIENTE: parámetro de FER y valores del barrido
+# PENDIENTE: parámetro de potencia de transmisión y valores del barrido
 ```
 
-**Cómo se mide.** Error de espaciamiento en función del FER, y el valor de FER a partir del cual el pelotón deja de ser estable. Conviene contrastar el resultado con el del caso 1: si ambos coinciden al traducir potencia a pérdida efectiva, el modelo es consistente.
+**Cómo se mide.** Tres indicadores en conjunto: la tasa de recepción de mensajes por vehículo, que muestra el efecto en la red; el error de espaciamiento respecto de la distancia objetivo, que muestra el efecto en el control; y la distancia real entre vehículos a lo largo del tiempo, que muestra si hubo riesgo de colisión.

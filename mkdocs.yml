@@ -82,12 +82,13 @@ nav:
   - Instalación: instalacion.md
   - Arquitectura: arquitectura.md
   - Controladores: controladores.md
-  - Ejemplos:
+  - Casos prácticos:
     - ejemplos/index.md
-    - Caso 1 · Potencia de transmisión: ejemplos/caso-1.md
-    - Caso 2 · Pérdida artificial de paquetes con FER: ejemplos/caso-2.md
-    - Caso 3 · Nuevo perfil de aceleración y velocidad del líder: ejemplos/caso-3.md
-    - Caso 4 · Más de un pelotón: ejemplos/caso-4.md
-    - Caso 5 · Retardo estocástico de comunicación: ejemplos/caso-5.md
-    - Caso 6 · Event-triggered control sobre el envío de frames: ejemplos/caso-6.md
-    - Caso 7 · ETC y retardo en conjunto: ejemplos/caso-7.md
+    - Caso 1 · Variar el tiempo de separación h de Ploeg: ejemplos/caso-1.md
+    - Caso 2 · Potencia de transmisión: ejemplos/caso-2.md
+    - Caso 3 · Pérdida artificial de paquetes con FER: ejemplos/caso-3.md
+    - Caso 4 · Nuevo perfil de aceleración y velocidad del líder: ejemplos/caso-4.md
+    - Caso 5 · Más de un pelotón: ejemplos/caso-5.md
+    - Caso 6 · Retardo estocástico de comunicación: ejemplos/caso-6.md
+    - Caso 7 · Event-triggered control sobre el envío de frames: ejemplos/caso-7.md
+    - Caso 8 · ETC y retardo en conjunto: ejemplos/caso-8.md

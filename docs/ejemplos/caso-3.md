@@ -1,13 +1,13 @@
-# Caso 3 · Nuevo perfil de aceleración y velocidad del líder
+# Caso 3 · Pérdida artificial de paquetes con FER
 
-**Qué se hizo.** Definir una trayectoria propia para el vehículo líder, en lugar de usar los perfiles que trae Plexe (aceleración sinusoidal y frenada de emergencia).
+**Qué se hizo.** Introducir una tasa de error de trama (*Frame Error Rate*) configurable, que descarta mensajes recibidos con una probabilidad fija antes de entregarlos a la capa superior.
 
-**Para qué.** El líder es la entrada del sistema: todo el pelotón reacciona a lo que él hace. Los perfiles incluidos sirven para demostraciones, pero no necesariamente someten al controlador a la maniobra que interesa estudiar. Un perfil propio permite provocar condiciones específicas, como una aceleración sostenida, una secuencia de maniobras encadenadas, o un patrón que reproduzca datos reales de conducción.
+**Para qué.** Es la contraparte metodológica del caso 2. Con potencia, la pérdida depende de la distancia, del modelo de propagación y de la posición del vehículo en el pelotón, o sea que la variable independiente no está bajo control directo. Con FER, la pérdida se fija como un número y es idéntica para todos los vehículos. Eso permite responder la pregunta pura: cuánta pérdida tolera el controlador, sin que la geometría del escenario contamine el resultado.
 
-**Cómo se implementa.** Plexe organiza el comportamiento del líder en clases de escenario. Hay dos caminos: crear una clase nueva que herede de la clase base de escenario e imponga la aceleración deseada en cada paso de simulación, o alimentar el perfil desde un archivo externo y hacer que el líder lo siga punto por punto. El primero da control analítico, el segundo permite reproducir trayectorias medidas.
+**Cómo se implementa.** Se descarta la trama recibida con probabilidad configurable, en el punto del camino de recepción donde el mensaje ya llegó íntegro pero todavía no fue procesado por la aplicación. La probabilidad se expone como parámetro para poder barrerla desde `omnetpp.ini`.
 
 ```ini
-# PENDIENTE: selección del escenario nuevo y sus parámetros
+# PENDIENTE: parámetro de FER y valores del barrido
 ```
 
-**Cómo se mide.** Velocidad y aceleración del líder superpuestas a las de los seguidores, para ver la propagación de la maniobra a lo largo del pelotón, y el error de espaciamiento durante los transitorios, que es donde el controlador se pone a prueba.
+**Cómo se mide.** Error de espaciamiento en función del FER, y el valor de FER a partir del cual el pelotón deja de ser estable. Conviene contrastar el resultado con el del caso 2: si ambos coinciden al traducir potencia a pérdida efectiva, el modelo es consistente.

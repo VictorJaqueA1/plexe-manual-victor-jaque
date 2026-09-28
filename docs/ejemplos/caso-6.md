@@ -1,13 +1,13 @@
-# Caso 6 · Event-triggered control sobre el envío de frames
+# Caso 6 · Retardo estocástico de comunicación
 
-**Qué se hizo.** Reemplazar el envío periódico de mensajes por un envío condicionado: el vehículo transmite solo cuando una condición de disparo, evaluada localmente, se cumple.
+**Qué se hizo.** Introducir una latencia aleatoria en la entrega de los mensajes, muestreada de una distribución de probabilidad en lugar de ser un valor fijo.
 
-**Para qué.** En el esquema periódico habitual, todos los vehículos transmiten a intervalo fijo, esté pasando algo o no. Eso desperdicia canal cuando el pelotón circula estable, y es justamente cuando hay maniobras que se necesitaría más información. El control disparado por eventos invierte la lógica: la transmisión se gasta cuando aporta. El objetivo es reducir la carga de canal sin degradar el desempeño del control, y cuantificar ese intercambio.
+**Para qué.** Los controladores cooperativos usan la información del líder para anticiparse, así que son directamente sensibles al retardo: si el dato llega tarde, la acción de control se calcula sobre un estado que ya cambió. Un retardo constante es fácil de compensar y no representa una red real, donde la latencia varía mensaje a mensaje. Un retardo estocástico obliga al controlador a operar con incertidumbre temporal, que es la condición realista.
 
-**Cómo se implementa.** Cada vehículo evalúa en cada paso una función de error entre el estado que tiene y el que comunicó por última vez. Si ese error supera un umbral, transmite y reinicia la referencia. El umbral es el parámetro que gobierna todo el comportamiento: muy alto deja de comunicar y el control se degrada, muy bajo degenera en el caso periódico. Suele ser necesario imponer además un tiempo mínimo entre transmisiones para evitar ráfagas.
+**Cómo se implementa.** Cada mensaje recibe un retardo extra muestreado de una distribución configurable antes de ser entregado. La distribución y sus parámetros se exponen en `omnetpp.ini` para poder barrer el retardo medio y su dispersión de forma independiente.
 
 ```ini
-# PENDIENTE: parámetros de la condición de disparo y del umbral
+# PENDIENTE: distribución del retardo y valores del barrido
 ```
 
-**Cómo se mide.** Cuatro indicadores, y los dos primeros son los que dan sentido al caso: el número total de mensajes enviados, que mide el ahorro; el tiempo entre eventos consecutivos y su distribución, que muestra cómo se reparte el esfuerzo de comunicación en el tiempo; el error de espaciamiento, que verifica que el control no se degradó; y la comparación directa contra el esquema periódico con el mismo desempeño de control, que es la que permite afirmar cuánto se ahorró.
+**Cómo se mide.** Error de espaciamiento en función del retardo medio, y determinación del retardo máximo tolerable antes de perder la estabilidad. Hay que fijarse en la relación entre el retardo y el intervalo de envío de mensajes: cuando el retardo se acerca al período de envío, la información llega esencialmente obsoleta.
