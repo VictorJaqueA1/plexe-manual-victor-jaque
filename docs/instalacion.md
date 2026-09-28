@@ -171,39 +171,118 @@ Si tu computador tiene Windows, este es tu verdadero primer paso y no aparece en
 
 **WSL no es un emulador.** Corre un núcleo Linux real en paralelo a Windows, así que el Ubuntu que instalas aquí es Ubuntu de verdad: mismo `apt`, mismo compilador, mismos binarios. Plexe no distingue entre este Ubuntu y uno instalado directamente en el disco, y por eso **todas las instrucciones de esta página se aplican sin ninguna modificación**.
 
-Lo que necesitas dejar listo:
+#### 0.1 Comprobar los requisitos
 
-- WSL 2 instalado y con Ubuntu 24.04 como distribución.
-- Comprobar que la versión de Ubuntu es la correcta.
-- Verificar que las aplicaciones con ventana gráfica se abren, porque el IDE de OMNeT++ y `sumo-gui` la necesitan. En Windows 11 esto funciona sin configuración adicional gracias a WSLg.
+Antes de instalar, confirma tres cosas:
 
-```bash
-# En PowerShell de Windows, como administrador:
+- **Permisos de administrador en Windows.** El paso 0.2 los pide.
+- **Conexión a internet.** El paso 0.2 descarga WSL y Ubuntu.
+- **Virtualización activada.** Abre el Administrador de tareas (`Ctrl + Shift + Esc`) → **Rendimiento** → **CPU**, y revisa que diga **Virtualización: Habilitado**. Si dice «Deshabilitado», hay que activarla en la BIOS del equipo antes de seguir; eso depende de cada fabricante y no se cubre aquí.
+
+!!! note "Equipo de referencia"
+    Las salidas de terminal de esta página son las que se obtuvieron en este equipo: Windows 11 Pro 25H2 (compilación 26200), Intel Core i7-14700 (20 núcleos, 28 hilos) y 32 GB de RAM.
+
+#### 0.2 Instalar WSL y Ubuntu 24.04
+
+Abre PowerShell **como administrador** (clic derecho sobre PowerShell en el menú Inicio → **Ejecutar como administrador**) y ejecuta:
+
+```powershell
 wsl --install -d Ubuntu-24.04
-
-# Reiniciar si lo pide. Luego, en PowerShell, verificar que es WSL 2:
-wsl -l -v
-
-# Dentro de la terminal de Ubuntu, verificar la versión:
-lsb_release -a
-
-# Probar que se abren ventanas gráficas (WSLg):
-sudo apt install -y x11-apps
-xeyes
 ```
+
+El comando hace dos instalaciones seguidas: primero WSL y después Ubuntu 24.04. Al terminar, Ubuntu arranca por primera vez en la misma ventana.
 
 **Así debería verse tu terminal:**
 
 ```text
-PS C:\> wsl -l -v
-  NAME            STATE           VERSION
-* Ubuntu-24.04    Running         2
+PS C:\WINDOWS\system32> wsl --install -d Ubuntu-24.04
+Descargando: Subsistema de Windows para Linux 2.7.14
+Instalando: Subsistema de Windows para Linux 2.7.14
+Se ha instalado Subsistema de Windows para Linux 2.7.14.
+La operación se completó correctamente.
+Descargando: Ubuntu 24.04 LTS
+Instalando: Ubuntu 24.04 LTS
+Distribución instalada correctamente. Se puede iniciar a través de "wsl.exe -d Ubuntu-24.04"
+Iniciando Ubuntu-24.04...
+Provisioning the new WSL instance Ubuntu-24.04
+This might take a while...
+Create a default Unix user account:
+```
 
-$ lsb_release -a
-Distributor ID: Ubuntu
-Description:    Ubuntu 24.04.3 LTS
-Release:        24.04
-Codename:       noble
+- La versión de WSL (aquí **2.7.14**) depende de la fecha en que instales; puede ser más nueva.
+- Los mensajes de WSL salen en el idioma de tu Windows; los de Ubuntu, en inglés.
+- También se abre sola una ventana **«Te damos la bienvenida a WSL»**. Es informativa y puedes cerrarla.
+
+!!! note "¿Pide reiniciar?"
+    En el equipo de referencia no hizo falta, porque la *Plataforma de máquina virtual* de Windows ya estaba activa. Si en tu equipo aparece un mensaje pidiendo reiniciar, reinicia antes de seguir.
+
+#### 0.3 Crear tu usuario de Linux
+
+En su primer arranque, Ubuntu pide crear una cuenta. Es una cuenta de Linux, independiente de tu usuario de Windows.
+
+1. **Nombre de usuario.** Debe empezar con una letra minúscula o un guion bajo, y solo puede tener minúsculas, números, guiones bajos y guiones. Sin mayúsculas ni espacios.
+2. **Contraseña, dos veces.** Es la contraseña que te pedirá `sudo`, así que anótala. **Mientras la escribes no aparece nada en pantalla**: lee el aviso de abajo antes de empezar.
+
+!!! warning "La contraseña no se ve mientras la escribes"
+    Al escribir la contraseña, la terminal **no muestra nada: ni letras, ni puntos, ni asteriscos**, y el cursor no avanza. Parece que el teclado no responde, pero sí está registrando lo que escribes. Es el comportamiento normal de Linux. Escríbela completa y presiona Enter. Si las dos veces no coinciden, Ubuntu te deja intentarlo de nuevo (ver «Si te equivocas», más abajo).
+
+**Así debería verse tu terminal:**
+
+```text
+Create a default Unix user account: victorjaque
+New password:
+Retype new password:
+passwd: password updated successfully
+To run a command as administrator (user "root"), use "sudo <command>".
+See "man sudo_root" for details.
+
+victorjaque@DESKTOP-6VI5783:/mnt/c/WINDOWS/system32$
+```
+
+La última línea indica que ya estás dentro de Ubuntu, con la forma `usuario@nombre-del-equipo:carpeta$`. Verás tu propio usuario y el nombre de tu PC.
+
+!!! warning "Si te equivocas"
+    Un nombre con mayúsculas o espacios se rechaza, y Ubuntu lo vuelve a pedir:
+
+    ```text
+    Create a default Unix user account: Victor Jaque
+    Invalid username. A valid username must start with a lowercase letter or underscore, and can contain lowercase letters, digits, underscores, and dashes.
+    ```
+
+    Si las dos contraseñas no coinciden, responde `y` para intentarlo de nuevo:
+
+    ```text
+    Sorry, passwords do not match.
+    passwd: Authentication token manipulation error
+    passwd: password unchanged
+    Try again? [y/N] y
+    ```
+
+!!! tip "Quedaste en una carpeta de Windows"
+    Como Ubuntu arrancó desde PowerShell, la terminal quedó en `/mnt/c/WINDOWS/system32`, que es `C:\WINDOWS\system32` visto desde Linux. No trabajes ahí (ver el consejo sobre `/mnt/c` en la [sección 3](#como-queda-tu-disco)).
+
+**Ejemplo real: así se vio la instalación en el equipo de referencia**
+
+![Sesión completa de los pasos 0.2 y 0.3 en PowerShell, en el equipo de referencia](img/instalacion-paso-0-wsl.png)
+
+La captura muestra los pasos 0.2 y 0.3 tal como ocurrieron, incluidos los dos errores del recuadro «Si te equivocas»: el nombre de usuario rechazado dos veces y las contraseñas que no coincidieron en el primer intento.
+
+#### 0.4 Actualizar Ubuntu
+
+```bash
+# PENDIENTE: actualizar la lista de paquetes y el sistema
+```
+
+#### 0.5 Verificar la instalación
+
+```bash
+# PENDIENTE: verificar que es WSL 2 y la versión de Ubuntu
+```
+
+#### 0.6 Probar las ventanas gráficas (WSLg)
+
+```bash
+# PENDIENTE: probar que se abren ventanas gráficas
 ```
 
 !!! info "Dos mundos, un computador"
