@@ -455,12 +455,34 @@ wget https://github.com/omnetpp/omnetpp/releases/download/omnetpp-6.2.0/omnetpp-
 
 **Fuente:** archivo oficial de OMNeT++ 6.2.0 para Linux, publicado en su [GitHub](https://github.com/omnetpp/omnetpp/releases/tag/omnetpp-6.2.0). La guía de Plexe solo enlaza a la [página de descargas de OMNeT++](https://omnetpp.org/download/); descargarlo con `wget` lo agrega este manual, para hacerlo desde la terminal.
 
+**Ejemplo real: así empieza la descarga en el equipo de referencia**
+
+![Inicio de la descarga de OMNeT++ 6.2.0 con wget en la terminal de Ubuntu, en el equipo de referencia](img/instalacion-paso-2-wget-omnetpp.png)
+
+La dirección larga que aparece después de *302 Found* es normal: GitHub redirige la descarga a su servidor de archivos mediante un enlace temporal.
+
 ```bash
 tar xzf omnetpp-6.2.0-linux-x86_64.tgz
 ls ~/src
 ```
 
 **Fuente:** agregado en este manual. La guía de Plexe solo dice que hay que descomprimirlo; `tar xzf` es el comando estándar de Linux para un archivo `.tgz`, y `ls` muestra el contenido de `~/src` para comprobar el resultado.
+
+**Así debería verse tu terminal:**
+
+```text
+victorjaque@DESKTOP-6VI5783:~/src$ tar xzf omnetpp-6.2.0-linux-x86_64.tgz
+victorjaque@DESKTOP-6VI5783:~/src$ ls ~/src
+omnetpp-6.2.0  omnetpp-6.2.0-linux-x86_64.tgz
+```
+
+`tar` no muestra nada mientras descomprime. `ls` confirma que apareció la carpeta `omnetpp-6.2.0`; el archivo `.tgz` queda al lado y ya no se necesita.
+
+**Ejemplo real: así terminan la descarga y la descompresión en el equipo de referencia**
+
+![Final de la descarga de OMNeT++ 6.2.0 con wget, seguido de tar y ls, en el equipo de referencia](img/instalacion-paso-2-wget-omnetpp-fin.png)
+
+Las líneas amontonadas de la barra de progreso son solo un efecto visual: la barra se redibuja muchas veces y, si la ventana es angosta, se desordena. Lo que importa es la línea `saved [415465426/415465426]`: cuando los dos números son iguales, la descarga está completa.
 
 #### 2.2 Cargar el entorno
 
