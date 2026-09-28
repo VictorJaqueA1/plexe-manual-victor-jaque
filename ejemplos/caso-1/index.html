@@ -29,7 +29,7 @@
     
     
       
-        <title>Caso 1 · Potencia de transmisión - Manual de Plexe</title>
+        <title>Caso 1 · Variar el tiempo de separación h de Ploeg - Manual de Plexe</title>
       
     
     
@@ -82,7 +82,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#caso-1-potencia-de-transmision" class="md-skip">
+        <a href="#caso-1-variar-el-tiempo-de-separacion-h-de-ploeg" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -170,35 +170,38 @@
 <li class="md-tabs__item mp-drop">
               <a href="../"
                  class="md-tabs__link md-tabs__link--active">
-                Ejemplos
+                Casos prácticos
                 <span class="mp-drop__chev">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.41 8.58 12 13.17l4.59-4.59L18 10l-6 6-6-6z"/></svg>
                 </span>
               </a>
               <ul class="mp-drop__menu">
                 <li>
-                  <a href="../">Todos los ejemplos</a>
+                  <a href="../">Todos los casos</a>
                 </li>
                   <li>
-                    <a href="./">Caso 1 · Potencia de transmisión</a>
+                    <a href="./">Caso 1 · Variar el tiempo de separación h de Ploeg</a>
                   </li>
                   <li>
-                    <a href="../caso-2/">Caso 2 · Pérdida artificial de paquetes con FER</a>
+                    <a href="../caso-2/">Caso 2 · Potencia de transmisión</a>
                   </li>
                   <li>
-                    <a href="../caso-3/">Caso 3 · Nuevo perfil de aceleración y velocidad del líder</a>
+                    <a href="../caso-3/">Caso 3 · Pérdida artificial de paquetes con FER</a>
                   </li>
                   <li>
-                    <a href="../caso-4/">Caso 4 · Más de un pelotón</a>
+                    <a href="../caso-4/">Caso 4 · Nuevo perfil de aceleración y velocidad del líder</a>
                   </li>
                   <li>
-                    <a href="../caso-5/">Caso 5 · Retardo estocástico de comunicación</a>
+                    <a href="../caso-5/">Caso 5 · Más de un pelotón</a>
                   </li>
                   <li>
-                    <a href="../caso-6/">Caso 6 · Event-triggered control sobre el envío de frames</a>
+                    <a href="../caso-6/">Caso 6 · Retardo estocástico de comunicación</a>
                   </li>
                   <li>
-                    <a href="../caso-7/">Caso 7 · ETC y retardo en conjunto</a>
+                    <a href="../caso-7/">Caso 7 · Event-triggered control sobre el envío de frames</a>
+                  </li>
+                  <li>
+                    <a href="../caso-8/">Caso 8 · ETC y retardo en conjunto</a>
                   </li>
               </ul>
             </li>
@@ -490,6 +493,8 @@
       
         
       
+        
+      
     
     
     
@@ -517,7 +522,7 @@
   <span class="md-ellipsis">
     
   
-    Ejemplos
+    Casos prácticos
   
 
     
@@ -539,7 +544,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Ejemplos
+    Casos prácticos
   
 
           </label>
@@ -563,6 +568,24 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Caso 1 · Variar el tiempo de separación h de Ploeg
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -570,7 +593,7 @@
   <span class="md-ellipsis">
     
   
-    Caso 1 · Potencia de transmisión
+    Caso 1 · Variar el tiempo de separación h de Ploeg
   
 
     
@@ -579,6 +602,230 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-antes-de-empezar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1 · Antes de empezar
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-fundamentos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2 · Fundamentos
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2 · Fundamentos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#que-es-h" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Qué es h
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#que-hace-ploeg" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Qué hace Ploeg
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#que-esperamos-ver" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Qué esperamos ver
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-donde-vive-cada-cosa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3 · Dónde vive cada cosa
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-implementacion-paso-a-paso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4 · Implementación paso a paso
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4 · Implementación paso a paso">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#paso-1-identificar-la-corrida-de-ploeg" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 1 · Identificar la corrida de Ploeg
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-2-correr-el-caso-base" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 2 · Correr el caso base
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-3-procesar-los-resultados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 3 · Procesar los resultados
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-4-graficar-solo-ploeg" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 4 · Graficar solo Ploeg
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-5-cambiar-h" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 5 · Cambiar h
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-resultados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5 · Resultados
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-partir-del-equilibrio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6 · Partir del equilibrio
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-la-receta-general" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7 · La receta general
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7 · La receta general">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#errores-frecuentes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Errores frecuentes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-siguiente-paso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8 · Siguiente paso
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -599,7 +846,7 @@
   <span class="md-ellipsis">
     
   
-    Caso 2 · Pérdida artificial de paquetes con FER
+    Caso 2 · Potencia de transmisión
   
 
     
@@ -627,7 +874,7 @@
   <span class="md-ellipsis">
     
   
-    Caso 3 · Nuevo perfil de aceleración y velocidad del líder
+    Caso 3 · Pérdida artificial de paquetes con FER
   
 
     
@@ -655,7 +902,7 @@
   <span class="md-ellipsis">
     
   
-    Caso 4 · Más de un pelotón
+    Caso 4 · Nuevo perfil de aceleración y velocidad del líder
   
 
     
@@ -683,7 +930,7 @@
   <span class="md-ellipsis">
     
   
-    Caso 5 · Retardo estocástico de comunicación
+    Caso 5 · Más de un pelotón
   
 
     
@@ -711,7 +958,7 @@
   <span class="md-ellipsis">
     
   
-    Caso 6 · Event-triggered control sobre el envío de frames
+    Caso 6 · Retardo estocástico de comunicación
   
 
     
@@ -739,7 +986,35 @@
   <span class="md-ellipsis">
     
   
-    Caso 7 · ETC y retardo en conjunto
+    Caso 7 · Event-triggered control sobre el envío de frames
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../caso-8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Caso 8 · ETC y retardo en conjunto
   
 
     
@@ -780,6 +1055,219 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-antes-de-empezar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1 · Antes de empezar
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-fundamentos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2 · Fundamentos
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2 · Fundamentos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#que-es-h" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Qué es h
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#que-hace-ploeg" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Qué hace Ploeg
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#que-esperamos-ver" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Qué esperamos ver
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-donde-vive-cada-cosa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3 · Dónde vive cada cosa
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-implementacion-paso-a-paso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4 · Implementación paso a paso
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4 · Implementación paso a paso">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#paso-1-identificar-la-corrida-de-ploeg" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 1 · Identificar la corrida de Ploeg
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-2-correr-el-caso-base" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 2 · Correr el caso base
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-3-procesar-los-resultados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 3 · Procesar los resultados
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-4-graficar-solo-ploeg" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 4 · Graficar solo Ploeg
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-5-cambiar-h" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 5 · Cambiar h
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-resultados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5 · Resultados
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-partir-del-equilibrio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6 · Partir del equilibrio
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-la-receta-general" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7 · La receta general
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7 · La receta general">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#errores-frecuentes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Errores frecuentes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-siguiente-paso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8 · Siguiente paso
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -798,13 +1286,400 @@
   
 
 
-<h1 id="caso-1-potencia-de-transmision">Caso 1 · Potencia de transmisión</h1>
-<p><strong>Qué se hizo.</strong> Variar la potencia de transmisión de la radio 802.11p de los vehículos del pelotón, barriendo varios valores en simulaciones sucesivas.</p>
-<p><strong>Para qué.</strong> La potencia determina el alcance efectivo de la comunicación. Al reducirla, los vehículos más alejados dentro del pelotón dejan de recibir los mensajes del líder de forma confiable, y el controlador cooperativo empieza a operar con información incompleta. El objetivo es encontrar a partir de qué punto la degradación de la red se traduce en degradación del control, y si el pelotón mantiene la estabilidad.</p>
-<p><strong>Cómo se implementa.</strong> La potencia se fija como parámetro de la interfaz de red (<code>nic</code>) de cada nodo desde <code>omnetpp.ini</code>, sin tocar código C++. Como el efecto depende también de la sensibilidad del receptor y del modelo de propagación, ambos deben quedar fijos para que la potencia sea la única variable.</p>
-<div class="language-ini highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># PENDIENTE: parámetro de potencia de transmisión y valores del barrido</span>
+<h1 id="caso-1-variar-el-tiempo-de-separacion-h-de-ploeg">Caso 1 · Variar el tiempo de separación h de Ploeg</h1>
+<p>Este es el caso guía del manual. Si es tu primera vez con Plexe, empieza aquí. Se cambia un solo número, pero en el camino aparece todo lo que se repite en los demás casos: ubicar un parámetro, correr la simulación correcta, procesar los resultados, graficarlos y compararlos contra un caso base.</p>
+<div class="admonition abstract">
+<p class="admonition-title">Resumen</p>
+<ul>
+<li><strong>Pregunta:</strong> ¿qué le pasa al pelotón si los autos se siguen más cerca o más lejos?</li>
+<li><strong>Escenario:</strong> <code>Braking</code>, del ejemplo <code>platooning</code>. Ocho autos avanzan a 100 km/h y, en <code>t = 5 s</code>, el líder frena a 8 m/s².</li>
+<li><strong>Controlador:</strong> Ploeg.</li>
+<li><strong>Parámetro:</strong> <code>ploegH</code>, el tiempo de separación <code>h</code>.</li>
+<li><strong>Valores:</strong> 0.1 s, 0.5 s y 1.5 s. El de 0.5 s es el valor por defecto y sirve de caso base.</li>
+<li><strong>Qué se toca:</strong> <code>omnetpp.ini</code> y un script de R nuevo. No hay que recompilar.</li>
+</ul>
+</div>
+<h2 id="1-antes-de-empezar">1 · Antes de empezar</h2>
+<p>Plexe tiene que estar instalado (ver <a href="../../instalacion/">Instalación</a>). Además, <strong>en cada terminal nueva</strong> hay que cargar los entornos, en este orden:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># OMNeT++</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">source</span><span class="w"> </span>~/src/omnetpp-6.2.0/setenv
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># Plexe y Veins</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="nb">cd</span><span class="w"> </span>~/src/plexe
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>.<span class="w"> </span>./setenv
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="c1"># SUMO, solo si no lo dejaste fijo en ~/.bashrc (ajusta la ruta a tu instalación)</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="nb">export</span><span class="w"> </span><span class="nv">SUMO_HOME</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/src/sumo-1.22.0&quot;</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$SUMO_HOME</span><span class="s2">/bin:</span><span class="nv">$PATH</span><span class="s2">&quot;</span>
 </span></code></pre></div>
-<p><strong>Cómo se mide.</strong> Tres indicadores en conjunto: la tasa de recepción de mensajes por vehículo, que muestra el efecto en la red; el error de espaciamiento respecto de la distancia objetivo, que muestra el efecto en el control; y la distancia real entre vehículos a lo largo del tiempo, que muestra si hubo riesgo de colisión.</p>
+<p><code>source</code>, o su forma corta <code>.</code>, ejecuta el archivo dentro de la terminal actual. Por eso las rutas y variables que define quedan disponibles para los comandos siguientes, pero solo en esa terminal.</p>
+<h2 id="2-fundamentos">2 · Fundamentos</h2>
+<h3 id="que-es-h">Qué es <code>h</code></h3>
+<p>Ploeg usa una política de espaciamiento de <strong>tiempo constante</strong>: la distancia que cada auto quiere mantener con el de adelante crece con su propia velocidad.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>d_ref = 2 + h·v
+</span></code></pre></div>
+<ul>
+<li><code>2</code> es la distancia en reposo, en metros. Está fija en el código de SUMO.</li>
+<li><code>v</code> es la velocidad del propio auto, en m/s.</li>
+<li><code>h</code> es el tiempo de separación, en segundos: <code>h·v</code> es lo que el auto recorre en <code>h</code> segundos a su velocidad actual.</li>
+</ul>
+<p>A 100 km/h (27.8 m/s), la distancia deseada queda así:</p>
+<table>
+<thead>
+<tr>
+<th><code>h</code></th>
+<th>Distancia deseada</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.1 s</td>
+<td>≈ 4.8 m</td>
+</tr>
+<tr>
+<td>0.5 s (por defecto)</td>
+<td>≈ 15.9 m</td>
+</tr>
+<tr>
+<td>1.5 s</td>
+<td>≈ 43.7 m</td>
+</tr>
+</tbody>
+</table>
+<h3 id="que-hace-ploeg">Qué hace Ploeg</h3>
+<p>Ploeg es un CACC (control de crucero adaptativo cooperativo). Cada auto combina lo que mide su radar, que es la distancia y la velocidad del auto de adelante, con lo que ese auto le envía por radio: su aceleración deseada. Según el paper de Ploeg, esa anticipación es la que permite usar valores de <code>h</code> bajos sin que las perturbaciones crezcan de un auto al siguiente. A esa propiedad se le llama <em>estabilidad de cuerda</em> (<em>string stability</em>).</p>
+<p><code>h</code> aparece dos veces en el controlador: en la distancia deseada y como constante de tiempo de la ley de control. Con <code>h</code> bajo el controlador reacciona más rápido, y con <code>h</code> alto, más lento. La ley completa está en <a href="../../controladores/#5-controlador-ploeg">Controladores › Controlador Ploeg</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">El líder no usa Ploeg</p>
+<p>En el ejemplo <code>platooning</code>, el líder (auto 0) siempre usa ACC. Cambiar <code>h</code> solo afecta a los autos 1 a 7.</p>
+</div>
+<h3 id="que-esperamos-ver">Qué esperamos ver</h3>
+<ul>
+<li><strong><code>h</code> bajo:</strong> un pelotón compacto, que ocupa menos espacio en la vía, pero con menos margen para reaccionar.</li>
+<li><strong><code>h</code> alto:</strong> más distancia y reacciones más suaves, a cambio de ocupar más espacio.</li>
+</ul>
+<h2 id="3-donde-vive-cada-cosa">3 · Dónde vive cada cosa</h2>
+<table>
+<thead>
+<tr>
+<th>Qué</th>
+<th>Dónde</th>
+<th>En este caso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>El valor de <code>h</code></td>
+<td><code>~/src/plexe/examples/platooning/omnetpp.ini</code>, línea <code>*.node[*].scenario.ploegH</code></td>
+<td>Se cambia</td>
+</tr>
+<tr>
+<td>Qué controlador usa cada corrida</td>
+<td>El mismo archivo, líneas <code>**.numericController</code> y <code>**.traffic.controller</code></td>
+<td>Solo se lee</td>
+</tr>
+<tr>
+<td>La distancia con que se insertan los autos</td>
+<td>El mismo archivo, línea <code>**.traffic.platoonInsertHeadway</code></td>
+<td>Se ajusta en la <a href="#6-partir-del-equilibrio">sección 6</a></td>
+</tr>
+<tr>
+<td>La fórmula de Ploeg</td>
+<td>SUMO, <code>src/microsim/cfmodels/MSCFModel_CC.cpp</code>, función <code>_ploeg()</code></td>
+<td>No se toca</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">La idea clave: ¿parámetro o código?</p>
+<p>Cambiar un <strong>valor</strong>, como <code>h</code>, se hace en <code>omnetpp.ini</code>, y basta con volver a correr la simulación. Cambiar la <strong>ecuación</strong> obliga a editar C++ y recompilar. Este caso solo cambia un valor. Más detalle en <a href="../../controladores/#4-que-hacer-cuando-modificas-algo">Qué hacer cuando modificas algo</a>. El recorrido del valor, desde el <code>.ini</code> hasta SUMO, está en <a href="../../controladores/#1-donde-viven-los-controladores">Dónde viven los controladores</a>.</p>
+</div>
+<h2 id="4-implementacion-paso-a-paso">4 · Implementación paso a paso</h2>
+<h3 id="paso-1-identificar-la-corrida-de-ploeg">Paso 1 · Identificar la corrida de Ploeg</h3>
+<p>El escenario <code>Braking</code> no prueba un controlador, sino seis, uno por corrida. Abre la configuración del ejemplo:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nb">cd</span><span class="w"> </span>~/src/plexe/examples/platooning
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>code<span class="w"> </span>omnetpp.ini<span class="w">    </span><span class="c1"># o cualquier editor, por ejemplo: nano omnetpp.ini</span>
+</span></code></pre></div>
+<p>Y busca estas líneas:</p>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="na">**.numericController</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">${controller = 0, 0, 1, 2, 3, 4}</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="na">**.headway</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">${headway = 0.3, 1.2, 0.1, 0.1, 0.1, 0.1 ! controller}s</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="na">**.traffic.controller = ${sController</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;ACC&quot;</span><span class="na">, &quot;ACC&quot;, &quot;CACC&quot;, &quot;PLOEG&quot;, &quot;CONSENSUS&quot;, &quot;FLATBED&quot; ! controller}</span>
+</span></code></pre></div>
+<ul>
+<li><code>${nombre = a, b, c}</code> es una <strong>variable de iteración</strong>: OMNeT++ crea una corrida por cada valor.</li>
+<li><code>! controller</code> hace que la variable avance <strong>junto con</strong> <code>controller</code>, en vez de combinarse con ella. Por eso son 6 corridas y no 36.</li>
+<li>Las corridas se numeran desde 0. Ese número es el que se pasa con <code>-r</code>.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Corrida (<code>-r</code>)</th>
+<th>Controlador</th>
+<th>Archivo de resultados</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>ACC (0.3 s)</td>
+<td><code>Braking_0_0.3_0.vec</code></td>
+</tr>
+<tr>
+<td>1</td>
+<td>ACC (1.2 s)</td>
+<td><code>Braking_0_1.2_0.vec</code></td>
+</tr>
+<tr>
+<td>2</td>
+<td>CACC</td>
+<td><code>Braking_1_0.1_0.vec</code></td>
+</tr>
+<tr>
+<td><strong>3</strong></td>
+<td><strong>PLOEG</strong></td>
+<td><strong><code>Braking_2_0.1_0.vec</code></strong></td>
+</tr>
+<tr>
+<td>4</td>
+<td>CONSENSUS</td>
+<td><code>Braking_3_0.1_0.vec</code></td>
+</tr>
+<tr>
+<td>5</td>
+<td>FLATBED</td>
+<td><code>Braking_4_0.1_0.vec</code></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">El número de corrida no es el número del controlador</p>
+<p>Ploeg es la corrida <code>-r 3</code>, pero su archivo se llama <code>Braking_2_...</code>. El nombre sale de <code>output-vector-file = ${resultdir}/Braking_${controller}_${headway}_${repetition}.vec</code>, que usa el <strong>valor</strong> de <code>${controller}</code> (2), no el número de corrida (3). El <code>0.1</code> es el valor de <code>headway</code> de esa corrida, pensado para los ACC.</p>
+</div>
+<h3 id="paso-2-correr-el-caso-base">Paso 2 · Correr el caso base</h3>
+<p>Sin cambiar nada (<code>h = 0.5 s</code>):</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nb">cd</span><span class="w"> </span>~/src/plexe/examples/platooning
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="c1"># Con la ventana de SUMO, para mirar</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>./run<span class="w"> </span>-u<span class="w"> </span>Cmdenv<span class="w"> </span>-c<span class="w"> </span>Braking<span class="w"> </span>-r<span class="w"> </span><span class="m">3</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="c1"># Sin ventanas, más rápido</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>./run<span class="w"> </span>-u<span class="w"> </span>Cmdenv<span class="w"> </span>-c<span class="w"> </span>BrakingNoGui<span class="w"> </span>-r<span class="w"> </span><span class="m">3</span>
+</span></code></pre></div>
+<ul>
+<li><code>-u Cmdenv</code> corre OMNeT++ en la terminal, sin su interfaz gráfica.</li>
+<li><code>-c</code> elige la sección del <code>.ini</code>. <code>Braking</code> abre <code>sumo-gui</code> para ver a los autos; <code>BrakingNoGui</code> usa <code>sumo</code>, sin ventanas.</li>
+<li><code>-r 3</code> elige la corrida de Ploeg.</li>
+</ul>
+<p>Las dos opciones escriben el mismo archivo, <code>results/Braking_2_0.1_0.vec</code>.</p>
+<h3 id="paso-3-procesar-los-resultados">Paso 3 · Procesar los resultados</h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nb">cd</span><span class="w"> </span>~/src/plexe/examples/platooning/analysis
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>genmakefile.py<span class="w"> </span>parse-config<span class="w"> </span>&gt;<span class="w"> </span>Makefile<span class="w">    </span><span class="c1"># solo la primera vez</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>make<span class="w"> </span>Braking.Rdata
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>Rscript<span class="w"> </span>plot-braking.R
+</span></code></pre></div>
+<ul>
+<li><code>genmakefile.py</code> genera el <code>Makefile</code> a partir de <code>parse-config</code>, que dice qué resultados leer y cómo nombrar las columnas.</li>
+<li><code>make Braking.Rdata</code> convierte los <code>.vec</code> de <code>Braking</code> en un solo archivo, <code>results/Braking.Rdata</code>, más cómodo de cargar en R. <code>make</code> sin argumentos procesa también <code>Sinusoidal</code>.</li>
+<li><code>Rscript plot-braking.R</code> genera los cuatro PDF estándar en <code>analysis/</code>: <code>braking-speed.pdf</code>, <code>braking-distance.pdf</code>, <code>braking-acceleration.pdf</code> y <code>braking-controller-acceleration.pdf</code>.</li>
+</ul>
+<p>El recorrido completo de los datos está en <a href="../../arquitectura/#el-flujo-de-datos-de-una-simulacion">Arquitectura › El flujo de datos de una simulación</a>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Ver los PDF desde Windows</p>
+<p>Si usas WSL, <code>explorer.exe .</code> abre la carpeta actual en el explorador de Windows.</p>
+</div>
+<h3 id="paso-4-graficar-solo-ploeg">Paso 4 · Graficar solo Ploeg</h3>
+<p><code>plot-braking.R</code> grafica todos los controladores que encuentra en <code>results/</code>. Si antes corriste las seis corridas, Ploeg queda mezclado con los demás. La solución es un script propio: se copia el original, para no modificarlo, y la copia se deja solo con Ploeg.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nb">cd</span><span class="w"> </span>~/src/plexe/examples/platooning/analysis
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>cp<span class="w"> </span>plot-braking.R<span class="w"> </span>plot-braking-ploeg.R
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>code<span class="w"> </span>plot-braking-ploeg.R
+</span></code></pre></div>
+<p>Reemplaza su contenido por este:</p>
+<details class="example">
+<summary>plot-braking-ploeg.R</summary>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1">#load ggplot for quick and dirty plotting</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="nf">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="n">cntr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">   </span><span class="s">&quot;ACC (0.3 s)&quot;</span><span class="p">,</span>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">   </span><span class="s">&quot;ACC (1.2 s)&quot;</span><span class="p">,</span>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">   </span><span class="s">&quot;CACC&quot;</span><span class="p">,</span>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="w">   </span><span class="s">&quot;PLOEG&quot;</span><span class="p">,</span>
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="w">   </span><span class="s">&quot;CONSENSUS&quot;</span><span class="p">,</span>
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="w">   </span><span class="s">&quot;FLATBED&quot;</span>
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="p">)</span>
+</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a>
+</span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="c1">#map controller id to name</span>
+</span><span id="__span-7-14"><a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a><span class="n">controller</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">headway</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-15"><a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a><span class="w">    </span><span class="nf">ifelse</span><span class="p">(</span><span class="n">id</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">0</span><span class="p">,</span>
+</span><span id="__span-7-16"><a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a><span class="w">        </span><span class="nf">ifelse</span><span class="p">(</span><span class="n">headway</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">cntr</span><span class="p">[</span><span class="m">1</span><span class="p">],</span><span class="w"> </span><span class="n">cntr</span><span class="p">[</span><span class="m">2</span><span class="p">]),</span>
+</span><span id="__span-7-17"><a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a><span class="w">        </span><span class="n">cntr</span><span class="p">[</span><span class="n">id</span><span class="m">+2</span><span class="p">]</span>
+</span><span id="__span-7-18"><a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a><span class="w">    </span><span class="p">)</span>
+</span><span id="__span-7-19"><a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a><span class="p">}</span>
+</span><span id="__span-7-20"><a id="__codelineno-7-20" name="__codelineno-7-20" href="#__codelineno-7-20"></a>
+</span><span id="__span-7-21"><a id="__codelineno-7-21" name="__codelineno-7-21" href="#__codelineno-7-21"></a><span class="nf">load</span><span class="p">(</span><span class="s">&#39;../results/Braking.Rdata&#39;</span><span class="p">)</span>
+</span><span id="__span-7-22"><a id="__codelineno-7-22" name="__codelineno-7-22" href="#__codelineno-7-22"></a><span class="n">allData</span><span class="o">$</span><span class="n">controllerName</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">controller</span><span class="p">(</span><span class="n">allData</span><span class="o">$</span><span class="n">controller</span><span class="p">,</span><span class="w"> </span><span class="n">allData</span><span class="o">$</span><span class="n">headway</span><span class="p">)</span>
+</span><span id="__span-7-23"><a id="__codelineno-7-23" name="__codelineno-7-23" href="#__codelineno-7-23"></a>
+</span><span id="__span-7-24"><a id="__codelineno-7-24" name="__codelineno-7-24" href="#__codelineno-7-24"></a><span class="c1"># --- QUEDARSE SOLO CON PLOEG ---</span>
+</span><span id="__span-7-25"><a id="__codelineno-7-25" name="__codelineno-7-25" href="#__codelineno-7-25"></a><span class="n">ploegData</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">subset</span><span class="p">(</span><span class="n">allData</span><span class="p">,</span><span class="w"> </span><span class="n">controllerName</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;PLOEG&quot;</span><span class="p">)</span>
+</span><span id="__span-7-26"><a id="__codelineno-7-26" name="__codelineno-7-26" href="#__codelineno-7-26"></a><span class="n">ploegData</span><span class="o">$</span><span class="n">nodeId</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">factor</span><span class="p">(</span><span class="n">ploegData</span><span class="o">$</span><span class="n">nodeId</span><span class="p">)</span>
+</span><span id="__span-7-27"><a id="__codelineno-7-27" name="__codelineno-7-27" href="#__codelineno-7-27"></a>
+</span><span id="__span-7-28"><a id="__codelineno-7-28" name="__codelineno-7-28" href="#__codelineno-7-28"></a><span class="c1"># --- ARMAR LOS 4 GRAFICOS (SIN 6 PANELES) ---</span>
+</span><span id="__span-7-29"><a id="__codelineno-7-29" name="__codelineno-7-29" href="#__codelineno-7-29"></a><span class="n">p.speed</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">ggplot</span><span class="p">(</span><span class="n">ploegData</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">time</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="n">speed</span><span class="o">*</span><span class="m">3.6</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="o">=</span><span class="n">nodeId</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+</span><span id="__span-7-30"><a id="__codelineno-7-30" name="__codelineno-7-30" href="#__codelineno-7-30"></a><span class="w">  </span><span class="nf">geom_line</span><span class="p">()</span>
+</span><span id="__span-7-31"><a id="__codelineno-7-31" name="__codelineno-7-31" href="#__codelineno-7-31"></a>
+</span><span id="__span-7-32"><a id="__codelineno-7-32" name="__codelineno-7-32" href="#__codelineno-7-32"></a><span class="n">p.distance</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">ggplot</span><span class="p">(</span><span class="nf">subset</span><span class="p">(</span><span class="n">ploegData</span><span class="p">,</span><span class="w"> </span><span class="n">distance</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="m">-1</span><span class="p">),</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">time</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="n">distance</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="o">=</span><span class="n">nodeId</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+</span><span id="__span-7-33"><a id="__codelineno-7-33" name="__codelineno-7-33" href="#__codelineno-7-33"></a><span class="w">  </span><span class="nf">geom_line</span><span class="p">()</span>
+</span><span id="__span-7-34"><a id="__codelineno-7-34" name="__codelineno-7-34" href="#__codelineno-7-34"></a>
+</span><span id="__span-7-35"><a id="__codelineno-7-35" name="__codelineno-7-35" href="#__codelineno-7-35"></a><span class="n">p.accel</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">ggplot</span><span class="p">(</span><span class="n">ploegData</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">time</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="n">acceleration</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="o">=</span><span class="n">nodeId</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+</span><span id="__span-7-36"><a id="__codelineno-7-36" name="__codelineno-7-36" href="#__codelineno-7-36"></a><span class="w">  </span><span class="nf">geom_line</span><span class="p">()</span>
+</span><span id="__span-7-37"><a id="__codelineno-7-37" name="__codelineno-7-37" href="#__codelineno-7-37"></a>
+</span><span id="__span-7-38"><a id="__codelineno-7-38" name="__codelineno-7-38" href="#__codelineno-7-38"></a><span class="n">p.caccel</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">ggplot</span><span class="p">(</span><span class="n">ploegData</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">time</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="n">controllerAcceleration</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="o">=</span><span class="n">nodeId</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+</span><span id="__span-7-39"><a id="__codelineno-7-39" name="__codelineno-7-39" href="#__codelineno-7-39"></a><span class="w">  </span><span class="nf">geom_line</span><span class="p">()</span>
+</span><span id="__span-7-40"><a id="__codelineno-7-40" name="__codelineno-7-40" href="#__codelineno-7-40"></a>
+</span><span id="__span-7-41"><a id="__codelineno-7-41" name="__codelineno-7-41" href="#__codelineno-7-41"></a><span class="c1"># --- UN SOLO PDF, 4 PAGINAS ---</span>
+</span><span id="__span-7-42"><a id="__codelineno-7-42" name="__codelineno-7-42" href="#__codelineno-7-42"></a><span class="nf">pdf</span><span class="p">(</span><span class="s">&quot;braking-ploeg.pdf&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">width</span><span class="o">=</span><span class="m">16</span><span class="p">,</span><span class="w"> </span><span class="n">height</span><span class="o">=</span><span class="m">9</span><span class="p">)</span>
+</span><span id="__span-7-43"><a id="__codelineno-7-43" name="__codelineno-7-43" href="#__codelineno-7-43"></a><span class="nf">print</span><span class="p">(</span><span class="n">p.speed</span><span class="p">)</span>
+</span><span id="__span-7-44"><a id="__codelineno-7-44" name="__codelineno-7-44" href="#__codelineno-7-44"></a><span class="nf">print</span><span class="p">(</span><span class="n">p.distance</span><span class="p">)</span>
+</span><span id="__span-7-45"><a id="__codelineno-7-45" name="__codelineno-7-45" href="#__codelineno-7-45"></a><span class="nf">print</span><span class="p">(</span><span class="n">p.accel</span><span class="p">)</span>
+</span><span id="__span-7-46"><a id="__codelineno-7-46" name="__codelineno-7-46" href="#__codelineno-7-46"></a><span class="nf">print</span><span class="p">(</span><span class="n">p.caccel</span><span class="p">)</span>
+</span><span id="__span-7-47"><a id="__codelineno-7-47" name="__codelineno-7-47" href="#__codelineno-7-47"></a><span class="nf">dev.off</span><span class="p">()</span>
+</span></code></pre></div>
+</details>
+<p>Qué hace, por partes:</p>
+<ol>
+<li><strong>Nombres.</strong> <code>cntr</code> y <code>controller()</code> vienen del script original. Traducen el número del controlador a su nombre, y usan el <code>headway</code> para distinguir los dos ACC.</li>
+<li><strong>Datos.</strong> <code>load(...)</code> carga la tabla <code>allData</code> desde <code>results/Braking.Rdata</code>.</li>
+<li><strong>Filtro.</strong> <code>subset(...)</code> se queda solo con las filas de Ploeg.</li>
+<li><strong>Gráficos.</strong> Cuatro gráficos contra el tiempo, con una línea por auto (<code>nodeId</code>): velocidad en km/h, distancia al auto de adelante, aceleración real y aceleración pedida por el controlador. En la distancia se descarta el valor <code>-1</code>, que corresponde al líder, porque no tiene auto adelante.</li>
+<li><strong>Salida.</strong> Un solo archivo, <code>braking-ploeg.pdf</code>, con los cuatro gráficos en cuatro páginas.</li>
+</ol>
+<p>Genera el PDF y guárdalo con otro nombre, porque es tu caso base:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>Rscript<span class="w"> </span>plot-braking-ploeg.R
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>cp<span class="w"> </span>braking-ploeg.pdf<span class="w"> </span>braking-ploeg-0.5.pdf
+</span></code></pre></div>
+<h3 id="paso-5-cambiar-h">Paso 5 · Cambiar <code>h</code></h3>
+<p>En <code>omnetpp.ini</code>, cambia el valor de <code>ploegH</code>:</p>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># Antes (por defecto)</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="na">*.node[*].scenario.ploegH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">${ploegH = 0.5}s</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="c1"># Después</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="na">*.node[*].scenario.ploegH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">${ploegH = 0.1}s</span>
+</span></code></pre></div>
+<p>Luego repite la simulación y el gráfico:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nb">cd</span><span class="w"> </span>~/src/plexe/examples/platooning
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>./run<span class="w"> </span>-u<span class="w"> </span>Cmdenv<span class="w"> </span>-c<span class="w"> </span>BrakingNoGui<span class="w"> </span>-r<span class="w"> </span><span class="m">3</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="nb">cd</span><span class="w"> </span>analysis
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>make<span class="w"> </span>Braking.Rdata
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>Rscript<span class="w"> </span>plot-braking-ploeg.R
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>cp<span class="w"> </span>braking-ploeg.pdf<span class="w"> </span>braking-ploeg-0.1.pdf
+</span></code></pre></div>
+<p>Haz lo mismo con <code>1.5</code> y, al terminar, deja otra vez <code>0.5</code>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Cada corrida reemplaza a la anterior</p>
+<p>El nombre del archivo de resultados no incluye <code>ploegH</code>, así que Ploeg escribe siempre en <code>Braking_2_0.1_0.vec</code>. Genera y guarda el PDF <strong>antes</strong> de cambiar <code>h</code> otra vez.</p>
+</div>
+<h2 id="5-resultados">5 · Resultados</h2>
+<p>Estos gráficos son las dos primeras páginas de cada PDF. En el eje vertical, <code>speed * 3.6</code> es la velocidad en km/h y <code>distance</code> es la distancia al auto de adelante en metros. El eje horizontal es el tiempo en segundos, y cada color es un auto (<code>nodeId</code>).</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">h = 0.5 s · caso base</label><label for="__tabbed_1_2">h = 0.1 s</label><label for="__tabbed_1_3">h = 1.5 s</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><img alt="Distancia al auto de adelante con h = 0.5 s" src="../img/caso-1-h05-distancia.png" /></p>
+<p><img alt="Velocidad con h = 0.5 s" src="../img/caso-1-h05-velocidad.png" /></p>
+<ul>
+<li>Hasta <code>t = 5 s</code> no pasa nada: las distancias se mantienen en 15.9 m, la distancia deseada a 100 km/h.</li>
+<li>Cuando el líder frena, cada auto frena un poco después que el de adelante.</li>
+<li>Hacia <code>t ≈ 12 s</code> están todos detenidos, a unos 2 m entre sí: la distancia en reposo.</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<p><img alt="Distancia al auto de adelante con h = 0.1 s" src="../img/caso-1-h01-distancia.png" /></p>
+<p><img alt="Velocidad con h = 0.1 s" src="../img/caso-1-h01-velocidad.png" /></p>
+<ul>
+<li><strong>Los autos se mueven antes del frenado.</strong> Parten a 15.9 m, pero ahora quieren estar a unos 4.8 m, así que aceleran para acercarse. Cada uno acelera más que el de adelante: llegan a entre 110 y 140 km/h, más rápido mientras más atrás van.</li>
+<li>Cuando el líder frena, los de atrás van más rápido que él y cada vez más cerca. Las distancias se desploman.</li>
+<li>Cerca de <code>t = 9.3 s</code>, la distancia de los autos 2 y 3 llega a 0 y la simulación termina antes de tiempo: <strong>hubo un choque</strong>.</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<p><img alt="Distancia al auto de adelante con h = 1.5 s" src="../img/caso-1-h15-distancia.png" /></p>
+<p><img alt="Velocidad con h = 1.5 s" src="../img/caso-1-h15-velocidad.png" /></p>
+<ul>
+<li><strong>Los autos también se mueven antes del frenado</strong>, pero al revés: parten a 15.9 m y quieren estar a unos 43.7 m, así que frenan. En <code>t = 5 s</code> ya van a entre 70 y 82 km/h, mientras el líder sigue a 100.</li>
+<li>Cuando el líder frena, cada distancia sube hasta un máximo y después baja. Los máximos disminuyen hacia la cola: unos 29 m en el auto 1 y unos 21 m en el auto 7.</li>
+<li>El pelotón queda detenido recién hacia <code>t ≈ 30 s</code>, contra <code>t ≈ 12 s</code> en el caso base.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Lo que de verdad muestran estos gráficos</p>
+<p>Con <code>h = 0.1 s</code> y <code>h = 1.5 s</code>, los autos se mueven <strong>antes</strong> de que el líder frene. La razón es que el ejemplo inserta los autos ya separados para <code>h = 0.5 s</code>. Al cambiar solo <code>ploegH</code>, el pelotón parte fuera del equilibrio y dedica los primeros segundos a reacomodarse. Por eso estos gráficos mezclan dos efectos: el reacomodo y la respuesta al frenado. El choque con <code>h = 0.1 s</code> ocurre cuando el frenado sorprende a los autos acelerando para acercarse, y no prueba por sí solo que ese valor sea inseguro.</p>
+</div>
+<h2 id="6-partir-del-equilibrio">6 · Partir del equilibrio</h2>
+<p>Para medir solo el efecto de <code>h</code>, los autos tienen que insertarse ya a la distancia que corresponde al nuevo valor. Eso lo define esta línea de <code>omnetpp.ini</code>, que tiene un valor por controlador. El cuarto es el de Ploeg:</p>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># Por defecto, preparado para h = 0.5 s</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="na">**.traffic.platoonInsertHeadway</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">${0.3, 1.2, 0, 0.5, 0.8, 0 ! controller}s</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="c1"># Para h = 0.1 s</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="na">**.traffic.platoonInsertHeadway</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">${0.3, 1.2, 0, 0.1, 0.8, 0 ! controller}s</span>
+</span></code></pre></div>
+<p>La distancia en reposo de la inserción (<code>platoonInsertDistance</code>) ya es de 2 m para Ploeg, la misma del controlador, así que no hay que cambiarla. Con este ajuste, las curvas deberían quedar planas hasta <code>t = 5 s</code>, como en el caso base, y la diferencia entre valores de <code>h</code> aparecería solo en el frenado.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a># PENDIENTE: repetir las corridas con la inserción ajustada y agregar los gráficos
+</span></code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Pendiente: los tres valores en una sola ejecución</p>
+<p>Editar <code>ploegH</code> a mano sirve para aprender, pero obliga a correr tres veces y a guardar cada PDF entre corridas. La alternativa es una sección propia en <code>omnetpp.ini</code> que fije Ploeg, recorra <code>${ploegH = 0.1, 0.5, 1.5}</code>, ajuste la inserción e incluya <code>ploegH</code> en el nombre de los archivos. Se documentará cuando esté probada.</p>
+</div>
+<h2 id="7-la-receta-general">7 · La receta general</h2>
+<p>Todos los casos siguientes repiten estos pasos:</p>
+<ol>
+<li><strong>Ubicar</strong> el parámetro: en qué archivo y en qué línea vive.</li>
+<li><strong>Identificar</strong> la configuración (<code>-c</code>) y la corrida (<code>-r</code>) que interesan.</li>
+<li><strong>Correr el caso base</strong> y guardar sus gráficos.</li>
+<li><strong>Cambiar el valor</strong>, volver a correr, procesar y guardar los gráficos con otro nombre.</li>
+<li><strong>Revisar el punto de partida</strong>: que el cambio no deje la simulación fuera del equilibrio.</li>
+<li><strong>Comparar</strong> contra el caso base.</li>
+</ol>
+<h3 id="errores-frecuentes">Errores frecuentes</h3>
+<table>
+<thead>
+<tr>
+<th>Síntoma</th>
+<th>Causa</th>
+<th>Solución</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>command not found</code> al usar <code>opp_run</code> o <code>genmakefile.py</code></td>
+<td>No se cargaron los entornos en esa terminal</td>
+<td>Repite los comandos de <a href="#1-antes-de-empezar">Antes de empezar</a></td>
+</tr>
+<tr>
+<td><code>make</code> dice que el <code>Makefile</code> se generó para otra versión de OMNeT++</td>
+<td>El <code>Makefile</code> viene de otra instalación</td>
+<td>Vuelve a generarlo con <code>genmakefile.py parse-config &gt; Makefile</code></td>
+</tr>
+<tr>
+<td>En los gráficos aparecen otros controladores</td>
+<td>Hay resultados de otras corridas en <code>results/</code></td>
+<td>Usa <code>plot-braking-ploeg.R</code>, que filtra Ploeg</td>
+</tr>
+<tr>
+<td>Los resultados de un <code>h</code> borraron los del anterior</td>
+<td>El nombre del <code>.vec</code> no incluye <code>ploegH</code></td>
+<td>Guarda el PDF antes de cambiar <code>h</code></td>
+</tr>
+<tr>
+<td>Los autos aceleran o frenan antes de <code>t = 5 s</code></td>
+<td>La inserción corresponde a otro <code>h</code></td>
+<td>Ajusta <code>platoonInsertHeadway</code> (<a href="#6-partir-del-equilibrio">sección 6</a>)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="8-siguiente-paso">8 · Siguiente paso</h2>
+<p>El <a href="../caso-2/">Caso 2</a> aplica la misma receta a un parámetro que ya no es del controlador, sino de la radio: la potencia de transmisión.</p>
 
 
 

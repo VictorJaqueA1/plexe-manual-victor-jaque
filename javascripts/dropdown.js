@@ -1,6 +1,6 @@
-/* Menu desplegable de la pestana "Ejemplos".
+/* Menu desplegable de la pestana "Casos practicos".
 
-   Se abre con un clic, no al posar el cursor. Como "Ejemplos" es un
+   Se abre con un clic, no al posar el cursor. Como "Casos practicos" es un
    enlace, el clic cancela la navegacion: su unica funcion pasa a ser
    abrir y cerrar el menu.
 

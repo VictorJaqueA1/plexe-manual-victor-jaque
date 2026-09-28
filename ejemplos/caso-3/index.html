@@ -29,7 +29,7 @@
     
     
       
-        <title>Caso 3 · Nuevo perfil de aceleración y velocidad del líder - Manual de Plexe</title>
+        <title>Caso 3 · Pérdida artificial de paquetes con FER - Manual de Plexe</title>
       
     
     
@@ -82,7 +82,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#caso-3-nuevo-perfil-de-aceleracion-y-velocidad-del-lider" class="md-skip">
+        <a href="#caso-3-perdida-artificial-de-paquetes-con-fer" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -170,35 +170,38 @@
 <li class="md-tabs__item mp-drop">
               <a href="../"
                  class="md-tabs__link md-tabs__link--active">
-                Ejemplos
+                Casos prácticos
                 <span class="mp-drop__chev">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.41 8.58 12 13.17l4.59-4.59L18 10l-6 6-6-6z"/></svg>
                 </span>
               </a>
               <ul class="mp-drop__menu">
                 <li>
-                  <a href="../">Todos los ejemplos</a>
+                  <a href="../">Todos los casos</a>
                 </li>
                   <li>
-                    <a href="../caso-1/">Caso 1 · Potencia de transmisión</a>
+                    <a href="../caso-1/">Caso 1 · Variar el tiempo de separación h de Ploeg</a>
                   </li>
                   <li>
-                    <a href="../caso-2/">Caso 2 · Pérdida artificial de paquetes con FER</a>
+                    <a href="../caso-2/">Caso 2 · Potencia de transmisión</a>
                   </li>
                   <li>
-                    <a href="./">Caso 3 · Nuevo perfil de aceleración y velocidad del líder</a>
+                    <a href="./">Caso 3 · Pérdida artificial de paquetes con FER</a>
                   </li>
                   <li>
-                    <a href="../caso-4/">Caso 4 · Más de un pelotón</a>
+                    <a href="../caso-4/">Caso 4 · Nuevo perfil de aceleración y velocidad del líder</a>
                   </li>
                   <li>
-                    <a href="../caso-5/">Caso 5 · Retardo estocástico de comunicación</a>
+                    <a href="../caso-5/">Caso 5 · Más de un pelotón</a>
                   </li>
                   <li>
-                    <a href="../caso-6/">Caso 6 · Event-triggered control sobre el envío de frames</a>
+                    <a href="../caso-6/">Caso 6 · Retardo estocástico de comunicación</a>
                   </li>
                   <li>
-                    <a href="../caso-7/">Caso 7 · ETC y retardo en conjunto</a>
+                    <a href="../caso-7/">Caso 7 · Event-triggered control sobre el envío de frames</a>
+                  </li>
+                  <li>
+                    <a href="../caso-8/">Caso 8 · ETC y retardo en conjunto</a>
                   </li>
               </ul>
             </li>
@@ -490,6 +493,8 @@
       
         
       
+        
+      
     
     
     
@@ -517,7 +522,7 @@
   <span class="md-ellipsis">
     
   
-    Ejemplos
+    Casos prácticos
   
 
     
@@ -539,7 +544,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Ejemplos
+    Casos prácticos
   
 
           </label>
@@ -561,7 +566,7 @@
   <span class="md-ellipsis">
     
   
-    Caso 1 · Potencia de transmisión
+    Caso 1 · Variar el tiempo de separación h de Ploeg
   
 
     
@@ -589,7 +594,7 @@
   <span class="md-ellipsis">
     
   
-    Caso 2 · Pérdida artificial de paquetes con FER
+    Caso 2 · Potencia de transmisión
   
 
     
@@ -626,7 +631,7 @@
   <span class="md-ellipsis">
     
   
-    Caso 3 · Nuevo perfil de aceleración y velocidad del líder
+    Caso 3 · Pérdida artificial de paquetes con FER
   
 
     
@@ -655,7 +660,7 @@
   <span class="md-ellipsis">
     
   
-    Caso 4 · Más de un pelotón
+    Caso 4 · Nuevo perfil de aceleración y velocidad del líder
   
 
     
@@ -683,7 +688,7 @@
   <span class="md-ellipsis">
     
   
-    Caso 5 · Retardo estocástico de comunicación
+    Caso 5 · Más de un pelotón
   
 
     
@@ -711,7 +716,7 @@
   <span class="md-ellipsis">
     
   
-    Caso 6 · Event-triggered control sobre el envío de frames
+    Caso 6 · Retardo estocástico de comunicación
   
 
     
@@ -739,7 +744,35 @@
   <span class="md-ellipsis">
     
   
-    Caso 7 · ETC y retardo en conjunto
+    Caso 7 · Event-triggered control sobre el envío de frames
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../caso-8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Caso 8 · ETC y retardo en conjunto
   
 
     
@@ -798,13 +831,13 @@
   
 
 
-<h1 id="caso-3-nuevo-perfil-de-aceleracion-y-velocidad-del-lider">Caso 3 · Nuevo perfil de aceleración y velocidad del líder</h1>
-<p><strong>Qué se hizo.</strong> Definir una trayectoria propia para el vehículo líder, en lugar de usar los perfiles que trae Plexe (aceleración sinusoidal y frenada de emergencia).</p>
-<p><strong>Para qué.</strong> El líder es la entrada del sistema: todo el pelotón reacciona a lo que él hace. Los perfiles incluidos sirven para demostraciones, pero no necesariamente someten al controlador a la maniobra que interesa estudiar. Un perfil propio permite provocar condiciones específicas, como una aceleración sostenida, una secuencia de maniobras encadenadas, o un patrón que reproduzca datos reales de conducción.</p>
-<p><strong>Cómo se implementa.</strong> Plexe organiza el comportamiento del líder en clases de escenario. Hay dos caminos: crear una clase nueva que herede de la clase base de escenario e imponga la aceleración deseada en cada paso de simulación, o alimentar el perfil desde un archivo externo y hacer que el líder lo siga punto por punto. El primero da control analítico, el segundo permite reproducir trayectorias medidas.</p>
-<div class="language-ini highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># PENDIENTE: selección del escenario nuevo y sus parámetros</span>
+<h1 id="caso-3-perdida-artificial-de-paquetes-con-fer">Caso 3 · Pérdida artificial de paquetes con FER</h1>
+<p><strong>Qué se hizo.</strong> Introducir una tasa de error de trama (<em>Frame Error Rate</em>) configurable, que descarta mensajes recibidos con una probabilidad fija antes de entregarlos a la capa superior.</p>
+<p><strong>Para qué.</strong> Es la contraparte metodológica del caso 2. Con potencia, la pérdida depende de la distancia, del modelo de propagación y de la posición del vehículo en el pelotón, o sea que la variable independiente no está bajo control directo. Con FER, la pérdida se fija como un número y es idéntica para todos los vehículos. Eso permite responder la pregunta pura: cuánta pérdida tolera el controlador, sin que la geometría del escenario contamine el resultado.</p>
+<p><strong>Cómo se implementa.</strong> Se descarta la trama recibida con probabilidad configurable, en el punto del camino de recepción donde el mensaje ya llegó íntegro pero todavía no fue procesado por la aplicación. La probabilidad se expone como parámetro para poder barrerla desde <code>omnetpp.ini</code>.</p>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># PENDIENTE: parámetro de FER y valores del barrido</span>
 </span></code></pre></div>
-<p><strong>Cómo se mide.</strong> Velocidad y aceleración del líder superpuestas a las de los seguidores, para ver la propagación de la maniobra a lo largo del pelotón, y el error de espaciamiento durante los transitorios, que es donde el controlador se pone a prueba.</p>
+<p><strong>Cómo se mide.</strong> Error de espaciamiento en función del FER, y el valor de FER a partir del cual el pelotón deja de ser estable. Conviene contrastar el resultado con el del caso 2: si ambos coinciden al traducir potencia a pérdida efectiva, el modelo es consistente.</p>
 
 
 

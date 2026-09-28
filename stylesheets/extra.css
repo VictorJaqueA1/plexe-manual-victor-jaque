@@ -167,7 +167,7 @@
 }
 
 /* =========================================================
-   Menú desplegable en la pestaña "Ejemplos"
+   Menú desplegable en la pestaña "Casos prácticos"
    La estructura vive en overrides/partials/header.html
    ========================================================= */
 /* Material recorta cualquier hijo que sobresalga de las pestanas:
@@ -202,7 +202,7 @@
   display: none;
   position: absolute;
   top: calc(100% + .3rem);
-  /* Ejemplos es la ultima pestana: anclando por la derecha el menu crece
+  /* Casos practicos es la ultima pestana: anclando por la derecha el menu crece
      hacia adentro y no se sale de la ventana. */
   right: 0;
   left: auto;

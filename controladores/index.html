@@ -172,35 +172,38 @@
 <li class="md-tabs__item mp-drop">
               <a href="../ejemplos/"
                  class="md-tabs__link">
-                Ejemplos
+                Casos prácticos
                 <span class="mp-drop__chev">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.41 8.58 12 13.17l4.59-4.59L18 10l-6 6-6-6z"/></svg>
                 </span>
               </a>
               <ul class="mp-drop__menu">
                 <li>
-                  <a href="../ejemplos/">Todos los ejemplos</a>
+                  <a href="../ejemplos/">Todos los casos</a>
                 </li>
                   <li>
-                    <a href="../ejemplos/caso-1/">Caso 1 · Potencia de transmisión</a>
+                    <a href="../ejemplos/caso-1/">Caso 1 · Variar el tiempo de separación h de Ploeg</a>
                   </li>
                   <li>
-                    <a href="../ejemplos/caso-2/">Caso 2 · Pérdida artificial de paquetes con FER</a>
+                    <a href="../ejemplos/caso-2/">Caso 2 · Potencia de transmisión</a>
                   </li>
                   <li>
-                    <a href="../ejemplos/caso-3/">Caso 3 · Nuevo perfil de aceleración y velocidad del líder</a>
+                    <a href="../ejemplos/caso-3/">Caso 3 · Pérdida artificial de paquetes con FER</a>
                   </li>
                   <li>
-                    <a href="../ejemplos/caso-4/">Caso 4 · Más de un pelotón</a>
+                    <a href="../ejemplos/caso-4/">Caso 4 · Nuevo perfil de aceleración y velocidad del líder</a>
                   </li>
                   <li>
-                    <a href="../ejemplos/caso-5/">Caso 5 · Retardo estocástico de comunicación</a>
+                    <a href="../ejemplos/caso-5/">Caso 5 · Más de un pelotón</a>
                   </li>
                   <li>
-                    <a href="../ejemplos/caso-6/">Caso 6 · Event-triggered control sobre el envío de frames</a>
+                    <a href="../ejemplos/caso-6/">Caso 6 · Retardo estocástico de comunicación</a>
                   </li>
                   <li>
-                    <a href="../ejemplos/caso-7/">Caso 7 · ETC y retardo en conjunto</a>
+                    <a href="../ejemplos/caso-7/">Caso 7 · Event-triggered control sobre el envío de frames</a>
+                  </li>
+                  <li>
+                    <a href="../ejemplos/caso-8/">Caso 8 · ETC y retardo en conjunto</a>
                   </li>
               </ul>
             </li>
@@ -814,6 +817,8 @@
       
         
       
+        
+      
     
     
     
@@ -840,7 +845,7 @@
   <span class="md-ellipsis">
     
   
-    Ejemplos
+    Casos prácticos
   
 
     
@@ -862,7 +867,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Ejemplos
+    Casos prácticos
   
 
           </label>
@@ -884,7 +889,7 @@
   <span class="md-ellipsis">
     
   
-    Caso 1 · Potencia de transmisión
+    Caso 1 · Variar el tiempo de separación h de Ploeg
   
 
     
@@ -912,7 +917,7 @@
   <span class="md-ellipsis">
     
   
-    Caso 2 · Pérdida artificial de paquetes con FER
+    Caso 2 · Potencia de transmisión
   
 
     
@@ -940,7 +945,7 @@
   <span class="md-ellipsis">
     
   
-    Caso 3 · Nuevo perfil de aceleración y velocidad del líder
+    Caso 3 · Pérdida artificial de paquetes con FER
   
 
     
@@ -968,7 +973,7 @@
   <span class="md-ellipsis">
     
   
-    Caso 4 · Más de un pelotón
+    Caso 4 · Nuevo perfil de aceleración y velocidad del líder
   
 
     
@@ -996,7 +1001,7 @@
   <span class="md-ellipsis">
     
   
-    Caso 5 · Retardo estocástico de comunicación
+    Caso 5 · Más de un pelotón
   
 
     
@@ -1024,7 +1029,7 @@
   <span class="md-ellipsis">
     
   
-    Caso 6 · Event-triggered control sobre el envío de frames
+    Caso 6 · Retardo estocástico de comunicación
   
 
     
@@ -1052,7 +1057,35 @@
   <span class="md-ellipsis">
     
   
-    Caso 7 · ETC y retardo en conjunto
+    Caso 7 · Event-triggered control sobre el envío de frames
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ejemplos/caso-8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Caso 8 · ETC y retardo en conjunto
   
 
     
@@ -1601,7 +1634,7 @@
 </div>
 <ul>
 <li><code>controller</code> define el controlador de los <strong>miembros</strong> del pelotón. Con <code>PlatoonsTrafficManager</code> (el del ejemplo <code>platooning</code>), el <strong>líder siempre usa ACC</strong>, con tiempo de separación <code>leaderHeadway</code>.</li>
-<li>En <code>&lt;PLEXE&gt;/examples/platooning/omnetpp.ini</code> el controlador no es un texto fijo: se recorre con la variable <code>${controller}</code>, que también ajusta la distancia y el tiempo de separación al insertar los vehículos. Sus valores son 0 = ACC (0.3 s), 1 = ACC (1.2 s), 2 = CACC, 3 = PLOEG, 4 = CONSENSUS y 5 = FLATBED.</li>
+<li>En <code>&lt;PLEXE&gt;/examples/platooning/omnetpp.ini</code> el controlador no es un texto fijo: se recorre con la variable de iteración <code>${controller = 0, 0, 1, 2, 3, 4}</code>, que también ajusta la distancia y el tiempo de separación al insertar los vehículos. Eso da seis corridas: <code>-r 0</code> = ACC (0.3 s), <code>-r 1</code> = ACC (1.2 s), <code>-r 2</code> = CACC, <code>-r 3</code> = PLOEG, <code>-r 4</code> = CONSENSUS y <code>-r 5</code> = FLATBED. El número de corrida no coincide con el valor de <code>${controller}</code>, que es el que aparece en el nombre de los archivos de resultados: PLOEG es la corrida 3, pero su archivo es <code>Braking_2_...</code> (ver <a href="../ejemplos/caso-1/#paso-1-identificar-la-corrida-de-ploeg">Caso 1</a>).</li>
 </ul>
 <h3 id="que-valor-manda">Qué valor manda</h3>
 <p>Un mismo parámetro puede aparecer en tres lugares. Gana el primero de esta lista:</p>
