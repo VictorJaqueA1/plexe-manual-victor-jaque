@@ -190,6 +190,8 @@ Abre PowerShell **como administrador** (clic derecho sobre PowerShell en el men�
 wsl --install -d Ubuntu-24.04
 ```
 
+**Fuente:** documentación oficial de Microsoft, [Instalación de WSL](https://learn.microsoft.com/es-es/windows/wsl/install). La guía de Plexe no menciona WSL.
+
 El comando hace dos instalaciones seguidas: primero WSL y después Ubuntu 24.04. Al terminar, Ubuntu arranca por primera vez en la misma ventana.
 
 **Así debería verse tu terminal:**
@@ -336,6 +338,8 @@ Descarga la lista actualizada de paquetes disponibles. No instala nada.
 sudo apt update
 ```
 
+**Fuente:** agregado en este manual. La guía de Plexe no lo incluye: es el paso habitual antes de instalar con `apt`, para que Ubuntu conozca las versiones disponibles.
+
 **Así debería verse tu terminal** (abreviado):
 
 ```text
@@ -368,6 +372,8 @@ sudo apt install -y make diffutils pkg-config ccache clang lld gdb lldb \
     qt6-base-dev qt6-base-dev-tools qmake6 libqt6svg6 qt6-wayland libwebkit2gtk-4.1-0 \
     r-base
 ```
+
+**Fuente:** guía oficial de Plexe, [*Install required libraries and tools*](https://plexe.car2x.org/building/#install-required-libraries-and-tools), en la sección *Building for Linux*. El comando es idéntico al de la guía; aquí solo se reparte en varias líneas para que se lea mejor.
 
 La opción `-y` responde «sí» sola a la confirmación de instalar, así que el comando corre de principio a fin sin preguntar nada.
 
@@ -409,6 +415,8 @@ python3 --version
 R --version | head -1
 ```
 
+**Fuente:** agregado en este manual.
+
 **Así debería verse tu terminal:**
 
 ```text
@@ -432,14 +440,27 @@ OMNeT++ es el motor de simulación. Todo lo demás corre encima, así que va pri
 
 #### 2.1 Descargar
 
-Se baja como archivo comprimido desde el sitio oficial y se descomprime dentro de `~/src/`. La carpeta resultante conserva el número de versión completo.
+Se baja como archivo comprimido (unos 400 MB) desde el sitio oficial de OMNeT++ y se descomprime dentro de `~/src/`, la carpeta que indica la guía de Plexe. La carpeta resultante conserva el número de versión completo.
 
 ```bash
 mkdir -p ~/src
 cd ~/src
-wget https://github.com/omnetpp/omnetpp/releases/download/omnetpp-6.2.0/omnetpp-6.2.0-linux-x86_64.tgz
-tar xvfz omnetpp-6.2.0-linux-x86_64.tgz
 ```
+
+**Fuente:** la carpeta `~/src` la indica la guía oficial de Plexe ([*Step 1: Install OMNeT++*](https://plexe.car2x.org/building/#step-1-install-omnet)). El `mkdir` lo agrega este manual, porque la guía da por hecho que esa carpeta ya existe.
+
+```bash
+wget https://github.com/omnetpp/omnetpp/releases/download/omnetpp-6.2.0/omnetpp-6.2.0-linux-x86_64.tgz
+```
+
+**Fuente:** archivo oficial de OMNeT++ 6.2.0 para Linux, publicado en su [GitHub](https://github.com/omnetpp/omnetpp/releases/tag/omnetpp-6.2.0). La guía de Plexe solo enlaza a la [página de descargas de OMNeT++](https://omnetpp.org/download/); descargarlo con `wget` lo agrega este manual, para hacerlo desde la terminal.
+
+```bash
+tar xzf omnetpp-6.2.0-linux-x86_64.tgz
+ls ~/src
+```
+
+**Fuente:** agregado en este manual. La guía de Plexe solo dice que hay que descomprimirlo; `tar xzf` es el comando estándar de Linux para un archivo `.tgz`, y `ls` muestra el contenido de `~/src` para comprobar el resultado.
 
 #### 2.2 Cargar el entorno
 
