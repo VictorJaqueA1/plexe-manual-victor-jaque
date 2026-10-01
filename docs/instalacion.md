@@ -116,7 +116,7 @@ Cada pieza sigue su propio camino desde la descarga hasta quedar operativa. Las 
 
 ```mermaid
 flowchart LR
-    A1["OMNeT++<br/>archivo comprimido"] --> A2["compilar"] --> A3["cargar entorno<br/>source setenv"]
+    A1["OMNeT++<br/>archivo comprimido"] --> A2["cargar entorno<br/>source setenv"] --> A3["compilar"]
     B1["Veins<br/>ZIP o Git"] --> B2["compilar"]
     C1["Plexe<br/>ZIP o Git"] --> C2["compilar<br/>indicando ruta de Veins"]
     D1["SUMO<br/>paquete binario"] --> D2["operativo<br/>sin compilar"]
@@ -124,7 +124,7 @@ flowchart LR
     B2 -.->|"habilita"| C2
 ```
 
-Este diagrama deja ver las dos cosas que más se malinterpretan: que **SUMO no pasa por compilación**, y que **cargar el entorno de OMNeT++ es lo que habilita todo lo demás**.
+Este diagrama deja ver las dos cosas que más se malinterpretan: que **SUMO no pasa por compilación**, y que **el entorno de OMNeT++ se carga antes de compilar**, incluso el propio OMNeT++.
 
 ### Cómo queda tu disco
 
@@ -334,6 +334,8 @@ Este paso se ejecuta una única vez por máquina.
 
 Descarga la lista actualizada de paquetes disponibles. No instala nada.
 
+En una terminal de Ubuntu, nueva o la que ya tengas abierta, ejecuta el siguiente comando:
+
 ```bash
 sudo apt update
 ```
@@ -364,6 +366,8 @@ El aviso final (*43 packages can be upgraded*) es normal y no impide seguir: esa
 ![Salida completa de sudo apt update en la terminal de Ubuntu, en el equipo de referencia](img/instalacion-paso-1-apt-update.png)
 
 #### 1.2 Instalar las dependencias
+
+En la misma terminal, ejecuta el siguiente comando:
 
 ```bash
 sudo apt install -y make diffutils pkg-config ccache clang lld gdb lldb \
@@ -406,7 +410,7 @@ El paso terminó bien cuando vuelve a aparecer la línea `victorjaque@...:~$` y 
 
 #### 1.3 Verificar
 
-Comprueba que las herramientas principales quedaron instaladas:
+Comprueba que las herramientas principales quedaron instaladas. En la misma terminal, ejecuta los siguientes comandos:
 
 ```bash
 clang --version | head -1
@@ -442,12 +446,16 @@ OMNeT++ es el motor de simulación. Todo lo demás corre encima, así que va pri
 
 Se baja como archivo comprimido (unos 400 MB) desde el sitio oficial de OMNeT++ y se descomprime dentro de `~/src/`, la carpeta que indica la guía de Plexe. La carpeta resultante conserva el número de versión completo.
 
+En una terminal de Ubuntu, nueva o la que ya tengas abierta, ejecuta los siguientes comandos:
+
 ```bash
 mkdir -p ~/src
 cd ~/src
 ```
 
 **Fuente:** la carpeta `~/src` la indica la guía oficial de Plexe ([*Step 1: Install OMNeT++*](https://plexe.car2x.org/building/#step-1-install-omnet)). El `mkdir` lo agrega este manual, porque la guía da por hecho que esa carpeta ya existe.
+
+En la misma terminal, dentro de `~/src`, ejecuta el siguiente comando:
 
 ```bash
 wget https://github.com/omnetpp/omnetpp/releases/download/omnetpp-6.2.0/omnetpp-6.2.0-linux-x86_64.tgz
@@ -460,6 +468,8 @@ wget https://github.com/omnetpp/omnetpp/releases/download/omnetpp-6.2.0/omnetpp-
 ![Inicio de la descarga de OMNeT++ 6.2.0 con wget en la terminal de Ubuntu, en el equipo de referencia](img/instalacion-paso-2-wget-omnetpp.png)
 
 La dirección larga que aparece después de *302 Found* es normal: GitHub redirige la descarga a su servidor de archivos mediante un enlace temporal.
+
+Cuando termine la descarga, en la misma terminal, dentro de `~/src`, ejecuta los siguientes comandos:
 
 ```bash
 tar xzf omnetpp-6.2.0-linux-x86_64.tgz
@@ -488,6 +498,8 @@ Las líneas amontonadas de la barra de progreso son solo un efecto visual: la ba
 
 Antes de compilar hay que preparar la terminal en dos partes: un entorno de Python propio de OMNeT++, que se crea una sola vez, y las variables de entorno de OMNeT++, que se cargan en cada terminal nueva.
 
+En una terminal de Ubuntu, nueva o la que ya tengas abierta, ejecuta el siguiente comando:
+
 ```bash
 cd ~/src/omnetpp-6.2.0
 ```
@@ -495,6 +507,8 @@ cd ~/src/omnetpp-6.2.0
 **Fuente:** guía oficial de Plexe ([*Step 1: Install OMNeT++*](https://plexe.car2x.org/building/#step-1-install-omnet)).
 
 **Solo la primera vez: el entorno de Python de OMNeT++**
+
+En la misma terminal, dentro de `~/src/omnetpp-6.2.0`, ejecuta los siguientes comandos:
 
 ```bash
 python3 -m venv .venv --upgrade-deps --clear --prompt "omnetpp/.venv"
@@ -515,6 +529,8 @@ python3 -m pip install -r python/requirements.txt
 La primera línea del `pip install`, *Ignoring setuptools*, es normal: ese paquete solo se usa en Windows.
 
 **En cada terminal nueva: las variables de OMNeT++**
+
+En la misma terminal, dentro de `~/src/omnetpp-6.2.0`, ejecuta el siguiente comando:
 
 ```bash
 source setenv
@@ -547,9 +563,22 @@ El `pip install` terminó bien cuando aparece *Successfully installed*, seguido 
 
 #### 2.3 Compilar
 
-La compilación se hace en dos etapas: primero `./configure` detecta qué hay instalado en tu sistema, y después `make` construye OMNeT++. Las dos se ejecutan dentro de `~/src/omnetpp-6.2.0`, en la misma terminal donde cargaste el entorno en el paso 2.2. Si abriste una terminal nueva, repite antes `cd ~/src/omnetpp-6.2.0` y `source setenv`.
+La compilación se hace en dos etapas: primero `./configure` detecta qué hay instalado en tu sistema, y después `make` construye OMNeT++. Las dos se ejecutan dentro de `~/src/omnetpp-6.2.0`, en la misma terminal donde cargaste el entorno en el paso 2.2.
 
-**Configurar**
+Si abriste una terminal nueva, ejecuta en ella los siguientes comandos:
+
+```bash
+cd ~/src/omnetpp-6.2.0
+source setenv
+```
+
+**Fuente:** guía oficial de Plexe ([*Step 1: Install OMNeT++*](https://plexe.car2x.org/building/#step-1-install-omnet)), igual que en el paso 2.2.
+
+La salida es la misma del paso 2.2.
+
+**2.3.1 Configurar**
+
+En la terminal donde cargaste el entorno en el paso 2.2, dentro de `~/src/omnetpp-6.2.0`, ejecuta el siguiente comando:
 
 ```bash
 ./configure
@@ -575,6 +604,8 @@ La compilación se hace en dos etapas: primero `./configure` detecta qué hay in
 
 Hay dos salidas oficiales: desactivar la vista 3D o instalar OpenSceneGraph (`libopenscenegraph-dev`, un paquete opcional de la guía de OMNeT++). Este manual desactiva la vista 3D, que es lo que sugiere la guía de Plexe y lo que pide el propio mensaje de error.
 
+En la misma terminal, dentro de `~/src/omnetpp-6.2.0`, ejecuta los siguientes comandos:
+
 ```bash
 sed -i 's/^WITH_OSG=yes/WITH_OSG=no/' configure.user
 grep ^WITH_OSG configure.user
@@ -593,7 +624,7 @@ WITH_OSGEARTH=no
 
 `sed` no muestra nada. El `grep` muestra dos líneas porque también encuentra `WITH_OSGEARTH`, otra opción de la vista 3D que ya venía desactivada. Si alguna vez quieres volver a la configuración original, `configure.user.dist` es una copia intacta del archivo que trae OMNeT++.
 
-Después de cambiar `configure.user` hay que volver a configurar:
+Después de cambiar `configure.user` hay que volver a configurar. En la misma terminal, dentro de `~/src/omnetpp-6.2.0`, ejecuta el siguiente comando:
 
 ```bash
 ./configure
@@ -631,34 +662,97 @@ Configuration phase finished. Use 'make' to build OMNeT++.
 
 ![Final del segundo ./configure, con el mensaje Configuration phase finished, en el equipo de referencia](img/instalacion-paso-2-configure-fin.png)
 
-**Construir**
+**2.3.2 Construir**
+
+Si abriste una terminal nueva, ejecuta en ella los siguientes comandos:
+
+```bash
+cd ~/src/omnetpp-6.2.0
+source setenv
+```
+
+**Fuente:** guía oficial de Plexe ([*Step 1: Install OMNeT++*](https://plexe.car2x.org/building/#step-1-install-omnet)), igual que en el paso 2.2.
+
+**Así debería verse tu terminal:**
+
+```text
+victorjaque@DESKTOP-6VI5783:~$ cd ~/src/omnetpp-6.2.0
+victorjaque@DESKTOP-6VI5783:~/src/omnetpp-6.2.0$ source setenv
+Activating python virtual environment in '/home/victorjaque/src/omnetpp-6.2.0/.venv'
+Environment for 'omnetpp-6.2.0' in directory '/home/victorjaque/src/omnetpp-6.2.0' is ready.
+(omnetpp/.venv) victorjaque@DESKTOP-6VI5783:~/src/omnetpp-6.2.0$
+```
+
+La línea que ahora empieza con `(omnetpp/.venv)` indica que el entorno quedó cargado. A diferencia del paso 2.2, ya no aparece *Type "./configure" and "make"…*: `setenv` solo lo muestra mientras OMNeT++ no está configurado.
+
+En la misma terminal, dentro de `~/src/omnetpp-6.2.0`, ejecuta el siguiente comando:
 
 ```bash
 make -j$(nproc)
 ```
 
-**Fuente:** guía oficial de Plexe ([*Step 1: Install OMNeT++*](https://plexe.car2x.org/building/#step-1-install-omnet)), que indica `make -j <number of cores of your PC>`. El `$(nproc)` lo agrega este manual: escribe solo la cantidad de núcleos disponibles (28 en el equipo de referencia).
+**Fuente:** guía oficial de Plexe ([*Step 1: Install OMNeT++*](https://plexe.car2x.org/building/#step-1-install-omnet)), que indica `make -j <number of cores of your PC>`, y [guía de instalación de OMNeT++](https://doc.omnetpp.org/omnetpp/InstallGuide.pdf), capítulo *Linux*, sección *Configuring and Building OMNeT++*. El `$(nproc)` lo agrega este manual: escribe solo la cantidad de núcleos disponibles (28 en el equipo de referencia).
+
+**Así debería verse tu terminal** (inicio y final, abreviado):
 
 ```text
-# PENDIENTE: salida real de make
+(omnetpp/.venv) victorjaque@DESKTOP-6VI5783:~/src/omnetpp-6.2.0$ make -j$(nproc)
+
+Building release and debug mode executables. Type 'make help' for further options.
+
+***** Configuration: MODE=release, TOOLCHAIN_NAME=clang, SHARED_LIBS=yes, LIB_SUFFIX=.so ****
+===== Checking environment =====
+===== Compiling utils ====
+===== Compiling common ====
+...
+Creating executable: out/clang-debug//tictoc_dbg
+Creating shared library: out/clang-debug//libqueueinglibext_dbg.so
+
+Now you can type 'omnetpp' to start the IDE.
 ```
+
+- *Now you can type 'omnetpp' to start the IDE* indica que la compilación terminó bien.
+- Compila todo **dos veces**: primero en modo *release* y después en modo *debug* (los archivos terminados en `_dbg`). Es normal; la guía de OMNeT++ lo advierte.
+- También compila los ejemplos de la carpeta `samples/`.
+- En el equipo de referencia tardó unos 2 minutos.
+
+**Ejemplo real: así empieza `make` en el equipo de referencia**
+
+![Inicio de make en una terminal nueva, después de cd y source setenv, en el equipo de referencia](img/instalacion-paso-2-make-inicio.png)
+
+La captura parte de una terminal nueva: por eso repite `cd ~/src/omnetpp-6.2.0` y `source setenv` antes del `make`.
+
+**Ejemplo real: así termina `make` en el equipo de referencia**
+
+![Final de make, con el mensaje Now you can type omnetpp to start the IDE, en el equipo de referencia](img/instalacion-paso-2-make-fin.png)
 
 #### 2.4 Verificar
 
-Antes de seguir, comprueba que OMNeT++ quedó bien construido abriendo su entorno gráfico. Si la ventana se abre, este paso está terminado.
+Antes de seguir, comprueba que OMNeT++ quedó bien construido: primero por terminal y después abriendo sus ventanas gráficas. Se hace en la misma terminal del paso 2.3.
+
+Si abriste una terminal nueva, ejecuta en ella los siguientes comandos:
 
 ```bash
-# Abrir el IDE:
-omnetpp
+cd ~/src/omnetpp-6.2.0
+source setenv
+```
 
-# Verificación rápida por terminal:
+**Fuente:** guía oficial de Plexe ([*Step 1: Install OMNeT++*](https://plexe.car2x.org/building/#step-1-install-omnet)), igual que en el paso 2.2.
+
+La salida es la misma del paso 2.3.2.
+
+En la misma terminal, ejecuta el siguiente comando:
+
+```bash
 opp_run -v
 ```
+
+**Fuente:** agregado en este manual: muestra la versión de OMNeT++ y las opciones con que se compiló.
 
 **Así debería verse tu terminal:**
 
 ```text
-$ opp_run -v
+(omnetpp/.venv) victorjaque@DESKTOP-6VI5783:~/src/omnetpp-6.2.0$ opp_run -v
 OMNeT++ Discrete Event Simulation  (C) 1992-2025 Andras Varga, OpenSim Ltd.
 Version: 6.2.0, build: 250714-83e173e93a, edition: Academic Public License -- NOT FOR COMMERCIAL USE
 See the license for distribution terms and warranty disclaimer
@@ -671,6 +765,90 @@ Options: 64-bit ARCH_X86_64 RELEASE WITH_NETBUILDER WITH_QTENV
 
 End.
 ```
+
+- *Version: 6.2.0* confirma la versión instalada.
+- En *Options* aparece `WITH_QTENV`, la ventana gráfica. No aparece `WITH_OSG` porque la vista 3D se desactivó en el paso 2.3.1.
+
+En la misma terminal, dentro de `~/src/omnetpp-6.2.0`, ejecuta los siguientes comandos:
+
+```bash
+cd samples/aloha
+./aloha
+```
+
+**Fuente:** [guía de instalación de OMNeT++](https://doc.omnetpp.org/omnetpp/InstallGuide.pdf), capítulo *Linux*, sección *Verifying the Installation*.
+
+**Así debería verse tu terminal** (abreviado):
+
+```text
+(omnetpp/.venv) victorjaque@DESKTOP-6VI5783:~/src/omnetpp-6.2.0$ cd samples/aloha
+(omnetpp/.venv) victorjaque@DESKTOP-6VI5783:~/src/omnetpp-6.2.0/samples/aloha$ ./aloha
+OMNeT++ Discrete Event Simulation  (C) 1992-2025 Andras Varga, OpenSim Ltd.
+...
+Setting up Qtenv...
+
+Loading NED files from .:  4
+...
+libEGL warning: failed to get driver name for fd -1
+...
+MESA: error: ZINK: failed to choose pdev
+libEGL warning: egl: failed to create dri2 screen
+
+End.
+```
+
+- Las líneas `libEGL warning` y `MESA: error` son avisos del sistema gráfico de WSL. En el equipo de referencia aparecieron y la ventana funcionó bien: no son un error.
+- *End.* aparece cuando cierras la ventana de aloha.
+
+Se abre la ventana de Qtenv con el diálogo *Set Up Inifile Configuration*. Deja la configuración que aparece (*PureAloha1*) y presiona **OK**.
+
+**Ejemplo real: el diálogo de configuración en el equipo de referencia**
+
+![Diálogo Set Up Inifile Configuration de Qtenv con PureAloha1 seleccionado, en el equipo de referencia](img/instalacion-paso-2-aloha-config.png)
+
+Aparece la red del ejemplo: varios *hosts* sobre un mapa. Si la ves, Qtenv funciona. Cierra la ventana con la **X**.
+
+**Ejemplo real: la red de aloha en el equipo de referencia**
+
+![Ventana de Qtenv con la red del ejemplo aloha, en el equipo de referencia](img/instalacion-paso-2-aloha.png)
+
+Después de cerrar la ventana de aloha, en la misma terminal, ejecuta el siguiente comando:
+
+```bash
+omnetpp
+```
+
+**Fuente:** [guía de instalación de OMNeT++](https://doc.omnetpp.org/omnetpp/InstallGuide.pdf), capítulo *Linux*, sección *Starting the IDE*.
+
+**Así debería verse tu terminal:**
+
+```text
+(omnetpp/.venv) victorjaque@DESKTOP-6VI5783:~/src/omnetpp-6.2.0/samples/aloha$ omnetpp
+Starting the OMNeT++ IDE...
+(omnetpp/.venv) victorjaque@DESKTOP-6VI5783:~/src/omnetpp-6.2.0/samples/aloha$ CompileCommand: exclude org/eclipse/jdt/internal/core/dom/rewrite/ASTRewriteAnalyzer.getExtendedRange bool exclude = true
+```
+
+El IDE se abre en una ventana aparte y la terminal queda libre. La línea `CompileCommand: ...` la escribe el IDE al arrancar; no es un error.
+
+Primero aparece *OMNeT++ IDE Launcher*, que pide la carpeta de trabajo (*workspace*). Deja la que propone, la carpeta `samples` de OMNeT++ (`~/src/omnetpp-6.2.0/samples`), y presiona **Launch**. Es la misma carpeta que usa el [tutorial oficial de Veins](https://veins.car2x.org/tutorial/#step2).
+
+**Ejemplo real: la elección de la carpeta de trabajo en el equipo de referencia**
+
+![Ventana OMNeT++ IDE Launcher con la carpeta samples propuesta como workspace, en el equipo de referencia](img/instalacion-paso-2-ide-workspace.png)
+
+Se abre el IDE con la pestaña *Welcome*. Con eso la verificación está completa y puedes cerrarlo.
+
+**Ejemplo real: el IDE de OMNeT++ en el equipo de referencia**
+
+![IDE de OMNeT++ abierto con la pestaña Welcome, en el equipo de referencia](img/instalacion-paso-2-ide.png)
+
+**Ejemplo real: la terminal durante la verificación en el equipo de referencia**
+
+![Terminal con cd, source setenv, opp_run -v, ./aloha y omnetpp, en el equipo de referencia](img/instalacion-paso-2-verificar-terminal.png)
+
+La captura parte de una terminal nueva: por eso empieza con `cd ~/src/omnetpp-6.2.0` y `source setenv`.
+
+Si las tres pruebas funcionan, OMNeT++ está instalado y puedes pasar al paso 3.
 
 ---
 
