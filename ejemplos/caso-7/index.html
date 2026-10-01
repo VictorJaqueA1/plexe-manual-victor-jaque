@@ -29,7 +29,7 @@
     
     
       
-        <title>Caso 7 · Event-triggered control sobre el envío de frames - Manual de Plexe</title>
+        <title>Caso 7 · Retardo estocástico de comunicación - Manual de Plexe</title>
       
     
     
@@ -82,7 +82,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#caso-7-event-triggered-control-sobre-el-envio-de-frames" class="md-skip">
+        <a href="#caso-7-retardo-estocastico-de-comunicacion" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -186,22 +186,25 @@
                     <a href="../caso-2/">Caso 2 · Variar la potencia de transmisión</a>
                   </li>
                   <li>
-                    <a href="../caso-3/">Caso 3 · Pérdida artificial de paquetes con FER</a>
+                    <a href="../caso-3/">Caso 3 · Variar el intervalo de envío de beacons</a>
                   </li>
                   <li>
-                    <a href="../caso-4/">Caso 4 · Nuevo perfil de aceleración y velocidad del líder</a>
+                    <a href="../caso-4/">Caso 4 · Pérdida artificial de paquetes con FER</a>
                   </li>
                   <li>
-                    <a href="../caso-5/">Caso 5 · Más de un pelotón</a>
+                    <a href="../caso-5/">Caso 5 · Nuevo perfil de aceleración y velocidad del líder</a>
                   </li>
                   <li>
-                    <a href="../caso-6/">Caso 6 · Retardo estocástico de comunicación</a>
+                    <a href="../caso-6/">Caso 6 · Más de un pelotón</a>
                   </li>
                   <li>
-                    <a href="./">Caso 7 · Event-triggered control sobre el envío de frames</a>
+                    <a href="./">Caso 7 · Retardo estocástico de comunicación</a>
                   </li>
                   <li>
-                    <a href="../caso-8/">Caso 8 · ETC y retardo en conjunto</a>
+                    <a href="../caso-8/">Caso 8 · Event-triggered control sobre el envío de frames</a>
+                  </li>
+                  <li>
+                    <a href="../caso-9/">Caso 9 · ETC y retardo en conjunto</a>
                   </li>
               </ul>
             </li>
@@ -495,6 +498,8 @@
       
         
       
+        
+      
     
     
     
@@ -622,7 +627,7 @@
   <span class="md-ellipsis">
     
   
-    Caso 3 · Pérdida artificial de paquetes con FER
+    Caso 3 · Variar el intervalo de envío de beacons
   
 
     
@@ -650,7 +655,7 @@
   <span class="md-ellipsis">
     
   
-    Caso 4 · Nuevo perfil de aceleración y velocidad del líder
+    Caso 4 · Pérdida artificial de paquetes con FER
   
 
     
@@ -678,7 +683,7 @@
   <span class="md-ellipsis">
     
   
-    Caso 5 · Más de un pelotón
+    Caso 5 · Nuevo perfil de aceleración y velocidad del líder
   
 
     
@@ -706,7 +711,7 @@
   <span class="md-ellipsis">
     
   
-    Caso 6 · Retardo estocástico de comunicación
+    Caso 6 · Más de un pelotón
   
 
     
@@ -743,7 +748,7 @@
   <span class="md-ellipsis">
     
   
-    Caso 7 · Event-triggered control sobre el envío de frames
+    Caso 7 · Retardo estocástico de comunicación
   
 
     
@@ -772,7 +777,35 @@
   <span class="md-ellipsis">
     
   
-    Caso 8 · ETC y retardo en conjunto
+    Caso 8 · Event-triggered control sobre el envío de frames
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../caso-9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Caso 9 · ETC y retardo en conjunto
   
 
     
@@ -831,13 +864,13 @@
   
 
 
-<h1 id="caso-7-event-triggered-control-sobre-el-envio-de-frames">Caso 7 · Event-triggered control sobre el envío de frames</h1>
-<p><strong>Qué se hizo.</strong> Reemplazar el envío periódico de mensajes por un envío condicionado: el vehículo transmite solo cuando una condición de disparo, evaluada localmente, se cumple.</p>
-<p><strong>Para qué.</strong> En el esquema periódico habitual, todos los vehículos transmiten a intervalo fijo, esté pasando algo o no. Eso desperdicia canal cuando el pelotón circula estable, y es justamente cuando hay maniobras que se necesitaría más información. El control disparado por eventos invierte la lógica: la transmisión se gasta cuando aporta. El objetivo es reducir la carga de canal sin degradar el desempeño del control, y cuantificar ese intercambio.</p>
-<p><strong>Cómo se implementa.</strong> Cada vehículo evalúa en cada paso una función de error entre el estado que tiene y el que comunicó por última vez. Si ese error supera un umbral, transmite y reinicia la referencia. El umbral es el parámetro que gobierna todo el comportamiento: muy alto deja de comunicar y el control se degrada, muy bajo degenera en el caso periódico. Suele ser necesario imponer además un tiempo mínimo entre transmisiones para evitar ráfagas.</p>
-<div class="language-ini highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># PENDIENTE: parámetros de la condición de disparo y del umbral</span>
+<h1 id="caso-7-retardo-estocastico-de-comunicacion">Caso 7 · Retardo estocástico de comunicación</h1>
+<p><strong>Qué se hizo.</strong> Introducir una latencia aleatoria en la entrega de los mensajes, muestreada de una distribución de probabilidad en lugar de ser un valor fijo.</p>
+<p><strong>Para qué.</strong> Los controladores cooperativos usan la información del líder para anticiparse, así que son directamente sensibles al retardo: si el dato llega tarde, la acción de control se calcula sobre un estado que ya cambió. Un retardo constante es fácil de compensar y no representa una red real, donde la latencia varía mensaje a mensaje. Un retardo estocástico obliga al controlador a operar con incertidumbre temporal, que es la condición realista.</p>
+<p><strong>Cómo se implementa.</strong> Cada mensaje recibe un retardo extra muestreado de una distribución configurable antes de ser entregado. La distribución y sus parámetros se exponen en <code>omnetpp.ini</code> para poder barrer el retardo medio y su dispersión de forma independiente.</p>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># PENDIENTE: distribución del retardo y valores del barrido</span>
 </span></code></pre></div>
-<p><strong>Cómo se mide.</strong> Cuatro indicadores, y los dos primeros son los que dan sentido al caso: el número total de mensajes enviados, que mide el ahorro; el tiempo entre eventos consecutivos y su distribución, que muestra cómo se reparte el esfuerzo de comunicación en el tiempo; el error de espaciamiento, que verifica que el control no se degradó; y la comparación directa contra el esquema periódico con el mismo desempeño de control, que es la que permite afirmar cuánto se ahorró.</p>
+<p><strong>Cómo se mide.</strong> Error de espaciamiento en función del retardo medio, y determinación del retardo máximo tolerable antes de perder la estabilidad. Hay que fijarse en la relación entre el retardo y el intervalo de envío de mensajes: cuando el retardo se acerca al período de envío, la información llega esencialmente obsoleta.</p>
 
 
 

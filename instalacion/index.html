@@ -188,22 +188,25 @@
                     <a href="../ejemplos/caso-2/">Caso 2 · Variar la potencia de transmisión</a>
                   </li>
                   <li>
-                    <a href="../ejemplos/caso-3/">Caso 3 · Pérdida artificial de paquetes con FER</a>
+                    <a href="../ejemplos/caso-3/">Caso 3 · Variar el intervalo de envío de beacons</a>
                   </li>
                   <li>
-                    <a href="../ejemplos/caso-4/">Caso 4 · Nuevo perfil de aceleración y velocidad del líder</a>
+                    <a href="../ejemplos/caso-4/">Caso 4 · Pérdida artificial de paquetes con FER</a>
                   </li>
                   <li>
-                    <a href="../ejemplos/caso-5/">Caso 5 · Más de un pelotón</a>
+                    <a href="../ejemplos/caso-5/">Caso 5 · Nuevo perfil de aceleración y velocidad del líder</a>
                   </li>
                   <li>
-                    <a href="../ejemplos/caso-6/">Caso 6 · Retardo estocástico de comunicación</a>
+                    <a href="../ejemplos/caso-6/">Caso 6 · Más de un pelotón</a>
                   </li>
                   <li>
-                    <a href="../ejemplos/caso-7/">Caso 7 · Event-triggered control sobre el envío de frames</a>
+                    <a href="../ejemplos/caso-7/">Caso 7 · Retardo estocástico de comunicación</a>
                   </li>
                   <li>
-                    <a href="../ejemplos/caso-8/">Caso 8 · ETC y retardo en conjunto</a>
+                    <a href="../ejemplos/caso-8/">Caso 8 · Event-triggered control sobre el envío de frames</a>
+                  </li>
+                  <li>
+                    <a href="../ejemplos/caso-9/">Caso 9 · ETC y retardo en conjunto</a>
                   </li>
               </ul>
             </li>
@@ -1097,6 +1100,8 @@
       
         
       
+        
+      
     
     
     
@@ -1223,7 +1228,7 @@
   <span class="md-ellipsis">
     
   
-    Caso 3 · Pérdida artificial de paquetes con FER
+    Caso 3 · Variar el intervalo de envío de beacons
   
 
     
@@ -1251,7 +1256,7 @@
   <span class="md-ellipsis">
     
   
-    Caso 4 · Nuevo perfil de aceleración y velocidad del líder
+    Caso 4 · Pérdida artificial de paquetes con FER
   
 
     
@@ -1279,7 +1284,7 @@
   <span class="md-ellipsis">
     
   
-    Caso 5 · Más de un pelotón
+    Caso 5 · Nuevo perfil de aceleración y velocidad del líder
   
 
     
@@ -1307,7 +1312,7 @@
   <span class="md-ellipsis">
     
   
-    Caso 6 · Retardo estocástico de comunicación
+    Caso 6 · Más de un pelotón
   
 
     
@@ -1335,7 +1340,7 @@
   <span class="md-ellipsis">
     
   
-    Caso 7 · Event-triggered control sobre el envío de frames
+    Caso 7 · Retardo estocástico de comunicación
   
 
     
@@ -1363,7 +1368,35 @@
   <span class="md-ellipsis">
     
   
-    Caso 8 · ETC y retardo en conjunto
+    Caso 8 · Event-triggered control sobre el envío de frames
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ejemplos/caso-9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Caso 9 · ETC y retardo en conjunto
   
 
     
@@ -2160,13 +2193,13 @@
 <h3 id="el-recorrido-de-cada-componente">El recorrido de cada componente</h3>
 <p>Cada pieza sigue su propio camino desde la descarga hasta quedar operativa. Las flechas punteadas marcan las dependencias reales de compilación:</p>
 <pre class="mermaid"><code>flowchart LR
-    A1["OMNeT++&lt;br/&gt;archivo comprimido"] --&gt; A2["compilar"] --&gt; A3["cargar entorno&lt;br/&gt;source setenv"]
+    A1["OMNeT++&lt;br/&gt;archivo comprimido"] --&gt; A2["cargar entorno&lt;br/&gt;source setenv"] --&gt; A3["compilar"]
     B1["Veins&lt;br/&gt;ZIP o Git"] --&gt; B2["compilar"]
     C1["Plexe&lt;br/&gt;ZIP o Git"] --&gt; C2["compilar&lt;br/&gt;indicando ruta de Veins"]
     D1["SUMO&lt;br/&gt;paquete binario"] --&gt; D2["operativo&lt;br/&gt;sin compilar"]
     A3 -.-&gt;|"habilita"| B2
     B2 -.-&gt;|"habilita"| C2</code></pre>
-<p>Este diagrama deja ver las dos cosas que más se malinterpretan: que <strong>SUMO no pasa por compilación</strong>, y que <strong>cargar el entorno de OMNeT++ es lo que habilita todo lo demás</strong>.</p>
+<p>Este diagrama deja ver las dos cosas que más se malinterpretan: que <strong>SUMO no pasa por compilación</strong>, y que <strong>el entorno de OMNeT++ se carga antes de compilar</strong>, incluso el propio OMNeT++.</p>
 <h3 id="como-queda-tu-disco">Cómo queda tu disco</h3>
 <p>Todo vive dentro de una sola carpeta, <code>~/src/</code>. Al terminar la instalación debería verse así:</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>~/src/
@@ -2346,6 +2379,7 @@
 </div>
 <h4 id="11-actualizar-la-lista-de-paquetes">1.1 Actualizar la lista de paquetes</h4>
 <p>Descarga la lista actualizada de paquetes disponibles. No instala nada.</p>
+<p>En una terminal de Ubuntu, nueva o la que ya tengas abierta, ejecuta el siguiente comando:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update
 </span></code></pre></div>
 <p><strong>Fuente:</strong> <a href="https://doc.omnetpp.org/omnetpp/InstallGuide.pdf">guía de instalación de OMNeT++</a>, capítulo <em>Ubuntu</em> (versión 6.2.0: <a href="https://github.com/omnetpp/omnetpp/blob/omnetpp-6.2.0/doc/src/installguide/ch-ubuntu.rst">ch-ubuntu.rst</a>), que lo recomienda antes de instalar paquetes. La guía de Plexe no lo incluye.</p>
@@ -2367,6 +2401,7 @@
 <p><strong>Ejemplo real: así se vio <code>sudo apt update</code> en el equipo de referencia</strong></p>
 <p><img alt="Salida completa de sudo apt update en la terminal de Ubuntu, en el equipo de referencia" src="../img/instalacion-paso-1-apt-update.png" /></p>
 <h4 id="12-instalar-las-dependencias">1.2 Instalar las dependencias</h4>
+<p>En la misma terminal, ejecuta el siguiente comando:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>make<span class="w"> </span>diffutils<span class="w"> </span>pkg-config<span class="w"> </span>ccache<span class="w"> </span>clang<span class="w"> </span>lld<span class="w"> </span>gdb<span class="w"> </span>lldb<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">    </span>bison<span class="w"> </span>flex<span class="w"> </span>perl<span class="w"> </span>sed<span class="w"> </span>gawk<span class="w"> </span>python3<span class="w"> </span>python3-pip<span class="w"> </span>python3-venv<span class="w"> </span>python3-dev<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="w">    </span>libxml2-dev<span class="w"> </span>zlib1g-dev<span class="w"> </span>doxygen<span class="w"> </span>graphviz<span class="w"> </span>xdg-utils<span class="w"> </span>libdw-dev<span class="w"> </span><span class="se">\</span>
@@ -2399,7 +2434,7 @@
 </ul>
 <p>El paso terminó bien cuando vuelve a aparecer la línea <code>victorjaque@...:~$</code> y no hay ningún mensaje que empiece con <code>E:</code>.</p>
 <h4 id="13-verificar">1.3 Verificar</h4>
-<p>Comprueba que las herramientas principales quedaron instaladas:</p>
+<p>Comprueba que las herramientas principales quedaron instaladas. En la misma terminal, ejecuta los siguientes comandos:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>clang<span class="w"> </span>--version<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-1
 </span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>qmake6<span class="w"> </span>--version<span class="w"> </span><span class="p">|</span><span class="w"> </span>tail<span class="w"> </span>-1
 </span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>python3<span class="w"> </span>--version
@@ -2422,16 +2457,19 @@
 <p>OMNeT++ es el motor de simulación. Todo lo demás corre encima, así que va primero.</p>
 <h4 id="21-descargar">2.1 Descargar</h4>
 <p>Se baja como archivo comprimido (unos 400 MB) desde el sitio oficial de OMNeT++ y se descomprime dentro de <code>~/src/</code>, la carpeta que indica la guía de Plexe. La carpeta resultante conserva el número de versión completo.</p>
+<p>En una terminal de Ubuntu, nueva o la que ya tengas abierta, ejecuta los siguientes comandos:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>~/src
 </span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="nb">cd</span><span class="w"> </span>~/src
 </span></code></pre></div>
 <p><strong>Fuente:</strong> la carpeta <code>~/src</code> la indica la guía oficial de Plexe (<a href="https://plexe.car2x.org/building/#step-1-install-omnet"><em>Step 1: Install OMNeT++</em></a>). El <code>mkdir</code> lo agrega este manual, porque la guía da por hecho que esa carpeta ya existe.</p>
+<p>En la misma terminal, dentro de <code>~/src</code>, ejecuta el siguiente comando:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>wget<span class="w"> </span>https://github.com/omnetpp/omnetpp/releases/download/omnetpp-6.2.0/omnetpp-6.2.0-linux-x86_64.tgz
 </span></code></pre></div>
 <p><strong>Fuente:</strong> archivo oficial de OMNeT++ 6.2.0 para Linux, publicado en su <a href="https://github.com/omnetpp/omnetpp/releases/tag/omnetpp-6.2.0">GitHub</a>. La guía de Plexe solo enlaza a la <a href="https://omnetpp.org/download/">página de descargas de OMNeT++</a>; descargarlo con <code>wget</code> lo agrega este manual, para hacerlo desde la terminal.</p>
 <p><strong>Ejemplo real: así empieza la descarga en el equipo de referencia</strong></p>
 <p><img alt="Inicio de la descarga de OMNeT++ 6.2.0 con wget en la terminal de Ubuntu, en el equipo de referencia" src="../img/instalacion-paso-2-wget-omnetpp.png" /></p>
 <p>La dirección larga que aparece después de <em>302 Found</em> es normal: GitHub redirige la descarga a su servidor de archivos mediante un enlace temporal.</p>
+<p>Cuando termine la descarga, en la misma terminal, dentro de <code>~/src</code>, ejecuta los siguientes comandos:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>tar<span class="w"> </span>xzf<span class="w"> </span>omnetpp-6.2.0-linux-x86_64.tgz
 </span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>ls<span class="w"> </span>~/src
 </span></code></pre></div>
@@ -2447,10 +2485,12 @@
 <p>Las líneas amontonadas de la barra de progreso son solo un efecto visual: la barra se redibuja muchas veces y, si la ventana es angosta, se desordena. Lo que importa es la línea <code>saved [415465426/415465426]</code>: cuando los dos números son iguales, la descarga está completa.</p>
 <h4 id="22-cargar-el-entorno">2.2 Cargar el entorno</h4>
 <p>Antes de compilar hay que preparar la terminal en dos partes: un entorno de Python propio de OMNeT++, que se crea una sola vez, y las variables de entorno de OMNeT++, que se cargan en cada terminal nueva.</p>
+<p>En una terminal de Ubuntu, nueva o la que ya tengas abierta, ejecuta el siguiente comando:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="nb">cd</span><span class="w"> </span>~/src/omnetpp-6.2.0
 </span></code></pre></div>
 <p><strong>Fuente:</strong> guía oficial de Plexe (<a href="https://plexe.car2x.org/building/#step-1-install-omnet"><em>Step 1: Install OMNeT++</em></a>).</p>
 <p><strong>Solo la primera vez: el entorno de Python de OMNeT++</strong></p>
+<p>En la misma terminal, dentro de <code>~/src/omnetpp-6.2.0</code>, ejecuta los siguientes comandos:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>.venv<span class="w"> </span>--upgrade-deps<span class="w"> </span>--clear<span class="w"> </span>--prompt<span class="w"> </span><span class="s2">&quot;omnetpp/.venv&quot;</span>
 </span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="nb">source</span><span class="w"> </span>.venv/bin/activate
 </span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>python/requirements.txt
@@ -2465,6 +2505,7 @@
 <p><img alt="Creación y activación del entorno de Python de OMNeT++ e inicio de la instalación de sus librerías, en el equipo de referencia" src="../img/instalacion-paso-2-venv-pip.png" /></p>
 <p>La primera línea del <code>pip install</code>, <em>Ignoring setuptools</em>, es normal: ese paquete solo se usa en Windows.</p>
 <p><strong>En cada terminal nueva: las variables de OMNeT++</strong></p>
+<p>En la misma terminal, dentro de <code>~/src/omnetpp-6.2.0</code>, ejecuta el siguiente comando:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="nb">source</span><span class="w"> </span>setenv
 </span></code></pre></div>
 <p><strong>Fuente:</strong> guía oficial de Plexe (<a href="https://plexe.car2x.org/building/#step-1-install-omnet"><em>Step 1: Install OMNeT++</em></a>) y <a href="https://doc.omnetpp.org/omnetpp/InstallGuide.pdf">guía de instalación de OMNeT++</a>, capítulo <em>Linux</em>, sección <em>Environment Variables</em>.</p>
@@ -2488,52 +2529,60 @@
 <p>Cargar el entorno <strong>no es permanente</strong>: afecta solo a la terminal donde lo ejecutas. Si cierras la terminal o abres otra, hay que volver a hacerlo. Olvidarlo es, por lejos, la causa más frecuente de errores durante la instalación y de comandos que "no existen" cuando en realidad sí están instalados. Para no depender de la memoria, se puede añadir a la configuración del intérprete de comandos y quedará automático.</p>
 </div>
 <h4 id="23-compilar">2.3 Compilar</h4>
-<p>La compilación se hace en dos etapas: primero <code>./configure</code> detecta qué hay instalado en tu sistema, y después <code>make</code> construye OMNeT++. Las dos se ejecutan dentro de <code>~/src/omnetpp-6.2.0</code>, en la misma terminal donde cargaste el entorno en el paso 2.2. Si abriste una terminal nueva, repite antes <code>cd ~/src/omnetpp-6.2.0</code> y <code>source setenv</code>.</p>
-<p><strong>Configurar</strong></p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>./configure
+<p>La compilación se hace en dos etapas: primero <code>./configure</code> detecta qué hay instalado en tu sistema, y después <code>make</code> construye OMNeT++. Las dos se ejecutan dentro de <code>~/src/omnetpp-6.2.0</code>, en la misma terminal donde cargaste el entorno en el paso 2.2.</p>
+<p>Si abriste una terminal nueva, ejecuta en ella los siguientes comandos:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="nb">cd</span><span class="w"> </span>~/src/omnetpp-6.2.0
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="nb">source</span><span class="w"> </span>setenv
+</span></code></pre></div>
+<p><strong>Fuente:</strong> guía oficial de Plexe (<a href="https://plexe.car2x.org/building/#step-1-install-omnet"><em>Step 1: Install OMNeT++</em></a>), igual que en el paso 2.2.</p>
+<p>La salida es la misma del paso 2.2.</p>
+<p><strong>2.3.1 Configurar</strong></p>
+<p>En la terminal donde cargaste el entorno en el paso 2.2, dentro de <code>~/src/omnetpp-6.2.0</code>, ejecuta el siguiente comando:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>./configure
 </span></code></pre></div>
 <p><strong>Fuente:</strong> guía oficial de Plexe (<a href="https://plexe.car2x.org/building/#step-1-install-omnet"><em>Step 1: Install OMNeT++</em></a>) y <a href="https://doc.omnetpp.org/omnetpp/InstallGuide.pdf">guía de instalación de OMNeT++</a>, capítulo <em>Linux</em>, sección <em>Configuring and Building OMNeT++</em>.</p>
 <div class="admonition failure">
 <p class="admonition-title">Error: Cannot find OpenSceneGraph 3.2 or later</p>
 <p><strong>Cuándo aparece:</strong> la primera vez que se ejecuta <code>./configure</code>, si en el paso 1 se instalaron solo los paquetes de la guía de Plexe.</p>
 <p><strong>Qué significa:</strong> OpenSceneGraph es la librería de la vista 3D de Qtenv. OMNeT++ 6.2.0 viene con esa vista activada (<code>WITH_OSG=yes</code> en el archivo <code>configure.user</code>), pero la lista de paquetes de la guía de Plexe no instala OpenSceneGraph, así que <code>./configure</code> se detiene. Plexe no necesita la vista 3D.</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>checking for OpenSceneGraph with CFLAGS=... no
-</span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>configure: error: Cannot find OpenSceneGraph 3.2 or later - 3D view in Qtenv will not be available. Set WITH_OSG=no in configure.user to disable this feature or install the development package for OpenSceneGraph.
+<div class="language-text highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>checking for OpenSceneGraph with CFLAGS=... no
+</span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>configure: error: Cannot find OpenSceneGraph 3.2 or later - 3D view in Qtenv will not be available. Set WITH_OSG=no in configure.user to disable this feature or install the development package for OpenSceneGraph.
 </span></code></pre></div>
 <p><strong>Ejemplo real: así apareció el error en el equipo de referencia</strong></p>
 <p><img alt="Error de ./configure por falta de OpenSceneGraph, en el equipo de referencia" src="../img/instalacion-paso-2-error-osg.png" /></p>
 </div>
 <p><strong>Solución: desactivar la vista 3D</strong></p>
 <p>Hay dos salidas oficiales: desactivar la vista 3D o instalar OpenSceneGraph (<code>libopenscenegraph-dev</code>, un paquete opcional de la guía de OMNeT++). Este manual desactiva la vista 3D, que es lo que sugiere la guía de Plexe y lo que pide el propio mensaje de error.</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">&#39;s/^WITH_OSG=yes/WITH_OSG=no/&#39;</span><span class="w"> </span>configure.user
-</span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>grep<span class="w"> </span>^WITH_OSG<span class="w"> </span>configure.user
+<p>En la misma terminal, dentro de <code>~/src/omnetpp-6.2.0</code>, ejecuta los siguientes comandos:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">&#39;s/^WITH_OSG=yes/WITH_OSG=no/&#39;</span><span class="w"> </span>configure.user
+</span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>grep<span class="w"> </span>^WITH_OSG<span class="w"> </span>configure.user
 </span></code></pre></div>
 <p><strong>Fuente:</strong> qué hacer lo indican la guía de Plexe (nota del <a href="https://plexe.car2x.org/building/#step-1-install-omnet"><em>Step 1</em></a>: editar <code>configure.user</code> para desactivar OpenSceneGraph), la <a href="https://doc.omnetpp.org/omnetpp/InstallGuide.pdf">guía de instalación de OMNeT++</a>, capítulo <em>Build Options</em>, que incluye la opción <code>WITH_OSG=no</code> (versión 6.2.0: <a href="https://github.com/omnetpp/omnetpp/blob/omnetpp-6.2.0/doc/src/installguide/ch-build-options.rst">ch-build-options.rst</a>), y el propio mensaje de error. Cómo hacerlo desde la terminal lo agrega este manual: <code>sed</code> cambia la línea <code>WITH_OSG=yes</code> por <code>WITH_OSG=no</code>, y <code>grep</code> la muestra para comprobar el cambio.</p>
 <p><strong>Así debería verse tu terminal:</strong></p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>(omnetpp/.venv) victorjaque@DESKTOP-6VI5783:~/src/omnetpp-6.2.0$ sed -i &#39;s/^WITH_OSG=yes/WITH_OSG=no/&#39; configure.user
-</span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>(omnetpp/.venv) victorjaque@DESKTOP-6VI5783:~/src/omnetpp-6.2.0$ grep ^WITH_OSG configure.user
-</span><span id="__span-26-3"><a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a>WITH_OSG=no
-</span><span id="__span-26-4"><a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a>WITH_OSGEARTH=no
+<div class="language-text highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>(omnetpp/.venv) victorjaque@DESKTOP-6VI5783:~/src/omnetpp-6.2.0$ sed -i &#39;s/^WITH_OSG=yes/WITH_OSG=no/&#39; configure.user
+</span><span id="__span-27-2"><a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a>(omnetpp/.venv) victorjaque@DESKTOP-6VI5783:~/src/omnetpp-6.2.0$ grep ^WITH_OSG configure.user
+</span><span id="__span-27-3"><a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a>WITH_OSG=no
+</span><span id="__span-27-4"><a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a>WITH_OSGEARTH=no
 </span></code></pre></div>
 <p><code>sed</code> no muestra nada. El <code>grep</code> muestra dos líneas porque también encuentra <code>WITH_OSGEARTH</code>, otra opción de la vista 3D que ya venía desactivada. Si alguna vez quieres volver a la configuración original, <code>configure.user.dist</code> es una copia intacta del archivo que trae OMNeT++.</p>
-<p>Después de cambiar <code>configure.user</code> hay que volver a configurar:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>./configure
+<p>Después de cambiar <code>configure.user</code> hay que volver a configurar. En la misma terminal, dentro de <code>~/src/omnetpp-6.2.0</code>, ejecuta el siguiente comando:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>./configure
 </span></code></pre></div>
 <p><strong>Fuente:</strong> <a href="https://doc.omnetpp.org/omnetpp/InstallGuide.pdf">guía de instalación de OMNeT++</a>, capítulo <em>Build Options</em>: después de cambiar <code>configure.user</code> siempre hay que volver a ejecutar <code>./configure</code>.</p>
 <p><strong>Así debería verse tu terminal</strong> (inicio y final, abreviado):</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>(omnetpp/.venv) victorjaque@DESKTOP-6VI5783:~/src/omnetpp-6.2.0$ ./configure
-</span><span id="__span-28-2"><a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a>configure: Environment variables (PATH and PYTHONPATH) are correctly set.
-</span><span id="__span-28-3"><a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a>configure: Reading configure.user for your custom settings.
-</span><span id="__span-28-4"><a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a>configure: Creating a backup of &#39;Makefile.inc&#39;.
-</span><span id="__span-28-5"><a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a>mv: cannot stat &#39;./Makefile.inc&#39;: No such file or directory
-</span><span id="__span-28-6"><a id="__codelineno-28-6" name="__codelineno-28-6" href="#__codelineno-28-6"></a>checking build system type... x86_64-pc-linux-gnu
-</span><span id="__span-28-7"><a id="__codelineno-28-7" name="__codelineno-28-7" href="#__codelineno-28-7"></a>...
-</span><span id="__span-28-8"><a id="__codelineno-28-8" name="__codelineno-28-8" href="#__codelineno-28-8"></a>checking for ccache... ccache
-</span><span id="__span-28-9"><a id="__codelineno-28-9" name="__codelineno-28-9" href="#__codelineno-28-9"></a>configure: creating ./config.status
-</span><span id="__span-28-10"><a id="__codelineno-28-10" name="__codelineno-28-10" href="#__codelineno-28-10"></a>config.status: creating Makefile.inc
-</span><span id="__span-28-11"><a id="__codelineno-28-11" name="__codelineno-28-11" href="#__codelineno-28-11"></a>config.status: creating include/omnetpp/platdep/config.h
-</span><span id="__span-28-12"><a id="__codelineno-28-12" name="__codelineno-28-12" href="#__codelineno-28-12"></a>
-</span><span id="__span-28-13"><a id="__codelineno-28-13" name="__codelineno-28-13" href="#__codelineno-28-13"></a>Configuration phase finished. Use &#39;make&#39; to build OMNeT++.
+<div class="language-text highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>(omnetpp/.venv) victorjaque@DESKTOP-6VI5783:~/src/omnetpp-6.2.0$ ./configure
+</span><span id="__span-29-2"><a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>configure: Environment variables (PATH and PYTHONPATH) are correctly set.
+</span><span id="__span-29-3"><a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a>configure: Reading configure.user for your custom settings.
+</span><span id="__span-29-4"><a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a>configure: Creating a backup of &#39;Makefile.inc&#39;.
+</span><span id="__span-29-5"><a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a>mv: cannot stat &#39;./Makefile.inc&#39;: No such file or directory
+</span><span id="__span-29-6"><a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a>checking build system type... x86_64-pc-linux-gnu
+</span><span id="__span-29-7"><a id="__codelineno-29-7" name="__codelineno-29-7" href="#__codelineno-29-7"></a>...
+</span><span id="__span-29-8"><a id="__codelineno-29-8" name="__codelineno-29-8" href="#__codelineno-29-8"></a>checking for ccache... ccache
+</span><span id="__span-29-9"><a id="__codelineno-29-9" name="__codelineno-29-9" href="#__codelineno-29-9"></a>configure: creating ./config.status
+</span><span id="__span-29-10"><a id="__codelineno-29-10" name="__codelineno-29-10" href="#__codelineno-29-10"></a>config.status: creating Makefile.inc
+</span><span id="__span-29-11"><a id="__codelineno-29-11" name="__codelineno-29-11" href="#__codelineno-29-11"></a>config.status: creating include/omnetpp/platdep/config.h
+</span><span id="__span-29-12"><a id="__codelineno-29-12" name="__codelineno-29-12" href="#__codelineno-29-12"></a>
+</span><span id="__span-29-13"><a id="__codelineno-29-13" name="__codelineno-29-13" href="#__codelineno-29-13"></a>Configuration phase finished. Use &#39;make&#39; to build OMNeT++.
 </span></code></pre></div>
 <ul>
 <li><em>Configuration phase finished</em> indica que la configuración terminó bien.</li>
@@ -2544,42 +2593,139 @@
 <p><img alt="Error de OpenSceneGraph, corrección con sed y grep, e inicio del segundo ./configure, en el equipo de referencia" src="../img/instalacion-paso-2-configure-inicio.png" /></p>
 <p><strong>Ejemplo real: así termina el segundo <code>./configure</code> en el equipo de referencia</strong></p>
 <p><img alt="Final del segundo ./configure, con el mensaje Configuration phase finished, en el equipo de referencia" src="../img/instalacion-paso-2-configure-fin.png" /></p>
-<p><strong>Construir</strong></p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>make<span class="w"> </span>-j<span class="k">$(</span>nproc<span class="k">)</span>
+<p><strong>2.3.2 Construir</strong></p>
+<p>Si abriste una terminal nueva, ejecuta en ella los siguientes comandos:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="nb">cd</span><span class="w"> </span>~/src/omnetpp-6.2.0
+</span><span id="__span-30-2"><a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a><span class="nb">source</span><span class="w"> </span>setenv
 </span></code></pre></div>
-<p><strong>Fuente:</strong> guía oficial de Plexe (<a href="https://plexe.car2x.org/building/#step-1-install-omnet"><em>Step 1: Install OMNeT++</em></a>), que indica <code>make -j &lt;number of cores of your PC&gt;</code>. El <code>$(nproc)</code> lo agrega este manual: escribe solo la cantidad de núcleos disponibles (28 en el equipo de referencia).</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a># PENDIENTE: salida real de make
-</span></code></pre></div>
-<h4 id="24-verificar">2.4 Verificar</h4>
-<p>Antes de seguir, comprueba que OMNeT++ quedó bien construido abriendo su entorno gráfico. Si la ventana se abre, este paso está terminado.</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="c1"># Abrir el IDE:</span>
-</span><span id="__span-31-2"><a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a>omnetpp
-</span><span id="__span-31-3"><a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a>
-</span><span id="__span-31-4"><a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a><span class="c1"># Verificación rápida por terminal:</span>
-</span><span id="__span-31-5"><a id="__codelineno-31-5" name="__codelineno-31-5" href="#__codelineno-31-5"></a>opp_run<span class="w"> </span>-v
-</span></code></pre></div>
+<p><strong>Fuente:</strong> guía oficial de Plexe (<a href="https://plexe.car2x.org/building/#step-1-install-omnet"><em>Step 1: Install OMNeT++</em></a>), igual que en el paso 2.2.</p>
 <p><strong>Así debería verse tu terminal:</strong></p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>$ opp_run -v
-</span><span id="__span-32-2"><a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>OMNeT++ Discrete Event Simulation  (C) 1992-2025 Andras Varga, OpenSim Ltd.
-</span><span id="__span-32-3"><a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a>Version: 6.2.0, build: 250714-83e173e93a, edition: Academic Public License -- NOT FOR COMMERCIAL USE
-</span><span id="__span-32-4"><a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a>See the license for distribution terms and warranty disclaimer
-</span><span id="__span-32-5"><a id="__codelineno-32-5" name="__codelineno-32-5" href="#__codelineno-32-5"></a>
-</span><span id="__span-32-6"><a id="__codelineno-32-6" name="__codelineno-32-6" href="#__codelineno-32-6"></a>Setting up Qtenv...
-</span><span id="__span-32-7"><a id="__codelineno-32-7" name="__codelineno-32-7" href="#__codelineno-32-7"></a>
-</span><span id="__span-32-8"><a id="__codelineno-32-8" name="__codelineno-32-8" href="#__codelineno-32-8"></a>Build: omnetpp-6.2.0 250714-83e173e93a
-</span><span id="__span-32-9"><a id="__codelineno-32-9" name="__codelineno-32-9" href="#__codelineno-32-9"></a>Compiler: CLANG 18.1.3 (1ubuntu1)
-</span><span id="__span-32-10"><a id="__codelineno-32-10" name="__codelineno-32-10" href="#__codelineno-32-10"></a>Options: 64-bit ARCH_X86_64 RELEASE WITH_NETBUILDER WITH_QTENV
-</span><span id="__span-32-11"><a id="__codelineno-32-11" name="__codelineno-32-11" href="#__codelineno-32-11"></a>
-</span><span id="__span-32-12"><a id="__codelineno-32-12" name="__codelineno-32-12" href="#__codelineno-32-12"></a>End.
+<div class="language-text highlight"><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>victorjaque@DESKTOP-6VI5783:~$ cd ~/src/omnetpp-6.2.0
+</span><span id="__span-31-2"><a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a>victorjaque@DESKTOP-6VI5783:~/src/omnetpp-6.2.0$ source setenv
+</span><span id="__span-31-3"><a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a>Activating python virtual environment in &#39;/home/victorjaque/src/omnetpp-6.2.0/.venv&#39;
+</span><span id="__span-31-4"><a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a>Environment for &#39;omnetpp-6.2.0&#39; in directory &#39;/home/victorjaque/src/omnetpp-6.2.0&#39; is ready.
+</span><span id="__span-31-5"><a id="__codelineno-31-5" name="__codelineno-31-5" href="#__codelineno-31-5"></a>(omnetpp/.venv) victorjaque@DESKTOP-6VI5783:~/src/omnetpp-6.2.0$
 </span></code></pre></div>
+<p>La línea que ahora empieza con <code>(omnetpp/.venv)</code> indica que el entorno quedó cargado. A diferencia del paso 2.2, ya no aparece <em>Type "./configure" and "make"…</em>: <code>setenv</code> solo lo muestra mientras OMNeT++ no está configurado.</p>
+<p>En la misma terminal, dentro de <code>~/src/omnetpp-6.2.0</code>, ejecuta el siguiente comando:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>make<span class="w"> </span>-j<span class="k">$(</span>nproc<span class="k">)</span>
+</span></code></pre></div>
+<p><strong>Fuente:</strong> guía oficial de Plexe (<a href="https://plexe.car2x.org/building/#step-1-install-omnet"><em>Step 1: Install OMNeT++</em></a>), que indica <code>make -j &lt;number of cores of your PC&gt;</code>, y <a href="https://doc.omnetpp.org/omnetpp/InstallGuide.pdf">guía de instalación de OMNeT++</a>, capítulo <em>Linux</em>, sección <em>Configuring and Building OMNeT++</em>. El <code>$(nproc)</code> lo agrega este manual: escribe solo la cantidad de núcleos disponibles (28 en el equipo de referencia).</p>
+<p><strong>Así debería verse tu terminal</strong> (inicio y final, abreviado):</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>(omnetpp/.venv) victorjaque@DESKTOP-6VI5783:~/src/omnetpp-6.2.0$ make -j$(nproc)
+</span><span id="__span-33-2"><a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a>
+</span><span id="__span-33-3"><a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a>Building release and debug mode executables. Type &#39;make help&#39; for further options.
+</span><span id="__span-33-4"><a id="__codelineno-33-4" name="__codelineno-33-4" href="#__codelineno-33-4"></a>
+</span><span id="__span-33-5"><a id="__codelineno-33-5" name="__codelineno-33-5" href="#__codelineno-33-5"></a>***** Configuration: MODE=release, TOOLCHAIN_NAME=clang, SHARED_LIBS=yes, LIB_SUFFIX=.so ****
+</span><span id="__span-33-6"><a id="__codelineno-33-6" name="__codelineno-33-6" href="#__codelineno-33-6"></a>===== Checking environment =====
+</span><span id="__span-33-7"><a id="__codelineno-33-7" name="__codelineno-33-7" href="#__codelineno-33-7"></a>===== Compiling utils ====
+</span><span id="__span-33-8"><a id="__codelineno-33-8" name="__codelineno-33-8" href="#__codelineno-33-8"></a>===== Compiling common ====
+</span><span id="__span-33-9"><a id="__codelineno-33-9" name="__codelineno-33-9" href="#__codelineno-33-9"></a>...
+</span><span id="__span-33-10"><a id="__codelineno-33-10" name="__codelineno-33-10" href="#__codelineno-33-10"></a>Creating executable: out/clang-debug//tictoc_dbg
+</span><span id="__span-33-11"><a id="__codelineno-33-11" name="__codelineno-33-11" href="#__codelineno-33-11"></a>Creating shared library: out/clang-debug//libqueueinglibext_dbg.so
+</span><span id="__span-33-12"><a id="__codelineno-33-12" name="__codelineno-33-12" href="#__codelineno-33-12"></a>
+</span><span id="__span-33-13"><a id="__codelineno-33-13" name="__codelineno-33-13" href="#__codelineno-33-13"></a>Now you can type &#39;omnetpp&#39; to start the IDE.
+</span></code></pre></div>
+<ul>
+<li><em>Now you can type 'omnetpp' to start the IDE</em> indica que la compilación terminó bien.</li>
+<li>Compila todo <strong>dos veces</strong>: primero en modo <em>release</em> y después en modo <em>debug</em> (los archivos terminados en <code>_dbg</code>). Es normal; la guía de OMNeT++ lo advierte.</li>
+<li>También compila los ejemplos de la carpeta <code>samples/</code>.</li>
+<li>En el equipo de referencia tardó unos 2 minutos.</li>
+</ul>
+<p><strong>Ejemplo real: así empieza <code>make</code> en el equipo de referencia</strong></p>
+<p><img alt="Inicio de make en una terminal nueva, después de cd y source setenv, en el equipo de referencia" src="../img/instalacion-paso-2-make-inicio.png" /></p>
+<p>La captura parte de una terminal nueva: por eso repite <code>cd ~/src/omnetpp-6.2.0</code> y <code>source setenv</code> antes del <code>make</code>.</p>
+<p><strong>Ejemplo real: así termina <code>make</code> en el equipo de referencia</strong></p>
+<p><img alt="Final de make, con el mensaje Now you can type omnetpp to start the IDE, en el equipo de referencia" src="../img/instalacion-paso-2-make-fin.png" /></p>
+<h4 id="24-verificar">2.4 Verificar</h4>
+<p>Antes de seguir, comprueba que OMNeT++ quedó bien construido: primero por terminal y después abriendo sus ventanas gráficas. Se hace en la misma terminal del paso 2.3.</p>
+<p>Si abriste una terminal nueva, ejecuta en ella los siguientes comandos:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-34-1"><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="nb">cd</span><span class="w"> </span>~/src/omnetpp-6.2.0
+</span><span id="__span-34-2"><a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a><span class="nb">source</span><span class="w"> </span>setenv
+</span></code></pre></div>
+<p><strong>Fuente:</strong> guía oficial de Plexe (<a href="https://plexe.car2x.org/building/#step-1-install-omnet"><em>Step 1: Install OMNeT++</em></a>), igual que en el paso 2.2.</p>
+<p>La salida es la misma del paso 2.3.2.</p>
+<p>En la misma terminal, ejecuta el siguiente comando:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-35-1"><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>opp_run<span class="w"> </span>-v
+</span></code></pre></div>
+<p><strong>Fuente:</strong> agregado en este manual: muestra la versión de OMNeT++ y las opciones con que se compiló.</p>
+<p><strong>Así debería verse tu terminal:</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-36-1"><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>(omnetpp/.venv) victorjaque@DESKTOP-6VI5783:~/src/omnetpp-6.2.0$ opp_run -v
+</span><span id="__span-36-2"><a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a>OMNeT++ Discrete Event Simulation  (C) 1992-2025 Andras Varga, OpenSim Ltd.
+</span><span id="__span-36-3"><a id="__codelineno-36-3" name="__codelineno-36-3" href="#__codelineno-36-3"></a>Version: 6.2.0, build: 250714-83e173e93a, edition: Academic Public License -- NOT FOR COMMERCIAL USE
+</span><span id="__span-36-4"><a id="__codelineno-36-4" name="__codelineno-36-4" href="#__codelineno-36-4"></a>See the license for distribution terms and warranty disclaimer
+</span><span id="__span-36-5"><a id="__codelineno-36-5" name="__codelineno-36-5" href="#__codelineno-36-5"></a>
+</span><span id="__span-36-6"><a id="__codelineno-36-6" name="__codelineno-36-6" href="#__codelineno-36-6"></a>Setting up Qtenv...
+</span><span id="__span-36-7"><a id="__codelineno-36-7" name="__codelineno-36-7" href="#__codelineno-36-7"></a>
+</span><span id="__span-36-8"><a id="__codelineno-36-8" name="__codelineno-36-8" href="#__codelineno-36-8"></a>Build: omnetpp-6.2.0 250714-83e173e93a
+</span><span id="__span-36-9"><a id="__codelineno-36-9" name="__codelineno-36-9" href="#__codelineno-36-9"></a>Compiler: CLANG 18.1.3 (1ubuntu1)
+</span><span id="__span-36-10"><a id="__codelineno-36-10" name="__codelineno-36-10" href="#__codelineno-36-10"></a>Options: 64-bit ARCH_X86_64 RELEASE WITH_NETBUILDER WITH_QTENV
+</span><span id="__span-36-11"><a id="__codelineno-36-11" name="__codelineno-36-11" href="#__codelineno-36-11"></a>
+</span><span id="__span-36-12"><a id="__codelineno-36-12" name="__codelineno-36-12" href="#__codelineno-36-12"></a>End.
+</span></code></pre></div>
+<ul>
+<li><em>Version: 6.2.0</em> confirma la versión instalada.</li>
+<li>En <em>Options</em> aparece <code>WITH_QTENV</code>, la ventana gráfica. No aparece <code>WITH_OSG</code> porque la vista 3D se desactivó en el paso 2.3.1.</li>
+</ul>
+<p>En la misma terminal, dentro de <code>~/src/omnetpp-6.2.0</code>, ejecuta los siguientes comandos:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-37-1"><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="nb">cd</span><span class="w"> </span>samples/aloha
+</span><span id="__span-37-2"><a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a>./aloha
+</span></code></pre></div>
+<p><strong>Fuente:</strong> <a href="https://doc.omnetpp.org/omnetpp/InstallGuide.pdf">guía de instalación de OMNeT++</a>, capítulo <em>Linux</em>, sección <em>Verifying the Installation</em>.</p>
+<p><strong>Así debería verse tu terminal</strong> (abreviado):</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-38-1"><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>(omnetpp/.venv) victorjaque@DESKTOP-6VI5783:~/src/omnetpp-6.2.0$ cd samples/aloha
+</span><span id="__span-38-2"><a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a>(omnetpp/.venv) victorjaque@DESKTOP-6VI5783:~/src/omnetpp-6.2.0/samples/aloha$ ./aloha
+</span><span id="__span-38-3"><a id="__codelineno-38-3" name="__codelineno-38-3" href="#__codelineno-38-3"></a>OMNeT++ Discrete Event Simulation  (C) 1992-2025 Andras Varga, OpenSim Ltd.
+</span><span id="__span-38-4"><a id="__codelineno-38-4" name="__codelineno-38-4" href="#__codelineno-38-4"></a>...
+</span><span id="__span-38-5"><a id="__codelineno-38-5" name="__codelineno-38-5" href="#__codelineno-38-5"></a>Setting up Qtenv...
+</span><span id="__span-38-6"><a id="__codelineno-38-6" name="__codelineno-38-6" href="#__codelineno-38-6"></a>
+</span><span id="__span-38-7"><a id="__codelineno-38-7" name="__codelineno-38-7" href="#__codelineno-38-7"></a>Loading NED files from .:  4
+</span><span id="__span-38-8"><a id="__codelineno-38-8" name="__codelineno-38-8" href="#__codelineno-38-8"></a>...
+</span><span id="__span-38-9"><a id="__codelineno-38-9" name="__codelineno-38-9" href="#__codelineno-38-9"></a>libEGL warning: failed to get driver name for fd -1
+</span><span id="__span-38-10"><a id="__codelineno-38-10" name="__codelineno-38-10" href="#__codelineno-38-10"></a>...
+</span><span id="__span-38-11"><a id="__codelineno-38-11" name="__codelineno-38-11" href="#__codelineno-38-11"></a>MESA: error: ZINK: failed to choose pdev
+</span><span id="__span-38-12"><a id="__codelineno-38-12" name="__codelineno-38-12" href="#__codelineno-38-12"></a>libEGL warning: egl: failed to create dri2 screen
+</span><span id="__span-38-13"><a id="__codelineno-38-13" name="__codelineno-38-13" href="#__codelineno-38-13"></a>
+</span><span id="__span-38-14"><a id="__codelineno-38-14" name="__codelineno-38-14" href="#__codelineno-38-14"></a>End.
+</span></code></pre></div>
+<ul>
+<li>Las líneas <code>libEGL warning</code> y <code>MESA: error</code> son avisos del sistema gráfico de WSL. En el equipo de referencia aparecieron y la ventana funcionó bien: no son un error.</li>
+<li><em>End.</em> aparece cuando cierras la ventana de aloha.</li>
+</ul>
+<p>Se abre la ventana de Qtenv con el diálogo <em>Set Up Inifile Configuration</em>. Deja la configuración que aparece (<em>PureAloha1</em>) y presiona <strong>OK</strong>.</p>
+<p><strong>Ejemplo real: el diálogo de configuración en el equipo de referencia</strong></p>
+<p><img alt="Diálogo Set Up Inifile Configuration de Qtenv con PureAloha1 seleccionado, en el equipo de referencia" src="../img/instalacion-paso-2-aloha-config.png" /></p>
+<p>Aparece la red del ejemplo: varios <em>hosts</em> sobre un mapa. Si la ves, Qtenv funciona. Cierra la ventana con la <strong>X</strong>.</p>
+<p><strong>Ejemplo real: la red de aloha en el equipo de referencia</strong></p>
+<p><img alt="Ventana de Qtenv con la red del ejemplo aloha, en el equipo de referencia" src="../img/instalacion-paso-2-aloha.png" /></p>
+<p>Después de cerrar la ventana de aloha, en la misma terminal, ejecuta el siguiente comando:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-39-1"><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a>omnetpp
+</span></code></pre></div>
+<p><strong>Fuente:</strong> <a href="https://doc.omnetpp.org/omnetpp/InstallGuide.pdf">guía de instalación de OMNeT++</a>, capítulo <em>Linux</em>, sección <em>Starting the IDE</em>.</p>
+<p><strong>Así debería verse tu terminal:</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-40-1"><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a>(omnetpp/.venv) victorjaque@DESKTOP-6VI5783:~/src/omnetpp-6.2.0/samples/aloha$ omnetpp
+</span><span id="__span-40-2"><a id="__codelineno-40-2" name="__codelineno-40-2" href="#__codelineno-40-2"></a>Starting the OMNeT++ IDE...
+</span><span id="__span-40-3"><a id="__codelineno-40-3" name="__codelineno-40-3" href="#__codelineno-40-3"></a>(omnetpp/.venv) victorjaque@DESKTOP-6VI5783:~/src/omnetpp-6.2.0/samples/aloha$ CompileCommand: exclude org/eclipse/jdt/internal/core/dom/rewrite/ASTRewriteAnalyzer.getExtendedRange bool exclude = true
+</span></code></pre></div>
+<p>El IDE se abre en una ventana aparte y la terminal queda libre. La línea <code>CompileCommand: ...</code> la escribe el IDE al arrancar; no es un error.</p>
+<p>Primero aparece <em>OMNeT++ IDE Launcher</em>, que pide la carpeta de trabajo (<em>workspace</em>). Deja la que propone, la carpeta <code>samples</code> de OMNeT++ (<code>~/src/omnetpp-6.2.0/samples</code>), y presiona <strong>Launch</strong>. Es la misma carpeta que usa el <a href="https://veins.car2x.org/tutorial/#step2">tutorial oficial de Veins</a>.</p>
+<p><strong>Ejemplo real: la elección de la carpeta de trabajo en el equipo de referencia</strong></p>
+<p><img alt="Ventana OMNeT++ IDE Launcher con la carpeta samples propuesta como workspace, en el equipo de referencia" src="../img/instalacion-paso-2-ide-workspace.png" /></p>
+<p>Se abre el IDE con la pestaña <em>Welcome</em>. Con eso la verificación está completa y puedes cerrarlo.</p>
+<p><strong>Ejemplo real: el IDE de OMNeT++ en el equipo de referencia</strong></p>
+<p><img alt="IDE de OMNeT++ abierto con la pestaña Welcome, en el equipo de referencia" src="../img/instalacion-paso-2-ide.png" /></p>
+<p><strong>Ejemplo real: la terminal durante la verificación en el equipo de referencia</strong></p>
+<p><img alt="Terminal con cd, source setenv, opp_run -v, ./aloha y omnetpp, en el equipo de referencia" src="../img/instalacion-paso-2-verificar-terminal.png" /></p>
+<p>La captura parte de una terminal nueva: por eso empieza con <code>cd ~/src/omnetpp-6.2.0</code> y <code>source setenv</code>.</p>
+<p>Si las tres pruebas funcionan, OMNeT++ está instalado y puedes pasar al paso 3.</p>
 <hr />
 <h3 id="paso-3-sumo-1220">Paso 3: SUMO 1.22.0</h3>
 <p>SUMO genera y mueve los vehículos. Veins lo controla durante la simulación a través de una interfaz de red, no en tiempo de compilación.</p>
 <p>En el caso general <strong>este componente no se compila</strong>. Desde la versión 1.2.0 de SUMO los modelos que Plexe necesita vienen incluidos en la distribución oficial, así que basta con instalar el paquete binario.</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="c1"># PENDIENTE: instalación del paquete binario de SUMO 1.22.0</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-41-1"><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a><span class="c1"># PENDIENTE: instalación del paquete binario de SUMO 1.22.0</span>
 </span></code></pre></div>
 <p>Después de instalar, comprueba la versión. Es el único punto donde una versión equivocada arruina la instalación completa.</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-34-1"><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="c1"># PENDIENTE: verificar la versión instalada de SUMO</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-42-1"><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a><span class="c1"># PENDIENTE: verificar la versión instalada de SUMO</span>
 </span></code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Compilar SUMO desde el código fuente</p>
@@ -2590,11 +2736,11 @@
 <p>Veins es el puente: sincroniza el reloj de la simulación de red (OMNeT++) con el de la simulación de tráfico (SUMO), y añade la capa de comunicación vehicular sobre la que Plexe construye sus protocolos.</p>
 <h4 id="41-descargar">4.1 Descargar</h4>
 <p>Se puede clonar el repositorio o bajar el ZIP y descomprimirlo en <code>~/src/</code>. La documentación oficial recomienda clonar.</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-35-1"><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="c1"># PENDIENTE: descarga de Veins 5.3.1 (clonar repositorio o bajar ZIP)</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-43-1"><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a><span class="c1"># PENDIENTE: descarga de Veins 5.3.1 (clonar repositorio o bajar ZIP)</span>
 </span></code></pre></div>
 <h4 id="42-compilar">4.2 Compilar</h4>
 <p>Mismo esquema que OMNeT++: configurar y luego construir.</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-36-1"><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="c1"># PENDIENTE: configurar y compilar Veins</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-44-1"><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a><span class="c1"># PENDIENTE: configurar y compilar Veins</span>
 </span></code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title">Requiere el entorno de OMNeT++ cargado</p>
@@ -2605,11 +2751,11 @@
 <p>Plexe es la capa que agrega el <em>platooning</em>: los controladores longitudinales cooperativos, los protocolos de coordinación y las maniobras.</p>
 <h4 id="51-descargar">5.1 Descargar</h4>
 <p>Igual que Veins: clonar el repositorio o bajar el ZIP en <code>~/src/</code>. El repositorio es único y las versiones se distinguen mediante etiquetas, así que hay que apuntar a la etiqueta de la versión 3.2.</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-37-1"><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="c1"># PENDIENTE: descarga de Plexe 3.2 (clonar en la etiqueta plexe-3.2 o bajar ZIP)</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-45-1"><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a><span class="c1"># PENDIENTE: descarga de Plexe 3.2 (clonar en la etiqueta plexe-3.2 o bajar ZIP)</span>
 </span></code></pre></div>
 <h4 id="52-compilar">5.2 Compilar</h4>
 <p>Aquí aparece la única particularidad del proceso: al configurar Plexe hay que <strong>indicarle explícitamente dónde está la carpeta de Veins</strong> que acabas de construir. Es una ruta relativa desde la carpeta de Plexe.</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-38-1"><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a><span class="c1"># PENDIENTE: configurar Plexe indicando la ruta de Veins, y compilar</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-46-1"><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a><span class="c1"># PENDIENTE: configurar Plexe indicando la ruta de Veins, y compilar</span>
 </span></code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title">La causa más común de fallo en este paso</p>
@@ -2621,18 +2767,18 @@
 <p>OMNeT++ 6 eliminó su complemento de R, así que la extracción de datos hoy funciona con una combinación de scripts de R y de Python.</p>
 <h4 id="61-librerias-de-r">6.1 Librerías de R</h4>
 <p>Se instalan desde la consola de R.</p>
-<div class="language-r highlight"><pre><span></span><code><span id="__span-39-1"><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a><span class="c1"># PENDIENTE: instalación de las librerías de R para gráficos y manejo de datos</span>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-47-1"><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a><span class="c1"># PENDIENTE: instalación de las librerías de R para gráficos y manejo de datos</span>
 </span></code></pre></div>
 <h4 id="62-paquete-de-lectura-de-resultados-de-omnet">6.2 Paquete de lectura de resultados de OMNeT++</h4>
 <p>Este es un paso que suele pasarse por alto, y sin él los scripts de extracción no funcionan: hay que instalar un paquete específico que permite a R leer los archivos de resultados que genera OMNeT++. Se baja como archivo comprimido, <strong>sin descomprimirlo</strong>, y se instala desde la consola de R apuntando al archivo local.</p>
-<div class="language-r highlight"><pre><span></span><code><span id="__span-40-1"><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a><span class="c1"># PENDIENTE: instalación del paquete de lectura de resultados de OMNeT++ en R</span>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-48-1"><a id="__codelineno-48-1" name="__codelineno-48-1" href="#__codelineno-48-1"></a><span class="c1"># PENDIENTE: instalación del paquete de lectura de resultados de OMNeT++ en R</span>
 </span></code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Error de compilación con compiladores modernos</p>
 <p>Al instalar este paquete puede aparecer un error de compilación relacionado con una función eliminada de la biblioteca estándar de C++. Se resuelve indicando a R que compile con un estándar de C++ anterior, mediante una línea en el archivo de configuración de compilación de R.</p>
 </div>
 <h4 id="63-librerias-de-python">6.3 Librerías de Python</h4>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-41-1"><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a><span class="c1"># PENDIENTE: instalación de las librerías de Python para análisis de datos</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-49-1"><a id="__codelineno-49-1" name="__codelineno-49-1" href="#__codelineno-49-1"></a><span class="c1"># PENDIENTE: instalación de las librerías de Python para análisis de datos</span>
 </span></code></pre></div>
 <hr />
 <h3 id="paso-7-verificacion">Paso 7: Verificación</h3>
@@ -2643,7 +2789,7 @@
 <li>Un pelotón que mantiene distancias regulares y estables entre vehículos.</li>
 <li>Ningún mensaje de error en la terminal, y archivos de resultados generados al terminar.</li>
 </ul>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-42-1"><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a><span class="c1"># PENDIENTE: correr un escenario de ejemplo de Plexe y verificar la salida</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-50-1"><a id="__codelineno-50-1" name="__codelineno-50-1" href="#__codelineno-50-1"></a><span class="c1"># PENDIENTE: correr un escenario de ejemplo de Plexe y verificar la salida</span>
 </span></code></pre></div>
 <p>Si esto funciona, la instalación está terminada. Los escenarios de ejemplo se describen en detalle en la sección <a href="../ejemplos/">Ejemplos</a>.</p>
 <hr />

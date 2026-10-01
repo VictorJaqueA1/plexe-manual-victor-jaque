@@ -29,7 +29,7 @@
     
     
       
-        <title>Caso 3 · Pérdida artificial de paquetes con FER - Manual de Plexe</title>
+        <title>Caso 3 · Variar el intervalo de envío de beacons - Manual de Plexe</title>
       
     
     
@@ -82,7 +82,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#caso-3-perdida-artificial-de-paquetes-con-fer" class="md-skip">
+        <a href="#caso-3-variar-el-intervalo-de-envio-de-beacons" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -186,22 +186,25 @@
                     <a href="../caso-2/">Caso 2 · Variar la potencia de transmisión</a>
                   </li>
                   <li>
-                    <a href="./">Caso 3 · Pérdida artificial de paquetes con FER</a>
+                    <a href="./">Caso 3 · Variar el intervalo de envío de beacons</a>
                   </li>
                   <li>
-                    <a href="../caso-4/">Caso 4 · Nuevo perfil de aceleración y velocidad del líder</a>
+                    <a href="../caso-4/">Caso 4 · Pérdida artificial de paquetes con FER</a>
                   </li>
                   <li>
-                    <a href="../caso-5/">Caso 5 · Más de un pelotón</a>
+                    <a href="../caso-5/">Caso 5 · Nuevo perfil de aceleración y velocidad del líder</a>
                   </li>
                   <li>
-                    <a href="../caso-6/">Caso 6 · Retardo estocástico de comunicación</a>
+                    <a href="../caso-6/">Caso 6 · Más de un pelotón</a>
                   </li>
                   <li>
-                    <a href="../caso-7/">Caso 7 · Event-triggered control sobre el envío de frames</a>
+                    <a href="../caso-7/">Caso 7 · Retardo estocástico de comunicación</a>
                   </li>
                   <li>
-                    <a href="../caso-8/">Caso 8 · ETC y retardo en conjunto</a>
+                    <a href="../caso-8/">Caso 8 · Event-triggered control sobre el envío de frames</a>
+                  </li>
+                  <li>
+                    <a href="../caso-9/">Caso 9 · ETC y retardo en conjunto</a>
                   </li>
               </ul>
             </li>
@@ -495,6 +498,8 @@
       
         
       
+        
+      
     
     
     
@@ -624,6 +629,24 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Caso 3 · Variar el intervalo de envío de beacons
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -631,7 +654,7 @@
   <span class="md-ellipsis">
     
   
-    Caso 3 · Pérdida artificial de paquetes con FER
+    Caso 3 · Variar el intervalo de envío de beacons
   
 
     
@@ -640,6 +663,241 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-antes-de-empezar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1 · Antes de empezar
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-fundamentos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2 · Fundamentos
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2 · Fundamentos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#que-es-un-beacon" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Qué es un beacon
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#que-es-el-intervalo-de-envio-de-beacons" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Qué es el intervalo de envío de beacons
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#por-que-el-intervalo-le-importa-a-ploeg" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Por qué el intervalo le importa a Ploeg
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#que-esperamos-ver" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Qué esperamos ver
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-donde-vive-cada-cosa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3 · Dónde vive cada cosa
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-como-se-hizo-paso-a-paso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4 · Cómo se hizo, paso a paso
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4 · Cómo se hizo, paso a paso">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#paso-1-correr-el-caso-base" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 1 · Correr el caso base
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-2-barrido-del-intervalo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 2 · Barrido del intervalo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-3-grilla-de-h-e-intervalo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 3 · Grilla de h e intervalo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-4-graficar-la-curva" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 4 · Graficar la curva
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-resultados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5 · Resultados
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5 · Resultados">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#barrido-del-intervalo-h-05-s" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Barrido del intervalo (h = 0.5 s)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#grilla-de-h-e-intervalo-frenado-en-t-20-s" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Grilla de h e intervalo (frenado en t = 20 s)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-errores-frecuentes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6 · Errores frecuentes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-pendientes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7 · Pendientes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-siguiente-paso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8 · Siguiente paso
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -660,7 +918,7 @@
   <span class="md-ellipsis">
     
   
-    Caso 4 · Nuevo perfil de aceleración y velocidad del líder
+    Caso 4 · Pérdida artificial de paquetes con FER
   
 
     
@@ -688,7 +946,7 @@
   <span class="md-ellipsis">
     
   
-    Caso 5 · Más de un pelotón
+    Caso 5 · Nuevo perfil de aceleración y velocidad del líder
   
 
     
@@ -716,7 +974,7 @@
   <span class="md-ellipsis">
     
   
-    Caso 6 · Retardo estocástico de comunicación
+    Caso 6 · Más de un pelotón
   
 
     
@@ -744,7 +1002,7 @@
   <span class="md-ellipsis">
     
   
-    Caso 7 · Event-triggered control sobre el envío de frames
+    Caso 7 · Retardo estocástico de comunicación
   
 
     
@@ -772,7 +1030,35 @@
   <span class="md-ellipsis">
     
   
-    Caso 8 · ETC y retardo en conjunto
+    Caso 8 · Event-triggered control sobre el envío de frames
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../caso-9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Caso 9 · ETC y retardo en conjunto
   
 
     
@@ -813,6 +1099,230 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-antes-de-empezar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1 · Antes de empezar
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-fundamentos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2 · Fundamentos
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2 · Fundamentos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#que-es-un-beacon" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Qué es un beacon
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#que-es-el-intervalo-de-envio-de-beacons" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Qué es el intervalo de envío de beacons
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#por-que-el-intervalo-le-importa-a-ploeg" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Por qué el intervalo le importa a Ploeg
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#que-esperamos-ver" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Qué esperamos ver
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-donde-vive-cada-cosa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3 · Dónde vive cada cosa
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-como-se-hizo-paso-a-paso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4 · Cómo se hizo, paso a paso
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4 · Cómo se hizo, paso a paso">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#paso-1-correr-el-caso-base" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 1 · Correr el caso base
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-2-barrido-del-intervalo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 2 · Barrido del intervalo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-3-grilla-de-h-e-intervalo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 3 · Grilla de h e intervalo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-4-graficar-la-curva" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 4 · Graficar la curva
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-resultados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5 · Resultados
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5 · Resultados">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#barrido-del-intervalo-h-05-s" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Barrido del intervalo (h = 0.5 s)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#grilla-de-h-e-intervalo-frenado-en-t-20-s" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Grilla de h e intervalo (frenado en t = 20 s)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-errores-frecuentes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6 · Errores frecuentes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-pendientes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7 · Pendientes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-siguiente-paso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8 · Siguiente paso
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -831,13 +1341,406 @@
   
 
 
-<h1 id="caso-3-perdida-artificial-de-paquetes-con-fer">Caso 3 · Pérdida artificial de paquetes con FER</h1>
-<p><strong>Qué se hizo.</strong> Introducir una tasa de error de trama (<em>Frame Error Rate</em>) configurable, que descarta mensajes recibidos con una probabilidad fija antes de entregarlos a la capa superior.</p>
-<p><strong>Para qué.</strong> Es la contraparte metodológica del caso 2. Con potencia, la pérdida depende de la distancia, del modelo de propagación y de la posición del vehículo en el pelotón, o sea que la variable independiente no está bajo control directo. Con FER, la pérdida se fija como un número y es idéntica para todos los vehículos. Eso permite responder la pregunta pura: cuánta pérdida tolera el controlador, sin que la geometría del escenario contamine el resultado.</p>
-<p><strong>Cómo se implementa.</strong> Se descarta la trama recibida con probabilidad configurable, en el punto del camino de recepción donde el mensaje ya llegó íntegro pero todavía no fue procesado por la aplicación. La probabilidad se expone como parámetro para poder barrerla desde <code>omnetpp.ini</code>.</p>
-<div class="language-ini highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># PENDIENTE: parámetro de FER y valores del barrido</span>
+<h1 id="caso-3-variar-el-intervalo-de-envio-de-beacons">Caso 3 · Variar el intervalo de envío de beacons</h1>
+<p>En el <a href="../caso-2/">Caso 2</a> se debilitó la señal hasta que los beacons dejaron de llegar. Aquí la radio queda como viene, con 100 mW, y se cambia otra cosa: cada cuánto se envían los beacons. El caso vuelve al ejemplo <code>platooning</code> del <a href="../caso-1/">Caso 1</a> y sigue su receta.</p>
+<div class="admonition abstract">
+<p class="admonition-title">Resumen</p>
+<ul>
+<li><strong>Pregunta:</strong> ¿cada cuánto tiene que enviar beacons cada auto para que el pelotón frene sin chocar?</li>
+<li><strong>Escenario:</strong> <code>Braking</code>, del ejemplo <code>platooning</code>, el mismo del Caso 1.</li>
+<li><strong>Controlador:</strong> Ploeg (<code>-r 3</code>).</li>
+<li><strong>Parámetros:</strong> el intervalo de envío de beacons y, después, el tiempo de separación <code>h</code>.</li>
+<li><strong>Resultado principal:</strong> con <code>h = 0.5 s</code>, el pelotón choca al pasar de 0.3 a 0.5 s entre beacons. Con más <code>h</code>, tolera intervalos más largos.</li>
+<li><strong>Qué se toca:</strong> solo <code>omnetpp.ini</code>. No hay que recompilar.</li>
+</ul>
+</div>
+<h2 id="1-antes-de-empezar">1 · Antes de empezar</h2>
+<p>Carga los entornos como en el <a href="../caso-1/#1-antes-de-empezar">Caso 1</a>.</p>
+<p>Si hiciste el Caso 1, revisa que <code>ploegH</code> haya quedado otra vez en <code>0.5</code>, porque este caso parte de los valores por defecto.</p>
+<h2 id="2-fundamentos">2 · Fundamentos</h2>
+<h3 id="que-es-un-beacon">Qué es un beacon</h3>
+<p>Es el mensaje periódico con que cada auto informa su estado: velocidad, aceleración y posición, entre otros datos. En Plexe se llama <code>PlatooningBeacon</code> y, en este ejemplo, pesa 200 bytes.</p>
+<p>Los beacons se envían en <em>broadcast</em>, a todos los que estén al alcance. Por eso no llevan confirmación de recepción (ACK) ni se reenvían: un beacon que se pierde no se recupera, y el dato vuelve a llegar recién con el siguiente.</p>
+<h3 id="que-es-el-intervalo-de-envio-de-beacons">Qué es el intervalo de envío de beacons</h3>
+<p>Es el tiempo entre dos beacons del mismo auto, en segundos. Por defecto es 0.1 s, o sea, 10 beacons por segundo.</p>
+<ul>
+<li>No es lo mismo que el bitrate. El bitrate dice qué tan rápido se emiten los bits de <strong>un</strong> mensaje; el intervalo, cada cuánto se envía un mensaje nuevo (ver <a href="../caso-2/#bitrate-y-beacons">Caso 2 › Bitrate y beacons</a>).</li>
+<li>Cada auto envía su primer beacon con un desfase al azar, para que no transmitan todos al mismo tiempo. Desde ahí mantiene el intervalo fijo.</li>
+</ul>
+<h3 id="por-que-el-intervalo-le-importa-a-ploeg">Por qué el intervalo le importa a Ploeg</h3>
+<p>Ploeg mide con el radar, en cada paso, la distancia y la velocidad del auto de adelante. La aceleración de ese auto, en cambio, le llega por beacon, y entre un beacon y el siguiente usa la última que recibió (ver <a href="../../controladores/#datos-que-usa">Controladores › Datos que usa</a>).</p>
+<p>Con un intervalo más largo, ese dato envejece más. Si el auto de adelante frena justo después de enviar un beacon, el de atrás se entera recién con el siguiente, hasta un intervalo completo después. Mientras tanto, solo reacciona con lo que mide el radar. Y como cada auto escucha solo al de adelante, ese atraso se puede repetir de auto en auto.</p>
+<h3 id="que-esperamos-ver">Qué esperamos ver</h3>
+<ul>
+<li>Con intervalos cortos, nada cambia respecto del caso base.</li>
+<li>Al alargar el intervalo, en algún punto el aviso del frenado llega demasiado tarde y el pelotón choca.</li>
+<li>Con <code>h</code> más alto hay más distancia entre los autos y más margen para reaccionar, así que el pelotón debería tolerar intervalos más largos.</li>
+</ul>
+<h2 id="3-donde-vive-cada-cosa">3 · Dónde vive cada cosa</h2>
+<table>
+<thead>
+<tr>
+<th>Qué</th>
+<th>Dónde</th>
+<th>En este caso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>El intervalo de envío de beacons</td>
+<td><code>~/src/plexe/examples/platooning/omnetpp.ini</code>, línea <code>*.node[*].prot.beaconingInterval</code></td>
+<td>Se cambia</td>
+</tr>
+<tr>
+<td>El tiempo de separación <code>h</code></td>
+<td>El mismo archivo, línea <code>*.node[*].scenario.ploegH</code></td>
+<td>Se cambia en la grilla</td>
+</tr>
+<tr>
+<td>El instante en que frena el líder</td>
+<td>El mismo archivo, sección <code>[Config Braking]</code>, línea <code>*.node[*].scenario.startBraking</code></td>
+<td>Se cambia en la grilla</td>
+</tr>
+<tr>
+<td>La declaración del parámetro, con su valor por defecto de 0.1 s</td>
+<td><code>~/src/plexe/src/plexe/protocols/BBaseProtocol.ned</code></td>
+<td>No se toca</td>
+</tr>
+<tr>
+<td>La lectura del valor desde el <code>.ini</code></td>
+<td><code>~/src/plexe/src/plexe/protocols/BaseProtocol.cc</code>, función <code>initialize()</code></td>
+<td>No se toca</td>
+</tr>
+<tr>
+<td>El envío periódico</td>
+<td><code>~/src/plexe/src/plexe/protocols/SimplePlatooningBeaconing.cc</code>, funciones <code>initialize()</code> y <code>handleSelfMsg()</code></td>
+<td>No se toca</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><code>*.node[*].prot</code> apunta al protocolo de comunicación de cada auto. En el ejemplo <code>platooning</code> es <code>SimplePlatooningBeaconing</code>, que hereda de <code>BBaseProtocol</code>: todos los autos envían beacons a intervalo fijo.</li>
+<li><code>BaseProtocol.ned</code> también declara <code>beaconingInterval</code>, pero sin valor por defecto: es la interfaz que deben cumplir todos los protocolos.</li>
+<li>En el mismo bloque del <code>.ini</code> están <code>priority</code> y <code>packetSize</code>, la prioridad y el tamaño de los beacons. Este caso no los cambia.</li>
+<li>La potencia y el bitrate no viven aquí, sino en la capa MAC de Veins (ver <a href="../caso-2/#3-donde-vive-cada-cosa">Caso 2</a>).</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Cómo usa el código el intervalo</p>
+<p><code>SimplePlatooningBeaconing.cc</code> programa el primer beacon de cada auto un intervalo después de que el auto aparece, más un desfase al azar de entre 0.001 s y un intervalo. Desde ahí, después de cada envío programa el siguiente:</p>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">scheduleAt</span><span class="p">(</span><span class="n">simTime</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">beaconingInterval</span><span class="p">,</span><span class="w"> </span><span class="n">sendBeacon</span><span class="p">);</span>
 </span></code></pre></div>
-<p><strong>Cómo se mide.</strong> Error de espaciamiento en función del FER, y el valor de FER a partir del cual el pelotón deja de ser estable. Conviene contrastar el resultado con el del caso 2: si ambos coinciden al traducir potencia a pérdida efectiva, el modelo es consistente.</p>
+<p>Con intervalo 0 no se programa ningún beacon, así que el auto no envía nada.</p>
+</div>
+<h2 id="4-como-se-hizo-paso-a-paso">4 · Cómo se hizo, paso a paso</h2>
+<h3 id="paso-1-correr-el-caso-base">Paso 1 · Correr el caso base</h3>
+<p>Sin cambiar nada (0.1 s entre beacons y <code>h = 0.5 s</code>), con la ventana de SUMO para mirar el frenado:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">cd</span><span class="w"> </span>~/src/plexe/examples/platooning
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>./run<span class="w"> </span>-u<span class="w"> </span>Cmdenv<span class="w"> </span>-c<span class="w"> </span>Braking<span class="w"> </span>-r<span class="w"> </span><span class="m">3</span>
+</span></code></pre></div>
+<p>Es la misma corrida del caso base del <a href="../caso-1/#paso-2-correr-el-caso-base">Caso 1</a>: el pelotón frena sin chocar. Para correr sin ventanas, usa <code>-c BrakingNoGui</code>.</p>
+<h3 id="paso-2-barrido-del-intervalo">Paso 2 · Barrido del intervalo</h3>
+<p>En <code>omnetpp.ini</code>, cambia el valor del intervalo:</p>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Antes (por defecto)</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="na">*.node[*].prot.beaconingInterval</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">${beaconInterval = 0.1}s</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1"># Después, por ejemplo</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="na">*.node[*].prot.beaconingInterval</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">${beaconInterval = 0.5}s</span>
+</span></code></pre></div>
+<ul>
+<li><code>beaconingInterval</code> es el parámetro de Plexe; <code>beaconInterval</code> es solo el nombre de la variable de iteración en el <code>.ini</code>.</li>
+<li>La línea está en <code>[General]</code>, así que vale para todas las configuraciones, incluida <code>Braking</code>.</li>
+</ul>
+<p>Repite el paso 1 con cada valor y mira el frenado en <code>sumo-gui</code>: 0.01, 0.1, 0.3, 0.5, 0.8 y 1 s. Al terminar, deja otra vez <code>0.1</code>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Un valor a la vez</p>
+<p><code>${beaconInterval = ...}</code> es una variable de iteración, como las del <a href="../caso-1/#paso-1-identificar-la-corrida-de-ploeg">Caso 1</a>. Si escribes varios valores, OMNeT++ crea una corrida por cada combinación con los controladores, la numeración cambia y <code>-r 3</code> deja de ser la corrida que buscas. Además, el nombre del archivo de resultados no incluye el intervalo: si graficas con <code>plot-braking-ploeg.R</code>, guarda el PDF antes de cambiar de valor.</p>
+</div>
+<h3 id="paso-3-grilla-de-h-e-intervalo">Paso 3 · Grilla de <code>h</code> e intervalo</h3>
+<p>Para ver cómo cambia el umbral con la separación, se cambian dos líneas más:</p>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># El h de turno, por ejemplo 0.1 s</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="na">*.node[*].scenario.ploegH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">${ploegH = 0.1}s</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="c1"># En [Config Braking]: frenar en t = 20 s, en vez de 5 s</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="na">*.node[*].scenario.startBraking</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">20 s</span>
+</span></code></pre></div>
+<ul>
+<li>Frenar en <code>t = 20 s</code> da tiempo para que el pelotón se reacomode al nuevo <code>h</code> antes del frenado, igual que en el <a href="../caso-2/#paso-4-separar-mas-los-autos">Caso 2</a>. Los autos se insertan preparados para <code>h = 0.5 s</code> (ver <a href="../caso-1/#6-partir-del-equilibrio">Caso 1</a>).</li>
+<li>Para cada <code>h</code>, se sube el intervalo hasta encontrar el menor que produce choque.</li>
+<li>El resto queda en sus valores por defecto: 100 mW, 6 Mbps, beacons de 200 bytes, prioridad 4 y el líder a 100 km/h.</li>
+</ul>
+<p>En total se hicieron más de 70 simulaciones, que dejaron 15 umbrales: uno por cada <code>h</code>.</p>
+<h3 id="paso-4-graficar-la-curva">Paso 4 · Graficar la curva</h3>
+<p>Los umbrales se graficaron con un script de Python. No lee los resultados de la simulación: los 15 pares de valores van escritos en el propio script.</p>
+<details class="example">
+<summary>graficoBI.py</summary>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.ticker</span><span class="w"> </span><span class="kn">import</span> <span class="n">FormatStrFormatter</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="c1"># =========================</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="c1"># 1) Datos actualizados</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="c1"># =========================</span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>    <span class="s2">&quot;Time headway (h)&quot;</span><span class="p">:</span> <span class="p">[</span>
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>        <span class="mf">0.005</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span>
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>        <span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="mf">1.3</span>
+</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>    <span class="p">],</span>
+</span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>    <span class="s2">&quot;Beaconing Interval&quot;</span><span class="p">:</span> <span class="p">[</span>
+</span><span id="__span-4-15"><a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>        <span class="mf">0.02</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.23</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.37</span><span class="p">,</span> <span class="mf">0.47</span><span class="p">,</span> <span class="mf">0.63</span><span class="p">,</span>
+</span><span id="__span-4-16"><a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a>        <span class="mf">0.65</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.85</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="mf">1.6</span><span class="p">,</span> <span class="mf">1.8</span>
+</span><span id="__span-4-17"><a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a>    <span class="p">]</span>
+</span><span id="__span-4-18"><a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="p">})</span>
+</span><span id="__span-4-19"><a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a>
+</span><span id="__span-4-20"><a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a><span class="c1"># =========================</span>
+</span><span id="__span-4-21"><a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a><span class="c1"># 2) Ordenar por eje X</span>
+</span><span id="__span-4-22"><a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a><span class="c1"># =========================</span>
+</span><span id="__span-4-23"><a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span>
+</span><span id="__span-4-24"><a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a>    <span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Beaconing Interval&quot;</span><span class="p">,</span> <span class="s2">&quot;Time headway (h)&quot;</span><span class="p">],</span>
+</span><span id="__span-4-25"><a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a>    <span class="n">ascending</span><span class="o">=</span><span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">]</span>
+</span><span id="__span-4-26"><a id="__codelineno-4-26" name="__codelineno-4-26" href="#__codelineno-4-26"></a><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span id="__span-4-27"><a id="__codelineno-4-27" name="__codelineno-4-27" href="#__codelineno-4-27"></a>
+</span><span id="__span-4-28"><a id="__codelineno-4-28" name="__codelineno-4-28" href="#__codelineno-4-28"></a><span class="n">x</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Beaconing Interval&quot;</span><span class="p">]</span>
+</span><span id="__span-4-29"><a id="__codelineno-4-29" name="__codelineno-4-29" href="#__codelineno-4-29"></a><span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Time headway (h)&quot;</span><span class="p">]</span>
+</span><span id="__span-4-30"><a id="__codelineno-4-30" name="__codelineno-4-30" href="#__codelineno-4-30"></a>
+</span><span id="__span-4-31"><a id="__codelineno-4-31" name="__codelineno-4-31" href="#__codelineno-4-31"></a><span class="c1"># =========================</span>
+</span><span id="__span-4-32"><a id="__codelineno-4-32" name="__codelineno-4-32" href="#__codelineno-4-32"></a><span class="c1"># 3) Crear gráfico</span>
+</span><span id="__span-4-33"><a id="__codelineno-4-33" name="__codelineno-4-33" href="#__codelineno-4-33"></a><span class="c1"># =========================</span>
+</span><span id="__span-4-34"><a id="__codelineno-4-34" name="__codelineno-4-34" href="#__codelineno-4-34"></a><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+</span><span id="__span-4-35"><a id="__codelineno-4-35" name="__codelineno-4-35" href="#__codelineno-4-35"></a>
+</span><span id="__span-4-36"><a id="__codelineno-4-36" name="__codelineno-4-36" href="#__codelineno-4-36"></a><span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.8</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+</span><span id="__span-4-37"><a id="__codelineno-4-37" name="__codelineno-4-37" href="#__codelineno-4-37"></a>
+</span><span id="__span-4-38"><a id="__codelineno-4-38" name="__codelineno-4-38" href="#__codelineno-4-38"></a><span class="c1"># =========================</span>
+</span><span id="__span-4-39"><a id="__codelineno-4-39" name="__codelineno-4-39" href="#__codelineno-4-39"></a><span class="c1"># 4) Límites</span>
+</span><span id="__span-4-40"><a id="__codelineno-4-40" name="__codelineno-4-40" href="#__codelineno-4-40"></a><span class="c1"># =========================</span>
+</span><span id="__span-4-41"><a id="__codelineno-4-41" name="__codelineno-4-41" href="#__codelineno-4-41"></a><span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.85</span><span class="p">)</span>
+</span><span id="__span-4-42"><a id="__codelineno-4-42" name="__codelineno-4-42" href="#__codelineno-4-42"></a><span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.35</span><span class="p">)</span>
+</span><span id="__span-4-43"><a id="__codelineno-4-43" name="__codelineno-4-43" href="#__codelineno-4-43"></a>
+</span><span id="__span-4-44"><a id="__codelineno-4-44" name="__codelineno-4-44" href="#__codelineno-4-44"></a><span class="c1"># =========================</span>
+</span><span id="__span-4-45"><a id="__codelineno-4-45" name="__codelineno-4-45" href="#__codelineno-4-45"></a><span class="c1"># 5) Eje X cada 0.1</span>
+</span><span id="__span-4-46"><a id="__codelineno-4-46" name="__codelineno-4-46" href="#__codelineno-4-46"></a><span class="c1"># =========================</span>
+</span><span id="__span-4-47"><a id="__codelineno-4-47" name="__codelineno-4-47" href="#__codelineno-4-47"></a><span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.81</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">))</span>
+</span><span id="__span-4-48"><a id="__codelineno-4-48" name="__codelineno-4-48" href="#__codelineno-4-48"></a><span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">FormatStrFormatter</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%.1f</span><span class="s1">&#39;</span><span class="p">))</span>
+</span><span id="__span-4-49"><a id="__codelineno-4-49" name="__codelineno-4-49" href="#__codelineno-4-49"></a>
+</span><span id="__span-4-50"><a id="__codelineno-4-50" name="__codelineno-4-50" href="#__codelineno-4-50"></a><span class="c1"># =========================</span>
+</span><span id="__span-4-51"><a id="__codelineno-4-51" name="__codelineno-4-51" href="#__codelineno-4-51"></a><span class="c1"># 6) Eje Y</span>
+</span><span id="__span-4-52"><a id="__codelineno-4-52" name="__codelineno-4-52" href="#__codelineno-4-52"></a><span class="c1"># =========================</span>
+</span><span id="__span-4-53"><a id="__codelineno-4-53" name="__codelineno-4-53" href="#__codelineno-4-53"></a><span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.31</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">))</span>
+</span><span id="__span-4-54"><a id="__codelineno-4-54" name="__codelineno-4-54" href="#__codelineno-4-54"></a><span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">FormatStrFormatter</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%.1f</span><span class="s1">&#39;</span><span class="p">))</span>
+</span><span id="__span-4-55"><a id="__codelineno-4-55" name="__codelineno-4-55" href="#__codelineno-4-55"></a>
+</span><span id="__span-4-56"><a id="__codelineno-4-56" name="__codelineno-4-56" href="#__codelineno-4-56"></a><span class="c1"># =========================</span>
+</span><span id="__span-4-57"><a id="__codelineno-4-57" name="__codelineno-4-57" href="#__codelineno-4-57"></a><span class="c1"># 7) Cuadrícula</span>
+</span><span id="__span-4-58"><a id="__codelineno-4-58" name="__codelineno-4-58" href="#__codelineno-4-58"></a><span class="c1"># =========================</span>
+</span><span id="__span-4-59"><a id="__codelineno-4-59" name="__codelineno-4-59" href="#__codelineno-4-59"></a><span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+</span><span id="__span-4-60"><a id="__codelineno-4-60" name="__codelineno-4-60" href="#__codelineno-4-60"></a>
+</span><span id="__span-4-61"><a id="__codelineno-4-61" name="__codelineno-4-61" href="#__codelineno-4-61"></a><span class="c1"># =========================</span>
+</span><span id="__span-4-62"><a id="__codelineno-4-62" name="__codelineno-4-62" href="#__codelineno-4-62"></a><span class="c1"># 8) Solo abajo e izquierda</span>
+</span><span id="__span-4-63"><a id="__codelineno-4-63" name="__codelineno-4-63" href="#__codelineno-4-63"></a><span class="c1"># =========================</span>
+</span><span id="__span-4-64"><a id="__codelineno-4-64" name="__codelineno-4-64" href="#__codelineno-4-64"></a><span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span>
+</span><span id="__span-4-65"><a id="__codelineno-4-65" name="__codelineno-4-65" href="#__codelineno-4-65"></a>    <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span>
+</span><span id="__span-4-66"><a id="__codelineno-4-66" name="__codelineno-4-66" href="#__codelineno-4-66"></a>    <span class="n">which</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span>
+</span><span id="__span-4-67"><a id="__codelineno-4-67" name="__codelineno-4-67" href="#__codelineno-4-67"></a>    <span class="n">top</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+</span><span id="__span-4-68"><a id="__codelineno-4-68" name="__codelineno-4-68" href="#__codelineno-4-68"></a>    <span class="n">right</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+</span><span id="__span-4-69"><a id="__codelineno-4-69" name="__codelineno-4-69" href="#__codelineno-4-69"></a>    <span class="n">labeltop</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+</span><span id="__span-4-70"><a id="__codelineno-4-70" name="__codelineno-4-70" href="#__codelineno-4-70"></a>    <span class="n">labelright</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+</span><span id="__span-4-71"><a id="__codelineno-4-71" name="__codelineno-4-71" href="#__codelineno-4-71"></a>    <span class="n">labelsize</span><span class="o">=</span><span class="mi">10</span>
+</span><span id="__span-4-72"><a id="__codelineno-4-72" name="__codelineno-4-72" href="#__codelineno-4-72"></a><span class="p">)</span>
+</span><span id="__span-4-73"><a id="__codelineno-4-73" name="__codelineno-4-73" href="#__codelineno-4-73"></a>
+</span><span id="__span-4-74"><a id="__codelineno-4-74" name="__codelineno-4-74" href="#__codelineno-4-74"></a><span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s2">&quot;top&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+</span><span id="__span-4-75"><a id="__codelineno-4-75" name="__codelineno-4-75" href="#__codelineno-4-75"></a><span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s2">&quot;right&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+</span><span id="__span-4-76"><a id="__codelineno-4-76" name="__codelineno-4-76" href="#__codelineno-4-76"></a>
+</span><span id="__span-4-77"><a id="__codelineno-4-77" name="__codelineno-4-77" href="#__codelineno-4-77"></a><span class="c1"># =========================</span>
+</span><span id="__span-4-78"><a id="__codelineno-4-78" name="__codelineno-4-78" href="#__codelineno-4-78"></a><span class="c1"># 9) Etiquetas y título</span>
+</span><span id="__span-4-79"><a id="__codelineno-4-79" name="__codelineno-4-79" href="#__codelineno-4-79"></a><span class="c1"># =========================</span>
+</span><span id="__span-4-80"><a id="__codelineno-4-80" name="__codelineno-4-80" href="#__codelineno-4-80"></a><span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Beaconing Interval (s)&quot;</span><span class="p">)</span>
+</span><span id="__span-4-81"><a id="__codelineno-4-81" name="__codelineno-4-81" href="#__codelineno-4-81"></a><span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Time headway &#39;h&#39; (s)&quot;</span><span class="p">)</span>
+</span><span id="__span-4-82"><a id="__codelineno-4-82" name="__codelineno-4-82" href="#__codelineno-4-82"></a><span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Time headway vs Beaconing Interval&quot;</span><span class="p">)</span>
+</span><span id="__span-4-83"><a id="__codelineno-4-83" name="__codelineno-4-83" href="#__codelineno-4-83"></a>
+</span><span id="__span-4-84"><a id="__codelineno-4-84" name="__codelineno-4-84" href="#__codelineno-4-84"></a><span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</span><span id="__span-4-85"><a id="__codelineno-4-85" name="__codelineno-4-85" href="#__codelineno-4-85"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</span></code></pre></div>
+</details>
+<p>Qué hace, por partes:</p>
+<ol>
+<li><strong>Datos.</strong> Los 15 pares de <code>h</code> y umbral, en una tabla de <code>pandas</code>.</li>
+<li><strong>Orden.</strong> Ordena los puntos por intervalo, para que la línea los una de izquierda a derecha.</li>
+<li><strong>Gráfico.</strong> Una línea con un punto por par: el intervalo en el eje horizontal y <code>h</code> en el vertical.</li>
+<li><strong>Formato.</strong> Marcas cada 0.1 s en ambos ejes, cuadrícula punteada y solo los bordes de abajo y de la izquierda.</li>
+<li><strong>Salida.</strong> <code>plt.show()</code> abre el gráfico en una ventana, desde donde se puede guardar como imagen.</li>
+</ol>
+<p>Para correrlo hace falta Python con <code>pandas</code> y <code>matplotlib</code>:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>python3<span class="w"> </span>graficoBI.py
+</span></code></pre></div>
+<h2 id="5-resultados">5 · Resultados</h2>
+<h3 id="barrido-del-intervalo-h-05-s">Barrido del intervalo (<code>h = 0.5 s</code>)</h3>
+<p>Con el frenado en <code>t = 5 s</code>, como viene el ejemplo:</p>
+<table>
+<thead>
+<tr>
+<th>Intervalo (s)</th>
+<th>Beacons por segundo</th>
+<th>Resultado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.01</td>
+<td>100</td>
+<td>Sin choque, pero la simulación corre muy lento</td>
+</tr>
+<tr>
+<td>0.1 (por defecto)</td>
+<td>10</td>
+<td>Sin choque</td>
+</tr>
+<tr>
+<td>0.3</td>
+<td>≈ 3.3</td>
+<td>Sin choque</td>
+</tr>
+<tr>
+<td><strong>0.5</strong></td>
+<td><strong>2</strong></td>
+<td><strong>Choque</strong></td>
+</tr>
+<tr>
+<td>0.8</td>
+<td>1.25</td>
+<td>Choque</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>Choque, aunque tarda más en producirse</td>
+</tr>
+</tbody>
+</table>
+<p><strong>El umbral está entre 0.3 y 0.5 s.</strong> Con el valor por defecto, 0.1 s, hay margen: los beacons podrían enviarse tres veces menos seguido sin que el pelotón choque.</p>
+<p>Con 0.01 s la simulación se vuelve muy lenta, probablemente porque cada auto envía 100 beacons por segundo, diez veces más que por defecto, y OMNeT++ simula cada uno.</p>
+<h3 id="grilla-de-h-e-intervalo-frenado-en-t-20-s">Grilla de <code>h</code> e intervalo (frenado en <code>t = 20 s</code>)</h3>
+<p><img alt="Menor intervalo de envío de beacons que produce choque, para cada h" src="../img/caso-3-h-vs-intervalo.png" /></p>
+<p>Cada punto es un valor de <code>h</code> (eje vertical) y el menor intervalo con que ese <code>h</code> chocó (eje horizontal).</p>
+<table>
+<thead>
+<tr>
+<th><code>h</code> (s)</th>
+<th>Menor intervalo con choque (s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.005</td>
+<td>0.02</td>
+</tr>
+<tr>
+<td>0.01</td>
+<td>0.2</td>
+</tr>
+<tr>
+<td>0.1</td>
+<td>0.23</td>
+</tr>
+<tr>
+<td>0.2</td>
+<td>0.25</td>
+</tr>
+<tr>
+<td>0.3</td>
+<td>0.3</td>
+</tr>
+<tr>
+<td>0.4</td>
+<td>0.37</td>
+</tr>
+<tr>
+<td>0.5</td>
+<td>0.47</td>
+</tr>
+<tr>
+<td>0.6</td>
+<td>0.63</td>
+</tr>
+<tr>
+<td>0.7</td>
+<td>0.65</td>
+</tr>
+<tr>
+<td>0.8</td>
+<td>0.75</td>
+</tr>
+<tr>
+<td>0.9</td>
+<td>0.8</td>
+</tr>
+<tr>
+<td>1.0</td>
+<td>0.85</td>
+</tr>
+<tr>
+<td>1.1</td>
+<td>1.2</td>
+</tr>
+<tr>
+<td>1.2</td>
+<td>1.6</td>
+</tr>
+<tr>
+<td>1.3</td>
+<td>1.8</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Mientras mayor es <code>h</code>, más largo es el intervalo que se tolera.</strong> Con <code>h</code> entre 0.01 y 0.3 s, el choque aparece con 0.2 a 0.3 s entre beacons. Con <code>h = 1 s</code>, recién con 0.85 s, y con <code>h = 1.3 s</code>, con 1.8 s.</li>
+<li>Con el intervalo por defecto, 0.1 s, Ploeg frena sin chocar hasta con <code>h = 0.006 s</code>. Con <code>h = 0.005 s</code> choca (el auto 5 contra el 4), y basta un intervalo de 0.02 s.</li>
+<li>En el Caso 1, <code>h = 0.1 s</code> chocaba con el frenado en <code>t = 5 s</code>. Aquí, con el frenado en <code>t = 20 s</code> y el mismo intervalo de 0.1 s, no choca. Esto apoya lo que advierte el <a href="../caso-1/#5-resultados">Caso 1</a>: ese choque venía del reacomodo inicial, no del valor de <code>h</code>.</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Límites de estos resultados</p>
+<ul>
+<li>Cada combinación se corrió una sola vez. Como el primer beacon de cada auto sale con un desfase al azar, otra semilla podría mover un poco los umbrales.</li>
+<li>"Choca o no choca" es una medida gruesa: no dice cuánto se acercaron los autos.</li>
+<li>Los umbrales valen para este escenario: Ploeg con sus ganancias por defecto, el líder a 100 km/h y un frenado de 8 m/s².</li>
+</ul>
+</div>
+<h2 id="6-errores-frecuentes">6 · Errores frecuentes</h2>
+<table>
+<thead>
+<tr>
+<th>Síntoma</th>
+<th>Causa</th>
+<th>Solución</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>La simulación corre muy lento</td>
+<td>El intervalo es muy corto: con 0.01 s hay diez veces más beacons que simular</td>
+<td>Es esperable. Usa <code>-c BrakingNoGui</code> o un intervalo más largo</td>
+</tr>
+<tr>
+<td><code>-r 3</code> no corre lo que esperabas</td>
+<td>Escribiste varios valores en <code>${beaconInterval = ...}</code></td>
+<td>Deja un solo valor y cámbialo a mano</td>
+</tr>
+<tr>
+<td>Los resultados de un intervalo borraron los del anterior</td>
+<td>El nombre del <code>.vec</code> no incluye el intervalo</td>
+<td>Guarda el PDF antes de cambiar de valor</td>
+</tr>
+<tr>
+<td>Los autos aceleran o frenan antes de que frene el líder</td>
+<td>Cambiaste <code>ploegH</code> sin ajustar la inserción</td>
+<td>Frena en <code>t = 20 s</code> o ajusta <code>platoonInsertHeadway</code> (<a href="../caso-1/#6-partir-del-equilibrio">Caso 1</a>)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="7-pendientes">7 · Pendientes</h2>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a># PENDIENTE: gráficos de velocidad y distancia de algunas corridas (hoy solo está la curva de umbrales)
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a># PENDIENTE: revisar h = 0.5 s: el registro de corridas marca choque con 0.4 s, pero la curva usa 0.47 s
+</span></code></pre></div>
+<h2 id="8-siguiente-paso">8 · Siguiente paso</h2>
+<p>El <a href="../caso-4/">Caso 4</a> provoca pérdidas de otra forma: en vez de debilitar la señal o espaciar los beacons, descarta mensajes con una probabilidad fija (FER), sin importar la distancia.</p>
 
 
 
