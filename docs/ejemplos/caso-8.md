@@ -1,13 +1,13 @@
-# Caso 8 · ETC y retardo en conjunto
+# Caso 8 · Event-triggered control sobre el envío de frames
 
-**Qué se hizo.** Combinar los casos 5 y 6, activando simultáneamente el control disparado por eventos y el retardo estocástico de comunicación.
+**Qué se hizo.** Reemplazar el envío periódico de mensajes por un envío condicionado: el vehículo transmite solo cuando una condición de disparo, evaluada localmente, se cumple.
 
-**Para qué.** Los dos efectos no se suman de forma independiente, y ahí está el interés. El mecanismo de disparo decide cuándo transmitir a partir del error entre el estado propio y el último comunicado, pero si los mensajes llegan con retardo variable, esa referencia está desactualizada en el receptor. El resultado es que el disparo puede ocurrir tarde, o dispararse de más al intentar corregir información vieja. Evaluar cada mecanismo por separado no permite anticipar el comportamiento conjunto.
+**Para qué.** En el esquema periódico habitual, todos los vehículos transmiten a intervalo fijo, esté pasando algo o no. Eso desperdicia canal cuando el pelotón circula estable, y es justamente cuando hay maniobras que se necesitaría más información. El control disparado por eventos invierte la lógica: la transmisión se gasta cuando aporta. El objetivo es reducir la carga de canal sin degradar el desempeño del control, y cuantificar ese intercambio.
 
-**Cómo se implementa.** Se activan ambos mecanismos y se barren las dos variables en conjunto: el umbral de disparo y el retardo medio. Como es un barrido en dos dimensiones, el número de simulaciones crece rápido, así que conviene lanzarlo mediante un script que recorra la grilla de combinaciones sin intervención manual.
+**Cómo se implementa.** Cada vehículo evalúa en cada paso una función de error entre el estado que tiene y el que comunicó por última vez. Si ese error supera un umbral, transmite y reinicia la referencia. El umbral es el parámetro que gobierna todo el comportamiento: muy alto deja de comunicar y el control se degrada, muy bajo degenera en el caso periódico. Suele ser necesario imponer además un tiempo mínimo entre transmisiones para evitar ráfagas.
 
 ```ini
-# PENDIENTE: configuración conjunta y definición de la grilla del barrido
+# PENDIENTE: parámetros de la condición de disparo y del umbral
 ```
 
-**Cómo se mide.** El resultado natural es una superficie en dos dimensiones: desempeño en función del umbral y del retardo. Lo que interesa localizar es la frontera de estabilidad, es decir la curva que separa las combinaciones viables de las que hacen inestable al pelotón, y comprobar si el ahorro de comunicación que el ETC lograba sin retardo se mantiene cuando el retardo aparece.
+**Cómo se mide.** Cuatro indicadores, y los dos primeros son los que dan sentido al caso: el número total de mensajes enviados, que mide el ahorro; el tiempo entre eventos consecutivos y su distribución, que muestra cómo se reparte el esfuerzo de comunicación en el tiempo; el error de espaciamiento, que verifica que el control no se degradó; y la comparación directa contra el esquema periódico con el mismo desempeño de control, que es la que permite afirmar cuánto se ahorró.

@@ -241,4 +241,4 @@ Con `h = 0.5 s` (unos 16 m entre autos), el umbral estaba entre 0.02 y 0.01 mW. 
 
 ## 8 · Siguiente paso
 
-El [Caso 3](caso-3.md) provoca pérdidas de otra forma: en vez de debilitar la señal, descarta mensajes con una probabilidad fija (FER), sin importar la distancia.
+El [Caso 3](caso-3.md) deja la potencia en 100 mW y cambia otra cosa de la comunicación: cada cuánto se envían los beacons.
