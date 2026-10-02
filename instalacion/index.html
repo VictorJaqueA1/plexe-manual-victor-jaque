@@ -856,10 +856,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#34-compilar" class="md-nav__link">
+  <a href="#34-instalar-los-paquetes-de-python" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.4 Compilar
+        3.4 Instalar los paquetes de Python
       
     </span>
   </a>
@@ -867,10 +867,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#35-verificar" class="md-nav__link">
+  <a href="#35-compilar" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.5 Verificar
+        3.5 Compilar
       
     </span>
   </a>
@@ -878,10 +878,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#36-recompilar-despues-de-modificar-sumo" class="md-nav__link">
+  <a href="#36-verificar" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.6 Recompilar después de modificar SUMO
+        3.6 Verificar
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#37-recompilar-despues-de-modificar-sumo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.7 Recompilar después de modificar SUMO
       
     </span>
   </a>
@@ -1917,10 +1928,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#34-compilar" class="md-nav__link">
+  <a href="#34-instalar-los-paquetes-de-python" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.4 Compilar
+        3.4 Instalar los paquetes de Python
       
     </span>
   </a>
@@ -1928,10 +1939,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#35-verificar" class="md-nav__link">
+  <a href="#35-compilar" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.5 Verificar
+        3.5 Compilar
       
     </span>
   </a>
@@ -1939,10 +1950,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#36-recompilar-despues-de-modificar-sumo" class="md-nav__link">
+  <a href="#36-verificar" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.6 Recompilar después de modificar SUMO
+        3.6 Verificar
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#37-recompilar-despues-de-modificar-sumo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.7 Recompilar después de modificar SUMO
       
     </span>
   </a>
@@ -2867,7 +2889,7 @@
 <h3 id="paso-3-sumo-1220">Paso 3: SUMO 1.22.0</h3>
 <p>SUMO genera y mueve los vehículos de la simulación.</p>
 <p>En este manual SUMO <strong>se compila desde el código fuente</strong>, porque en este trabajo se modifica SUMO (por ejemplo, para implementar controladores nuevos). Para eso, la guía de Plexe indica bajar el código fuente de SUMO 1.22.0 y compilarlo.</p>
-<p><strong>Fuente:</strong> guía oficial de Plexe, <a href="https://plexe.car2x.org/building/#step-3-install-sumo"><em>Step 3: Install SUMO</em></a>.</p>
+<p><strong>Fuente:</strong> guía oficial de Plexe, <a href="https://plexe.car2x.org/building/#step-3-install-sumo"><em>Step 3: Install SUMO</em></a>, que remite a la guía oficial de SUMO. Los pasos 3.1 a 3.5 siguen la <a href="https://github.com/eclipse-sumo/sumo/blob/v1_22_0/docs/web/docs/Installing/Linux_Build.md">guía de compilación de SUMO 1.22.0 para Linux</a>.</p>
 <h4 id="31-instalar-las-dependencias">3.1 Instalar las dependencias</h4>
 <p>Las dependencias son las herramientas y librerías que SUMO necesita para compilarse (por ejemplo CMake, el compilador de C++ y la librería de la ventana <code>sumo-gui</code>). No vienen en el paso 1, así que se instalan aquí con <code>apt</code>. <code>sudo</code> te pide tu contraseña de Ubuntu, como en el paso 1.</p>
 <p>Antes de instalarlas, actualiza la lista de paquetes de Ubuntu. Esa lista dice qué versiones hay en el servidor de Ubuntu. La del paso 1 ya está vieja, y con una lista vieja <code>apt</code> intenta bajar versiones que ya no existen y la instalación falla.</p>
@@ -2926,35 +2948,165 @@
 <p><strong>Ejemplo real: el final de la instalación en el equipo de referencia</strong></p>
 <p><img alt="Final de sudo apt-get install con la configuración de Java, en el equipo de referencia" src="../img/instalacion-paso-3-apt-install-fin.png" /></p>
 <h4 id="32-descargar">3.2 Descargar</h4>
-<p>Se baja el archivo con el código fuente de SUMO 1.22.0 desde el sitio oficial de SUMO y se descomprime dentro de <code>~/src/</code>.</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-46-1"><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a><span class="c1"># PENDIENTE: descargar sumo-src-1.22.0.tar.gz y descomprimirlo en ~/src</span>
+<p>Ahora tienes que descargar el código fuente de SUMO 1.22.0, un archivo de 77 MB que está en el sitio oficial de SUMO, y descomprimirlo dentro de <code>~/src/</code>, donde ya está OMNeT++.</p>
+<p>Para eso, en una terminal de Ubuntu, nueva o la que ya tengas abierta, ejecuta los siguientes comandos:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-46-1"><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a><span class="nb">cd</span><span class="w"> </span>~/src
+</span><span id="__span-46-2"><a id="__codelineno-46-2" name="__codelineno-46-2" href="#__codelineno-46-2"></a>wget<span class="w"> </span>https://sumo.dlr.de/releases/1.22.0/sumo-src-1.22.0.tar.gz
 </span></code></pre></div>
+<p><strong>Fuente:</strong> el archivo <code>sumo-src-1.22.0.tar.gz</code> es el que indica la <a href="https://github.com/eclipse-sumo/sumo/blob/v1_22_0/docs/web/docs/Installing/Linux_Build.md#release-version-or-nightly-tarball">guía de compilación de SUMO 1.22.0 para Linux</a> (sección <em>release version or nightly tarball</em>) cuando se necesita una versión específica. La carpeta <code>~/src</code> y el uso de <code>wget</code> los agrega este manual: la guía no indica una carpeta y solo da el enlace de descarga.</p>
+<p><strong>Así debería verse tu terminal</strong> (barra de progreso acortada):</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-47-1"><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a>victorjaque@DESKTOP-6VI5783:~$ cd ~/src
+</span><span id="__span-47-2"><a id="__codelineno-47-2" name="__codelineno-47-2" href="#__codelineno-47-2"></a>victorjaque@DESKTOP-6VI5783:~/src$ wget https://sumo.dlr.de/releases/1.22.0/sumo-src-1.22.0.tar.gz
+</span><span id="__span-47-3"><a id="__codelineno-47-3" name="__codelineno-47-3" href="#__codelineno-47-3"></a>--2026-10-02 15:10:33--  https://sumo.dlr.de/releases/1.22.0/sumo-src-1.22.0.tar.gz
+</span><span id="__span-47-4"><a id="__codelineno-47-4" name="__codelineno-47-4" href="#__codelineno-47-4"></a>Resolving sumo.dlr.de (sumo.dlr.de)... 129.247.254.27
+</span><span id="__span-47-5"><a id="__codelineno-47-5" name="__codelineno-47-5" href="#__codelineno-47-5"></a>Connecting to sumo.dlr.de (sumo.dlr.de)|129.247.254.27|:443... connected.
+</span><span id="__span-47-6"><a id="__codelineno-47-6" name="__codelineno-47-6" href="#__codelineno-47-6"></a>HTTP request sent, awaiting response... 200 OK
+</span><span id="__span-47-7"><a id="__codelineno-47-7" name="__codelineno-47-7" href="#__codelineno-47-7"></a>Length: 80686453 (77M) [application/x-gzip]
+</span><span id="__span-47-8"><a id="__codelineno-47-8" name="__codelineno-47-8" href="#__codelineno-47-8"></a>Saving to: ‘sumo-src-1.22.0.tar.gz’
+</span><span id="__span-47-9"><a id="__codelineno-47-9" name="__codelineno-47-9" href="#__codelineno-47-9"></a>
+</span><span id="__span-47-10"><a id="__codelineno-47-10" name="__codelineno-47-10" href="#__codelineno-47-10"></a>sumo-src-1.22.0.tar.gz      100%[=====================&gt;]  76.95M  2.46MB/s    in 26s
+</span><span id="__span-47-11"><a id="__codelineno-47-11" name="__codelineno-47-11" href="#__codelineno-47-11"></a>
+</span><span id="__span-47-12"><a id="__codelineno-47-12" name="__codelineno-47-12" href="#__codelineno-47-12"></a>2026-10-02 15:11:00 (2.96 MB/s) - ‘sumo-src-1.22.0.tar.gz’ saved [80686453/80686453]
+</span></code></pre></div>
+<p>La descarga está completa cuando los dos números de <code>saved [80686453/80686453]</code> son iguales.</p>
+<p>Cuando termine la descarga, en la misma terminal, dentro de <code>~/src</code>, ejecuta los siguientes comandos:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-48-1"><a id="__codelineno-48-1" name="__codelineno-48-1" href="#__codelineno-48-1"></a>tar<span class="w"> </span>xzf<span class="w"> </span>sumo-src-1.22.0.tar.gz
+</span><span id="__span-48-2"><a id="__codelineno-48-2" name="__codelineno-48-2" href="#__codelineno-48-2"></a><span class="nb">cd</span><span class="w"> </span>sumo-1.22.0/
+</span><span id="__span-48-3"><a id="__codelineno-48-3" name="__codelineno-48-3" href="#__codelineno-48-3"></a><span class="nb">pwd</span>
+</span></code></pre></div>
+<p><strong>Fuente:</strong> <a href="https://github.com/eclipse-sumo/sumo/blob/v1_22_0/docs/web/docs/Installing/Linux_Build.md#release-version-or-nightly-tarball">guía de compilación de SUMO 1.22.0 para Linux</a>, sección <em>release version or nightly tarball</em>. Son los tres comandos de la guía, con la versión <code>1.22.0</code>. La guía usa <code>pwd</code> para conocer la ruta de la carpeta de SUMO, que va en <code>SUMO_HOME</code> (paso 3.3).</p>
+<p><strong>Así debería verse tu terminal:</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-49-1"><a id="__codelineno-49-1" name="__codelineno-49-1" href="#__codelineno-49-1"></a>victorjaque@DESKTOP-6VI5783:~/src$ tar xzf sumo-src-1.22.0.tar.gz
+</span><span id="__span-49-2"><a id="__codelineno-49-2" name="__codelineno-49-2" href="#__codelineno-49-2"></a>victorjaque@DESKTOP-6VI5783:~/src$ cd sumo-1.22.0/
+</span><span id="__span-49-3"><a id="__codelineno-49-3" name="__codelineno-49-3" href="#__codelineno-49-3"></a>victorjaque@DESKTOP-6VI5783:~/src/sumo-1.22.0$ pwd
+</span><span id="__span-49-4"><a id="__codelineno-49-4" name="__codelineno-49-4" href="#__codelineno-49-4"></a>/home/victorjaque/src/sumo-1.22.0
+</span></code></pre></div>
+<p><code>tar</code> no muestra nada mientras descomprime. <code>pwd</code> muestra la ruta de la carpeta de SUMO: anótala, la usarás en el paso 3.3.</p>
+<p><strong>Ejemplo real: la descarga y la descompresión de SUMO en el equipo de referencia</strong></p>
+<p><img alt="Descarga de SUMO 1.22.0 con wget, seguida de tar, cd y pwd, en la terminal de Ubuntu del equipo de referencia" src="../img/instalacion-paso-3-wget-sumo.png" /></p>
 <h4 id="33-definir-sumo_home">3.3 Definir SUMO_HOME</h4>
-<p>La guía de SUMO pide definir <code>SUMO_HOME</code>, con la ruta de la carpeta de SUMO, antes de compilar.</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-47-1"><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a><span class="c1"># PENDIENTE: definir SUMO_HOME y agregar la carpeta bin de SUMO al PATH</span>
+<p>Ahora tienes que definir <code>SUMO_HOME</code>, una variable que indica dónde está la carpeta de SUMO. La guía de SUMO pide definirla antes de compilar. También vas a agregar la carpeta <code>bin</code> de SUMO al PATH, para que la terminal encuentre el programa <code>sumo</code> desde cualquier carpeta: Veins arranca SUMO por su nombre, <code>sumo</code>.</p>
+<p>Las dos líneas se guardan al final de <code>~/.profile</code>, un archivo que Ubuntu lee cada vez que abres una terminal. Así quedan definidas en todas tus terminales, no solo en la actual.</p>
+<p>Para eso, en la misma terminal, dentro de <code>~/src/sumo-1.22.0</code>, ejecuta los siguientes comandos:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-50-1"><a id="__codelineno-50-1" name="__codelineno-50-1" href="#__codelineno-50-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;export SUMO_HOME=&quot;$HOME/src/sumo-1.22.0&quot;&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.profile
+</span><span id="__span-50-2"><a id="__codelineno-50-2" name="__codelineno-50-2" href="#__codelineno-50-2"></a><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;export PATH=&quot;$SUMO_HOME/bin:$PATH&quot;&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.profile
+</span><span id="__span-50-3"><a id="__codelineno-50-3" name="__codelineno-50-3" href="#__codelineno-50-3"></a>tail<span class="w"> </span>-n<span class="w"> </span><span class="m">2</span><span class="w"> </span>~/.profile
 </span></code></pre></div>
-<h4 id="34-compilar">3.4 Compilar</h4>
+<p><strong>Fuente:</strong></p>
+<ul>
+<li><a href="https://github.com/eclipse-sumo/sumo/blob/v1_22_0/docs/web/docs/Installing/Linux_Build.md#definition-of-sumo_home">Guía de compilación de SUMO 1.22.0 para Linux</a>, sección <em>Definition of SUMO_HOME</em>: la línea <code>export SUMO_HOME=...</code>, y guardarla al final de <code>~/.profile</code> para que quede definida en todas las sesiones. La guía escribe la ruta como <code>/home/&lt;user&gt;/sumo-&lt;version&gt;</code>; aquí va <code>$HOME/src/sumo-1.22.0</code>, la ruta que mostró <code>pwd</code> en el paso 3.2.</li>
+<li>Agregado en este manual:<ul>
+<li>Escribir las líneas con <code>echo … &gt;&gt;</code>, en vez de abrir <code>~/.profile</code> con un editor. El resultado es el mismo: la línea queda al final del archivo.</li>
+<li>La línea del PATH. La guía solo dice que SUMO se ejecuta desde su carpeta <code>bin</code>; el PATH hace falta porque Veins arranca SUMO con el comando <code>sumo</code> (<a href="https://github.com/sommer/veins/blob/veins-5.3.1/bin/veins_launchd#L652"><code>veins_launchd</code> de Veins 5.3.1</a>, opción <code>--command</code>, que por defecto es <code>sumo</code>).</li>
+<li><code>tail -n 2 ~/.profile</code>, para ver las dos líneas agregadas.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Así debería verse tu terminal:</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-51-1"><a id="__codelineno-51-1" name="__codelineno-51-1" href="#__codelineno-51-1"></a>victorjaque@DESKTOP-6VI5783:~/src/sumo-1.22.0$ echo &#39;export SUMO_HOME=&quot;$HOME/src/sumo-1.22.0&quot;&#39; &gt;&gt; ~/.profile
+</span><span id="__span-51-2"><a id="__codelineno-51-2" name="__codelineno-51-2" href="#__codelineno-51-2"></a>victorjaque@DESKTOP-6VI5783:~/src/sumo-1.22.0$ echo &#39;export PATH=&quot;$SUMO_HOME/bin:$PATH&quot;&#39; &gt;&gt; ~/.profile
+</span><span id="__span-51-3"><a id="__codelineno-51-3" name="__codelineno-51-3" href="#__codelineno-51-3"></a>victorjaque@DESKTOP-6VI5783:~/src/sumo-1.22.0$ tail -n 2 ~/.profile
+</span><span id="__span-51-4"><a id="__codelineno-51-4" name="__codelineno-51-4" href="#__codelineno-51-4"></a>export SUMO_HOME=&quot;$HOME/src/sumo-1.22.0&quot;
+</span><span id="__span-51-5"><a id="__codelineno-51-5" name="__codelineno-51-5" href="#__codelineno-51-5"></a>export PATH=&quot;$SUMO_HOME/bin:$PATH&quot;
+</span></code></pre></div>
+<p>Los dos <code>echo</code> no muestran nada. <code>tail</code> muestra las dos últimas líneas de <code>~/.profile</code>: deben ser las dos que agregaste.</p>
+<p><strong>Ejemplo real: las dos líneas agregadas a <code>~/.profile</code> en el equipo de referencia</strong></p>
+<p><img alt="Comandos echo que agregan SUMO_HOME y el PATH a ~/.profile, y tail que los muestra, en el equipo de referencia" src="../img/instalacion-paso-3-profile.png" /></p>
+<p>Ahora cierra la terminal y abre una nueva, para que Ubuntu lea <code>~/.profile</code> con las líneas nuevas. En la terminal nueva, ejecuta el siguiente comando:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-52-1"><a id="__codelineno-52-1" name="__codelineno-52-1" href="#__codelineno-52-1"></a><span class="nb">echo</span><span class="w"> </span><span class="nv">$SUMO_HOME</span>
+</span></code></pre></div>
+<p><strong>Fuente:</strong> <a href="https://github.com/eclipse-sumo/sumo/blob/v1_22_0/docs/web/docs/Installing/Linux_Build.md#definition-of-sumo_home">guía de compilación de SUMO 1.22.0 para Linux</a>, sección <em>Definition of SUMO_HOME</em>: después de editar <code>~/.profile</code> hay que reiniciar la sesión, y se comprueba con <code>echo $SUMO_HOME</code>.</p>
+<p><strong>Así debería verse tu terminal:</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-53-1"><a id="__codelineno-53-1" name="__codelineno-53-1" href="#__codelineno-53-1"></a>victorjaque@DESKTOP-6VI5783:~$ echo $SUMO_HOME
+</span><span id="__span-53-2"><a id="__codelineno-53-2" name="__codelineno-53-2" href="#__codelineno-53-2"></a>/home/victorjaque/src/sumo-1.22.0
+</span></code></pre></div>
+<p>Si muestra la ruta de la carpeta de SUMO, <code>SUMO_HOME</code> quedó definido.</p>
+<p><strong>Ejemplo real: <code>SUMO_HOME</code> en una terminal nueva del equipo de referencia</strong></p>
+<p><img alt="echo $SUMO_HOME en una terminal nueva, mostrando /home/victorjaque/src/sumo-1.22.0, en el equipo de referencia" src="../img/instalacion-paso-3-sumo-home.png" /></p>
+<h4 id="34-instalar-los-paquetes-de-python">3.4 Instalar los paquetes de Python</h4>
+<p>Ahora tienes que instalar los paquetes de Python que pide la guía de SUMO. Son para las herramientas de Python de SUMO (la carpeta <code>tools/</code>), que netedit abre desde su menú; según la guía, la compilación los usa para preparar esas herramientas.</p>
+<p>La guía da dos comandos: primero uno con <code>apt</code> y después uno con <code>pip</code>. En Ubuntu 24.04 solo funciona el de <code>apt</code>, como se explica más abajo.</p>
+<p>Primero instala los paquetes con <code>apt</code>. <code>sudo</code> te pide tu contraseña y después <code>apt</code> pregunta <code>Do you want to continue? [Y/n]</code>: escribe <code>Y</code> y presiona Enter.</p>
+<p>Para eso, en una terminal de Ubuntu, nueva o la que ya tengas abierta, ejecuta el siguiente comando:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-54-1"><a id="__codelineno-54-1" name="__codelineno-54-1" href="#__codelineno-54-1"></a>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>python3-pyproj<span class="w"> </span>python3-rtree<span class="w"> </span>python3-pandas<span class="w"> </span>flake8<span class="w"> </span>python3-autopep8<span class="w"> </span>python3-pulp<span class="w"> </span>python3-ezdxf
+</span></code></pre></div>
+<p><strong>Fuente:</strong> <a href="https://github.com/eclipse-sumo/sumo/blob/v1_22_0/docs/web/docs/Installing/Linux_Build.md#installing-python-packages-for-the-tools">guía de compilación de SUMO 1.22.0 para Linux</a>, sección <em>Installing Python packages for the tools</em>.</p>
+<p><strong>Así debería verse tu terminal</strong> (inicio y final, abreviado):</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-55-1"><a id="__codelineno-55-1" name="__codelineno-55-1" href="#__codelineno-55-1"></a>victorjaque@DESKTOP-6VI5783:~$ sudo apt-get install python3-pyproj python3-rtree python3-pandas flake8 python3-autopep8 python3-pulp python3-ezdxf
+</span><span id="__span-55-2"><a id="__codelineno-55-2" name="__codelineno-55-2" href="#__codelineno-55-2"></a>[sudo] password for victorjaque:
+</span><span id="__span-55-3"><a id="__codelineno-55-3" name="__codelineno-55-3" href="#__codelineno-55-3"></a>Reading package lists... Done
+</span><span id="__span-55-4"><a id="__codelineno-55-4" name="__codelineno-55-4" href="#__codelineno-55-4"></a>Building dependency tree... Done
+</span><span id="__span-55-5"><a id="__codelineno-55-5" name="__codelineno-55-5" href="#__codelineno-55-5"></a>Reading state information... Done
+</span><span id="__span-55-6"><a id="__codelineno-55-6" name="__codelineno-55-6" href="#__codelineno-55-6"></a>The following additional packages will be installed:
+</span><span id="__span-55-7"><a id="__codelineno-55-7" name="__codelineno-55-7" href="#__codelineno-55-7"></a>  blt coinor-cbc coinor-libcbc3.1 coinor-libcgl1 coinor-libclp1 coinor-libcoinutils3v5 coinor-libosi1v5 fonts-lyx isympy-common isympy3 ...
+</span><span id="__span-55-8"><a id="__codelineno-55-8" name="__codelineno-55-8" href="#__codelineno-55-8"></a>...
+</span><span id="__span-55-9"><a id="__codelineno-55-9" name="__codelineno-55-9" href="#__codelineno-55-9"></a>Setting up python3-ezdxf (1.1.3-1) ...
+</span><span id="__span-55-10"><a id="__codelineno-55-10" name="__codelineno-55-10" href="#__codelineno-55-10"></a>Setting up python3-matplotlib (3.6.3-1ubuntu5) ...
+</span><span id="__span-55-11"><a id="__codelineno-55-11" name="__codelineno-55-11" href="#__codelineno-55-11"></a>Processing triggers for libc-bin (2.39-0ubuntu8.9) ...
+</span><span id="__span-55-12"><a id="__codelineno-55-12" name="__codelineno-55-12" href="#__codelineno-55-12"></a>Processing triggers for man-db (2.12.0-4build2) ...
+</span><span id="__span-55-13"><a id="__codelineno-55-13" name="__codelineno-55-13" href="#__codelineno-55-13"></a>Processing triggers for fontconfig (2.15.0-1.1ubuntu2) ...
+</span><span id="__span-55-14"><a id="__codelineno-55-14" name="__codelineno-55-14" href="#__codelineno-55-14"></a>victorjaque@DESKTOP-6VI5783:~$
+</span></code></pre></div>
+<p>En el equipo de referencia instaló 77 paquetes y terminó sin ningún mensaje que empiece con <code>E:</code>.</p>
+<p><strong>Ejemplo real: el inicio de la instalación en el equipo de referencia</strong></p>
+<p><img alt="Inicio de sudo apt-get install con los paquetes de Python de SUMO, en el equipo de referencia" src="../img/instalacion-paso-3-apt-python.png" /></p>
+<p>Después, la guía de SUMO pide instalar el resto de los paquetes con <code>pip</code>, desde dos listas que vienen en la carpeta de SUMO (<code>tools/requirements.txt</code> y <code>tools/req_dev.txt</code>). En Ubuntu 24.04 ese comando falla y no instala nada.</p>
+<p><strong>Los comandos que siguen no son necesarios para instalar SUMO: puedes saltarlos e ir directo al paso 3.5.</strong> Se dejan en el manual solo para mostrar que la guía pide este paso pero que en Ubuntu 24.04 no se puede hacer. En el equipo de referencia se ejecutaron para documentar el error, que es inofensivo.</p>
+<p>Si quieres comprobarlo, en la misma terminal ejecuta los siguientes comandos:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-56-1"><a id="__codelineno-56-1" name="__codelineno-56-1" href="#__codelineno-56-1"></a><span class="nb">cd</span><span class="w"> </span>~/src/sumo-1.22.0
+</span><span id="__span-56-2"><a id="__codelineno-56-2" name="__codelineno-56-2" href="#__codelineno-56-2"></a>python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>tools/requirements.txt<span class="w"> </span>-r<span class="w"> </span>tools/req_dev.txt
+</span></code></pre></div>
+<p><strong>Fuente:</strong> <a href="https://github.com/eclipse-sumo/sumo/blob/v1_22_0/docs/web/docs/Installing/Linux_Build.md#installing-python-packages-for-the-tools">guía de compilación de SUMO 1.22.0 para Linux</a>, sección <em>Installing Python packages for the tools</em>. El <code>cd</code> lo agrega este manual, porque las dos listas están dentro de la carpeta de SUMO. <strong>Estos comandos son solo para comprobar el error: no instalan ni cambian nada.</strong></p>
+<div class="admonition failure">
+<p class="admonition-title">Error: externally-managed-environment</p>
+<p><strong>Cuándo aparece:</strong> al ejecutar el <code>pip</code> de la guía de SUMO en Ubuntu 24.04.</p>
+<p><strong>Qué significa:</strong> Ubuntu 24.04 no deja instalar paquetes con <code>pip</code> en el Python del sistema. El propio mensaje propone usar <code>apt</code>; el comando anterior ya instaló con <code>apt</code> los paquetes que indica la guía. <code>pip</code> no instala nada.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-57-1"><a id="__codelineno-57-1" name="__codelineno-57-1" href="#__codelineno-57-1"></a>victorjaque@DESKTOP-6VI5783:~/src/sumo-1.22.0$ python3 -m pip install -r tools/requirements.txt -r tools/req_dev.txt
+</span><span id="__span-57-2"><a id="__codelineno-57-2" name="__codelineno-57-2" href="#__codelineno-57-2"></a>error: externally-managed-environment
+</span><span id="__span-57-3"><a id="__codelineno-57-3" name="__codelineno-57-3" href="#__codelineno-57-3"></a>
+</span><span id="__span-57-4"><a id="__codelineno-57-4" name="__codelineno-57-4" href="#__codelineno-57-4"></a>× This environment is externally managed
+</span><span id="__span-57-5"><a id="__codelineno-57-5" name="__codelineno-57-5" href="#__codelineno-57-5"></a>╰─&gt; To install Python packages system-wide, try apt install
+</span><span id="__span-57-6"><a id="__codelineno-57-6" name="__codelineno-57-6" href="#__codelineno-57-6"></a>    python3-xyz, where xyz is the package you are trying to
+</span><span id="__span-57-7"><a id="__codelineno-57-7" name="__codelineno-57-7" href="#__codelineno-57-7"></a>    install.
+</span><span id="__span-57-8"><a id="__codelineno-57-8" name="__codelineno-57-8" href="#__codelineno-57-8"></a>...
+</span></code></pre></div>
+<p><strong>Ejemplo real: el final del <code>apt-get</code> y el error de <code>pip</code> en el equipo de referencia</strong></p>
+<p><img alt="Final de sudo apt-get install y error externally-managed-environment de pip, en el equipo de referencia" src="../img/instalacion-paso-3-error-pip.png" /></p>
+</div>
+<p><strong>Qué hacer: nada más, sigue con el paso 3.5</strong></p>
+<p>Con los paquetes de <code>apt</code> basta para este trabajo:</p>
+<ul>
+<li>SUMO compila sin los paquetes de <code>pip</code>. Así lo hace el propio equipo de SUMO: en sus pruebas automáticas de la versión 1.22.0, sobre Ubuntu 24.04, compila SUMO antes de instalar esos paquetes (<a href="https://github.com/eclipse-sumo/sumo/blob/v1_22_0/.github/workflows/linux.yml"><code>linux.yml</code></a>).</li>
+<li>Veins no los necesita para arrancar SUMO: el programa con el que lo arranca (<a href="https://github.com/sommer/veins/blob/veins-5.3.1/bin/veins_launchd"><code>veins_launchd</code></a>) solo usa módulos que vienen con Python.</li>
+<li>Lo único que se pierde son las herramientas de Python de SUMO que necesitan algún paquete que no quedó instalado. Tres de esos paquetes no existen en Ubuntu: <code>fmpy</code>, <code>ortools</code> y <code>pandas_read_xml</code>.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">¿Puede dar problemas más adelante?</p>
+<p>En principio no: SUMO compila y Veins lo arranca sin estos paquetes.</p>
+<p>Solo fallaría una herramienta de Python de SUMO que use uno de los paquetes que faltan, por ejemplo las de <code>tools/drt/</code>, que usan <code>ortools</code>. En ese caso aparece el error <code>No module named …</code>. La solución es instalar ese paquete en un entorno virtual de Python, como propone el mensaje de error de <code>pip</code>.</p>
+</div>
+<h4 id="35-compilar">3.5 Compilar</h4>
 <p>Mismo patrón que OMNeT++: configurar y luego construir, esta vez con CMake.</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-48-1"><a id="__codelineno-48-1" name="__codelineno-48-1" href="#__codelineno-48-1"></a><span class="c1"># PENDIENTE: configurar con CMake y compilar SUMO</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-58-1"><a id="__codelineno-58-1" name="__codelineno-58-1" href="#__codelineno-58-1"></a><span class="c1"># PENDIENTE: configurar con CMake y compilar SUMO</span>
 </span></code></pre></div>
-<h4 id="35-verificar">3.5 Verificar</h4>
+<h4 id="36-verificar">3.6 Verificar</h4>
 <p>Comprueba que la terminal encuentra SUMO 1.22.0.</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-49-1"><a id="__codelineno-49-1" name="__codelineno-49-1" href="#__codelineno-49-1"></a><span class="c1"># PENDIENTE: verificar la versión de SUMO</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-59-1"><a id="__codelineno-59-1" name="__codelineno-59-1" href="#__codelineno-59-1"></a><span class="c1"># PENDIENTE: verificar la versión de SUMO</span>
 </span></code></pre></div>
-<h4 id="36-recompilar-despues-de-modificar-sumo">3.6 Recompilar después de modificar SUMO</h4>
+<h4 id="37-recompilar-despues-de-modificar-sumo">3.7 Recompilar después de modificar SUMO</h4>
 <p>Cada vez que modifiques el código de SUMO hay que volver a compilarlo.</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-50-1"><a id="__codelineno-50-1" name="__codelineno-50-1" href="#__codelineno-50-1"></a><span class="c1"># PENDIENTE: volver a compilar SUMO después de modificar su código</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-60-1"><a id="__codelineno-60-1" name="__codelineno-60-1" href="#__codelineno-60-1"></a><span class="c1"># PENDIENTE: volver a compilar SUMO después de modificar su código</span>
 </span></code></pre></div>
 <hr />
 <h3 id="paso-4-veins-531">Paso 4: Veins 5.3.1</h3>
 <p>Veins es el puente: sincroniza el reloj de la simulación de red (OMNeT++) con el de la simulación de tráfico (SUMO), y añade la capa de comunicación vehicular sobre la que Plexe construye sus protocolos.</p>
 <h4 id="41-descargar">4.1 Descargar</h4>
 <p>Se puede clonar el repositorio o bajar el ZIP y descomprimirlo en <code>~/src/</code>. La documentación oficial recomienda clonar.</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-51-1"><a id="__codelineno-51-1" name="__codelineno-51-1" href="#__codelineno-51-1"></a><span class="c1"># PENDIENTE: descarga de Veins 5.3.1 (clonar repositorio o bajar ZIP)</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-61-1"><a id="__codelineno-61-1" name="__codelineno-61-1" href="#__codelineno-61-1"></a><span class="c1"># PENDIENTE: descarga de Veins 5.3.1 (clonar repositorio o bajar ZIP)</span>
 </span></code></pre></div>
 <h4 id="42-compilar">4.2 Compilar</h4>
 <p>Mismo esquema que OMNeT++: configurar y luego construir.</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-52-1"><a id="__codelineno-52-1" name="__codelineno-52-1" href="#__codelineno-52-1"></a><span class="c1"># PENDIENTE: configurar y compilar Veins</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-62-1"><a id="__codelineno-62-1" name="__codelineno-62-1" href="#__codelineno-62-1"></a><span class="c1"># PENDIENTE: configurar y compilar Veins</span>
 </span></code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title">Requiere el entorno de OMNeT++ cargado</p>
@@ -2965,11 +3117,11 @@
 <p>Plexe es la capa que agrega el <em>platooning</em>: los controladores longitudinales cooperativos, los protocolos de coordinación y las maniobras.</p>
 <h4 id="51-descargar">5.1 Descargar</h4>
 <p>Igual que Veins: clonar el repositorio o bajar el ZIP en <code>~/src/</code>. El repositorio es único y las versiones se distinguen mediante etiquetas, así que hay que apuntar a la etiqueta de la versión 3.2.</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-53-1"><a id="__codelineno-53-1" name="__codelineno-53-1" href="#__codelineno-53-1"></a><span class="c1"># PENDIENTE: descarga de Plexe 3.2 (clonar en la etiqueta plexe-3.2 o bajar ZIP)</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-63-1"><a id="__codelineno-63-1" name="__codelineno-63-1" href="#__codelineno-63-1"></a><span class="c1"># PENDIENTE: descarga de Plexe 3.2 (clonar en la etiqueta plexe-3.2 o bajar ZIP)</span>
 </span></code></pre></div>
 <h4 id="52-compilar">5.2 Compilar</h4>
 <p>Aquí aparece la única particularidad del proceso: al configurar Plexe hay que <strong>indicarle explícitamente dónde está la carpeta de Veins</strong> que acabas de construir. Es una ruta relativa desde la carpeta de Plexe.</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-54-1"><a id="__codelineno-54-1" name="__codelineno-54-1" href="#__codelineno-54-1"></a><span class="c1"># PENDIENTE: configurar Plexe indicando la ruta de Veins, y compilar</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-64-1"><a id="__codelineno-64-1" name="__codelineno-64-1" href="#__codelineno-64-1"></a><span class="c1"># PENDIENTE: configurar Plexe indicando la ruta de Veins, y compilar</span>
 </span></code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title">La causa más común de fallo en este paso</p>
@@ -2981,18 +3133,18 @@
 <p>OMNeT++ 6 eliminó su complemento de R, así que la extracción de datos hoy funciona con una combinación de scripts de R y de Python.</p>
 <h4 id="61-librerias-de-r">6.1 Librerías de R</h4>
 <p>Se instalan desde la consola de R.</p>
-<div class="language-r highlight"><pre><span></span><code><span id="__span-55-1"><a id="__codelineno-55-1" name="__codelineno-55-1" href="#__codelineno-55-1"></a><span class="c1"># PENDIENTE: instalación de las librerías de R para gráficos y manejo de datos</span>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-65-1"><a id="__codelineno-65-1" name="__codelineno-65-1" href="#__codelineno-65-1"></a><span class="c1"># PENDIENTE: instalación de las librerías de R para gráficos y manejo de datos</span>
 </span></code></pre></div>
 <h4 id="62-paquete-de-lectura-de-resultados-de-omnet">6.2 Paquete de lectura de resultados de OMNeT++</h4>
 <p>Este es un paso que suele pasarse por alto, y sin él los scripts de extracción no funcionan: hay que instalar un paquete específico que permite a R leer los archivos de resultados que genera OMNeT++. Se baja como archivo comprimido, <strong>sin descomprimirlo</strong>, y se instala desde la consola de R apuntando al archivo local.</p>
-<div class="language-r highlight"><pre><span></span><code><span id="__span-56-1"><a id="__codelineno-56-1" name="__codelineno-56-1" href="#__codelineno-56-1"></a><span class="c1"># PENDIENTE: instalación del paquete de lectura de resultados de OMNeT++ en R</span>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-66-1"><a id="__codelineno-66-1" name="__codelineno-66-1" href="#__codelineno-66-1"></a><span class="c1"># PENDIENTE: instalación del paquete de lectura de resultados de OMNeT++ en R</span>
 </span></code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Error de compilación con compiladores modernos</p>
 <p>Al instalar este paquete puede aparecer un error de compilación relacionado con una función eliminada de la biblioteca estándar de C++. Se resuelve indicando a R que compile con un estándar de C++ anterior, mediante una línea en el archivo de configuración de compilación de R.</p>
 </div>
 <h4 id="63-librerias-de-python">6.3 Librerías de Python</h4>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-57-1"><a id="__codelineno-57-1" name="__codelineno-57-1" href="#__codelineno-57-1"></a><span class="c1"># PENDIENTE: instalación de las librerías de Python para análisis de datos</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-67-1"><a id="__codelineno-67-1" name="__codelineno-67-1" href="#__codelineno-67-1"></a><span class="c1"># PENDIENTE: instalación de las librerías de Python para análisis de datos</span>
 </span></code></pre></div>
 <hr />
 <h3 id="paso-7-verificacion">Paso 7: Verificación</h3>
@@ -3003,7 +3155,7 @@
 <li>Un pelotón que mantiene distancias regulares y estables entre vehículos.</li>
 <li>Ningún mensaje de error en la terminal, y archivos de resultados generados al terminar.</li>
 </ul>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-58-1"><a id="__codelineno-58-1" name="__codelineno-58-1" href="#__codelineno-58-1"></a><span class="c1"># PENDIENTE: correr un escenario de ejemplo de Plexe y verificar la salida</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-68-1"><a id="__codelineno-68-1" name="__codelineno-68-1" href="#__codelineno-68-1"></a><span class="c1"># PENDIENTE: correr un escenario de ejemplo de Plexe y verificar la salida</span>
 </span></code></pre></div>
 <p>Si esto funciona, la instalación está terminada. Los escenarios de ejemplo se describen en detalle en la sección <a href="../ejemplos/">Ejemplos</a>.</p>
 <hr />
@@ -3035,6 +3187,8 @@ La ruta que pasaste no coincide con el nombre real de tu carpeta de Veins. Verif
 Revisa la versión de SUMO. Si es posterior a la 1.22.0, la API de TraCI es incompatible con Veins 5.3.1 y el error aparece solo en tiempo de ejecución, no al compilar.</p>
 <p><strong><code>./configure</code> de OMNeT++ se detiene con <em>Cannot find OpenSceneGraph 3.2 or later</em>.</strong>
 Falta la librería de la vista 3D, que la guía de Plexe no instala. Desactívala con <code>WITH_OSG=no</code> en <code>configure.user</code> y vuelve a ejecutar <code>./configure</code>, como se explica en el <a href="#23-compilar">paso 2.3</a>. Si <code>./configure</code> se detiene por otra librería ausente, la salida es la misma: instalarla, o desactivar la opción correspondiente en <code>configure.user</code>.</p>
+<p><strong>El <code>pip</code> de la guía de SUMO se detiene con <em>error: externally-managed-environment</em>.</strong>
+Ubuntu 24.04 no deja instalar paquetes con <code>pip</code> en el Python del sistema. Basta con los paquetes de <code>apt</code>, como se explica en el <a href="#34-instalar-los-paquetes-de-python">paso 3.4</a>: SUMO compila sin los de <code>pip</code>.</p>
 <p><strong>Error al instalar el paquete de resultados en R.</strong>
 Es la incompatibilidad con compiladores modernos de C++ descrita en el paso 6.2. Se resuelve forzando un estándar de C++ anterior en la configuración de compilación de R.</p>
 <p><strong>La compilación es extremadamente lenta en WSL.</strong>
