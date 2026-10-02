@@ -191,7 +191,7 @@
                     <a href="../ejemplos/caso-3/">Caso 3 · Variar el intervalo de envío de beacons</a>
                   </li>
                   <li>
-                    <a href="../ejemplos/caso-4/">Caso 4 · Pérdida artificial de paquetes con FER</a>
+                    <a href="../ejemplos/caso-4/">Caso 4 · Pérdida artificial de paquetes con frame error rate (FER)</a>
                   </li>
                   <li>
                     <a href="../ejemplos/caso-5/">Caso 5 · Nuevo perfil de aceleración y velocidad del líder</a>
@@ -819,6 +819,78 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Paso 3: SUMO 1.22.0">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-instalar-las-dependencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Instalar las dependencias
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-descargar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Descargar
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-definir-sumo_home" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 Definir SUMO_HOME
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-compilar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 Compilar
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-verificar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5 Verificar
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#36-recompilar-despues-de-modificar-sumo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.6 Recompilar después de modificar SUMO
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -1256,7 +1328,7 @@
   <span class="md-ellipsis">
     
   
-    Caso 4 · Pérdida artificial de paquetes con FER
+    Caso 4 · Pérdida artificial de paquetes con frame error rate (FER)
   
 
     
@@ -1808,6 +1880,78 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Paso 3: SUMO 1.22.0">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-instalar-las-dependencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Instalar las dependencias
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-descargar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Descargar
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-definir-sumo_home" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 Definir SUMO_HOME
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-compilar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 Compilar
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-verificar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5 Verificar
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#36-recompilar-despues-de-modificar-sumo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.6 Recompilar después de modificar SUMO
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -2067,7 +2211,7 @@
 <p>El orden no es una recomendación de estilo, es una dependencia técnica:</p>
 <ul>
 <li><strong>OMNeT++</strong> va primero y sin excepción. Es la base, y tanto Veins como Plexe se compilan enlazándose contra él.</li>
-<li><strong>SUMO</strong> es el único que no bloquea la compilación de nada, porque Veins lo controla en tiempo de ejecución a través de una interfaz de red, no en tiempo de compilación. Aun así conviene instalarlo <strong>temprano, justo después de OMNeT++</strong>: se instala ya compilado y toma pocos minutos, y es el punto donde más fácil es equivocarse de versión. Dejarlo para el final significa arriesgarse a descubrir un error de versión recién al intentar la primera simulación, con todo lo demás ya construido.</li>
+<li><strong>SUMO</strong> es el único que no bloquea la compilación de nada, porque Veins lo controla en tiempo de ejecución a través de una interfaz de red, no en tiempo de compilación. Aun así conviene instalarlo <strong>temprano, justo después de OMNeT++</strong>: es el punto donde más fácil es equivocarse de versión. Dejarlo para el final significa arriesgarse a descubrir un error de versión recién al intentar la primera simulación, con todo lo demás ya construido.</li>
 <li><strong>Veins</strong> no compila si OMNeT++ no está construido y su entorno cargado en la terminal.</li>
 <li><strong>Plexe</strong> no compila si no le indicas dónde está la carpeta de Veins ya construida.</li>
 </ul>
@@ -2081,6 +2225,7 @@
 <div class="admonition warning">
 <p class="admonition-title">No superes SUMO 1.22.0</p>
 <p>Las versiones de SUMO posteriores a la <strong>1.22.0</strong> cambiaron la API de TraCI, y Veins 5.3.1 no es compatible con esa API nueva. La instalación va a parecer correcta y el error aparecerá recién al intentar correr una simulación.</p>
+<p><strong>Fuente:</strong> guía oficial de Plexe, <a href="https://plexe.car2x.org/building/#step-3-install-sumo"><em>Step 3: Install SUMO</em></a>, que advierte no pasar de SUMO 1.22.0 porque Veins 5.3.1 todavía no soporta la nueva versión de la API.</p>
 </div>
 <hr />
 <h2 id="2-descargar-y-compilar-dos-cosas-distintas">2 · Descargar y compilar: dos cosas distintas</h2>
@@ -2105,8 +2250,8 @@
 </tr>
 <tr>
 <td><strong>SUMO</strong></td>
-<td>Paquete <strong>binario</strong> desde sumo.dlr.de</td>
-<td style="text-align: center;"><strong>No</strong></td>
+<td>Archivo comprimido con el código fuente desde sumo.dlr.de</td>
+<td style="text-align: center;">Sí</td>
 </tr>
 <tr>
 <td><strong>Veins</strong></td>
@@ -2123,14 +2268,14 @@
 <p>Dos observaciones importantes:</p>
 <ul>
 <li>Solo <strong>Veins y Plexe</strong> tienen la doble opción ZIP/Git. La documentación oficial de Plexe recomienda clonar el repositorio y desaconseja el ZIP.</li>
-<li><strong>SUMO es la excepción a toda la lógica anterior: no se compila.</strong> Desde su versión 1.2.0, los modelos que Plexe necesita vienen incluidos en la distribución oficial, así que basta instalar el paquete ya construido. La excepción a esta excepción está en el paso 3.</li>
+<li><strong>SUMO no tiene una versión aparte para Plexe.</strong> Desde su versión 1.2.0, los modelos que Plexe necesita vienen incluidos en la versión oficial de SUMO, así que se baja y se compila esa versión oficial, como se explica en el paso 3.</li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Si consultas la documentación oficial</p>
 <p>El sitio de Plexe separa estas dos operaciones en dos páginas distintas: <strong>Download</strong> y <strong>Building</strong>. Es útil saber que la página <em>Download</em> cubre <strong>únicamente Plexe</strong>, porque tanto el ZIP como el repositorio contienen Plexe y nada más. OMNeT++, SUMO y Veins se descargan cada uno de su propio sitio, y esas indicaciones están en la página <em>Building</em>, no en <em>Download</em>. La única excepción es <strong>Instant Plexe</strong>, que está en esa misma página y sí trae los cuatro componentes ya instalados.</p>
 </div>
 <h3 id="como-se-compila-en-cada-sistema-operativo">Cómo se compila en cada sistema operativo</h3>
-<p>De los cuatro componentes, <strong>tres se compilan</strong> (OMNeT++, Veins y Plexe) y SUMO llega ya construido. Los tres siguen exactamente el mismo patrón de dos etapas: primero se configura, es decir se detecta qué hay instalado en tu máquina, y después se construye.</p>
+<p>En este manual <strong>los cuatro componentes se compilan</strong>, y todos siguen el mismo patrón de dos etapas: primero se configura, es decir se detecta qué hay instalado en tu máquina, y después se construye. En OMNeT++, Veins y Plexe esas etapas son <code>./configure</code> y <code>make</code>; en SUMO, <code>cmake -B build .</code> y <code>cmake --build build</code>.</p>
 <p>Lo que cambia entre sistemas operativos <strong>no es qué se compila ni con qué comandos</strong>, sino de dónde salen las dependencias y cuánta fricción hay en el camino:</p>
 <table>
 <thead>
@@ -2196,17 +2341,17 @@
     A1["OMNeT++&lt;br/&gt;archivo comprimido"] --&gt; A2["cargar entorno&lt;br/&gt;source setenv"] --&gt; A3["compilar"]
     B1["Veins&lt;br/&gt;ZIP o Git"] --&gt; B2["compilar"]
     C1["Plexe&lt;br/&gt;ZIP o Git"] --&gt; C2["compilar&lt;br/&gt;indicando ruta de Veins"]
-    D1["SUMO&lt;br/&gt;paquete binario"] --&gt; D2["operativo&lt;br/&gt;sin compilar"]
+    D1["SUMO&lt;br/&gt;código fuente"] --&gt; D2["compilar&lt;br/&gt;con CMake"]
     A3 -.-&gt;|"habilita"| B2
     B2 -.-&gt;|"habilita"| C2</code></pre>
-<p>Este diagrama deja ver las dos cosas que más se malinterpretan: que <strong>SUMO no pasa por compilación</strong>, y que <strong>el entorno de OMNeT++ se carga antes de compilar</strong>, incluso el propio OMNeT++.</p>
+<p>Este diagrama deja ver las dos cosas que más se malinterpretan: que <strong>SUMO se compila por su cuenta</strong>, sin depender de los demás, y que <strong>el entorno de OMNeT++ se carga antes de compilar</strong>, incluso el propio OMNeT++.</p>
 <h3 id="como-queda-tu-disco">Cómo queda tu disco</h3>
 <p>Todo vive dentro de una sola carpeta, <code>~/src/</code>. Al terminar la instalación debería verse así:</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>~/src/
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>├── omnetpp-6.2.0/     ← motor de simulación
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>├── veins/             ← puente V2V
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>├── plexe/             ← platooning
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>└── sumo-1.22.0/       ← solo aparece si compilas SUMO desde el código fuente
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>└── sumo-1.22.0/       ← tráfico vehicular
 </span></code></pre></div>
 <div class="admonition tip">
 <p class="admonition-title">Mantén el código en ~/src, no en /mnt/c</p>
@@ -2720,27 +2865,96 @@
 <p>Si las tres pruebas funcionan, OMNeT++ está instalado y puedes pasar al paso 3.</p>
 <hr />
 <h3 id="paso-3-sumo-1220">Paso 3: SUMO 1.22.0</h3>
-<p>SUMO genera y mueve los vehículos. Veins lo controla durante la simulación a través de una interfaz de red, no en tiempo de compilación.</p>
-<p>En el caso general <strong>este componente no se compila</strong>. Desde la versión 1.2.0 de SUMO los modelos que Plexe necesita vienen incluidos en la distribución oficial, así que basta con instalar el paquete binario.</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-41-1"><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a><span class="c1"># PENDIENTE: instalación del paquete binario de SUMO 1.22.0</span>
+<p>SUMO genera y mueve los vehículos de la simulación.</p>
+<p>En este manual SUMO <strong>se compila desde el código fuente</strong>, porque en este trabajo se modifica SUMO (por ejemplo, para implementar controladores nuevos). Para eso, la guía de Plexe indica bajar el código fuente de SUMO 1.22.0 y compilarlo.</p>
+<p><strong>Fuente:</strong> guía oficial de Plexe, <a href="https://plexe.car2x.org/building/#step-3-install-sumo"><em>Step 3: Install SUMO</em></a>.</p>
+<h4 id="31-instalar-las-dependencias">3.1 Instalar las dependencias</h4>
+<p>Las dependencias son las herramientas y librerías que SUMO necesita para compilarse (por ejemplo CMake, el compilador de C++ y la librería de la ventana <code>sumo-gui</code>). No vienen en el paso 1, así que se instalan aquí con <code>apt</code>. <code>sudo</code> te pide tu contraseña de Ubuntu, como en el paso 1.</p>
+<p>Antes de instalarlas, actualiza la lista de paquetes de Ubuntu. Esa lista dice qué versiones hay en el servidor de Ubuntu. La del paso 1 ya está vieja, y con una lista vieja <code>apt</code> intenta bajar versiones que ya no existen y la instalación falla.</p>
+<p>En una terminal de Ubuntu, nueva o la que ya tengas abierta, ejecuta el siguiente comando:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-41-1"><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update
 </span></code></pre></div>
-<p>Después de instalar, comprueba la versión. Es el único punto donde una versión equivocada arruina la instalación completa.</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-42-1"><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a><span class="c1"># PENDIENTE: verificar la versión instalada de SUMO</span>
+<p><strong>Fuente:</strong> agregado en este manual; la guía de SUMO no lo incluye. Es el mismo comando del paso 1.1.</p>
+<p><strong>Así debería verse tu terminal</strong> (abreviado):</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-42-1"><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a>victorjaque@DESKTOP-6VI5783:~$ sudo apt update
+</span><span id="__span-42-2"><a id="__codelineno-42-2" name="__codelineno-42-2" href="#__codelineno-42-2"></a>[sudo] password for victorjaque:
+</span><span id="__span-42-3"><a id="__codelineno-42-3" name="__codelineno-42-3" href="#__codelineno-42-3"></a>Hit:1 http://archive.ubuntu.com/ubuntu noble InRelease
+</span><span id="__span-42-4"><a id="__codelineno-42-4" name="__codelineno-42-4" href="#__codelineno-42-4"></a>Get:2 http://archive.ubuntu.com/ubuntu noble-updates InRelease [126 kB]
+</span><span id="__span-42-5"><a id="__codelineno-42-5" name="__codelineno-42-5" href="#__codelineno-42-5"></a>Get:3 http://archive.ubuntu.com/ubuntu noble-backports InRelease [126 kB]
+</span><span id="__span-42-6"><a id="__codelineno-42-6" name="__codelineno-42-6" href="#__codelineno-42-6"></a>Get:4 http://security.ubuntu.com/ubuntu noble-security InRelease [126 kB]
+</span><span id="__span-42-7"><a id="__codelineno-42-7" name="__codelineno-42-7" href="#__codelineno-42-7"></a>...
+</span><span id="__span-42-8"><a id="__codelineno-42-8" name="__codelineno-42-8" href="#__codelineno-42-8"></a>Get:22 http://security.ubuntu.com/ubuntu noble-security/restricted Translation-en [361 kB]
+</span><span id="__span-42-9"><a id="__codelineno-42-9" name="__codelineno-42-9" href="#__codelineno-42-9"></a>Fetched 11.3 MB in 4s (2813 kB/s)
+</span><span id="__span-42-10"><a id="__codelineno-42-10" name="__codelineno-42-10" href="#__codelineno-42-10"></a>Reading package lists... Done
+</span><span id="__span-42-11"><a id="__codelineno-42-11" name="__codelineno-42-11" href="#__codelineno-42-11"></a>Building dependency tree... Done
+</span><span id="__span-42-12"><a id="__codelineno-42-12" name="__codelineno-42-12" href="#__codelineno-42-12"></a>Reading state information... Done
+</span><span id="__span-42-13"><a id="__codelineno-42-13" name="__codelineno-42-13" href="#__codelineno-42-13"></a>32 packages can be upgraded. Run &#39;apt list --upgradable&#39; to see them.
 </span></code></pre></div>
-<div class="admonition note">
-<p class="admonition-title">Compilar SUMO desde el código fuente</p>
-<p>Hace falta si vas a modificar el modelo de seguimiento vehicular que Plexe usa dentro de SUMO, que es donde viven las leyes de control longitudinal. Cambiar los parámetros de un controlador existente no requiere compilar nada, pero escribir un controlador nuevo o alterar el comportamiento de uno existente sí obliga a recompilar SUMO desde fuentes.</p>
-</div>
+<p>El aviso final (<em>32 packages can be upgraded</em>) es normal y no impide seguir: esas actualizaciones corresponden al paso 0.5.</p>
+<p><strong>Ejemplo real: así se vio <code>sudo apt update</code> en el equipo de referencia</strong></p>
+<p><img alt="Salida de sudo apt update en la terminal de Ubuntu, antes de instalar las dependencias de SUMO, en el equipo de referencia" src="../img/instalacion-paso-3-apt-update.png" /></p>
+<p>Ahora instala las dependencias. <code>apt</code> muestra un resumen y pregunta <code>Do you want to continue? [Y/n]</code>: escribe <code>Y</code> y presiona Enter.</p>
+<p>En la misma terminal, ejecuta el siguiente comando:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-43-1"><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>git<span class="w"> </span>cmake<span class="w"> </span>python3<span class="w"> </span>g++<span class="w"> </span>libxerces-c-dev<span class="w"> </span>libfox-1.6-dev<span class="w"> </span>libgdal-dev<span class="w"> </span>libproj-dev<span class="w"> </span>libgl2ps-dev<span class="w"> </span>python3-dev<span class="w"> </span>swig<span class="w"> </span>default-jdk<span class="w"> </span>maven<span class="w"> </span>libeigen3-dev
+</span></code></pre></div>
+<p><strong>Fuente:</strong> <a href="https://github.com/eclipse-sumo/sumo/blob/v1_22_0/docs/web/docs/Installing/Linux_Build.md">guía de compilación de SUMO 1.22.0 para Linux</a>, primera línea del bloque <em>For ubuntu this boils down to</em>. De ese bloque solo se usa esta línea; el código de SUMO se baja en el paso 3.2.</p>
+<p><strong>Así debería verse tu terminal</strong> antes de confirmar (abreviado):</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-44-1"><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a>victorjaque@DESKTOP-6VI5783:~$ sudo apt-get install git cmake python3 g++ libxerces-c-dev libfox-1.6-dev libgdal-dev libproj-dev libgl2ps-dev python3-dev swig default-jdk maven libeigen3-dev
+</span><span id="__span-44-2"><a id="__codelineno-44-2" name="__codelineno-44-2" href="#__codelineno-44-2"></a>...
+</span><span id="__span-44-3"><a id="__codelineno-44-3" name="__codelineno-44-3" href="#__codelineno-44-3"></a>The following packages will be upgraded:
+</span><span id="__span-44-4"><a id="__codelineno-44-4" name="__codelineno-44-4" href="#__codelineno-44-4"></a>  libegl-mesa0 libgbm1 libgl1-mesa-dri libglx-mesa0 libheif-plugin-aomdec libheif-plugin-aomenc libheif1 libssl3t64
+</span><span id="__span-44-5"><a id="__codelineno-44-5" name="__codelineno-44-5" href="#__codelineno-44-5"></a>  mesa-libgallium mesa-vulkan-drivers openssl
+</span><span id="__span-44-6"><a id="__codelineno-44-6" name="__codelineno-44-6" href="#__codelineno-44-6"></a>11 upgraded, 207 newly installed, 0 to remove and 21 not upgraded.
+</span><span id="__span-44-7"><a id="__codelineno-44-7" name="__codelineno-44-7" href="#__codelineno-44-7"></a>Need to get 270 MB of archives.
+</span><span id="__span-44-8"><a id="__codelineno-44-8" name="__codelineno-44-8" href="#__codelineno-44-8"></a>After this operation, 869 MB of additional disk space will be used.
+</span><span id="__span-44-9"><a id="__codelineno-44-9" name="__codelineno-44-9" href="#__codelineno-44-9"></a>Do you want to continue? [Y/n]
+</span></code></pre></div>
+<p>También actualiza 11 paquetes que ya estaban instalados; es normal. En el equipo de referencia fueron <strong>207 paquetes nuevos</strong> y <strong>11 actualizados</strong>: 270 MB de descarga y 869 MB de disco.</p>
+<p><strong>Ejemplo real: el resumen antes de confirmar, en el equipo de referencia</strong></p>
+<p><img alt="Resumen de sudo apt-get install con las dependencias de SUMO y la pregunta Do you want to continue, en el equipo de referencia" src="../img/instalacion-paso-3-apt-install.png" /></p>
+<p><strong>Así debería verse tu terminal</strong> al terminar (abreviado):</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-45-1"><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a>...
+</span><span id="__span-45-2"><a id="__codelineno-45-2" name="__codelineno-45-2" href="#__codelineno-45-2"></a>Setting up default-jre-headless (2:1.21-75+exp1) ...
+</span><span id="__span-45-3"><a id="__codelineno-45-3" name="__codelineno-45-3" href="#__codelineno-45-3"></a>Setting up default-jre (2:1.21-75+exp1) ...
+</span><span id="__span-45-4"><a id="__codelineno-45-4" name="__codelineno-45-4" href="#__codelineno-45-4"></a>Setting up openjdk-21-jdk:amd64 (21.0.12.1+1-1~24.04.4) ...
+</span><span id="__span-45-5"><a id="__codelineno-45-5" name="__codelineno-45-5" href="#__codelineno-45-5"></a>update-alternatives: using /usr/lib/jvm/java-21-openjdk-amd64/bin/jconsole to provide /usr/bin/jconsole (jconsole) in auto mode
+</span><span id="__span-45-6"><a id="__codelineno-45-6" name="__codelineno-45-6" href="#__codelineno-45-6"></a>Setting up default-jdk-headless (2:1.21-75+exp1) ...
+</span><span id="__span-45-7"><a id="__codelineno-45-7" name="__codelineno-45-7" href="#__codelineno-45-7"></a>Setting up default-jdk (2:1.21-75+exp1) ...
+</span><span id="__span-45-8"><a id="__codelineno-45-8" name="__codelineno-45-8" href="#__codelineno-45-8"></a>victorjaque@DESKTOP-6VI5783:~$
+</span></code></pre></div>
+<p>Terminó bien cuando vuelve a aparecer <code>victorjaque@...:~$</code> sin mensajes que empiecen con <code>E:</code>. En el equipo de referencia tardó unos dos minutos.</p>
+<p><strong>Ejemplo real: el final de la instalación en el equipo de referencia</strong></p>
+<p><img alt="Final de sudo apt-get install con la configuración de Java, en el equipo de referencia" src="../img/instalacion-paso-3-apt-install-fin.png" /></p>
+<h4 id="32-descargar">3.2 Descargar</h4>
+<p>Se baja el archivo con el código fuente de SUMO 1.22.0 desde el sitio oficial de SUMO y se descomprime dentro de <code>~/src/</code>.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-46-1"><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a><span class="c1"># PENDIENTE: descargar sumo-src-1.22.0.tar.gz y descomprimirlo en ~/src</span>
+</span></code></pre></div>
+<h4 id="33-definir-sumo_home">3.3 Definir SUMO_HOME</h4>
+<p>La guía de SUMO pide definir <code>SUMO_HOME</code>, con la ruta de la carpeta de SUMO, antes de compilar.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-47-1"><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a><span class="c1"># PENDIENTE: definir SUMO_HOME y agregar la carpeta bin de SUMO al PATH</span>
+</span></code></pre></div>
+<h4 id="34-compilar">3.4 Compilar</h4>
+<p>Mismo patrón que OMNeT++: configurar y luego construir, esta vez con CMake.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-48-1"><a id="__codelineno-48-1" name="__codelineno-48-1" href="#__codelineno-48-1"></a><span class="c1"># PENDIENTE: configurar con CMake y compilar SUMO</span>
+</span></code></pre></div>
+<h4 id="35-verificar">3.5 Verificar</h4>
+<p>Comprueba que la terminal encuentra SUMO 1.22.0.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-49-1"><a id="__codelineno-49-1" name="__codelineno-49-1" href="#__codelineno-49-1"></a><span class="c1"># PENDIENTE: verificar la versión de SUMO</span>
+</span></code></pre></div>
+<h4 id="36-recompilar-despues-de-modificar-sumo">3.6 Recompilar después de modificar SUMO</h4>
+<p>Cada vez que modifiques el código de SUMO hay que volver a compilarlo.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-50-1"><a id="__codelineno-50-1" name="__codelineno-50-1" href="#__codelineno-50-1"></a><span class="c1"># PENDIENTE: volver a compilar SUMO después de modificar su código</span>
+</span></code></pre></div>
 <hr />
 <h3 id="paso-4-veins-531">Paso 4: Veins 5.3.1</h3>
 <p>Veins es el puente: sincroniza el reloj de la simulación de red (OMNeT++) con el de la simulación de tráfico (SUMO), y añade la capa de comunicación vehicular sobre la que Plexe construye sus protocolos.</p>
 <h4 id="41-descargar">4.1 Descargar</h4>
 <p>Se puede clonar el repositorio o bajar el ZIP y descomprimirlo en <code>~/src/</code>. La documentación oficial recomienda clonar.</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-43-1"><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a><span class="c1"># PENDIENTE: descarga de Veins 5.3.1 (clonar repositorio o bajar ZIP)</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-51-1"><a id="__codelineno-51-1" name="__codelineno-51-1" href="#__codelineno-51-1"></a><span class="c1"># PENDIENTE: descarga de Veins 5.3.1 (clonar repositorio o bajar ZIP)</span>
 </span></code></pre></div>
 <h4 id="42-compilar">4.2 Compilar</h4>
 <p>Mismo esquema que OMNeT++: configurar y luego construir.</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-44-1"><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a><span class="c1"># PENDIENTE: configurar y compilar Veins</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-52-1"><a id="__codelineno-52-1" name="__codelineno-52-1" href="#__codelineno-52-1"></a><span class="c1"># PENDIENTE: configurar y compilar Veins</span>
 </span></code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title">Requiere el entorno de OMNeT++ cargado</p>
@@ -2751,11 +2965,11 @@
 <p>Plexe es la capa que agrega el <em>platooning</em>: los controladores longitudinales cooperativos, los protocolos de coordinación y las maniobras.</p>
 <h4 id="51-descargar">5.1 Descargar</h4>
 <p>Igual que Veins: clonar el repositorio o bajar el ZIP en <code>~/src/</code>. El repositorio es único y las versiones se distinguen mediante etiquetas, así que hay que apuntar a la etiqueta de la versión 3.2.</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-45-1"><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a><span class="c1"># PENDIENTE: descarga de Plexe 3.2 (clonar en la etiqueta plexe-3.2 o bajar ZIP)</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-53-1"><a id="__codelineno-53-1" name="__codelineno-53-1" href="#__codelineno-53-1"></a><span class="c1"># PENDIENTE: descarga de Plexe 3.2 (clonar en la etiqueta plexe-3.2 o bajar ZIP)</span>
 </span></code></pre></div>
 <h4 id="52-compilar">5.2 Compilar</h4>
 <p>Aquí aparece la única particularidad del proceso: al configurar Plexe hay que <strong>indicarle explícitamente dónde está la carpeta de Veins</strong> que acabas de construir. Es una ruta relativa desde la carpeta de Plexe.</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-46-1"><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a><span class="c1"># PENDIENTE: configurar Plexe indicando la ruta de Veins, y compilar</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-54-1"><a id="__codelineno-54-1" name="__codelineno-54-1" href="#__codelineno-54-1"></a><span class="c1"># PENDIENTE: configurar Plexe indicando la ruta de Veins, y compilar</span>
 </span></code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title">La causa más común de fallo en este paso</p>
@@ -2767,18 +2981,18 @@
 <p>OMNeT++ 6 eliminó su complemento de R, así que la extracción de datos hoy funciona con una combinación de scripts de R y de Python.</p>
 <h4 id="61-librerias-de-r">6.1 Librerías de R</h4>
 <p>Se instalan desde la consola de R.</p>
-<div class="language-r highlight"><pre><span></span><code><span id="__span-47-1"><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a><span class="c1"># PENDIENTE: instalación de las librerías de R para gráficos y manejo de datos</span>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-55-1"><a id="__codelineno-55-1" name="__codelineno-55-1" href="#__codelineno-55-1"></a><span class="c1"># PENDIENTE: instalación de las librerías de R para gráficos y manejo de datos</span>
 </span></code></pre></div>
 <h4 id="62-paquete-de-lectura-de-resultados-de-omnet">6.2 Paquete de lectura de resultados de OMNeT++</h4>
 <p>Este es un paso que suele pasarse por alto, y sin él los scripts de extracción no funcionan: hay que instalar un paquete específico que permite a R leer los archivos de resultados que genera OMNeT++. Se baja como archivo comprimido, <strong>sin descomprimirlo</strong>, y se instala desde la consola de R apuntando al archivo local.</p>
-<div class="language-r highlight"><pre><span></span><code><span id="__span-48-1"><a id="__codelineno-48-1" name="__codelineno-48-1" href="#__codelineno-48-1"></a><span class="c1"># PENDIENTE: instalación del paquete de lectura de resultados de OMNeT++ en R</span>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-56-1"><a id="__codelineno-56-1" name="__codelineno-56-1" href="#__codelineno-56-1"></a><span class="c1"># PENDIENTE: instalación del paquete de lectura de resultados de OMNeT++ en R</span>
 </span></code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Error de compilación con compiladores modernos</p>
 <p>Al instalar este paquete puede aparecer un error de compilación relacionado con una función eliminada de la biblioteca estándar de C++. Se resuelve indicando a R que compile con un estándar de C++ anterior, mediante una línea en el archivo de configuración de compilación de R.</p>
 </div>
 <h4 id="63-librerias-de-python">6.3 Librerías de Python</h4>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-49-1"><a id="__codelineno-49-1" name="__codelineno-49-1" href="#__codelineno-49-1"></a><span class="c1"># PENDIENTE: instalación de las librerías de Python para análisis de datos</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-57-1"><a id="__codelineno-57-1" name="__codelineno-57-1" href="#__codelineno-57-1"></a><span class="c1"># PENDIENTE: instalación de las librerías de Python para análisis de datos</span>
 </span></code></pre></div>
 <hr />
 <h3 id="paso-7-verificacion">Paso 7: Verificación</h3>
@@ -2789,7 +3003,7 @@
 <li>Un pelotón que mantiene distancias regulares y estables entre vehículos.</li>
 <li>Ningún mensaje de error en la terminal, y archivos de resultados generados al terminar.</li>
 </ul>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-50-1"><a id="__codelineno-50-1" name="__codelineno-50-1" href="#__codelineno-50-1"></a><span class="c1"># PENDIENTE: correr un escenario de ejemplo de Plexe y verificar la salida</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-58-1"><a id="__codelineno-58-1" name="__codelineno-58-1" href="#__codelineno-58-1"></a><span class="c1"># PENDIENTE: correr un escenario de ejemplo de Plexe y verificar la salida</span>
 </span></code></pre></div>
 <p>Si esto funciona, la instalación está terminada. Los escenarios de ejemplo se describen en detalle en la sección <a href="../ejemplos/">Ejemplos</a>.</p>
 <hr />
@@ -2836,7 +3050,7 @@ Es un problema conocido y documentado en las preguntas frecuentes del sitio ofic
 <li><a href="https://plexe.car2x.org/building/">Guía de compilación de Plexe</a>: instrucciones por sistema operativo</li>
 <li><a href="https://omnetpp.org/">OMNeT++</a>: descarga y manual de instalación</li>
 <li><a href="https://veins.car2x.org/">Veins</a>: documentación del puente V2V</li>
-<li><a href="https://sumo.dlr.de/docs/Installing/index.html">SUMO</a>: guía de instalación</li>
+<li><a href="https://github.com/eclipse-sumo/sumo/blob/v1_22_0/docs/web/docs/Installing/Linux_Build.md">Guía de compilación de SUMO 1.22.0 para Linux</a>: dependencias y compilación de SUMO desde el código fuente</li>
 </ul>
 
 

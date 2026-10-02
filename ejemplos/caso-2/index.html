@@ -189,7 +189,7 @@
                     <a href="../caso-3/">Caso 3 · Variar el intervalo de envío de beacons</a>
                   </li>
                   <li>
-                    <a href="../caso-4/">Caso 4 · Pérdida artificial de paquetes con FER</a>
+                    <a href="../caso-4/">Caso 4 · Pérdida artificial de paquetes con frame error rate (FER)</a>
                   </li>
                   <li>
                     <a href="../caso-5/">Caso 5 · Nuevo perfil de aceleración y velocidad del líder</a>
@@ -790,6 +790,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#paso-5-los-6-controladores-en-el-ejemplo-platooning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 5 · Los 6 controladores, en el ejemplo platooning
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -823,6 +834,17 @@
     <span class="md-ellipsis">
       
         Potencia y separación (frenado en t = 20 s)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#los-6-controladores-ejemplo-platooning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Los 6 controladores (ejemplo platooning)
       
     </span>
   </a>
@@ -918,7 +940,7 @@
   <span class="md-ellipsis">
     
   
-    Caso 4 · Pérdida artificial de paquetes con FER
+    Caso 4 · Pérdida artificial de paquetes con frame error rate (FER)
   
 
     
@@ -1244,6 +1266,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#paso-5-los-6-controladores-en-el-ejemplo-platooning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 5 · Los 6 controladores, en el ejemplo platooning
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1277,6 +1310,17 @@
     <span class="md-ellipsis">
       
         Potencia y separación (frenado en t = 20 s)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#los-6-controladores-ejemplo-platooning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Los 6 controladores (ejemplo platooning)
       
     </span>
   </a>
@@ -1351,6 +1395,7 @@
 <li><strong>Controlador:</strong> Ploeg (<code>-r 3</code>).</li>
 <li><strong>Parámetros:</strong> la potencia de transmisión, el bitrate y, al final, el tiempo de separación <code>h</code>.</li>
 <li><strong>Resultado principal:</strong> con la separación por defecto (unos 16 m), el pelotón choca al bajar de 0.02 a 0.01 mW. Con más separación, hace falta más potencia.</li>
+<li><strong>Además:</strong> el mismo barrido con los 6 controladores, en el ejemplo <code>platooning</code>.</li>
 <li><strong>Qué se toca:</strong> solo <code>omnetpp.ini</code>. No hay que recompilar.</li>
 </ul>
 </div>
@@ -1521,6 +1566,22 @@
 <li>Frenar en <code>t = 20 s</code>, en vez de 5 s, deja más tiempo para que el pelotón se reacomode a la nueva separación. Como se vio en el <a href="../caso-1/#6-partir-del-equilibrio">Caso 1</a>, los autos se insertan preparados para <code>h = 0.5 s</code>.</li>
 </ul>
 <p>Con eso se prueban varias combinaciones de <code>h</code> y potencia, mirando cada corrida en <code>sumo-gui</code>.</p>
+<h3 id="paso-5-los-6-controladores-en-el-ejemplo-platooning">Paso 5 · Los 6 controladores, en el ejemplo <code>platooning</code></h3>
+<p>El barrido se repitió en el ejemplo <code>platooning</code>, ahora con los 6 controladores. En su <code>omnetpp.ini</code> la línea es la misma:</p>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="na">*.**.nic.mac1609_4.txPower</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0.1mW</span>
+</span></code></pre></div>
+<p>Las potencias fueron 100, 50, 5, 1, 0.5, 0.1 y 0.01 mW. Para cada una, corre las 6 corridas y grafica con <code>plot-braking.R</code>, el script original del ejemplo, que dibuja un panel por controlador:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nb">cd</span><span class="w"> </span>~/src/plexe/examples/platooning
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="k">for</span><span class="w"> </span>r<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">5</span><span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span>./run<span class="w"> </span>-u<span class="w"> </span>Cmdenv<span class="w"> </span>-c<span class="w"> </span>BrakingNoGui<span class="w"> </span>-r<span class="w"> </span><span class="nv">$r</span><span class="p">;</span><span class="w"> </span><span class="k">done</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="nb">cd</span><span class="w"> </span>analysis
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>make<span class="w"> </span>Braking.Rdata
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>Rscript<span class="w"> </span>plot-braking.R
+</span></code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Instante del frenado</p>
+<p>Las notas de esta prueba no registran en qué instante frenó el líder. En los gráficos se ve que fue cerca de <code>t = 10 s</code>, no en <code>t = 5 s</code> como en el ejemplo original.</p>
+</div>
 <h2 id="5-resultados">5 · Resultados</h2>
 <h3 id="barrido-de-potencia-h-05-s">Barrido de potencia (<code>h = 0.5 s</code>)</h3>
 <table>
@@ -1595,8 +1656,8 @@
 <li>El pelotón frena de forma ordenada, como en el caso base del Caso 1.</li>
 <li>
 <p><strong>Ojo con el gráfico de distancia.</strong> La línea que sube hasta 3000 m es la del líder (auto 0). En este ejemplo, el líder sí tiene un vehículo adelante, el auto humano, que sigue avanzando mientras el pelotón se detiene. Esa línea aplasta a las demás. Para ver solo el pelotón, excluye al líder en <code>plot-braking-ploeg.R</code>:</p>
-<div class="language-r highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">p.distance</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">ggplot</span><span class="p">(</span><span class="nf">subset</span><span class="p">(</span><span class="n">ploegData</span><span class="p">,</span><span class="w"> </span><span class="n">distance</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="m">-1</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">nodeId</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="s">&quot;0&quot;</span><span class="p">),</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">time</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="n">distance</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="o">=</span><span class="n">nodeId</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">  </span><span class="nf">geom_line</span><span class="p">()</span>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">p.distance</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">ggplot</span><span class="p">(</span><span class="nf">subset</span><span class="p">(</span><span class="n">ploegData</span><span class="p">,</span><span class="w"> </span><span class="n">distance</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="m">-1</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">nodeId</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="s">&quot;0&quot;</span><span class="p">),</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">time</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="n">distance</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="o">=</span><span class="n">nodeId</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">  </span><span class="nf">geom_line</span><span class="p">()</span>
 </span></code></pre></div>
 </li>
 </ul>
@@ -1658,6 +1719,72 @@
 <li>Los resultados de la última tabla se observaron en <code>sumo-gui</code>. Hay videos de esas corridas, pero no gráficos.</li>
 </ul>
 </div>
+<h3 id="los-6-controladores-ejemplo-platooning">Los 6 controladores (ejemplo <code>platooning</code>)</h3>
+<table>
+<thead>
+<tr>
+<th>Potencia (mW)</th>
+<th>Chocan</th>
+<th>No chocan</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>100, 50 y 5</td>
+<td>ACC (0.3 s)</td>
+<td>ACC (1.2 s), CACC, Consensus, Flatbed, Ploeg</td>
+</tr>
+<tr>
+<td>1 y 0.5</td>
+<td>ACC (0.3 s), Consensus</td>
+<td>ACC (1.2 s), CACC, Flatbed, Ploeg</td>
+</tr>
+<tr>
+<td>0.1</td>
+<td>ACC (0.3 s), Consensus, CACC, Flatbed</td>
+<td>ACC (1.2 s), Ploeg</td>
+</tr>
+<tr>
+<td>0.01</td>
+<td>Todos menos ACC (1.2 s)</td>
+<td>ACC (1.2 s)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Los gráficos de 100, 50 y 5 mW son idénticos, y también los de 1 y 0.5 mW.</li>
+<li><strong>ACC (0.3 s) choca con todas las potencias</strong>, incluso con 100 mW.</li>
+<li>Al bajar la potencia, el primero en chocar es Consensus (1 mW), después CACC y Flatbed (0.1 mW) y al final Ploeg (0.01 mW). ACC (1.2 s) no choca con ninguna.</li>
+</ul>
+<p>En cada gráfico, cada panel es un controlador. Si un panel termina antes de <code>t = 60 s</code>, esa corrida chocó (ver <a href="../caso-1/#5-resultados">Caso 1</a>).</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:4"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><input id="__tabbed_2_4" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">100 mW (igual con 50 y 5)</label><label for="__tabbed_2_2">1 mW (igual con 0.5)</label><label for="__tabbed_2_3">0.1 mW</label><label for="__tabbed_2_4">0.01 mW</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><img alt="Distancia al auto de adelante con 100 mW, 6 controladores" src="../img/caso-2-controladores-100mw-distancia.png" /></p>
+<ul>
+<li>Solo el panel de ACC (0.3 s) termina antes de tiempo.</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<p><img alt="Distancia al auto de adelante con 1 mW, 6 controladores" src="../img/caso-2-controladores-1mw-distancia.png" /></p>
+<ul>
+<li>Terminan antes de tiempo ACC (0.3 s) y Consensus.</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<p><img alt="Distancia al auto de adelante con 0.1 mW, 6 controladores" src="../img/caso-2-controladores-01mw-distancia.png" /></p>
+<ul>
+<li>Terminan antes de tiempo ACC (0.3 s), CACC, Consensus y Flatbed.</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<p><img alt="Distancia al auto de adelante con 0.01 mW, 6 controladores" src="../img/caso-2-controladores-001mw-distancia.png" /></p>
+<ul>
+<li>Solo ACC (1.2 s) llega a <code>t = 60 s</code>.</li>
+</ul>
+</div>
+</div>
+</div>
 <h2 id="6-errores-frecuentes">6 · Errores frecuentes</h2>
 <table>
 <thead>
@@ -1696,8 +1823,9 @@
 </tbody>
 </table>
 <h2 id="7-pendientes">7 · Pendientes</h2>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a># PENDIENTE: medir la tasa de recepción de beacons de cada auto, para pasar de &quot;choca o no choca&quot; a una curva
-</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a># PENDIENTE: gráficos de las corridas con h = 1.5 s (hoy solo hay videos)
+<div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a># PENDIENTE: medir la tasa de recepción de beacons de cada auto, para pasar de &quot;choca o no choca&quot; a una curva
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a># PENDIENTE: gráficos de las corridas con h = 1.5 s (hoy solo hay videos)
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a># PENDIENTE: anotar en qué instante frenó el líder en el barrido con los 6 controladores (en los gráficos, cerca de t = 10 s)
 </span></code></pre></div>
 <h2 id="8-siguiente-paso">8 · Siguiente paso</h2>
 <p>El <a href="../caso-3/">Caso 3</a> deja la potencia en 100 mW y cambia otra cosa de la comunicación: cada cuánto se envían los beacons.</p>

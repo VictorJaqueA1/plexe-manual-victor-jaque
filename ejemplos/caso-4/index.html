@@ -29,7 +29,7 @@
     
     
       
-        <title>Caso 4 · Pérdida artificial de paquetes con FER - Manual de Plexe</title>
+        <title>Caso 4 · Pérdida artificial de paquetes con frame error rate (FER) - Manual de Plexe</title>
       
     
     
@@ -82,7 +82,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#caso-4-perdida-artificial-de-paquetes-con-fer" class="md-skip">
+        <a href="#caso-4-perdida-artificial-de-paquetes-con-frame-error-rate-fer" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -189,7 +189,7 @@
                     <a href="../caso-3/">Caso 3 · Variar el intervalo de envío de beacons</a>
                   </li>
                   <li>
-                    <a href="./">Caso 4 · Pérdida artificial de paquetes con FER</a>
+                    <a href="./">Caso 4 · Pérdida artificial de paquetes con frame error rate (FER)</a>
                   </li>
                   <li>
                     <a href="../caso-5/">Caso 5 · Nuevo perfil de aceleración y velocidad del líder</a>
@@ -657,6 +657,24 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Caso 4 · Pérdida artificial de paquetes con frame error rate (FER)
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -664,7 +682,7 @@
   <span class="md-ellipsis">
     
   
-    Caso 4 · Pérdida artificial de paquetes con FER
+    Caso 4 · Pérdida artificial de paquetes con frame error rate (FER)
   
 
     
@@ -673,6 +691,230 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-antes-de-empezar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1 · Antes de empezar
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-fundamentos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2 · Fundamentos
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2 · Fundamentos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#que-es-el-fer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Qué es el FER
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#como-decide-veins-que-frame-descartar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cómo decide Veins qué frame descartar
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#por-que-el-fer-le-importa-a-ploeg" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Por qué el FER le importa a Ploeg
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#que-esperamos-ver" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Qué esperamos ver
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-donde-vive-cada-cosa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3 · Dónde vive cada cosa
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-como-se-hizo-paso-a-paso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4 · Cómo se hizo, paso a paso
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4 · Cómo se hizo, paso a paso">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#paso-1-elegir-h" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 1 · Elegir h
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-2-cambiar-el-fer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 2 · Cambiar el FER
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-3-recorrer-la-grilla" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 3 · Recorrer la grilla
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-4-graficar-la-curva" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 4 · Graficar la curva
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-resultados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5 · Resultados
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5 · Resultados">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#grilla-de-h-y-fer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Grilla de h y FER
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-errores-frecuentes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6 · Errores frecuentes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-pendientes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7 · Pendientes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-siguiente-paso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8 · Siguiente paso
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -846,6 +1088,219 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-antes-de-empezar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1 · Antes de empezar
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-fundamentos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2 · Fundamentos
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2 · Fundamentos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#que-es-el-fer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Qué es el FER
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#como-decide-veins-que-frame-descartar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cómo decide Veins qué frame descartar
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#por-que-el-fer-le-importa-a-ploeg" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Por qué el FER le importa a Ploeg
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#que-esperamos-ver" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Qué esperamos ver
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-donde-vive-cada-cosa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3 · Dónde vive cada cosa
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-como-se-hizo-paso-a-paso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4 · Cómo se hizo, paso a paso
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4 · Cómo se hizo, paso a paso">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#paso-1-elegir-h" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 1 · Elegir h
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-2-cambiar-el-fer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 2 · Cambiar el FER
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-3-recorrer-la-grilla" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 3 · Recorrer la grilla
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-4-graficar-la-curva" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 4 · Graficar la curva
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-resultados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5 · Resultados
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5 · Resultados">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#grilla-de-h-y-fer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Grilla de h y FER
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-errores-frecuentes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6 · Errores frecuentes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-pendientes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7 · Pendientes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-siguiente-paso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8 · Siguiente paso
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -864,13 +1319,355 @@
   
 
 
-<h1 id="caso-4-perdida-artificial-de-paquetes-con-fer">Caso 4 · Pérdida artificial de paquetes con FER</h1>
-<p><strong>Qué se hizo.</strong> Introducir una tasa de error de trama (<em>Frame Error Rate</em>) configurable, que descarta mensajes recibidos con una probabilidad fija antes de entregarlos a la capa superior.</p>
-<p><strong>Para qué.</strong> Es la contraparte metodológica del caso 2. Con potencia, la pérdida depende de la distancia, del modelo de propagación y de la posición del vehículo en el pelotón, o sea que la variable independiente no está bajo control directo. Con FER, la pérdida se fija como un número y es idéntica para todos los vehículos. Eso permite responder la pregunta pura: cuánta pérdida tolera el controlador, sin que la geometría del escenario contamine el resultado.</p>
-<p><strong>Cómo se implementa.</strong> Se descarta la trama recibida con probabilidad configurable, en el punto del camino de recepción donde el mensaje ya llegó íntegro pero todavía no fue procesado por la aplicación. La probabilidad se expone como parámetro para poder barrerla desde <code>omnetpp.ini</code>.</p>
-<div class="language-ini highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># PENDIENTE: parámetro de FER y valores del barrido</span>
+<h1 id="caso-4-perdida-artificial-de-paquetes-con-frame-error-rate-fer">Caso 4 · Pérdida artificial de paquetes con frame error rate (FER)</h1>
+<p>En el <a href="../caso-2/">Caso 2</a> los beacons se perdían porque la señal no alcanzaba, y eso dependía de la distancia entre los autos. Aquí se pierden a propósito: cada frame que llega se descarta con una probabilidad fija, el <em>frame error rate</em> (FER), igual para todos los autos y sin importar la distancia. El caso usa el escenario <code>Braking</code> del ejemplo <code>platooning</code>, con Ploeg.</p>
+<div class="admonition abstract">
+<p class="admonition-title">Resumen</p>
+<ul>
+<li><strong>Pregunta:</strong> ¿qué fracción de los beacons se puede perder sin que el pelotón choque?</li>
+<li><strong>Escenario:</strong> <code>Braking</code>, del ejemplo <code>platooning</code>.</li>
+<li><strong>Controlador:</strong> Ploeg (<code>-r 3</code>).</li>
+<li><strong>Parámetros:</strong> el FER y el tiempo de separación <code>h</code>.</li>
+<li><strong>Resultado principal:</strong> con <code>h = 0.5 s</code>, el pelotón choca desde un FER de 0.6. Con más <code>h</code> aguanta más pérdida: con <code>h = 1.4</code> y <code>1.6 s</code>, desde 0.87.</li>
+<li><strong>Qué se toca:</strong> solo <code>omnetpp.ini</code>. El descarte ya viene en Veins: no hay que programar ni recompilar.</li>
+</ul>
+</div>
+<h2 id="1-antes-de-empezar">1 · Antes de empezar</h2>
+<p>Carga los entornos como en el <a href="../caso-1/#1-antes-de-empezar">Caso 1</a>.</p>
+<p>Si vienes del <a href="../caso-3/">Caso 3</a>, deja otra vez el intervalo de envío de beacons en 0.1 s, el valor que usan estas corridas.</p>
+<h2 id="2-fundamentos">2 · Fundamentos</h2>
+<h3 id="que-es-el-fer">Qué es el FER</h3>
+<p>El <em>frame error rate</em>, o tasa de error de trama, es la fracción de frames que se pierden. El frame es la unidad que transmite la capa MAC de 802.11p, y el beacon de Plexe viaja dentro de uno: perder el frame es perder el beacon.</p>
+<ul>
+<li>Se escribe como fracción entre 0 y 1, no como porcentaje: 0.6 significa 60 %. Con 0, el valor por defecto, no se descarta nada, y con 1 se descarta todo.</li>
+<li>En Veins es un parámetro de la MAC, <code>frameErrorRate</code>. Su declaración lo describe como una tasa de descarte artificial, pensada para pruebas.</li>
+</ul>
+<h3 id="como-decide-veins-que-frame-descartar">Cómo decide Veins qué frame descartar</h3>
+<p>Cada vez que un frame llega a la MAC de un auto, Veins saca un número al azar entre 0 y 1 y descarta el frame si es menor que el FER:</p>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">dblrand</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">frameErrorRate</span><span class="p">)</span><span class="w"> </span><span class="n">frameReceived</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
 </span></code></pre></div>
-<p><strong>Cómo se mide.</strong> Error de espaciamiento en función del FER, y el valor de FER a partir del cual el pelotón deja de ser estable. Conviene contrastar el resultado con el del caso 2: si ambos coinciden al traducir potencia a pérdida efectiva, el modelo es consistente.</p>
+<ul>
+<li><code>dblrand()</code> entrega un número al azar, uniforme entre 0 y 1. Por eso, con un FER entre 0 y 1, la probabilidad de descartar cada frame es exactamente el FER. Con un FER de 1 o más se descartan todos.</li>
+<li>El sorteo se hace en cada receptor y para cada frame, por separado. Un mismo beacon puede llegarle a un auto y perderse para otro.</li>
+<li>Actúa después de la capa física: el frame ya llegó con potencia suficiente y se decodificó bien, y aun así se descarta.</li>
+</ul>
+<h3 id="por-que-el-fer-le-importa-a-ploeg">Por qué el FER le importa a Ploeg</h3>
+<p>Ploeg recibe por beacon la aceleración del auto de adelante y, si un beacon se pierde, sigue usando el último que recibió (ver <a href="../../controladores/#datos-que-usa">Controladores › Datos que usa</a>). Con FER, cada beacon perdido deja a Ploeg usando un dato más viejo.</p>
+<h3 id="que-esperamos-ver">Qué esperamos ver</h3>
+<ul>
+<li>Con un FER bajo, nada cambia respecto del caso base.</li>
+<li>Al subirlo, el dato del auto de adelante envejece y, en algún punto, el pelotón choca.</li>
+<li>Con <code>h</code> más alto hay más margen, así que el pelotón debería tolerar más pérdida, como en el Caso 3.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">FER frente a potencia</p>
+<p>Con potencia (<a href="../caso-2/">Caso 2</a>), la pérdida depende de la distancia entre los autos: con más distancia hizo falta más potencia. Con FER, la pérdida es un número fijo, igual para todos los autos y sin importar la distancia.</p>
+</div>
+<h2 id="3-donde-vive-cada-cosa">3 · Dónde vive cada cosa</h2>
+<table>
+<thead>
+<tr>
+<th>Qué</th>
+<th>Dónde</th>
+<th>En este caso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>El FER</td>
+<td><code>~/src/plexe/examples/platooning/omnetpp.ini</code>, línea <code>*.**.nic.mac1609_4.frameErrorRate</code></td>
+<td>Se cambia</td>
+</tr>
+<tr>
+<td>El tiempo de separación <code>h</code></td>
+<td>El mismo archivo, línea <code>*.node[*].scenario.ploegH</code></td>
+<td>Se cambia en la grilla</td>
+</tr>
+<tr>
+<td>El intervalo de envío de beacons</td>
+<td>El mismo archivo, línea <code>*.node[*].prot.beaconingInterval</code></td>
+<td>Se deja en 0.1 s</td>
+</tr>
+<tr>
+<td>La declaración del parámetro, con su valor por defecto (0)</td>
+<td>Veins, <code>src/veins/modules/mac/ieee80211p/Mac1609_4.ned</code></td>
+<td>No se toca</td>
+</tr>
+<tr>
+<td>La lectura y el descarte</td>
+<td>Veins, <code>src/veins/modules/mac/ieee80211p/Mac1609_4.cc</code>: se lee en <code>initialize()</code> y se aplica en <code>handleLowerMsg()</code></td>
+<td>No se toca</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><code>*.**.nic.mac1609_4</code> es la capa MAC de 802.11p de todos los autos, la misma de la potencia y el bitrate del <a href="../caso-2/#3-donde-vive-cada-cosa">Caso 2</a>. Por eso el FER es un parámetro de Veins, no de Plexe.</li>
+<li>Al lado está <code>ackErrorRate</code>, que hace lo mismo con las confirmaciones de recepción (ACK). Los beacons van en broadcast y no llevan ACK, así que este caso no lo usa.</li>
+</ul>
+<h2 id="4-como-se-hizo-paso-a-paso">4 · Cómo se hizo, paso a paso</h2>
+<h3 id="paso-1-elegir-h">Paso 1 · Elegir <code>h</code></h3>
+<p>En cada corrida de la grilla, <code>h</code> toma un valor distinto:</p>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># El h de turno, por ejemplo 0.5 s</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="na">*.node[*].scenario.ploegH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">${ploegH = 0.5}s</span>
+</span></code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Instante del frenado</p>
+<p>Las notas de esta grilla no registran en qué instante frenó el líder.</p>
+</div>
+<h3 id="paso-2-cambiar-el-fer">Paso 2 · Cambiar el FER</h3>
+<p>En el mismo archivo:</p>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Antes (por defecto)</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="na">*.**.nic.mac1609_4.frameErrorRate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0.0</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1"># Después, por ejemplo</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="na">*.**.nic.mac1609_4.frameErrorRate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0.6</span>
+</span></code></pre></div>
+<p>Y corre Ploeg como en los casos anteriores:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">cd</span><span class="w"> </span>~/src/plexe/examples/platooning
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>./run<span class="w"> </span>-u<span class="w"> </span>Cmdenv<span class="w"> </span>-c<span class="w"> </span>Braking<span class="w"> </span>-r<span class="w"> </span><span class="m">3</span>
+</span></code></pre></div>
+<p>Con <code>-c BrakingNoGui</code> corre sin ventanas.</p>
+<p>Se probó con un FER de 1.2 y el pelotón chocó: con un valor de 1 o más se descartan todos los frames.</p>
+<h3 id="paso-3-recorrer-la-grilla">Paso 3 · Recorrer la grilla</h3>
+<ul>
+<li>Para cada <code>h</code>, se sube el FER hasta encontrar el menor que produce choque.</li>
+<li>El resto queda en sus valores por defecto: 100 mW, 6 Mbps, beacons de 200 bytes cada 0.1 s, prioridad 4 y el líder a 100 km/h.</li>
+</ul>
+<p>Así se obtuvieron 15 umbrales, con <code>h</code> entre 0.05 y 1.6 s.</p>
+<h3 id="paso-4-graficar-la-curva">Paso 4 · Graficar la curva</h3>
+<p>Igual que en el Caso 3, con un script de Python que trae los datos escritos a mano:</p>
+<details class="example">
+<summary>graficoFER.py</summary>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.ticker</span><span class="w"> </span><span class="kn">import</span> <span class="n">FormatStrFormatter</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="c1"># =========================</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="c1"># 1) Datos actualizados</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="c1"># =========================</span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>    <span class="s1">&#39;Time headway &quot;h&quot; (s)&#39;</span><span class="p">:</span> <span class="p">[</span>
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>        <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span>
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>        <span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="mf">1.4</span><span class="p">,</span> <span class="mf">1.6</span>
+</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>    <span class="p">],</span>
+</span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>    <span class="s1">&#39;frameErrorRate (%)&#39;</span><span class="p">:</span> <span class="p">[</span>
+</span><span id="__span-4-15"><a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>        <span class="mf">0.09</span><span class="p">,</span> <span class="mf">0.17</span><span class="p">,</span> <span class="mf">0.33</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.45</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.72</span><span class="p">,</span>
+</span><span id="__span-4-16"><a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a>        <span class="mf">0.75</span><span class="p">,</span> <span class="mf">0.77</span><span class="p">,</span> <span class="mf">0.79</span><span class="p">,</span> <span class="mf">0.82</span><span class="p">,</span> <span class="mf">0.83</span><span class="p">,</span> <span class="mf">0.87</span><span class="p">,</span> <span class="mf">0.87</span>
+</span><span id="__span-4-17"><a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a>    <span class="p">]</span>
+</span><span id="__span-4-18"><a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="p">})</span>
+</span><span id="__span-4-19"><a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a>
+</span><span id="__span-4-20"><a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a><span class="c1"># =========================</span>
+</span><span id="__span-4-21"><a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a><span class="c1"># 2) Ordenar por eje X</span>
+</span><span id="__span-4-22"><a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a><span class="c1"># =========================</span>
+</span><span id="__span-4-23"><a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span>
+</span><span id="__span-4-24"><a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a>    <span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;frameErrorRate (%)&#39;</span><span class="p">,</span> <span class="s1">&#39;Time headway &quot;h&quot; (s)&#39;</span><span class="p">],</span>
+</span><span id="__span-4-25"><a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a>    <span class="n">ascending</span><span class="o">=</span><span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">]</span>
+</span><span id="__span-4-26"><a id="__codelineno-4-26" name="__codelineno-4-26" href="#__codelineno-4-26"></a><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span id="__span-4-27"><a id="__codelineno-4-27" name="__codelineno-4-27" href="#__codelineno-4-27"></a>
+</span><span id="__span-4-28"><a id="__codelineno-4-28" name="__codelineno-4-28" href="#__codelineno-4-28"></a><span class="n">x</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;frameErrorRate (%)&#39;</span><span class="p">]</span>
+</span><span id="__span-4-29"><a id="__codelineno-4-29" name="__codelineno-4-29" href="#__codelineno-4-29"></a><span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Time headway &quot;h&quot; (s)&#39;</span><span class="p">]</span>
+</span><span id="__span-4-30"><a id="__codelineno-4-30" name="__codelineno-4-30" href="#__codelineno-4-30"></a>
+</span><span id="__span-4-31"><a id="__codelineno-4-31" name="__codelineno-4-31" href="#__codelineno-4-31"></a><span class="c1"># =========================</span>
+</span><span id="__span-4-32"><a id="__codelineno-4-32" name="__codelineno-4-32" href="#__codelineno-4-32"></a><span class="c1"># 3) Crear gráfico</span>
+</span><span id="__span-4-33"><a id="__codelineno-4-33" name="__codelineno-4-33" href="#__codelineno-4-33"></a><span class="c1"># =========================</span>
+</span><span id="__span-4-34"><a id="__codelineno-4-34" name="__codelineno-4-34" href="#__codelineno-4-34"></a><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+</span><span id="__span-4-35"><a id="__codelineno-4-35" name="__codelineno-4-35" href="#__codelineno-4-35"></a>
+</span><span id="__span-4-36"><a id="__codelineno-4-36" name="__codelineno-4-36" href="#__codelineno-4-36"></a><span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.8</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+</span><span id="__span-4-37"><a id="__codelineno-4-37" name="__codelineno-4-37" href="#__codelineno-4-37"></a>
+</span><span id="__span-4-38"><a id="__codelineno-4-38" name="__codelineno-4-38" href="#__codelineno-4-38"></a><span class="c1"># =========================</span>
+</span><span id="__span-4-39"><a id="__codelineno-4-39" name="__codelineno-4-39" href="#__codelineno-4-39"></a><span class="c1"># 4) Límites</span>
+</span><span id="__span-4-40"><a id="__codelineno-4-40" name="__codelineno-4-40" href="#__codelineno-4-40"></a><span class="c1"># =========================</span>
+</span><span id="__span-4-41"><a id="__codelineno-4-41" name="__codelineno-4-41" href="#__codelineno-4-41"></a><span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">)</span>
+</span><span id="__span-4-42"><a id="__codelineno-4-42" name="__codelineno-4-42" href="#__codelineno-4-42"></a><span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.7</span><span class="p">)</span>
+</span><span id="__span-4-43"><a id="__codelineno-4-43" name="__codelineno-4-43" href="#__codelineno-4-43"></a>
+</span><span id="__span-4-44"><a id="__codelineno-4-44" name="__codelineno-4-44" href="#__codelineno-4-44"></a><span class="c1"># =========================</span>
+</span><span id="__span-4-45"><a id="__codelineno-4-45" name="__codelineno-4-45" href="#__codelineno-4-45"></a><span class="c1"># 5) Eje X cada 0.1</span>
+</span><span id="__span-4-46"><a id="__codelineno-4-46" name="__codelineno-4-46" href="#__codelineno-4-46"></a><span class="c1"># =========================</span>
+</span><span id="__span-4-47"><a id="__codelineno-4-47" name="__codelineno-4-47" href="#__codelineno-4-47"></a><span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.91</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">))</span>
+</span><span id="__span-4-48"><a id="__codelineno-4-48" name="__codelineno-4-48" href="#__codelineno-4-48"></a><span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">FormatStrFormatter</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%.1f</span><span class="s1">&#39;</span><span class="p">))</span>
+</span><span id="__span-4-49"><a id="__codelineno-4-49" name="__codelineno-4-49" href="#__codelineno-4-49"></a>
+</span><span id="__span-4-50"><a id="__codelineno-4-50" name="__codelineno-4-50" href="#__codelineno-4-50"></a><span class="c1"># =========================</span>
+</span><span id="__span-4-51"><a id="__codelineno-4-51" name="__codelineno-4-51" href="#__codelineno-4-51"></a><span class="c1"># 6) Eje Y cada 0.1</span>
+</span><span id="__span-4-52"><a id="__codelineno-4-52" name="__codelineno-4-52" href="#__codelineno-4-52"></a><span class="c1"># =========================</span>
+</span><span id="__span-4-53"><a id="__codelineno-4-53" name="__codelineno-4-53" href="#__codelineno-4-53"></a><span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.71</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">))</span>
+</span><span id="__span-4-54"><a id="__codelineno-4-54" name="__codelineno-4-54" href="#__codelineno-4-54"></a><span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">FormatStrFormatter</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%.1f</span><span class="s1">&#39;</span><span class="p">))</span>
+</span><span id="__span-4-55"><a id="__codelineno-4-55" name="__codelineno-4-55" href="#__codelineno-4-55"></a>
+</span><span id="__span-4-56"><a id="__codelineno-4-56" name="__codelineno-4-56" href="#__codelineno-4-56"></a><span class="c1"># =========================</span>
+</span><span id="__span-4-57"><a id="__codelineno-4-57" name="__codelineno-4-57" href="#__codelineno-4-57"></a><span class="c1"># 7) Cuadrícula</span>
+</span><span id="__span-4-58"><a id="__codelineno-4-58" name="__codelineno-4-58" href="#__codelineno-4-58"></a><span class="c1"># =========================</span>
+</span><span id="__span-4-59"><a id="__codelineno-4-59" name="__codelineno-4-59" href="#__codelineno-4-59"></a><span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+</span><span id="__span-4-60"><a id="__codelineno-4-60" name="__codelineno-4-60" href="#__codelineno-4-60"></a>
+</span><span id="__span-4-61"><a id="__codelineno-4-61" name="__codelineno-4-61" href="#__codelineno-4-61"></a><span class="c1"># =========================</span>
+</span><span id="__span-4-62"><a id="__codelineno-4-62" name="__codelineno-4-62" href="#__codelineno-4-62"></a><span class="c1"># 8) Solo abajo e izquierda</span>
+</span><span id="__span-4-63"><a id="__codelineno-4-63" name="__codelineno-4-63" href="#__codelineno-4-63"></a><span class="c1"># =========================</span>
+</span><span id="__span-4-64"><a id="__codelineno-4-64" name="__codelineno-4-64" href="#__codelineno-4-64"></a><span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span>
+</span><span id="__span-4-65"><a id="__codelineno-4-65" name="__codelineno-4-65" href="#__codelineno-4-65"></a>    <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span>
+</span><span id="__span-4-66"><a id="__codelineno-4-66" name="__codelineno-4-66" href="#__codelineno-4-66"></a>    <span class="n">which</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span>
+</span><span id="__span-4-67"><a id="__codelineno-4-67" name="__codelineno-4-67" href="#__codelineno-4-67"></a>    <span class="n">top</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+</span><span id="__span-4-68"><a id="__codelineno-4-68" name="__codelineno-4-68" href="#__codelineno-4-68"></a>    <span class="n">right</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+</span><span id="__span-4-69"><a id="__codelineno-4-69" name="__codelineno-4-69" href="#__codelineno-4-69"></a>    <span class="n">labeltop</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+</span><span id="__span-4-70"><a id="__codelineno-4-70" name="__codelineno-4-70" href="#__codelineno-4-70"></a>    <span class="n">labelright</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+</span><span id="__span-4-71"><a id="__codelineno-4-71" name="__codelineno-4-71" href="#__codelineno-4-71"></a>    <span class="n">labelsize</span><span class="o">=</span><span class="mi">10</span>
+</span><span id="__span-4-72"><a id="__codelineno-4-72" name="__codelineno-4-72" href="#__codelineno-4-72"></a><span class="p">)</span>
+</span><span id="__span-4-73"><a id="__codelineno-4-73" name="__codelineno-4-73" href="#__codelineno-4-73"></a>
+</span><span id="__span-4-74"><a id="__codelineno-4-74" name="__codelineno-4-74" href="#__codelineno-4-74"></a><span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s2">&quot;top&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+</span><span id="__span-4-75"><a id="__codelineno-4-75" name="__codelineno-4-75" href="#__codelineno-4-75"></a><span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s2">&quot;right&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+</span><span id="__span-4-76"><a id="__codelineno-4-76" name="__codelineno-4-76" href="#__codelineno-4-76"></a>
+</span><span id="__span-4-77"><a id="__codelineno-4-77" name="__codelineno-4-77" href="#__codelineno-4-77"></a><span class="c1"># =========================</span>
+</span><span id="__span-4-78"><a id="__codelineno-4-78" name="__codelineno-4-78" href="#__codelineno-4-78"></a><span class="c1"># 9) Etiquetas y título</span>
+</span><span id="__span-4-79"><a id="__codelineno-4-79" name="__codelineno-4-79" href="#__codelineno-4-79"></a><span class="c1"># =========================</span>
+</span><span id="__span-4-80"><a id="__codelineno-4-80" name="__codelineno-4-80" href="#__codelineno-4-80"></a><span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;frameErrorRate (%)&quot;</span><span class="p">)</span>
+</span><span id="__span-4-81"><a id="__codelineno-4-81" name="__codelineno-4-81" href="#__codelineno-4-81"></a><span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Time headway &quot;h&quot; (s)&#39;</span><span class="p">)</span>
+</span><span id="__span-4-82"><a id="__codelineno-4-82" name="__codelineno-4-82" href="#__codelineno-4-82"></a><span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Time headway vs frameErrorRate&quot;</span><span class="p">)</span>
+</span><span id="__span-4-83"><a id="__codelineno-4-83" name="__codelineno-4-83" href="#__codelineno-4-83"></a>
+</span><span id="__span-4-84"><a id="__codelineno-4-84" name="__codelineno-4-84" href="#__codelineno-4-84"></a><span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</span><span id="__span-4-85"><a id="__codelineno-4-85" name="__codelineno-4-85" href="#__codelineno-4-85"></a><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</span></code></pre></div>
+</details>
+<p>Es el mismo script del <a href="../caso-3/#paso-4-graficar-la-curva">Caso 3</a>, con otros datos y otras etiquetas. Se corre igual:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>python3<span class="w"> </span>graficoFER.py
+</span></code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">El eje dice %, pero los valores son fracciones</p>
+<p>La etiqueta del eje horizontal, <code>frameErrorRate (%)</code>, quedó mal: los valores van de 0 a 1, como el parámetro. Un 0.6 en el gráfico significa 60 %, no 0.6 %.</p>
+</div>
+<h2 id="5-resultados">5 · Resultados</h2>
+<h3 id="grilla-de-h-y-fer">Grilla de <code>h</code> y FER</h3>
+<p><img alt="Menor FER que produce choque, para cada h" src="../img/caso-4-h-vs-fer.png" /></p>
+<p>Cada punto es un valor de <code>h</code> (eje vertical) y el menor FER con que ese <code>h</code> chocó (eje horizontal).</p>
+<table>
+<thead>
+<tr>
+<th><code>h</code> (s)</th>
+<th>Menor FER con choque</th>
+<th>En porcentaje</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.05</td>
+<td>0.09</td>
+<td>9 %</td>
+</tr>
+<tr>
+<td>0.1</td>
+<td>0.17</td>
+<td>17 %</td>
+</tr>
+<tr>
+<td>0.15</td>
+<td>0.33</td>
+<td>33 %</td>
+</tr>
+<tr>
+<td>0.2</td>
+<td>0.4</td>
+<td>40 %</td>
+</tr>
+<tr>
+<td>0.3</td>
+<td>0.45</td>
+<td>45 %</td>
+</tr>
+<tr>
+<td>0.4</td>
+<td>0.5</td>
+<td>50 %</td>
+</tr>
+<tr>
+<td>0.5</td>
+<td>0.6</td>
+<td>60 %</td>
+</tr>
+<tr>
+<td>0.6</td>
+<td>0.72</td>
+<td>72 %</td>
+</tr>
+<tr>
+<td>0.7</td>
+<td>0.75</td>
+<td>75 %</td>
+</tr>
+<tr>
+<td>0.8</td>
+<td>0.77</td>
+<td>77 %</td>
+</tr>
+<tr>
+<td>0.9</td>
+<td>0.79</td>
+<td>79 %</td>
+</tr>
+<tr>
+<td>1.0</td>
+<td>0.82</td>
+<td>82 %</td>
+</tr>
+<tr>
+<td>1.2</td>
+<td>0.83</td>
+<td>83 %</td>
+</tr>
+<tr>
+<td>1.4</td>
+<td>0.87</td>
+<td>87 %</td>
+</tr>
+<tr>
+<td>1.6</td>
+<td>0.87</td>
+<td>87 %</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Mientras mayor es <code>h</code>, más pérdida tolera el pelotón.</strong> Con <code>h = 0.05 s</code> choca desde un FER de 0.09; con el valor por defecto, 0.5 s, desde 0.6.</li>
+<li><strong>La curva se aplana.</strong> Hasta <code>h = 0.6 s</code> el umbral sube rápido, de 0.09 a 0.72. Después casi no se mueve: entre <code>h = 0.6</code> y <code>1.6 s</code> solo pasa de 0.72 a 0.87, y con 1.4 y 1.6 s es el mismo.</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Límites de estos resultados</p>
+<ul>
+<li>"Choca o no choca" es una medida gruesa: no dice cuánto se acercaron los autos.</li>
+<li>Los umbrales valen para estas condiciones: 100 mW, 6 Mbps, beacons de 200 bytes cada 0.1 s, prioridad 4 y el líder a 100 km/h.</li>
+</ul>
+</div>
+<h2 id="6-errores-frecuentes">6 · Errores frecuentes</h2>
+<table>
+<thead>
+<tr>
+<th>Síntoma</th>
+<th>Causa</th>
+<th>Solución</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>El pelotón choca con cualquier valor</td>
+<td>Escribiste el FER como porcentaje, por ejemplo <code>60</code>: todo valor de 1 o más descarta todos los frames</td>
+<td>Escríbelo como fracción: <code>0.6</code></td>
+</tr>
+<tr>
+<td>Los resultados de un FER borraron los del anterior</td>
+<td>El nombre del <code>.vec</code> no incluye el FER</td>
+<td>Guarda el PDF antes de cambiar de valor</td>
+</tr>
+<tr>
+<td>Los autos aceleran o frenan antes de que frene el líder</td>
+<td>Cambiaste <code>ploegH</code> sin ajustar la inserción</td>
+<td>Frena en <code>t = 20 s</code> o ajusta <code>platoonInsertHeadway</code> (<a href="../caso-1/#6-partir-del-equilibrio">Caso 1</a>)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="7-pendientes">7 · Pendientes</h2>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a># PENDIENTE: anotar en qué instante frenó el líder en estas corridas (no quedó registrado)
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a># PENDIENTE: gráficos de velocidad y distancia de algunas corridas (hoy solo está la curva de umbrales)
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a># PENDIENTE: medir el error de espaciamiento en función del FER, no solo si choca o no
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a># PENDIENTE: contrastar con el Caso 2, traduciendo la potencia a pérdida efectiva de beacons
+</span></code></pre></div>
+<h2 id="8-siguiente-paso">8 · Siguiente paso</h2>
+<p>El <a href="../caso-5/">Caso 5</a> deja de lado la comunicación y cambia lo que hace el líder: un perfil propio de aceleración y velocidad.</p>
 
 
 
