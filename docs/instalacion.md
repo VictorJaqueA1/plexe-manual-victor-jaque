@@ -860,7 +860,7 @@ SUMO genera y mueve los vehículos de la simulación.
 
 En este manual SUMO **se compila desde el código fuente**, porque en este trabajo se modifica SUMO (por ejemplo, para implementar controladores nuevos). Para eso, la guía de Plexe indica bajar el código fuente de SUMO 1.22.0 y compilarlo.
 
-**Fuente:** guía oficial de Plexe, [*Step 3: Install SUMO*](https://plexe.car2x.org/building/#step-3-install-sumo).
+**Fuente:** guía oficial de Plexe, [*Step 3: Install SUMO*](https://plexe.car2x.org/building/#step-3-install-sumo), que remite a la guía oficial de SUMO. Los pasos 3.1 a 3.5 siguen la [guía de compilación de SUMO 1.22.0 para Linux](https://github.com/eclipse-sumo/sumo/blob/v1_22_0/docs/web/docs/Installing/Linux_Build.md).
 
 #### 3.1 Instalar las dependencias
 
@@ -951,21 +951,208 @@ Terminó bien cuando vuelve a aparecer `victorjaque@...:~$` sin mensajes que emp
 
 #### 3.2 Descargar
 
-Se baja el archivo con el código fuente de SUMO 1.22.0 desde el sitio oficial de SUMO y se descomprime dentro de `~/src/`.
+Ahora tienes que descargar el código fuente de SUMO 1.22.0, un archivo de 77 MB que está en el sitio oficial de SUMO, y descomprimirlo dentro de `~/src/`, donde ya está OMNeT++.
+
+Para eso, en una terminal de Ubuntu, nueva o la que ya tengas abierta, ejecuta los siguientes comandos:
 
 ```bash
-# PENDIENTE: descargar sumo-src-1.22.0.tar.gz y descomprimirlo en ~/src
+cd ~/src
+wget https://sumo.dlr.de/releases/1.22.0/sumo-src-1.22.0.tar.gz
 ```
+
+**Fuente:** el archivo `sumo-src-1.22.0.tar.gz` es el que indica la [guía de compilación de SUMO 1.22.0 para Linux](https://github.com/eclipse-sumo/sumo/blob/v1_22_0/docs/web/docs/Installing/Linux_Build.md#release-version-or-nightly-tarball) (sección *release version or nightly tarball*) cuando se necesita una versión específica. La carpeta `~/src` y el uso de `wget` los agrega este manual: la guía no indica una carpeta y solo da el enlace de descarga.
+
+**Así debería verse tu terminal** (barra de progreso acortada):
+
+```text
+victorjaque@DESKTOP-6VI5783:~$ cd ~/src
+victorjaque@DESKTOP-6VI5783:~/src$ wget https://sumo.dlr.de/releases/1.22.0/sumo-src-1.22.0.tar.gz
+--2026-10-02 15:10:33--  https://sumo.dlr.de/releases/1.22.0/sumo-src-1.22.0.tar.gz
+Resolving sumo.dlr.de (sumo.dlr.de)... 129.247.254.27
+Connecting to sumo.dlr.de (sumo.dlr.de)|129.247.254.27|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 80686453 (77M) [application/x-gzip]
+Saving to: ‘sumo-src-1.22.0.tar.gz’
+
+sumo-src-1.22.0.tar.gz      100%[=====================>]  76.95M  2.46MB/s    in 26s
+
+2026-10-02 15:11:00 (2.96 MB/s) - ‘sumo-src-1.22.0.tar.gz’ saved [80686453/80686453]
+```
+
+La descarga está completa cuando los dos números de `saved [80686453/80686453]` son iguales.
+
+Cuando termine la descarga, en la misma terminal, dentro de `~/src`, ejecuta los siguientes comandos:
+
+```bash
+tar xzf sumo-src-1.22.0.tar.gz
+cd sumo-1.22.0/
+pwd
+```
+
+**Fuente:** [guía de compilación de SUMO 1.22.0 para Linux](https://github.com/eclipse-sumo/sumo/blob/v1_22_0/docs/web/docs/Installing/Linux_Build.md#release-version-or-nightly-tarball), sección *release version or nightly tarball*. Son los tres comandos de la guía, con la versión `1.22.0`. La guía usa `pwd` para conocer la ruta de la carpeta de SUMO, que va en `SUMO_HOME` (paso 3.3).
+
+**Así debería verse tu terminal:**
+
+```text
+victorjaque@DESKTOP-6VI5783:~/src$ tar xzf sumo-src-1.22.0.tar.gz
+victorjaque@DESKTOP-6VI5783:~/src$ cd sumo-1.22.0/
+victorjaque@DESKTOP-6VI5783:~/src/sumo-1.22.0$ pwd
+/home/victorjaque/src/sumo-1.22.0
+```
+
+`tar` no muestra nada mientras descomprime. `pwd` muestra la ruta de la carpeta de SUMO: anótala, la usarás en el paso 3.3.
+
+**Ejemplo real: la descarga y la descompresión de SUMO en el equipo de referencia**
+
+![Descarga de SUMO 1.22.0 con wget, seguida de tar, cd y pwd, en la terminal de Ubuntu del equipo de referencia](img/instalacion-paso-3-wget-sumo.png)
 
 #### 3.3 Definir SUMO_HOME
 
-La guía de SUMO pide definir `SUMO_HOME`, con la ruta de la carpeta de SUMO, antes de compilar.
+Ahora tienes que definir `SUMO_HOME`, una variable que indica dónde está la carpeta de SUMO. La guía de SUMO pide definirla antes de compilar. También vas a agregar la carpeta `bin` de SUMO al PATH, para que la terminal encuentre el programa `sumo` desde cualquier carpeta: Veins arranca SUMO por su nombre, `sumo`.
+
+Las dos líneas se guardan al final de `~/.profile`, un archivo que Ubuntu lee cada vez que abres una terminal. Así quedan definidas en todas tus terminales, no solo en la actual.
+
+Para eso, en la misma terminal, dentro de `~/src/sumo-1.22.0`, ejecuta los siguientes comandos:
 
 ```bash
-# PENDIENTE: definir SUMO_HOME y agregar la carpeta bin de SUMO al PATH
+echo 'export SUMO_HOME="$HOME/src/sumo-1.22.0"' >> ~/.profile
+echo 'export PATH="$SUMO_HOME/bin:$PATH"' >> ~/.profile
+tail -n 2 ~/.profile
 ```
 
-#### 3.4 Compilar
+**Fuente:**
+
+- [Guía de compilación de SUMO 1.22.0 para Linux](https://github.com/eclipse-sumo/sumo/blob/v1_22_0/docs/web/docs/Installing/Linux_Build.md#definition-of-sumo_home), sección *Definition of SUMO_HOME*: la línea `export SUMO_HOME=...`, y guardarla al final de `~/.profile` para que quede definida en todas las sesiones. La guía escribe la ruta como `/home/<user>/sumo-<version>`; aquí va `$HOME/src/sumo-1.22.0`, la ruta que mostró `pwd` en el paso 3.2.
+- Agregado en este manual:
+    - Escribir las líneas con `echo … >>`, en vez de abrir `~/.profile` con un editor. El resultado es el mismo: la línea queda al final del archivo.
+    - La línea del PATH. La guía solo dice que SUMO se ejecuta desde su carpeta `bin`; el PATH hace falta porque Veins arranca SUMO con el comando `sumo` ([`veins_launchd` de Veins 5.3.1](https://github.com/sommer/veins/blob/veins-5.3.1/bin/veins_launchd#L652), opción `--command`, que por defecto es `sumo`).
+    - `tail -n 2 ~/.profile`, para ver las dos líneas agregadas.
+
+**Así debería verse tu terminal:**
+
+```text
+victorjaque@DESKTOP-6VI5783:~/src/sumo-1.22.0$ echo 'export SUMO_HOME="$HOME/src/sumo-1.22.0"' >> ~/.profile
+victorjaque@DESKTOP-6VI5783:~/src/sumo-1.22.0$ echo 'export PATH="$SUMO_HOME/bin:$PATH"' >> ~/.profile
+victorjaque@DESKTOP-6VI5783:~/src/sumo-1.22.0$ tail -n 2 ~/.profile
+export SUMO_HOME="$HOME/src/sumo-1.22.0"
+export PATH="$SUMO_HOME/bin:$PATH"
+```
+
+Los dos `echo` no muestran nada. `tail` muestra las dos últimas líneas de `~/.profile`: deben ser las dos que agregaste.
+
+**Ejemplo real: las dos líneas agregadas a `~/.profile` en el equipo de referencia**
+
+![Comandos echo que agregan SUMO_HOME y el PATH a ~/.profile, y tail que los muestra, en el equipo de referencia](img/instalacion-paso-3-profile.png)
+
+Ahora cierra la terminal y abre una nueva, para que Ubuntu lea `~/.profile` con las líneas nuevas. En la terminal nueva, ejecuta el siguiente comando:
+
+```bash
+echo $SUMO_HOME
+```
+
+**Fuente:** [guía de compilación de SUMO 1.22.0 para Linux](https://github.com/eclipse-sumo/sumo/blob/v1_22_0/docs/web/docs/Installing/Linux_Build.md#definition-of-sumo_home), sección *Definition of SUMO_HOME*: después de editar `~/.profile` hay que reiniciar la sesión, y se comprueba con `echo $SUMO_HOME`.
+
+**Así debería verse tu terminal:**
+
+```text
+victorjaque@DESKTOP-6VI5783:~$ echo $SUMO_HOME
+/home/victorjaque/src/sumo-1.22.0
+```
+
+Si muestra la ruta de la carpeta de SUMO, `SUMO_HOME` quedó definido.
+
+**Ejemplo real: `SUMO_HOME` en una terminal nueva del equipo de referencia**
+
+![echo $SUMO_HOME en una terminal nueva, mostrando /home/victorjaque/src/sumo-1.22.0, en el equipo de referencia](img/instalacion-paso-3-sumo-home.png)
+
+#### 3.4 Instalar los paquetes de Python
+
+Ahora tienes que instalar los paquetes de Python que pide la guía de SUMO. Son para las herramientas de Python de SUMO (la carpeta `tools/`), que netedit abre desde su menú; según la guía, la compilación los usa para preparar esas herramientas.
+
+La guía da dos comandos: primero uno con `apt` y después uno con `pip`. En Ubuntu 24.04 solo funciona el de `apt`, como se explica más abajo.
+
+Primero instala los paquetes con `apt`. `sudo` te pide tu contraseña y después `apt` pregunta `Do you want to continue? [Y/n]`: escribe `Y` y presiona Enter.
+
+Para eso, en una terminal de Ubuntu, nueva o la que ya tengas abierta, ejecuta el siguiente comando:
+
+```bash
+sudo apt-get install python3-pyproj python3-rtree python3-pandas flake8 python3-autopep8 python3-pulp python3-ezdxf
+```
+
+**Fuente:** [guía de compilación de SUMO 1.22.0 para Linux](https://github.com/eclipse-sumo/sumo/blob/v1_22_0/docs/web/docs/Installing/Linux_Build.md#installing-python-packages-for-the-tools), sección *Installing Python packages for the tools*.
+
+**Así debería verse tu terminal** (inicio y final, abreviado):
+
+```text
+victorjaque@DESKTOP-6VI5783:~$ sudo apt-get install python3-pyproj python3-rtree python3-pandas flake8 python3-autopep8 python3-pulp python3-ezdxf
+[sudo] password for victorjaque:
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+The following additional packages will be installed:
+  blt coinor-cbc coinor-libcbc3.1 coinor-libcgl1 coinor-libclp1 coinor-libcoinutils3v5 coinor-libosi1v5 fonts-lyx isympy-common isympy3 ...
+...
+Setting up python3-ezdxf (1.1.3-1) ...
+Setting up python3-matplotlib (3.6.3-1ubuntu5) ...
+Processing triggers for libc-bin (2.39-0ubuntu8.9) ...
+Processing triggers for man-db (2.12.0-4build2) ...
+Processing triggers for fontconfig (2.15.0-1.1ubuntu2) ...
+victorjaque@DESKTOP-6VI5783:~$
+```
+
+En el equipo de referencia instaló 77 paquetes y terminó sin ningún mensaje que empiece con `E:`.
+
+**Ejemplo real: el inicio de la instalación en el equipo de referencia**
+
+![Inicio de sudo apt-get install con los paquetes de Python de SUMO, en el equipo de referencia](img/instalacion-paso-3-apt-python.png)
+
+Después, la guía de SUMO pide instalar el resto de los paquetes con `pip`, desde dos listas que vienen en la carpeta de SUMO (`tools/requirements.txt` y `tools/req_dev.txt`). En Ubuntu 24.04 ese comando falla y no instala nada.
+
+**Los comandos que siguen no son necesarios para instalar SUMO: puedes saltarlos e ir directo al paso 3.5.** Se dejan en el manual solo para mostrar que la guía pide este paso pero que en Ubuntu 24.04 no se puede hacer. En el equipo de referencia se ejecutaron para documentar el error, que es inofensivo.
+
+Si quieres comprobarlo, en la misma terminal ejecuta los siguientes comandos:
+
+```bash
+cd ~/src/sumo-1.22.0
+python3 -m pip install -r tools/requirements.txt -r tools/req_dev.txt
+```
+
+**Fuente:** [guía de compilación de SUMO 1.22.0 para Linux](https://github.com/eclipse-sumo/sumo/blob/v1_22_0/docs/web/docs/Installing/Linux_Build.md#installing-python-packages-for-the-tools), sección *Installing Python packages for the tools*. El `cd` lo agrega este manual, porque las dos listas están dentro de la carpeta de SUMO. **Estos comandos son solo para comprobar el error: no instalan ni cambian nada.**
+
+!!! failure "Error: externally-managed-environment"
+    **Cuándo aparece:** al ejecutar el `pip` de la guía de SUMO en Ubuntu 24.04.
+
+    **Qué significa:** Ubuntu 24.04 no deja instalar paquetes con `pip` en el Python del sistema. El propio mensaje propone usar `apt`; el comando anterior ya instaló con `apt` los paquetes que indica la guía. `pip` no instala nada.
+
+    ```text
+    victorjaque@DESKTOP-6VI5783:~/src/sumo-1.22.0$ python3 -m pip install -r tools/requirements.txt -r tools/req_dev.txt
+    error: externally-managed-environment
+
+    × This environment is externally managed
+    ╰─> To install Python packages system-wide, try apt install
+        python3-xyz, where xyz is the package you are trying to
+        install.
+    ...
+    ```
+
+    **Ejemplo real: el final del `apt-get` y el error de `pip` en el equipo de referencia**
+
+    ![Final de sudo apt-get install y error externally-managed-environment de pip, en el equipo de referencia](img/instalacion-paso-3-error-pip.png)
+
+**Qué hacer: nada más, sigue con el paso 3.5**
+
+Con los paquetes de `apt` basta para este trabajo:
+
+- SUMO compila sin los paquetes de `pip`. Así lo hace el propio equipo de SUMO: en sus pruebas automáticas de la versión 1.22.0, sobre Ubuntu 24.04, compila SUMO antes de instalar esos paquetes ([`linux.yml`](https://github.com/eclipse-sumo/sumo/blob/v1_22_0/.github/workflows/linux.yml)).
+- Veins no los necesita para arrancar SUMO: el programa con el que lo arranca ([`veins_launchd`](https://github.com/sommer/veins/blob/veins-5.3.1/bin/veins_launchd)) solo usa módulos que vienen con Python.
+- Lo único que se pierde son las herramientas de Python de SUMO que necesitan algún paquete que no quedó instalado. Tres de esos paquetes no existen en Ubuntu: `fmpy`, `ortools` y `pandas_read_xml`.
+
+!!! note "¿Puede dar problemas más adelante?"
+    En principio no: SUMO compila y Veins lo arranca sin estos paquetes.
+
+    Solo fallaría una herramienta de Python de SUMO que use uno de los paquetes que faltan, por ejemplo las de `tools/drt/`, que usan `ortools`. En ese caso aparece el error `No module named …`. La solución es instalar ese paquete en un entorno virtual de Python, como propone el mensaje de error de `pip`.
+
+#### 3.5 Compilar
 
 Mismo patrón que OMNeT++: configurar y luego construir, esta vez con CMake.
 
@@ -973,7 +1160,7 @@ Mismo patrón que OMNeT++: configurar y luego construir, esta vez con CMake.
 # PENDIENTE: configurar con CMake y compilar SUMO
 ```
 
-#### 3.5 Verificar
+#### 3.6 Verificar
 
 Comprueba que la terminal encuentra SUMO 1.22.0.
 
@@ -981,7 +1168,7 @@ Comprueba que la terminal encuentra SUMO 1.22.0.
 # PENDIENTE: verificar la versión de SUMO
 ```
 
-#### 3.6 Recompilar después de modificar SUMO
+#### 3.7 Recompilar después de modificar SUMO
 
 Cada vez que modifiques el código de SUMO hay que volver a compilarlo.
 
@@ -1133,6 +1320,9 @@ Revisa la versión de SUMO. Si es posterior a la 1.22.0, la API de TraCI es inco
 
 **`./configure` de OMNeT++ se detiene con *Cannot find OpenSceneGraph 3.2 or later*.**
 Falta la librería de la vista 3D, que la guía de Plexe no instala. Desactívala con `WITH_OSG=no` en `configure.user` y vuelve a ejecutar `./configure`, como se explica en el [paso 2.3](#23-compilar). Si `./configure` se detiene por otra librería ausente, la salida es la misma: instalarla, o desactivar la opción correspondiente en `configure.user`.
+
+**El `pip` de la guía de SUMO se detiene con *error: externally-managed-environment*.**
+Ubuntu 24.04 no deja instalar paquetes con `pip` en el Python del sistema. Basta con los paquetes de `apt`, como se explica en el [paso 3.4](#34-instalar-los-paquetes-de-python): SUMO compila sin los de `pip`.
 
 **Error al instalar el paquete de resultados en R.**
 Es la incompatibilidad con compiladores modernos de C++ descrita en el paso 6.2. Se resuelve forzando un estándar de C++ anterior en la configuración de compilación de R.
