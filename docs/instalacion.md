@@ -23,7 +23,7 @@ Plexe no es un programa que se instala solo. Es la capa más alta de una estruct
 El orden no es una recomendación de estilo, es una dependencia técnica:
 
 - **OMNeT++** va primero y sin excepción. Es la base, y tanto Veins como Plexe se compilan enlazándose contra él.
-- **SUMO** es el único que no bloquea la compilación de nada, porque Veins lo controla en tiempo de ejecución a través de una interfaz de red, no en tiempo de compilación. Aun así conviene instalarlo **temprano, justo después de OMNeT++**: se instala ya compilado y toma pocos minutos, y es el punto donde más fácil es equivocarse de versión. Dejarlo para el final significa arriesgarse a descubrir un error de versión recién al intentar la primera simulación, con todo lo demás ya construido.
+- **SUMO** es el único que no bloquea la compilación de nada, porque Veins lo controla en tiempo de ejecución a través de una interfaz de red, no en tiempo de compilación. Aun así conviene instalarlo **temprano, justo después de OMNeT++**: es el punto donde más fácil es equivocarse de versión. Dejarlo para el final significa arriesgarse a descubrir un error de versión recién al intentar la primera simulación, con todo lo demás ya construido.
 - **Veins** no compila si OMNeT++ no está construido y su entorno cargado en la terminal.
 - **Plexe** no compila si no le indicas dónde está la carpeta de Veins ya construida.
 
@@ -38,6 +38,8 @@ Las versiones de la tabla no son "mínimas recomendadas". Son una **combinación
 
 !!! warning "No superes SUMO 1.22.0"
     Las versiones de SUMO posteriores a la **1.22.0** cambiaron la API de TraCI, y Veins 5.3.1 no es compatible con esa API nueva. La instalación va a parecer correcta y el error aparecerá recién al intentar correr una simulación.
+
+    **Fuente:** guía oficial de Plexe, [*Step 3: Install SUMO*](https://plexe.car2x.org/building/#step-3-install-sumo), que advierte no pasar de SUMO 1.22.0 porque Veins 5.3.1 todavía no soporta la nueva versión de la API.
 
 ---
 
@@ -56,21 +58,21 @@ No todos los componentes ofrecen las mismas opciones:
 | Componente | Cómo se descarga | ¿Se compila? |
 |------------|------------------|:------------:|
 | **OMNeT++** | Archivo comprimido desde omnetpp.org | Sí |
-| **SUMO** | Paquete **binario** desde sumo.dlr.de | **No** |
+| **SUMO** | Archivo comprimido con el código fuente desde sumo.dlr.de | Sí |
 | **Veins** | ZIP **o** clonar repositorio | Sí |
 | **Plexe** | ZIP **o** clonar repositorio | Sí |
 
 Dos observaciones importantes:
 
 - Solo **Veins y Plexe** tienen la doble opción ZIP/Git. La documentación oficial de Plexe recomienda clonar el repositorio y desaconseja el ZIP.
-- **SUMO es la excepción a toda la lógica anterior: no se compila.** Desde su versión 1.2.0, los modelos que Plexe necesita vienen incluidos en la distribución oficial, así que basta instalar el paquete ya construido. La excepción a esta excepción está en el paso 3.
+- **SUMO no tiene una versión aparte para Plexe.** Desde su versión 1.2.0, los modelos que Plexe necesita vienen incluidos en la versión oficial de SUMO, así que se baja y se compila esa versión oficial, como se explica en el paso 3.
 
 !!! note "Si consultas la documentación oficial"
     El sitio de Plexe separa estas dos operaciones en dos páginas distintas: **Download** y **Building**. Es útil saber que la página *Download* cubre **únicamente Plexe**, porque tanto el ZIP como el repositorio contienen Plexe y nada más. OMNeT++, SUMO y Veins se descargan cada uno de su propio sitio, y esas indicaciones están en la página *Building*, no en *Download*. La única excepción es **Instant Plexe**, que está en esa misma página y sí trae los cuatro componentes ya instalados.
 
 ### Cómo se compila en cada sistema operativo
 
-De los cuatro componentes, **tres se compilan** (OMNeT++, Veins y Plexe) y SUMO llega ya construido. Los tres siguen exactamente el mismo patrón de dos etapas: primero se configura, es decir se detecta qué hay instalado en tu máquina, y después se construye.
+En este manual **los cuatro componentes se compilan**, y todos siguen el mismo patrón de dos etapas: primero se configura, es decir se detecta qué hay instalado en tu máquina, y después se construye. En OMNeT++, Veins y Plexe esas etapas son `./configure` y `make`; en SUMO, `cmake -B build .` y `cmake --build build`.
 
 Lo que cambia entre sistemas operativos **no es qué se compila ni con qué comandos**, sino de dónde salen las dependencias y cuánta fricción hay en el camino:
 
@@ -119,12 +121,12 @@ flowchart LR
     A1["OMNeT++<br/>archivo comprimido"] --> A2["cargar entorno<br/>source setenv"] --> A3["compilar"]
     B1["Veins<br/>ZIP o Git"] --> B2["compilar"]
     C1["Plexe<br/>ZIP o Git"] --> C2["compilar<br/>indicando ruta de Veins"]
-    D1["SUMO<br/>paquete binario"] --> D2["operativo<br/>sin compilar"]
+    D1["SUMO<br/>código fuente"] --> D2["compilar<br/>con CMake"]
     A3 -.->|"habilita"| B2
     B2 -.->|"habilita"| C2
 ```
 
-Este diagrama deja ver las dos cosas que más se malinterpretan: que **SUMO no pasa por compilación**, y que **el entorno de OMNeT++ se carga antes de compilar**, incluso el propio OMNeT++.
+Este diagrama deja ver las dos cosas que más se malinterpretan: que **SUMO se compila por su cuenta**, sin depender de los demás, y que **el entorno de OMNeT++ se carga antes de compilar**, incluso el propio OMNeT++.
 
 ### Cómo queda tu disco
 
@@ -135,7 +137,7 @@ Todo vive dentro de una sola carpeta, `~/src/`. Al terminar la instalación debe
 ├── omnetpp-6.2.0/     ← motor de simulación
 ├── veins/             ← puente V2V
 ├── plexe/             ← platooning
-└── sumo-1.22.0/       ← solo aparece si compilas SUMO desde el código fuente
+└── sumo-1.22.0/       ← tráfico vehicular
 ```
 
 !!! tip "Mantén el código en ~/src, no en /mnt/c"
@@ -854,22 +856,138 @@ Si las tres pruebas funcionan, OMNeT++ está instalado y puedes pasar al paso 3.
 
 ### Paso 3: SUMO 1.22.0
 
-SUMO genera y mueve los vehículos. Veins lo controla durante la simulación a través de una interfaz de red, no en tiempo de compilación.
+SUMO genera y mueve los vehículos de la simulación.
 
-En el caso general **este componente no se compila**. Desde la versión 1.2.0 de SUMO los modelos que Plexe necesita vienen incluidos en la distribución oficial, así que basta con instalar el paquete binario.
+En este manual SUMO **se compila desde el código fuente**, porque en este trabajo se modifica SUMO (por ejemplo, para implementar controladores nuevos). Para eso, la guía de Plexe indica bajar el código fuente de SUMO 1.22.0 y compilarlo.
+
+**Fuente:** guía oficial de Plexe, [*Step 3: Install SUMO*](https://plexe.car2x.org/building/#step-3-install-sumo).
+
+#### 3.1 Instalar las dependencias
+
+Las dependencias son las herramientas y librerías que SUMO necesita para compilarse (por ejemplo CMake, el compilador de C++ y la librería de la ventana `sumo-gui`). No vienen en el paso 1, así que se instalan aquí con `apt`. `sudo` te pide tu contraseña de Ubuntu, como en el paso 1.
+
+Antes de instalarlas, actualiza la lista de paquetes de Ubuntu. Esa lista dice qué versiones hay en el servidor de Ubuntu. La del paso 1 ya está vieja, y con una lista vieja `apt` intenta bajar versiones que ya no existen y la instalación falla.
+
+En una terminal de Ubuntu, nueva o la que ya tengas abierta, ejecuta el siguiente comando:
 
 ```bash
-# PENDIENTE: instalación del paquete binario de SUMO 1.22.0
+sudo apt update
 ```
 
-Después de instalar, comprueba la versión. Es el único punto donde una versión equivocada arruina la instalación completa.
+**Fuente:** agregado en este manual; la guía de SUMO no lo incluye. Es el mismo comando del paso 1.1.
+
+**Así debería verse tu terminal** (abreviado):
+
+```text
+victorjaque@DESKTOP-6VI5783:~$ sudo apt update
+[sudo] password for victorjaque:
+Hit:1 http://archive.ubuntu.com/ubuntu noble InRelease
+Get:2 http://archive.ubuntu.com/ubuntu noble-updates InRelease [126 kB]
+Get:3 http://archive.ubuntu.com/ubuntu noble-backports InRelease [126 kB]
+Get:4 http://security.ubuntu.com/ubuntu noble-security InRelease [126 kB]
+...
+Get:22 http://security.ubuntu.com/ubuntu noble-security/restricted Translation-en [361 kB]
+Fetched 11.3 MB in 4s (2813 kB/s)
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+32 packages can be upgraded. Run 'apt list --upgradable' to see them.
+```
+
+El aviso final (*32 packages can be upgraded*) es normal y no impide seguir: esas actualizaciones corresponden al paso 0.5.
+
+**Ejemplo real: así se vio `sudo apt update` en el equipo de referencia**
+
+![Salida de sudo apt update en la terminal de Ubuntu, antes de instalar las dependencias de SUMO, en el equipo de referencia](img/instalacion-paso-3-apt-update.png)
+
+Ahora instala las dependencias. `apt` muestra un resumen y pregunta `Do you want to continue? [Y/n]`: escribe `Y` y presiona Enter.
+
+En la misma terminal, ejecuta el siguiente comando:
 
 ```bash
-# PENDIENTE: verificar la versión instalada de SUMO
+sudo apt-get install git cmake python3 g++ libxerces-c-dev libfox-1.6-dev libgdal-dev libproj-dev libgl2ps-dev python3-dev swig default-jdk maven libeigen3-dev
 ```
 
-!!! note "Compilar SUMO desde el código fuente"
-    Hace falta si vas a modificar el modelo de seguimiento vehicular que Plexe usa dentro de SUMO, que es donde viven las leyes de control longitudinal. Cambiar los parámetros de un controlador existente no requiere compilar nada, pero escribir un controlador nuevo o alterar el comportamiento de uno existente sí obliga a recompilar SUMO desde fuentes.
+**Fuente:** [guía de compilación de SUMO 1.22.0 para Linux](https://github.com/eclipse-sumo/sumo/blob/v1_22_0/docs/web/docs/Installing/Linux_Build.md), primera línea del bloque *For ubuntu this boils down to*. De ese bloque solo se usa esta línea; el código de SUMO se baja en el paso 3.2.
+
+**Así debería verse tu terminal** antes de confirmar (abreviado):
+
+```text
+victorjaque@DESKTOP-6VI5783:~$ sudo apt-get install git cmake python3 g++ libxerces-c-dev libfox-1.6-dev libgdal-dev libproj-dev libgl2ps-dev python3-dev swig default-jdk maven libeigen3-dev
+...
+The following packages will be upgraded:
+  libegl-mesa0 libgbm1 libgl1-mesa-dri libglx-mesa0 libheif-plugin-aomdec libheif-plugin-aomenc libheif1 libssl3t64
+  mesa-libgallium mesa-vulkan-drivers openssl
+11 upgraded, 207 newly installed, 0 to remove and 21 not upgraded.
+Need to get 270 MB of archives.
+After this operation, 869 MB of additional disk space will be used.
+Do you want to continue? [Y/n]
+```
+
+También actualiza 11 paquetes que ya estaban instalados; es normal. En el equipo de referencia fueron **207 paquetes nuevos** y **11 actualizados**: 270 MB de descarga y 869 MB de disco.
+
+**Ejemplo real: el resumen antes de confirmar, en el equipo de referencia**
+
+![Resumen de sudo apt-get install con las dependencias de SUMO y la pregunta Do you want to continue, en el equipo de referencia](img/instalacion-paso-3-apt-install.png)
+
+**Así debería verse tu terminal** al terminar (abreviado):
+
+```text
+...
+Setting up default-jre-headless (2:1.21-75+exp1) ...
+Setting up default-jre (2:1.21-75+exp1) ...
+Setting up openjdk-21-jdk:amd64 (21.0.12.1+1-1~24.04.4) ...
+update-alternatives: using /usr/lib/jvm/java-21-openjdk-amd64/bin/jconsole to provide /usr/bin/jconsole (jconsole) in auto mode
+Setting up default-jdk-headless (2:1.21-75+exp1) ...
+Setting up default-jdk (2:1.21-75+exp1) ...
+victorjaque@DESKTOP-6VI5783:~$
+```
+
+Terminó bien cuando vuelve a aparecer `victorjaque@...:~$` sin mensajes que empiecen con `E:`. En el equipo de referencia tardó unos dos minutos.
+
+**Ejemplo real: el final de la instalación en el equipo de referencia**
+
+![Final de sudo apt-get install con la configuración de Java, en el equipo de referencia](img/instalacion-paso-3-apt-install-fin.png)
+
+#### 3.2 Descargar
+
+Se baja el archivo con el código fuente de SUMO 1.22.0 desde el sitio oficial de SUMO y se descomprime dentro de `~/src/`.
+
+```bash
+# PENDIENTE: descargar sumo-src-1.22.0.tar.gz y descomprimirlo en ~/src
+```
+
+#### 3.3 Definir SUMO_HOME
+
+La guía de SUMO pide definir `SUMO_HOME`, con la ruta de la carpeta de SUMO, antes de compilar.
+
+```bash
+# PENDIENTE: definir SUMO_HOME y agregar la carpeta bin de SUMO al PATH
+```
+
+#### 3.4 Compilar
+
+Mismo patrón que OMNeT++: configurar y luego construir, esta vez con CMake.
+
+```bash
+# PENDIENTE: configurar con CMake y compilar SUMO
+```
+
+#### 3.5 Verificar
+
+Comprueba que la terminal encuentra SUMO 1.22.0.
+
+```bash
+# PENDIENTE: verificar la versión de SUMO
+```
+
+#### 3.6 Recompilar después de modificar SUMO
+
+Cada vez que modifiques el código de SUMO hay que volver a compilarlo.
+
+```bash
+# PENDIENTE: volver a compilar SUMO después de modificar su código
+```
 
 ---
 
@@ -1036,4 +1154,4 @@ Es un problema conocido y documentado en las preguntas frecuentes del sitio ofic
 - [Guía de compilación de Plexe](https://plexe.car2x.org/building/): instrucciones por sistema operativo
 - [OMNeT++](https://omnetpp.org/): descarga y manual de instalación
 - [Veins](https://veins.car2x.org/): documentación del puente V2V
-- [SUMO](https://sumo.dlr.de/docs/Installing/index.html): guía de instalación
+- [Guía de compilación de SUMO 1.22.0 para Linux](https://github.com/eclipse-sumo/sumo/blob/v1_22_0/docs/web/docs/Installing/Linux_Build.md): dependencias y compilación de SUMO desde el código fuente
