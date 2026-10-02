@@ -8,6 +8,7 @@ En el [Caso 1](caso-1.md) se cambió un parámetro del controlador. Aquí se cam
     - **Controlador:** Ploeg (`-r 3`).
     - **Parámetros:** la potencia de transmisión, el bitrate y, al final, el tiempo de separación `h`.
     - **Resultado principal:** con la separación por defecto (unos 16 m), el pelotón choca al bajar de 0.02 a 0.01 mW. Con más separación, hace falta más potencia.
+    - **Además:** el mismo barrido con los 6 controladores, en el ejemplo `platooning`.
     - **Qué se toca:** solo `omnetpp.ini`. No hay que recompilar.
 
 ## 1 · Antes de empezar
@@ -160,6 +161,28 @@ La hipótesis del profesor fue que con 0.02 o 0.03 mW quizás no había choque s
 
 Con eso se prueban varias combinaciones de `h` y potencia, mirando cada corrida en `sumo-gui`.
 
+### Paso 5 · Los 6 controladores, en el ejemplo `platooning`
+
+El barrido se repitió en el ejemplo `platooning`, ahora con los 6 controladores. En su `omnetpp.ini` la línea es la misma:
+
+```ini
+*.**.nic.mac1609_4.txPower = 0.1mW
+```
+
+Las potencias fueron 100, 50, 5, 1, 0.5, 0.1 y 0.01 mW. Para cada una, corre las 6 corridas y grafica con `plot-braking.R`, el script original del ejemplo, que dibuja un panel por controlador:
+
+```bash
+cd ~/src/plexe/examples/platooning
+for r in 0 1 2 3 4 5; do ./run -u Cmdenv -c BrakingNoGui -r $r; done
+
+cd analysis
+make Braking.Rdata
+Rscript plot-braking.R
+```
+
+!!! note "Instante del frenado"
+    Las notas de esta prueba no registran en qué instante frenó el líder. En los gráficos se ve que fue cerca de `t = 10 s`, no en `t = 5 s` como en el ejemplo original.
+
 ## 5 · Resultados
 
 ### Barrido de potencia (`h = 0.5 s`)
@@ -222,6 +245,45 @@ Con `h = 0.5 s` (unos 16 m entre autos), el umbral estaba entre 0.02 y 0.01 mW. 
     - "Choca o no choca" es una medida gruesa: no dice cuántos mensajes se perdieron.
     - Los resultados de la última tabla se observaron en `sumo-gui`. Hay videos de esas corridas, pero no gráficos.
 
+### Los 6 controladores (ejemplo `platooning`)
+
+| Potencia (mW) | Chocan | No chocan |
+|---|---|---|
+| 100, 50 y 5 | ACC (0.3 s) | ACC (1.2 s), CACC, Consensus, Flatbed, Ploeg |
+| 1 y 0.5 | ACC (0.3 s), Consensus | ACC (1.2 s), CACC, Flatbed, Ploeg |
+| 0.1 | ACC (0.3 s), Consensus, CACC, Flatbed | ACC (1.2 s), Ploeg |
+| 0.01 | Todos menos ACC (1.2 s) | ACC (1.2 s) |
+
+- Los gráficos de 100, 50 y 5 mW son idénticos, y también los de 1 y 0.5 mW.
+- **ACC (0.3 s) choca con todas las potencias**, incluso con 100 mW.
+- Al bajar la potencia, el primero en chocar es Consensus (1 mW), después CACC y Flatbed (0.1 mW) y al final Ploeg (0.01 mW). ACC (1.2 s) no choca con ninguna.
+
+En cada gráfico, cada panel es un controlador. Si un panel termina antes de `t = 60 s`, esa corrida chocó (ver [Caso 1](caso-1.md#5-resultados)).
+
+=== "100 mW (igual con 50 y 5)"
+
+    ![Distancia al auto de adelante con 100 mW, 6 controladores](img/caso-2-controladores-100mw-distancia.png)
+
+    - Solo el panel de ACC (0.3 s) termina antes de tiempo.
+
+=== "1 mW (igual con 0.5)"
+
+    ![Distancia al auto de adelante con 1 mW, 6 controladores](img/caso-2-controladores-1mw-distancia.png)
+
+    - Terminan antes de tiempo ACC (0.3 s) y Consensus.
+
+=== "0.1 mW"
+
+    ![Distancia al auto de adelante con 0.1 mW, 6 controladores](img/caso-2-controladores-01mw-distancia.png)
+
+    - Terminan antes de tiempo ACC (0.3 s), CACC, Consensus y Flatbed.
+
+=== "0.01 mW"
+
+    ![Distancia al auto de adelante con 0.01 mW, 6 controladores](img/caso-2-controladores-001mw-distancia.png)
+
+    - Solo ACC (1.2 s) llega a `t = 60 s`.
+
 ## 6 · Errores frecuentes
 
 | Síntoma | Causa | Solución |
@@ -237,6 +299,7 @@ Con `h = 0.5 s` (unos 16 m entre autos), el umbral estaba entre 0.02 y 0.01 mW. 
 ```text
 # PENDIENTE: medir la tasa de recepción de beacons de cada auto, para pasar de "choca o no choca" a una curva
 # PENDIENTE: gráficos de las corridas con h = 1.5 s (hoy solo hay videos)
+# PENDIENTE: anotar en qué instante frenó el líder en el barrido con los 6 controladores (en los gráficos, cerca de t = 10 s)
 ```
 
 ## 8 · Siguiente paso

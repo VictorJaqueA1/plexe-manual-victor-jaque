@@ -35,7 +35,7 @@ Es el tiempo entre dos beacons del mismo auto, en segundos. Por defecto es 0.1 s
 
 Ploeg mide con el radar, en cada paso, la distancia y la velocidad del auto de adelante. La aceleración de ese auto, en cambio, le llega por beacon, y entre un beacon y el siguiente usa la última que recibió (ver [Controladores › Datos que usa](../controladores.md#datos-que-usa)).
 
-Con un intervalo más largo, ese dato envejece más. Si el auto de adelante frena justo después de enviar un beacon, el de atrás se entera recién con el siguiente, hasta un intervalo completo después. Mientras tanto, solo reacciona con lo que mide el radar. Y como cada auto escucha solo al de adelante, ese atraso se puede repetir de auto en auto.
+Con un intervalo más largo, ese dato se actualiza menos seguido: si el auto de adelante cambia su aceleración, el de atrás lo sabe recién con el siguiente beacon. Mientras tanto, el radar sigue midiendo la distancia y la velocidad en cada paso.
 
 ### Qué esperamos ver
 
@@ -242,9 +242,7 @@ Con el frenado en `t = 5 s`, como viene el ejemplo:
 | 0.8 | 1.25 | Choque |
 | 1 | 1 | Choque, aunque tarda más en producirse |
 
-**El umbral está entre 0.3 y 0.5 s.** Con el valor por defecto, 0.1 s, hay margen: los beacons podrían enviarse tres veces menos seguido sin que el pelotón choque.
-
-Con 0.01 s la simulación se vuelve muy lenta, probablemente porque cada auto envía 100 beacons por segundo, diez veces más que por defecto, y OMNeT++ simula cada uno.
+**El umbral está entre 0.3 y 0.5 s.**
 
 ### Grilla de `h` e intervalo (frenado en `t = 20 s`)
 
@@ -272,18 +270,14 @@ Cada punto es un valor de `h` (eje vertical) y el menor intervalo con que ese `h
 
 - **Mientras mayor es `h`, más largo es el intervalo que se tolera.** Con `h` entre 0.01 y 0.3 s, el choque aparece con 0.2 a 0.3 s entre beacons. Con `h = 1 s`, recién con 0.85 s, y con `h = 1.3 s`, con 1.8 s.
 - Con el intervalo por defecto, 0.1 s, Ploeg frena sin chocar hasta con `h = 0.006 s`. Con `h = 0.005 s` choca (el auto 5 contra el 4), y basta un intervalo de 0.02 s.
-- En el Caso 1, `h = 0.1 s` chocaba con el frenado en `t = 5 s`. Aquí, con el frenado en `t = 20 s` y el mismo intervalo de 0.1 s, no choca. Esto apoya lo que advierte el [Caso 1](caso-1.md#5-resultados): ese choque venía del reacomodo inicial, no del valor de `h`.
-
 !!! warning "Límites de estos resultados"
-    - Cada combinación se corrió una sola vez. Como el primer beacon de cada auto sale con un desfase al azar, otra semilla podría mover un poco los umbrales.
     - "Choca o no choca" es una medida gruesa: no dice cuánto se acercaron los autos.
-    - Los umbrales valen para este escenario: Ploeg con sus ganancias por defecto, el líder a 100 km/h y un frenado de 8 m/s².
+    - Los umbrales valen para estas condiciones: 100 mW, 6 Mbps, beacons de 200 bytes, prioridad 4, FER 0 y el líder a 100 km/h.
 
 ## 6 · Errores frecuentes
 
 | Síntoma | Causa | Solución |
 |---|---|---|
-| La simulación corre muy lento | El intervalo es muy corto: con 0.01 s hay diez veces más beacons que simular | Es esperable. Usa `-c BrakingNoGui` o un intervalo más largo |
 | `-r 3` no corre lo que esperabas | Escribiste varios valores en `${beaconInterval = ...}` | Deja un solo valor y cámbialo a mano |
 | Los resultados de un intervalo borraron los del anterior | El nombre del `.vec` no incluye el intervalo | Guarda el PDF antes de cambiar de valor |
 | Los autos aceleran o frenan antes de que frene el líder | Cambiaste `ploegH` sin ajustar la inserción | Frena en `t = 20 s` o ajusta `platoonInsertHeadway` ([Caso 1](caso-1.md#6-partir-del-equilibrio)) |
@@ -297,4 +291,4 @@ Cada punto es un valor de `h` (eje vertical) y el menor intervalo con que ese `h
 
 ## 8 · Siguiente paso
 
-El [Caso 4](caso-4.md) provoca pérdidas de otra forma: en vez de debilitar la señal o espaciar los beacons, descarta mensajes con una probabilidad fija (FER), sin importar la distancia.
+El [Caso 4](caso-4.md) provoca pérdidas de otra forma: en vez de debilitar la señal o espaciar los beacons, descarta mensajes con una probabilidad fija, el frame error rate (FER), sin importar la distancia.

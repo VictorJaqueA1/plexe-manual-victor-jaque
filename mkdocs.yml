@@ -87,7 +87,7 @@ nav:
     - Caso 1 · Variar el tiempo de separación h de Ploeg: ejemplos/caso-1.md
     - Caso 2 · Variar la potencia de transmisión: ejemplos/caso-2.md
     - Caso 3 · Variar el intervalo de envío de beacons: ejemplos/caso-3.md
-    - Caso 4 · Pérdida artificial de paquetes con FER: ejemplos/caso-4.md
+    - Caso 4 · Pérdida artificial de paquetes con frame error rate (FER): ejemplos/caso-4.md
     - Caso 5 · Nuevo perfil de aceleración y velocidad del líder: ejemplos/caso-5.md
     - Caso 6 · Más de un pelotón: ejemplos/caso-6.md
     - Caso 7 · Retardo estocástico de comunicación: ejemplos/caso-7.md
