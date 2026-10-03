@@ -860,7 +860,7 @@ SUMO genera y mueve los vehículos de la simulación.
 
 En este manual SUMO **se compila desde el código fuente**, porque en este trabajo se modifica SUMO (por ejemplo, para implementar controladores nuevos). Para eso, la guía de Plexe indica bajar el código fuente de SUMO 1.22.0 y compilarlo.
 
-**Fuente:** guía oficial de Plexe, [*Step 3: Install SUMO*](https://plexe.car2x.org/building/#step-3-install-sumo), que remite a la guía oficial de SUMO. Los pasos 3.1 a 3.5 siguen la [guía de compilación de SUMO 1.22.0 para Linux](https://github.com/eclipse-sumo/sumo/blob/v1_22_0/docs/web/docs/Installing/Linux_Build.md).
+**Fuente:** guía oficial de Plexe, [*Step 3: Install SUMO*](https://plexe.car2x.org/building/#step-3-install-sumo), que remite a la guía oficial de SUMO. Los pasos 3.1 a 3.5 y el 3.7 siguen la [guía de compilación de SUMO 1.22.0 para Linux](https://github.com/eclipse-sumo/sumo/blob/v1_22_0/docs/web/docs/Installing/Linux_Build.md).
 
 #### 3.1 Instalar las dependencias
 
@@ -960,7 +960,7 @@ cd ~/src
 wget https://sumo.dlr.de/releases/1.22.0/sumo-src-1.22.0.tar.gz
 ```
 
-**Fuente:** el archivo `sumo-src-1.22.0.tar.gz` es el que indica la [guía de compilación de SUMO 1.22.0 para Linux](https://github.com/eclipse-sumo/sumo/blob/v1_22_0/docs/web/docs/Installing/Linux_Build.md#release-version-or-nightly-tarball) (sección *release version or nightly tarball*) cuando se necesita una versión específica. La carpeta `~/src` y el uso de `wget` los agrega este manual: la guía no indica una carpeta y solo da el enlace de descarga.
+**Fuente:** el archivo `sumo-src-1.22.0.tar.gz` es el que indica la [guía de compilación de SUMO 1.22.0 para Linux](https://github.com/eclipse-sumo/sumo/blob/v1_22_0/docs/web/docs/Installing/Linux_Build.md#release-version-or-nightly-tarball) (sección *release version or nightly tarball*) cuando se necesita una versión específica. Si revisas la guía de Plexe ([*Step 3*](https://plexe.car2x.org/building/#step-3-install-sumo)), verás que enlaza otro archivo: el ZIP de SUMO 1.22.0 en GitHub (`v1_22_0.zip`). Aquí se usa `sumo-src-1.22.0.tar.gz`, porque es el archivo que indica la guía de SUMO para compilar una versión específica. La carpeta `~/src` y el uso de `wget` los agrega este manual: la guía no indica una carpeta y solo da el enlace de descarga.
 
 **Así debería verse tu terminal** (barra de progreso acortada):
 
@@ -1154,27 +1154,167 @@ Con los paquetes de `apt` basta para este trabajo:
 
 #### 3.5 Compilar
 
-Mismo patrón que OMNeT++: configurar y luego construir, esta vez con CMake.
+Ahora tienes que compilar SUMO. Igual que OMNeT++, se hace en dos etapas: primero `cmake -B build .` configura, es decir revisa qué hay instalado y prepara la carpeta `build`, y después `cmake --build` construye los programas de SUMO.
+
+Hazlo en una terminal nueva, sin cargar el entorno de OMNeT++ (la línea no debe empezar con `(omnetpp/.venv)`): si está cargado, CMake usa el Python de OMNeT++, que no ve los paquetes que instalaste en el paso 3.4.
+
+Para eso, abre una terminal de Ubuntu nueva y ejecuta los siguientes comandos:
 
 ```bash
-# PENDIENTE: configurar con CMake y compilar SUMO
+cd ~/src/sumo-1.22.0
+cmake -B build .
 ```
+
+**Fuente:** [guía de compilación de SUMO 1.22.0 para Linux](https://github.com/eclipse-sumo/sumo/blob/v1_22_0/docs/web/docs/Installing/Linux_Build.md#building-the-sumo-binaries-with-cmake), sección *Building the SUMO binaries with cmake*, que indica ejecutar `cmake -B build .` en la carpeta de SUMO. La terminal nueva la agrega este manual: según la [documentación de CMake](https://cmake.org/cmake/help/v3.28/module/FindPython.html), si hay un entorno virtual de Python activo, CMake usa primero ese Python.
+
+**Así debería verse tu terminal** (inicio y final, abreviado):
+
+```text
+victorjaque@DESKTOP-6VI5783:~$ cd ~/src/sumo-1.22.0
+victorjaque@DESKTOP-6VI5783:~/src/sumo-1.22.0$ cmake -B build .
+-- Setting build type to 'Release' as none was specified.
+-- The CXX compiler identification is GNU 13.3.0
+-- The C compiler identification is GNU 13.3.0
+...
+-- Found ccache: /usr/bin/ccache
+...
+-- Found Python: /usr/bin/python3 (found version "3.12.3") found components: ...
+...
+-- Found Git: /usr/bin/git (found version "2.43.0")
+-- Enabled features: Linux-6.18.33.2-microsoft-standard-WSL2 x86_64 GNU 13.3.0 Release FMI Proj GUI Intl SWIG Eigen GDAL GL2PS
+-- Configuring done (7.5s)
+-- Generating done (0.1s)
+-- Build files have been written to: /home/victorjaque/src/sumo-1.22.0/build
+```
+
+- *Build files have been written to* indica que la configuración terminó bien. En el equipo de referencia tardó unos 8 segundos.
+- `Found Python: /usr/bin/python3` confirma que CMake usa el Python de Ubuntu.
+
+**Ejemplo real: así empieza `cmake -B build .` en el equipo de referencia**
+
+![Inicio de cmake -B build . en la carpeta de SUMO, con Found ccache y Found Python, en el equipo de referencia](img/instalacion-paso-3-cmake-inicio.png)
+
+Cuando termine, en la misma terminal, dentro de `~/src/sumo-1.22.0`, ejecuta el siguiente comando:
+
+```bash
+cmake --build build -j $(nproc)
+```
+
+**Fuente:** [guía de compilación de SUMO 1.22.0 para Linux](https://github.com/eclipse-sumo/sumo/blob/v1_22_0/docs/web/docs/Installing/Linux_Build.md#building-the-sumo-binaries-with-cmake), sección *Building the SUMO binaries with cmake*. El `$(nproc)` también es de la guía: escribe la cantidad de núcleos (28 en el equipo de referencia), para compilar en paralelo.
+
+**Así debería verse tu terminal** (inicio y final, abreviado):
+
+```text
+victorjaque@DESKTOP-6VI5783:~/src/sumo-1.22.0$ cmake --build build -j $(nproc)
+[  0%] Building CXX object src/utils/xml/CMakeFiles/utils_xml.dir/CommonXMLStructure.cpp.o
+[  0%] Building CXX object src/microsim/engine/CMakeFiles/microsim_engine.dir/EngineParameters.cpp.o
+[  0%] Generating version.h
+...
+[ 99%] Linking CXX executable /home/victorjaque/src/sumo-1.22.0/bin/netedit
+[ 99%] Built target netedit
+...
+[100%] Linking CXX shared module /home/victorjaque/src/sumo-1.22.0/tools/libsumo/_libsumo.so
+[100%] Built target libsumo
+victorjaque@DESKTOP-6VI5783:~/src/sumo-1.22.0$
+```
+
+- Terminó bien cuando aparece `[100%] Built target …` y vuelve la línea `victorjaque@...:~/src/sumo-1.22.0$`.
+- Los programas de SUMO quedan en `~/src/sumo-1.22.0/bin`, por ejemplo `sumo`, `sumo-gui` y `netedit`. En el equipo de referencia tardó unos 3 minutos y medio.
+
+**Ejemplo real: así termina `cmake -B build .` y empieza `cmake --build` en el equipo de referencia**
+
+![Final de cmake -B build . con Build files have been written, seguido del inicio de cmake --build, en el equipo de referencia](img/instalacion-paso-3-cmake-fin.png)
+
+**Ejemplo real: así termina `cmake --build` en el equipo de referencia**
+
+![Final de cmake --build con Built target libsumo, en el equipo de referencia](img/instalacion-paso-3-build-fin.png)
+
+La guía de SUMO sigue con [*Installing the SUMO binaries*](https://github.com/eclipse-sumo/sumo/blob/v1_22_0/docs/web/docs/Installing/Linux_Build.md#installing-the-sumo-binaries), un paso opcional que copia los programas a otra carpeta. Aquí no se hace: SUMO se usa desde `bin`, que agregaste al PATH en el paso 3.3.
 
 #### 3.6 Verificar
 
-Comprueba que la terminal encuentra SUMO 1.22.0.
+Ahora comprueba que el comando `sumo`, con el que Veins arranca SUMO (paso 3.3), es el que compilaste y que su versión es 1.22.0.
+
+En una terminal de Ubuntu, nueva o la que ya tengas abierta, ejecuta los siguientes comandos:
 
 ```bash
-# PENDIENTE: verificar la versión de SUMO
+which sumo
+sumo --version
 ```
+
+**Fuente:** `which sumo` lo usa el [FAQ de Plexe](https://plexe.car2x.org/faq/) para comprobar qué SUMO se ejecuta. La opción `--version` está en la [documentación de SUMO 1.22.0](https://github.com/eclipse-sumo/sumo/blob/v1_22_0/docs/web/docs/sumo.md#report), página *sumo*, sección *Report*. Usarlos para verificar la instalación lo agrega este manual: ni la guía de Plexe ni la de SUMO traen este paso.
+
+**Así debería verse tu terminal** (abreviado):
+
+```text
+victorjaque@DESKTOP-6VI5783:~$ which sumo
+/home/victorjaque/src/sumo-1.22.0/bin/sumo
+victorjaque@DESKTOP-6VI5783:~$ sumo --version
+Eclipse SUMO sumo Version 1.22.0
+ Build features: Linux-6.18.33.2-microsoft-standard-WSL2 x86_64 GNU 13.3.0 Release FMI Proj GUI Intl SWIG Eigen GDAL GL2PS
+ Copyright (C) 2001-2025 German Aerospace Center (DLR) and others; https://sumo.dlr.de
+
+Eclipse SUMO sumo Version 1.22.0 is part of SUMO.
+...
+```
+
+- `which sumo` muestra que la terminal usa el SUMO que compilaste, en `~/src/sumo-1.22.0/bin`.
+- `sumo --version` confirma la versión **1.22.0**. El resto de la salida es el texto de la licencia de SUMO.
+
+**Ejemplo real: `which sumo` y `sumo --version` en el equipo de referencia**
+
+![Salida de which sumo y sumo --version, con la ruta ~/src/sumo-1.22.0/bin/sumo y la versión 1.22.0, en el equipo de referencia](img/instalacion-paso-3-verificar.png)
 
 #### 3.7 Recompilar después de modificar SUMO
 
-Cada vez que modifiques el código de SUMO hay que volver a compilarlo.
+Cuando modificas el código de SUMO, por ejemplo un controlador, los programas que ya compilaste (`sumo`, `sumo-gui` y los demás) no cambian solos. Hay que volver a compilar para que incluyan tu cambio.
+
+No hace falta compilar SUMO entero otra vez. Basta con ejecutar `make` dentro de la carpeta `build`. `make` revisa qué archivos cambiaron desde la última compilación, recompila solo esos y los que dependen de ellos, y vuelve a armar los programas que los usan. Si cambiaste un archivo `.cpp`, recompila solo ese. Si cambiaste un `.h`, recompila todos los archivos que lo incluyen.
+
+En una terminal de Ubuntu, nueva o la que ya tengas abierta, ejecuta los siguientes comandos:
 
 ```bash
-# PENDIENTE: volver a compilar SUMO después de modificar su código
+cd ~/src/sumo-1.22.0/build
+make -j $(nproc)
 ```
+
+**Fuente:** [guía de compilación de SUMO 1.22.0 para Linux](https://github.com/eclipse-sumo/sumo/blob/v1_22_0/docs/web/docs/Installing/Linux_Build.md#frequent-rebuilds), sección *(Frequent) Rebuilds*: entrar a la carpeta `build` y volver a ejecutar `make -j $(nproc)`. La explicación de cómo `make` recompila solo lo que cambió la agrega este manual; las guías no la incluyen.
+
+**Así debería verse tu terminal** (inicio y final, abreviado):
+
+```text
+victorjaque@DESKTOP-6VI5783:~$ cd ~/src/sumo-1.22.0/build
+victorjaque@DESKTOP-6VI5783:~/src/sumo-1.22.0/build$ make -j $(nproc)
+[  0%] Built target install_dll
+[  0%] Built target generate-version-h
+[  1%] Built target foreign_tcpip
+...
+[ 96%] Built target sumo
+[ 96%] Built target sumo-gui
+...
+[100%] Built target libsumofmi2
+[100%] Built target prepfmi
+[100%] Built target fmi
+victorjaque@DESKTOP-6VI5783:~/src/sumo-1.22.0/build$
+```
+
+- Terminó bien cuando aparece `[100%] Built target …` y vuelve la línea `victorjaque@...:~/src/sumo-1.22.0/build$`.
+- Como no se cambió el código, no compila ningún archivo: solo aparecen líneas *Built target*, sin *Building CXX object*.
+
+**Ejemplo real: así empieza `make` en el equipo de referencia**
+
+![Inicio de make en la carpeta build de SUMO, con líneas Built target, en el equipo de referencia](img/instalacion-paso-3-make-inicio.png)
+
+**Ejemplo real: así termina `make` en el equipo de referencia**
+
+![Final de make en la carpeta build de SUMO, con Built target fmi, en el equipo de referencia](img/instalacion-paso-3-make-fin.png)
+
+!!! tip "Si la recompilación da problemas"
+    Si actualizaste librerías de Ubuntu o la compilación falla, la guía de SUMO aconseja compilar desde cero: borra la carpeta `build` y repite el paso 3.5. Así CMake vuelve a buscar las librerías en vez de usar las que guardó.
+
+    **Fuente:** [guía de compilación de SUMO 1.22.0 para Linux](https://github.com/eclipse-sumo/sumo/blob/v1_22_0/docs/web/docs/Installing/Linux_Build.md#frequent-rebuilds), sección *(Frequent) Rebuilds*.
+
+Con esto, SUMO está instalado y puedes pasar al paso 4.
 
 ---
 
