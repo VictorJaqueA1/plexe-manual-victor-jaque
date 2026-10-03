@@ -89,7 +89,7 @@ nav:
     - Caso 3 · Variar el intervalo de envío de beacons: ejemplos/caso-3.md
     - Caso 4 · Pérdida artificial de paquetes con frame error rate (FER): ejemplos/caso-4.md
     - Caso 5 · Nuevo perfil de aceleración y velocidad del líder: ejemplos/caso-5.md
-    - Caso 6 · Más de un pelotón: ejemplos/caso-6.md
+    - Caso 6 · Simular más de un pelotón: ejemplos/caso-6.md
     - Caso 7 · Retardo estocástico de comunicación: ejemplos/caso-7.md
     - Caso 8 · Event-triggered control sobre el envío de frames: ejemplos/caso-8.md
     - Caso 9 · ETC y retardo en conjunto: ejemplos/caso-9.md
