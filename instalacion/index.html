@@ -197,7 +197,7 @@
                     <a href="../ejemplos/caso-5/">Caso 5 · Nuevo perfil de aceleración y velocidad del líder</a>
                   </li>
                   <li>
-                    <a href="../ejemplos/caso-6/">Caso 6 · Más de un pelotón</a>
+                    <a href="../ejemplos/caso-6/">Caso 6 · Simular más de un pelotón</a>
                   </li>
                   <li>
                     <a href="../ejemplos/caso-7/">Caso 7 · Retardo estocástico de comunicación</a>
@@ -210,6 +210,40 @@
                   </li>
               </ul>
             </li>
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../primera-simulacion/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Primera simulación
+
+      </a>
+    </li>
+  
+
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../flujo-de-trabajo/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Flujo de trabajo
+
+      </a>
+    </li>
+  
+
       </ul>
     </div>
       
@@ -1395,7 +1429,7 @@
   <span class="md-ellipsis">
     
   
-    Caso 6 · Más de un pelotón
+    Caso 6 · Simular más de un pelotón
   
 
     
@@ -1496,6 +1530,60 @@
           </ul>
         </nav>
       
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../primera-simulacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Primera simulación
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../flujo-de-trabajo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Flujo de trabajo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -2889,7 +2977,7 @@
 <h3 id="paso-3-sumo-1220">Paso 3: SUMO 1.22.0</h3>
 <p>SUMO genera y mueve los vehículos de la simulación.</p>
 <p>En este manual SUMO <strong>se compila desde el código fuente</strong>, porque en este trabajo se modifica SUMO (por ejemplo, para implementar controladores nuevos). Para eso, la guía de Plexe indica bajar el código fuente de SUMO 1.22.0 y compilarlo.</p>
-<p><strong>Fuente:</strong> guía oficial de Plexe, <a href="https://plexe.car2x.org/building/#step-3-install-sumo"><em>Step 3: Install SUMO</em></a>, que remite a la guía oficial de SUMO. Los pasos 3.1 a 3.5 siguen la <a href="https://github.com/eclipse-sumo/sumo/blob/v1_22_0/docs/web/docs/Installing/Linux_Build.md">guía de compilación de SUMO 1.22.0 para Linux</a>.</p>
+<p><strong>Fuente:</strong> guía oficial de Plexe, <a href="https://plexe.car2x.org/building/#step-3-install-sumo"><em>Step 3: Install SUMO</em></a>, que remite a la guía oficial de SUMO. Los pasos 3.1 a 3.5 y el 3.7 siguen la <a href="https://github.com/eclipse-sumo/sumo/blob/v1_22_0/docs/web/docs/Installing/Linux_Build.md">guía de compilación de SUMO 1.22.0 para Linux</a>.</p>
 <h4 id="31-instalar-las-dependencias">3.1 Instalar las dependencias</h4>
 <p>Las dependencias son las herramientas y librerías que SUMO necesita para compilarse (por ejemplo CMake, el compilador de C++ y la librería de la ventana <code>sumo-gui</code>). No vienen en el paso 1, así que se instalan aquí con <code>apt</code>. <code>sudo</code> te pide tu contraseña de Ubuntu, como en el paso 1.</p>
 <p>Antes de instalarlas, actualiza la lista de paquetes de Ubuntu. Esa lista dice qué versiones hay en el servidor de Ubuntu. La del paso 1 ya está vieja, y con una lista vieja <code>apt</code> intenta bajar versiones que ya no existen y la instalación falla.</p>
@@ -2953,7 +3041,7 @@
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-46-1"><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a><span class="nb">cd</span><span class="w"> </span>~/src
 </span><span id="__span-46-2"><a id="__codelineno-46-2" name="__codelineno-46-2" href="#__codelineno-46-2"></a>wget<span class="w"> </span>https://sumo.dlr.de/releases/1.22.0/sumo-src-1.22.0.tar.gz
 </span></code></pre></div>
-<p><strong>Fuente:</strong> el archivo <code>sumo-src-1.22.0.tar.gz</code> es el que indica la <a href="https://github.com/eclipse-sumo/sumo/blob/v1_22_0/docs/web/docs/Installing/Linux_Build.md#release-version-or-nightly-tarball">guía de compilación de SUMO 1.22.0 para Linux</a> (sección <em>release version or nightly tarball</em>) cuando se necesita una versión específica. La carpeta <code>~/src</code> y el uso de <code>wget</code> los agrega este manual: la guía no indica una carpeta y solo da el enlace de descarga.</p>
+<p><strong>Fuente:</strong> el archivo <code>sumo-src-1.22.0.tar.gz</code> es el que indica la <a href="https://github.com/eclipse-sumo/sumo/blob/v1_22_0/docs/web/docs/Installing/Linux_Build.md#release-version-or-nightly-tarball">guía de compilación de SUMO 1.22.0 para Linux</a> (sección <em>release version or nightly tarball</em>) cuando se necesita una versión específica. Si revisas la guía de Plexe (<a href="https://plexe.car2x.org/building/#step-3-install-sumo"><em>Step 3</em></a>), verás que enlaza otro archivo: el ZIP de SUMO 1.22.0 en GitHub (<code>v1_22_0.zip</code>). Aquí se usa <code>sumo-src-1.22.0.tar.gz</code>, porque es el archivo que indica la guía de SUMO para compilar una versión específica. La carpeta <code>~/src</code> y el uso de <code>wget</code> los agrega este manual: la guía no indica una carpeta y solo da el enlace de descarga.</p>
 <p><strong>Así debería verse tu terminal</strong> (barra de progreso acortada):</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-47-1"><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a>victorjaque@DESKTOP-6VI5783:~$ cd ~/src
 </span><span id="__span-47-2"><a id="__codelineno-47-2" name="__codelineno-47-2" href="#__codelineno-47-2"></a>victorjaque@DESKTOP-6VI5783:~/src$ wget https://sumo.dlr.de/releases/1.22.0/sumo-src-1.22.0.tar.gz
@@ -3086,27 +3174,133 @@
 <p>Solo fallaría una herramienta de Python de SUMO que use uno de los paquetes que faltan, por ejemplo las de <code>tools/drt/</code>, que usan <code>ortools</code>. En ese caso aparece el error <code>No module named …</code>. La solución es instalar ese paquete en un entorno virtual de Python, como propone el mensaje de error de <code>pip</code>.</p>
 </div>
 <h4 id="35-compilar">3.5 Compilar</h4>
-<p>Mismo patrón que OMNeT++: configurar y luego construir, esta vez con CMake.</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-58-1"><a id="__codelineno-58-1" name="__codelineno-58-1" href="#__codelineno-58-1"></a><span class="c1"># PENDIENTE: configurar con CMake y compilar SUMO</span>
+<p>Ahora tienes que compilar SUMO. Igual que OMNeT++, se hace en dos etapas: primero <code>cmake -B build .</code> configura, es decir revisa qué hay instalado y prepara la carpeta <code>build</code>, y después <code>cmake --build</code> construye los programas de SUMO.</p>
+<p>Hazlo en una terminal nueva, sin cargar el entorno de OMNeT++ (la línea no debe empezar con <code>(omnetpp/.venv)</code>): si está cargado, CMake usa el Python de OMNeT++, que no ve los paquetes que instalaste en el paso 3.4.</p>
+<p>Para eso, abre una terminal de Ubuntu nueva y ejecuta los siguientes comandos:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-58-1"><a id="__codelineno-58-1" name="__codelineno-58-1" href="#__codelineno-58-1"></a><span class="nb">cd</span><span class="w"> </span>~/src/sumo-1.22.0
+</span><span id="__span-58-2"><a id="__codelineno-58-2" name="__codelineno-58-2" href="#__codelineno-58-2"></a>cmake<span class="w"> </span>-B<span class="w"> </span>build<span class="w"> </span>.
 </span></code></pre></div>
+<p><strong>Fuente:</strong> <a href="https://github.com/eclipse-sumo/sumo/blob/v1_22_0/docs/web/docs/Installing/Linux_Build.md#building-the-sumo-binaries-with-cmake">guía de compilación de SUMO 1.22.0 para Linux</a>, sección <em>Building the SUMO binaries with cmake</em>, que indica ejecutar <code>cmake -B build .</code> en la carpeta de SUMO. La terminal nueva la agrega este manual: según la <a href="https://cmake.org/cmake/help/v3.28/module/FindPython.html">documentación de CMake</a>, si hay un entorno virtual de Python activo, CMake usa primero ese Python.</p>
+<p><strong>Así debería verse tu terminal</strong> (inicio y final, abreviado):</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-59-1"><a id="__codelineno-59-1" name="__codelineno-59-1" href="#__codelineno-59-1"></a>victorjaque@DESKTOP-6VI5783:~$ cd ~/src/sumo-1.22.0
+</span><span id="__span-59-2"><a id="__codelineno-59-2" name="__codelineno-59-2" href="#__codelineno-59-2"></a>victorjaque@DESKTOP-6VI5783:~/src/sumo-1.22.0$ cmake -B build .
+</span><span id="__span-59-3"><a id="__codelineno-59-3" name="__codelineno-59-3" href="#__codelineno-59-3"></a>-- Setting build type to &#39;Release&#39; as none was specified.
+</span><span id="__span-59-4"><a id="__codelineno-59-4" name="__codelineno-59-4" href="#__codelineno-59-4"></a>-- The CXX compiler identification is GNU 13.3.0
+</span><span id="__span-59-5"><a id="__codelineno-59-5" name="__codelineno-59-5" href="#__codelineno-59-5"></a>-- The C compiler identification is GNU 13.3.0
+</span><span id="__span-59-6"><a id="__codelineno-59-6" name="__codelineno-59-6" href="#__codelineno-59-6"></a>...
+</span><span id="__span-59-7"><a id="__codelineno-59-7" name="__codelineno-59-7" href="#__codelineno-59-7"></a>-- Found ccache: /usr/bin/ccache
+</span><span id="__span-59-8"><a id="__codelineno-59-8" name="__codelineno-59-8" href="#__codelineno-59-8"></a>...
+</span><span id="__span-59-9"><a id="__codelineno-59-9" name="__codelineno-59-9" href="#__codelineno-59-9"></a>-- Found Python: /usr/bin/python3 (found version &quot;3.12.3&quot;) found components: ...
+</span><span id="__span-59-10"><a id="__codelineno-59-10" name="__codelineno-59-10" href="#__codelineno-59-10"></a>...
+</span><span id="__span-59-11"><a id="__codelineno-59-11" name="__codelineno-59-11" href="#__codelineno-59-11"></a>-- Found Git: /usr/bin/git (found version &quot;2.43.0&quot;)
+</span><span id="__span-59-12"><a id="__codelineno-59-12" name="__codelineno-59-12" href="#__codelineno-59-12"></a>-- Enabled features: Linux-6.18.33.2-microsoft-standard-WSL2 x86_64 GNU 13.3.0 Release FMI Proj GUI Intl SWIG Eigen GDAL GL2PS
+</span><span id="__span-59-13"><a id="__codelineno-59-13" name="__codelineno-59-13" href="#__codelineno-59-13"></a>-- Configuring done (7.5s)
+</span><span id="__span-59-14"><a id="__codelineno-59-14" name="__codelineno-59-14" href="#__codelineno-59-14"></a>-- Generating done (0.1s)
+</span><span id="__span-59-15"><a id="__codelineno-59-15" name="__codelineno-59-15" href="#__codelineno-59-15"></a>-- Build files have been written to: /home/victorjaque/src/sumo-1.22.0/build
+</span></code></pre></div>
+<ul>
+<li><em>Build files have been written to</em> indica que la configuración terminó bien. En el equipo de referencia tardó unos 8 segundos.</li>
+<li><code>Found Python: /usr/bin/python3</code> confirma que CMake usa el Python de Ubuntu.</li>
+</ul>
+<p><strong>Ejemplo real: así empieza <code>cmake -B build .</code> en el equipo de referencia</strong></p>
+<p><img alt="Inicio de cmake -B build . en la carpeta de SUMO, con Found ccache y Found Python, en el equipo de referencia" src="../img/instalacion-paso-3-cmake-inicio.png" /></p>
+<p>Cuando termine, en la misma terminal, dentro de <code>~/src/sumo-1.22.0</code>, ejecuta el siguiente comando:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-60-1"><a id="__codelineno-60-1" name="__codelineno-60-1" href="#__codelineno-60-1"></a>cmake<span class="w"> </span>--build<span class="w"> </span>build<span class="w"> </span>-j<span class="w"> </span><span class="k">$(</span>nproc<span class="k">)</span>
+</span></code></pre></div>
+<p><strong>Fuente:</strong> <a href="https://github.com/eclipse-sumo/sumo/blob/v1_22_0/docs/web/docs/Installing/Linux_Build.md#building-the-sumo-binaries-with-cmake">guía de compilación de SUMO 1.22.0 para Linux</a>, sección <em>Building the SUMO binaries with cmake</em>. El <code>$(nproc)</code> también es de la guía: escribe la cantidad de núcleos (28 en el equipo de referencia), para compilar en paralelo.</p>
+<p><strong>Así debería verse tu terminal</strong> (inicio y final, abreviado):</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-61-1"><a id="__codelineno-61-1" name="__codelineno-61-1" href="#__codelineno-61-1"></a>victorjaque@DESKTOP-6VI5783:~/src/sumo-1.22.0$ cmake --build build -j $(nproc)
+</span><span id="__span-61-2"><a id="__codelineno-61-2" name="__codelineno-61-2" href="#__codelineno-61-2"></a>[  0%] Building CXX object src/utils/xml/CMakeFiles/utils_xml.dir/CommonXMLStructure.cpp.o
+</span><span id="__span-61-3"><a id="__codelineno-61-3" name="__codelineno-61-3" href="#__codelineno-61-3"></a>[  0%] Building CXX object src/microsim/engine/CMakeFiles/microsim_engine.dir/EngineParameters.cpp.o
+</span><span id="__span-61-4"><a id="__codelineno-61-4" name="__codelineno-61-4" href="#__codelineno-61-4"></a>[  0%] Generating version.h
+</span><span id="__span-61-5"><a id="__codelineno-61-5" name="__codelineno-61-5" href="#__codelineno-61-5"></a>...
+</span><span id="__span-61-6"><a id="__codelineno-61-6" name="__codelineno-61-6" href="#__codelineno-61-6"></a>[ 99%] Linking CXX executable /home/victorjaque/src/sumo-1.22.0/bin/netedit
+</span><span id="__span-61-7"><a id="__codelineno-61-7" name="__codelineno-61-7" href="#__codelineno-61-7"></a>[ 99%] Built target netedit
+</span><span id="__span-61-8"><a id="__codelineno-61-8" name="__codelineno-61-8" href="#__codelineno-61-8"></a>...
+</span><span id="__span-61-9"><a id="__codelineno-61-9" name="__codelineno-61-9" href="#__codelineno-61-9"></a>[100%] Linking CXX shared module /home/victorjaque/src/sumo-1.22.0/tools/libsumo/_libsumo.so
+</span><span id="__span-61-10"><a id="__codelineno-61-10" name="__codelineno-61-10" href="#__codelineno-61-10"></a>[100%] Built target libsumo
+</span><span id="__span-61-11"><a id="__codelineno-61-11" name="__codelineno-61-11" href="#__codelineno-61-11"></a>victorjaque@DESKTOP-6VI5783:~/src/sumo-1.22.0$
+</span></code></pre></div>
+<ul>
+<li>Terminó bien cuando aparece <code>[100%] Built target …</code> y vuelve la línea <code>victorjaque@...:~/src/sumo-1.22.0$</code>.</li>
+<li>Los programas de SUMO quedan en <code>~/src/sumo-1.22.0/bin</code>, por ejemplo <code>sumo</code>, <code>sumo-gui</code> y <code>netedit</code>. En el equipo de referencia tardó unos 3 minutos y medio.</li>
+</ul>
+<p><strong>Ejemplo real: así termina <code>cmake -B build .</code> y empieza <code>cmake --build</code> en el equipo de referencia</strong></p>
+<p><img alt="Final de cmake -B build . con Build files have been written, seguido del inicio de cmake --build, en el equipo de referencia" src="../img/instalacion-paso-3-cmake-fin.png" /></p>
+<p><strong>Ejemplo real: así termina <code>cmake --build</code> en el equipo de referencia</strong></p>
+<p><img alt="Final de cmake --build con Built target libsumo, en el equipo de referencia" src="../img/instalacion-paso-3-build-fin.png" /></p>
+<p>La guía de SUMO sigue con <a href="https://github.com/eclipse-sumo/sumo/blob/v1_22_0/docs/web/docs/Installing/Linux_Build.md#installing-the-sumo-binaries"><em>Installing the SUMO binaries</em></a>, un paso opcional que copia los programas a otra carpeta. Aquí no se hace: SUMO se usa desde <code>bin</code>, que agregaste al PATH en el paso 3.3.</p>
 <h4 id="36-verificar">3.6 Verificar</h4>
-<p>Comprueba que la terminal encuentra SUMO 1.22.0.</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-59-1"><a id="__codelineno-59-1" name="__codelineno-59-1" href="#__codelineno-59-1"></a><span class="c1"># PENDIENTE: verificar la versión de SUMO</span>
+<p>Ahora comprueba que el comando <code>sumo</code>, con el que Veins arranca SUMO (paso 3.3), es el que compilaste y que su versión es 1.22.0.</p>
+<p>En una terminal de Ubuntu, nueva o la que ya tengas abierta, ejecuta los siguientes comandos:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-62-1"><a id="__codelineno-62-1" name="__codelineno-62-1" href="#__codelineno-62-1"></a>which<span class="w"> </span>sumo
+</span><span id="__span-62-2"><a id="__codelineno-62-2" name="__codelineno-62-2" href="#__codelineno-62-2"></a>sumo<span class="w"> </span>--version
 </span></code></pre></div>
+<p><strong>Fuente:</strong> <code>which sumo</code> lo usa el <a href="https://plexe.car2x.org/faq/">FAQ de Plexe</a> para comprobar qué SUMO se ejecuta. La opción <code>--version</code> está en la <a href="https://github.com/eclipse-sumo/sumo/blob/v1_22_0/docs/web/docs/sumo.md#report">documentación de SUMO 1.22.0</a>, página <em>sumo</em>, sección <em>Report</em>. Usarlos para verificar la instalación lo agrega este manual: ni la guía de Plexe ni la de SUMO traen este paso.</p>
+<p><strong>Así debería verse tu terminal</strong> (abreviado):</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-63-1"><a id="__codelineno-63-1" name="__codelineno-63-1" href="#__codelineno-63-1"></a>victorjaque@DESKTOP-6VI5783:~$ which sumo
+</span><span id="__span-63-2"><a id="__codelineno-63-2" name="__codelineno-63-2" href="#__codelineno-63-2"></a>/home/victorjaque/src/sumo-1.22.0/bin/sumo
+</span><span id="__span-63-3"><a id="__codelineno-63-3" name="__codelineno-63-3" href="#__codelineno-63-3"></a>victorjaque@DESKTOP-6VI5783:~$ sumo --version
+</span><span id="__span-63-4"><a id="__codelineno-63-4" name="__codelineno-63-4" href="#__codelineno-63-4"></a>Eclipse SUMO sumo Version 1.22.0
+</span><span id="__span-63-5"><a id="__codelineno-63-5" name="__codelineno-63-5" href="#__codelineno-63-5"></a> Build features: Linux-6.18.33.2-microsoft-standard-WSL2 x86_64 GNU 13.3.0 Release FMI Proj GUI Intl SWIG Eigen GDAL GL2PS
+</span><span id="__span-63-6"><a id="__codelineno-63-6" name="__codelineno-63-6" href="#__codelineno-63-6"></a> Copyright (C) 2001-2025 German Aerospace Center (DLR) and others; https://sumo.dlr.de
+</span><span id="__span-63-7"><a id="__codelineno-63-7" name="__codelineno-63-7" href="#__codelineno-63-7"></a>
+</span><span id="__span-63-8"><a id="__codelineno-63-8" name="__codelineno-63-8" href="#__codelineno-63-8"></a>Eclipse SUMO sumo Version 1.22.0 is part of SUMO.
+</span><span id="__span-63-9"><a id="__codelineno-63-9" name="__codelineno-63-9" href="#__codelineno-63-9"></a>...
+</span></code></pre></div>
+<ul>
+<li><code>which sumo</code> muestra que la terminal usa el SUMO que compilaste, en <code>~/src/sumo-1.22.0/bin</code>.</li>
+<li><code>sumo --version</code> confirma la versión <strong>1.22.0</strong>. El resto de la salida es el texto de la licencia de SUMO.</li>
+</ul>
+<p><strong>Ejemplo real: <code>which sumo</code> y <code>sumo --version</code> en el equipo de referencia</strong></p>
+<p><img alt="Salida de which sumo y sumo --version, con la ruta ~/src/sumo-1.22.0/bin/sumo y la versión 1.22.0, en el equipo de referencia" src="../img/instalacion-paso-3-verificar.png" /></p>
 <h4 id="37-recompilar-despues-de-modificar-sumo">3.7 Recompilar después de modificar SUMO</h4>
-<p>Cada vez que modifiques el código de SUMO hay que volver a compilarlo.</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-60-1"><a id="__codelineno-60-1" name="__codelineno-60-1" href="#__codelineno-60-1"></a><span class="c1"># PENDIENTE: volver a compilar SUMO después de modificar su código</span>
+<p>Cuando modificas el código de SUMO, por ejemplo un controlador, los programas que ya compilaste (<code>sumo</code>, <code>sumo-gui</code> y los demás) no cambian solos. Hay que volver a compilar para que incluyan tu cambio.</p>
+<p>No hace falta compilar SUMO entero otra vez. Basta con ejecutar <code>make</code> dentro de la carpeta <code>build</code>. <code>make</code> revisa qué archivos cambiaron desde la última compilación, recompila solo esos y los que dependen de ellos, y vuelve a armar los programas que los usan. Si cambiaste un archivo <code>.cpp</code>, recompila solo ese. Si cambiaste un <code>.h</code>, recompila todos los archivos que lo incluyen.</p>
+<p>En una terminal de Ubuntu, nueva o la que ya tengas abierta, ejecuta los siguientes comandos:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-64-1"><a id="__codelineno-64-1" name="__codelineno-64-1" href="#__codelineno-64-1"></a><span class="nb">cd</span><span class="w"> </span>~/src/sumo-1.22.0/build
+</span><span id="__span-64-2"><a id="__codelineno-64-2" name="__codelineno-64-2" href="#__codelineno-64-2"></a>make<span class="w"> </span>-j<span class="w"> </span><span class="k">$(</span>nproc<span class="k">)</span>
 </span></code></pre></div>
+<p><strong>Fuente:</strong> <a href="https://github.com/eclipse-sumo/sumo/blob/v1_22_0/docs/web/docs/Installing/Linux_Build.md#frequent-rebuilds">guía de compilación de SUMO 1.22.0 para Linux</a>, sección <em>(Frequent) Rebuilds</em>: entrar a la carpeta <code>build</code> y volver a ejecutar <code>make -j $(nproc)</code>. La explicación de cómo <code>make</code> recompila solo lo que cambió la agrega este manual; las guías no la incluyen.</p>
+<p><strong>Así debería verse tu terminal</strong> (inicio y final, abreviado):</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-65-1"><a id="__codelineno-65-1" name="__codelineno-65-1" href="#__codelineno-65-1"></a>victorjaque@DESKTOP-6VI5783:~$ cd ~/src/sumo-1.22.0/build
+</span><span id="__span-65-2"><a id="__codelineno-65-2" name="__codelineno-65-2" href="#__codelineno-65-2"></a>victorjaque@DESKTOP-6VI5783:~/src/sumo-1.22.0/build$ make -j $(nproc)
+</span><span id="__span-65-3"><a id="__codelineno-65-3" name="__codelineno-65-3" href="#__codelineno-65-3"></a>[  0%] Built target install_dll
+</span><span id="__span-65-4"><a id="__codelineno-65-4" name="__codelineno-65-4" href="#__codelineno-65-4"></a>[  0%] Built target generate-version-h
+</span><span id="__span-65-5"><a id="__codelineno-65-5" name="__codelineno-65-5" href="#__codelineno-65-5"></a>[  1%] Built target foreign_tcpip
+</span><span id="__span-65-6"><a id="__codelineno-65-6" name="__codelineno-65-6" href="#__codelineno-65-6"></a>...
+</span><span id="__span-65-7"><a id="__codelineno-65-7" name="__codelineno-65-7" href="#__codelineno-65-7"></a>[ 96%] Built target sumo
+</span><span id="__span-65-8"><a id="__codelineno-65-8" name="__codelineno-65-8" href="#__codelineno-65-8"></a>[ 96%] Built target sumo-gui
+</span><span id="__span-65-9"><a id="__codelineno-65-9" name="__codelineno-65-9" href="#__codelineno-65-9"></a>...
+</span><span id="__span-65-10"><a id="__codelineno-65-10" name="__codelineno-65-10" href="#__codelineno-65-10"></a>[100%] Built target libsumofmi2
+</span><span id="__span-65-11"><a id="__codelineno-65-11" name="__codelineno-65-11" href="#__codelineno-65-11"></a>[100%] Built target prepfmi
+</span><span id="__span-65-12"><a id="__codelineno-65-12" name="__codelineno-65-12" href="#__codelineno-65-12"></a>[100%] Built target fmi
+</span><span id="__span-65-13"><a id="__codelineno-65-13" name="__codelineno-65-13" href="#__codelineno-65-13"></a>victorjaque@DESKTOP-6VI5783:~/src/sumo-1.22.0/build$
+</span></code></pre></div>
+<ul>
+<li>Terminó bien cuando aparece <code>[100%] Built target …</code> y vuelve la línea <code>victorjaque@...:~/src/sumo-1.22.0/build$</code>.</li>
+<li>Como no se cambió el código, no compila ningún archivo: solo aparecen líneas <em>Built target</em>, sin <em>Building CXX object</em>.</li>
+</ul>
+<p><strong>Ejemplo real: así empieza <code>make</code> en el equipo de referencia</strong></p>
+<p><img alt="Inicio de make en la carpeta build de SUMO, con líneas Built target, en el equipo de referencia" src="../img/instalacion-paso-3-make-inicio.png" /></p>
+<p><strong>Ejemplo real: así termina <code>make</code> en el equipo de referencia</strong></p>
+<p><img alt="Final de make en la carpeta build de SUMO, con Built target fmi, en el equipo de referencia" src="../img/instalacion-paso-3-make-fin.png" /></p>
+<div class="admonition tip">
+<p class="admonition-title">Si la recompilación da problemas</p>
+<p>Si actualizaste librerías de Ubuntu o la compilación falla, la guía de SUMO aconseja compilar desde cero: borra la carpeta <code>build</code> y repite el paso 3.5. Así CMake vuelve a buscar las librerías en vez de usar las que guardó.</p>
+<p><strong>Fuente:</strong> <a href="https://github.com/eclipse-sumo/sumo/blob/v1_22_0/docs/web/docs/Installing/Linux_Build.md#frequent-rebuilds">guía de compilación de SUMO 1.22.0 para Linux</a>, sección <em>(Frequent) Rebuilds</em>.</p>
+</div>
+<p>Con esto, SUMO está instalado y puedes pasar al paso 4.</p>
 <hr />
 <h3 id="paso-4-veins-531">Paso 4: Veins 5.3.1</h3>
 <p>Veins es el puente: sincroniza el reloj de la simulación de red (OMNeT++) con el de la simulación de tráfico (SUMO), y añade la capa de comunicación vehicular sobre la que Plexe construye sus protocolos.</p>
 <h4 id="41-descargar">4.1 Descargar</h4>
 <p>Se puede clonar el repositorio o bajar el ZIP y descomprimirlo en <code>~/src/</code>. La documentación oficial recomienda clonar.</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-61-1"><a id="__codelineno-61-1" name="__codelineno-61-1" href="#__codelineno-61-1"></a><span class="c1"># PENDIENTE: descarga de Veins 5.3.1 (clonar repositorio o bajar ZIP)</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-66-1"><a id="__codelineno-66-1" name="__codelineno-66-1" href="#__codelineno-66-1"></a><span class="c1"># PENDIENTE: descarga de Veins 5.3.1 (clonar repositorio o bajar ZIP)</span>
 </span></code></pre></div>
 <h4 id="42-compilar">4.2 Compilar</h4>
 <p>Mismo esquema que OMNeT++: configurar y luego construir.</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-62-1"><a id="__codelineno-62-1" name="__codelineno-62-1" href="#__codelineno-62-1"></a><span class="c1"># PENDIENTE: configurar y compilar Veins</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-67-1"><a id="__codelineno-67-1" name="__codelineno-67-1" href="#__codelineno-67-1"></a><span class="c1"># PENDIENTE: configurar y compilar Veins</span>
 </span></code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title">Requiere el entorno de OMNeT++ cargado</p>
@@ -3117,11 +3311,11 @@
 <p>Plexe es la capa que agrega el <em>platooning</em>: los controladores longitudinales cooperativos, los protocolos de coordinación y las maniobras.</p>
 <h4 id="51-descargar">5.1 Descargar</h4>
 <p>Igual que Veins: clonar el repositorio o bajar el ZIP en <code>~/src/</code>. El repositorio es único y las versiones se distinguen mediante etiquetas, así que hay que apuntar a la etiqueta de la versión 3.2.</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-63-1"><a id="__codelineno-63-1" name="__codelineno-63-1" href="#__codelineno-63-1"></a><span class="c1"># PENDIENTE: descarga de Plexe 3.2 (clonar en la etiqueta plexe-3.2 o bajar ZIP)</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-68-1"><a id="__codelineno-68-1" name="__codelineno-68-1" href="#__codelineno-68-1"></a><span class="c1"># PENDIENTE: descarga de Plexe 3.2 (clonar en la etiqueta plexe-3.2 o bajar ZIP)</span>
 </span></code></pre></div>
 <h4 id="52-compilar">5.2 Compilar</h4>
 <p>Aquí aparece la única particularidad del proceso: al configurar Plexe hay que <strong>indicarle explícitamente dónde está la carpeta de Veins</strong> que acabas de construir. Es una ruta relativa desde la carpeta de Plexe.</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-64-1"><a id="__codelineno-64-1" name="__codelineno-64-1" href="#__codelineno-64-1"></a><span class="c1"># PENDIENTE: configurar Plexe indicando la ruta de Veins, y compilar</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-69-1"><a id="__codelineno-69-1" name="__codelineno-69-1" href="#__codelineno-69-1"></a><span class="c1"># PENDIENTE: configurar Plexe indicando la ruta de Veins, y compilar</span>
 </span></code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title">La causa más común de fallo en este paso</p>
@@ -3133,18 +3327,18 @@
 <p>OMNeT++ 6 eliminó su complemento de R, así que la extracción de datos hoy funciona con una combinación de scripts de R y de Python.</p>
 <h4 id="61-librerias-de-r">6.1 Librerías de R</h4>
 <p>Se instalan desde la consola de R.</p>
-<div class="language-r highlight"><pre><span></span><code><span id="__span-65-1"><a id="__codelineno-65-1" name="__codelineno-65-1" href="#__codelineno-65-1"></a><span class="c1"># PENDIENTE: instalación de las librerías de R para gráficos y manejo de datos</span>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-70-1"><a id="__codelineno-70-1" name="__codelineno-70-1" href="#__codelineno-70-1"></a><span class="c1"># PENDIENTE: instalación de las librerías de R para gráficos y manejo de datos</span>
 </span></code></pre></div>
 <h4 id="62-paquete-de-lectura-de-resultados-de-omnet">6.2 Paquete de lectura de resultados de OMNeT++</h4>
 <p>Este es un paso que suele pasarse por alto, y sin él los scripts de extracción no funcionan: hay que instalar un paquete específico que permite a R leer los archivos de resultados que genera OMNeT++. Se baja como archivo comprimido, <strong>sin descomprimirlo</strong>, y se instala desde la consola de R apuntando al archivo local.</p>
-<div class="language-r highlight"><pre><span></span><code><span id="__span-66-1"><a id="__codelineno-66-1" name="__codelineno-66-1" href="#__codelineno-66-1"></a><span class="c1"># PENDIENTE: instalación del paquete de lectura de resultados de OMNeT++ en R</span>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-71-1"><a id="__codelineno-71-1" name="__codelineno-71-1" href="#__codelineno-71-1"></a><span class="c1"># PENDIENTE: instalación del paquete de lectura de resultados de OMNeT++ en R</span>
 </span></code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Error de compilación con compiladores modernos</p>
 <p>Al instalar este paquete puede aparecer un error de compilación relacionado con una función eliminada de la biblioteca estándar de C++. Se resuelve indicando a R que compile con un estándar de C++ anterior, mediante una línea en el archivo de configuración de compilación de R.</p>
 </div>
 <h4 id="63-librerias-de-python">6.3 Librerías de Python</h4>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-67-1"><a id="__codelineno-67-1" name="__codelineno-67-1" href="#__codelineno-67-1"></a><span class="c1"># PENDIENTE: instalación de las librerías de Python para análisis de datos</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-72-1"><a id="__codelineno-72-1" name="__codelineno-72-1" href="#__codelineno-72-1"></a><span class="c1"># PENDIENTE: instalación de las librerías de Python para análisis de datos</span>
 </span></code></pre></div>
 <hr />
 <h3 id="paso-7-verificacion">Paso 7: Verificación</h3>
@@ -3155,7 +3349,7 @@
 <li>Un pelotón que mantiene distancias regulares y estables entre vehículos.</li>
 <li>Ningún mensaje de error en la terminal, y archivos de resultados generados al terminar.</li>
 </ul>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-68-1"><a id="__codelineno-68-1" name="__codelineno-68-1" href="#__codelineno-68-1"></a><span class="c1"># PENDIENTE: correr un escenario de ejemplo de Plexe y verificar la salida</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-73-1"><a id="__codelineno-73-1" name="__codelineno-73-1" href="#__codelineno-73-1"></a><span class="c1"># PENDIENTE: correr un escenario de ejemplo de Plexe y verificar la salida</span>
 </span></code></pre></div>
 <p>Si esto funciona, la instalación está terminada. Los escenarios de ejemplo se describen en detalle en la sección <a href="../ejemplos/">Ejemplos</a>.</p>
 <hr />

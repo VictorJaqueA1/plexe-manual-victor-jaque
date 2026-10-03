@@ -29,7 +29,7 @@
     
     
       
-        <title>Caso 6 · Más de un pelotón - Manual de Plexe</title>
+        <title>Caso 6 · Simular más de un pelotón - Manual de Plexe</title>
       
     
     
@@ -82,7 +82,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#caso-6-mas-de-un-peloton" class="md-skip">
+        <a href="#caso-6-simular-mas-de-un-peloton" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -195,7 +195,7 @@
                     <a href="../caso-5/">Caso 5 · Nuevo perfil de aceleración y velocidad del líder</a>
                   </li>
                   <li>
-                    <a href="./">Caso 6 · Más de un pelotón</a>
+                    <a href="./">Caso 6 · Simular más de un pelotón</a>
                   </li>
                   <li>
                     <a href="../caso-7/">Caso 7 · Retardo estocástico de comunicación</a>
@@ -208,6 +208,40 @@
                   </li>
               </ul>
             </li>
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../primera-simulacion/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Primera simulación
+
+      </a>
+    </li>
+  
+
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../flujo-de-trabajo/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Flujo de trabajo
+
+      </a>
+    </li>
+  
+
       </ul>
     </div>
       
@@ -720,7 +754,7 @@
   <span class="md-ellipsis">
     
   
-    Caso 6 · Más de un pelotón
+    Caso 6 · Simular más de un pelotón
   
 
     
@@ -738,7 +772,7 @@
   <span class="md-ellipsis">
     
   
-    Caso 6 · Más de un pelotón
+    Caso 6 · Simular más de un pelotón
   
 
     
@@ -764,6 +798,40 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#1-antes-de-empezar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1 · Antes de empezar
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-fundamentos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2 · Fundamentos
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2 · Fundamentos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#que-se-busca" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Qué se busca
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#como-reparte-plexe-los-vehiculos" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -773,8 +841,58 @@
   </a>
   
 </li>
+        
+          <li class="md-nav__item">
+  <a href="#las-metricas-de-comunicacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Las métricas de comunicación
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#que-esperamos-ver" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Qué esperamos ver
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
+  <a href="#3-donde-vive-cada-cosa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3 · Dónde vive cada cosa
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-como-se-hizo-paso-a-paso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4 · Cómo se hizo, paso a paso
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4 · Cómo se hizo, paso a paso">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#paso-1-configuracion-en-omnetppini" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -784,8 +902,8 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#paso-2-alinear-los-pelotones" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -795,12 +913,100 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#paso-3-graficos-por-peloton" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#paso-3-graficos-de-conduccion-por-peloton" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Paso 3 · Gráficos por pelotón
+        Paso 3 · Gráficos de conducción por pelotón
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-4-registrar-las-metricas-de-comunicacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 4 · Registrar las métricas de comunicación
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-5-correr-y-graficar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 5 · Correr y graficar
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-6-barrido-de-potencia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 6 · Barrido de potencia
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-resultados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5 · Resultados
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5 · Resultados">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#choques-por-potencia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Choques por potencia
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metricas-de-comunicacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Métricas de comunicación
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-pendientes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6 · Pendientes
       
     </span>
   </a>
@@ -808,21 +1014,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#como-ejecutar" class="md-nav__link">
+  <a href="#7-siguiente-paso" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Cómo ejecutar
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#lo-que-deberias-observar" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Lo que deberías observar
+        7 · Siguiente paso
       
     </span>
   </a>
@@ -929,6 +1124,60 @@
   
 
     
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../primera-simulacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Primera simulación
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../flujo-de-trabajo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Flujo de trabajo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -956,6 +1205,40 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#1-antes-de-empezar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1 · Antes de empezar
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-fundamentos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2 · Fundamentos
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2 · Fundamentos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#que-se-busca" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Qué se busca
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#como-reparte-plexe-los-vehiculos" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -965,8 +1248,58 @@
   </a>
   
 </li>
+        
+          <li class="md-nav__item">
+  <a href="#las-metricas-de-comunicacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Las métricas de comunicación
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#que-esperamos-ver" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Qué esperamos ver
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
+  <a href="#3-donde-vive-cada-cosa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3 · Dónde vive cada cosa
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-como-se-hizo-paso-a-paso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4 · Cómo se hizo, paso a paso
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4 · Cómo se hizo, paso a paso">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#paso-1-configuracion-en-omnetppini" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -976,8 +1309,8 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#paso-2-alinear-los-pelotones" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -987,12 +1320,100 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#paso-3-graficos-por-peloton" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#paso-3-graficos-de-conduccion-por-peloton" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Paso 3 · Gráficos por pelotón
+        Paso 3 · Gráficos de conducción por pelotón
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-4-registrar-las-metricas-de-comunicacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 4 · Registrar las métricas de comunicación
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-5-correr-y-graficar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 5 · Correr y graficar
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paso-6-barrido-de-potencia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paso 6 · Barrido de potencia
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-resultados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5 · Resultados
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5 · Resultados">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#choques-por-potencia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Choques por potencia
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metricas-de-comunicacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Métricas de comunicación
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-pendientes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6 · Pendientes
       
     </span>
   </a>
@@ -1000,21 +1421,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#como-ejecutar" class="md-nav__link">
+  <a href="#7-siguiente-paso" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Cómo ejecutar
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#lo-que-deberias-observar" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Lo que deberías observar
+        7 · Siguiente paso
       
     </span>
   </a>
@@ -1041,12 +1451,30 @@
   
 
 
-<h1 id="caso-6-mas-de-un-peloton">Caso 6 · Más de un pelotón</h1>
-<p><strong>Qué se hizo.</strong> Simular dos pelotones de 8 vehículos al mismo tiempo, uno al lado del otro en carriles adyacentes. Se parte del escenario MultiPhase del <a href="../caso-5/">caso 5</a>, así que ambos líderes siguen el mismo perfil.</p>
-<p><strong>Para qué.</strong> El canal inalámbrico es compartido. Con un solo pelotón, la ocupación del canal es baja y la comunicación casi nunca es el cuello de botella. Al agregar un segundo pelotón, ambos compiten por el medio: aumentan las colisiones de paquetes y los tiempos de espera, y aparece un efecto que no existe en el caso aislado. Es la situación que se dará en una carretera real.</p>
-<p><strong>Cómo se implementa.</strong> Sin modificar el código base de Plexe, en tres pasos: una configuración nueva en <code>omnetpp.ini</code>, un traffic manager que alinea los pelotones y un script que separa los gráficos por pelotón.</p>
+<h1 id="caso-6-simular-mas-de-un-peloton">Caso 6 · Simular más de un pelotón</h1>
+<p>En los casos 1 a 5 hay un solo pelotón en la vía. Aquí se agrega un segundo pelotón de 8 autos en el carril de al lado, con el perfil <code>MultiPhase</code> del <a href="../caso-5/">Caso 5</a>. Los dos pelotones comparten el canal de radio. Además, se mide la comunicación de cada pelotón mientras se baja la potencia.</p>
+<div class="admonition abstract">
+<p class="admonition-title">Resumen</p>
+<ul>
+<li><strong>Pregunta:</strong> con dos pelotones, ¿hay choques al bajar la potencia y cómo cambian los indicadores de comunicación?</li>
+<li><strong>Escenario:</strong> <code>MultiPhaseTwoPlatoons</code>, nuevo, en el ejemplo <code>platooning</code>: dos pelotones de 8 autos, uno por carril, con los mismos parámetros.</li>
+<li><strong>Controladores:</strong> los 6 del ejemplo, uno por corrida (<code>-r 0</code> a <code>-r 5</code>).</li>
+<li><strong>Parámetros:</strong> la potencia de transmisión: 1, 0.1 y 0.01 mW, y 100 mW para las métricas de comunicación.</li>
+<li><strong>Resultado principal:</strong> con 1 mW solo choca Consensus; con 0.1 mW, también CACC y Flatbed; con 0.01 mW, también Ploeg. Los dos ACC no chocan.</li>
+<li><strong>Qué se toca:</strong> <code>omnetpp.ini</code>, un traffic manager nuevo en C++, <code>parse-config</code> y tres scripts nuevos (dos de R y uno de Python). Hay que compilar Plexe.</li>
+</ul>
+</div>
+<h2 id="1-antes-de-empezar">1 · Antes de empezar</h2>
+<p>Carga los entornos como en el <a href="../caso-1/#1-antes-de-empezar">Caso 1</a>. Este caso usa el escenario <code>MultiPhase</code> del <a href="../caso-5/">Caso 5</a>.</p>
+<h2 id="2-fundamentos">2 · Fundamentos</h2>
+<h3 id="que-se-busca">Qué se busca</h3>
+<p>Ver si con dos pelotones hay choques y cómo cambian los indicadores de comunicación al bajar la potencia, por ejemplo por interferencia.</p>
+<div class="admonition note">
+<p class="admonition-title">Lo que dice la FAQ de Plexe</p>
+<p>Según la <a href="https://plexe.car2x.org/faq/">FAQ de Plexe</a>, en el ejemplo hay solo 8 autos, que transmiten a 20 dBm y 6 Mbps y envían 10 paquetes por segundo. Con eso, la carga del canal es mínima y no se pierde ningún paquete. Para tener pérdidas, la FAQ sugiere aumentar la cantidad de vehículos.</p>
+</div>
 <h3 id="como-reparte-plexe-los-vehiculos">Cómo reparte Plexe los vehículos</h3>
-<p>El traffic manager inserta los vehículos alternando carriles. Con 16 vehículos y 2 carriles queda así:</p>
+<p>Con 16 vehículos y 2 carriles, el traffic manager los reparte así:</p>
 <table>
 <thead>
 <tr>
@@ -1085,12 +1513,109 @@
 </table>
 <ul>
 <li><strong>Pares = pelotón A</strong> (carril 0); <strong>impares = pelotón B</strong> (carril 1).</li>
-<li>Cada vehículo usa solo los beacons de su propio pelotón (<code>SimplePlatooningApp</code> descarta los del otro), pero todos comparten el mismo canal.</li>
-<li><code>MultiPhaseScenario</code> trata como líder a todo vehículo con <code>nodeId &lt; nLanes</code>. Por eso <code>scenario.nLanes = 2</code> es necesario: así el nodo 1 también sigue el perfil MultiPhase.</li>
-<li>Ambos pelotones usan el mismo controlador, porque <code>**.traffic.controller</code> se aplica a todos los seguidores. Los parámetros sí pueden variar por vehículo en el <code>.ini</code> (por ejemplo <code>*.node[1].scenario.…</code> o <code>*.node[1].nic.mac1609_4.txPower</code>).</li>
+<li>Cada auto solo usa los beacons de su propio pelotón: <code>SimplePlatooningApp</code> ignora los del otro. Pero todos comparten el mismo canal.</li>
+<li>Los dos pelotones tienen los mismos parámetros. Se podrían diferenciar en <code>[Config MultiPhaseTwoPlatoons]</code>, sin recompilar (potencia, intervalo de beacons, tamaño de los paquetes, <code>ploegH</code>, tiempos de <code>MultiPhase</code>…), pero no se hizo.</li>
 </ul>
+<h3 id="las-metricas-de-comunicacion">Las métricas de comunicación</h3>
+<p>Cada métrica se mide por auto:</p>
+<table>
+<thead>
+<tr>
+<th>Métrica</th>
+<th>Qué mide</th>
+<th>Dónde se graba</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>busyTime</code></td>
+<td>Segundos que el canal estuvo ocupado dentro de cada ventana de 1 s. Va de 0 (libre) a 1 (saturado)</td>
+<td>Vector del protocolo de cada auto (<code>*.node[*].prot</code>)</td>
+</tr>
+<tr>
+<td><code>collisions</code></td>
+<td>Colisiones que detecta la capa física en cada ventana de 1 s</td>
+<td>Vector del protocolo</td>
+</tr>
+<tr>
+<td><code>leaderDelay</code></td>
+<td>Tiempo entre dos beacons seguidos recibidos del líder, con una muestra por beacon. Sin pérdidas vale 0.1 s; 0.2 s significa que se perdió uno</td>
+<td>Vector del protocolo</td>
+</tr>
+<tr>
+<td><code>frontDelay</code></td>
+<td>Lo mismo, con los beacons del auto de adelante</td>
+<td>Vector del protocolo</td>
+</tr>
+<tr>
+<td><code>SNIRLostPackets</code></td>
+<td>Paquetes descartados en toda la simulación porque la relación señal/(interferencia + ruido) quedó bajo el umbral del receptor</td>
+<td>Escalar de la MAC de cada auto (<code>*.node[*].nic.mac1609_4</code>)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><code>collisions</code> sale siempre en 0 si no se activa <code>collectCollisionStatistics</code>, un parámetro de Veins declarado en <code>PhyLayer80211p.ned</code> con valor por defecto <code>false</code>. Se activa en <code>omnetpp.ini</code>, sin tocar C++.</li>
+<li><code>SNIRLostPackets</code> mezcla dos causas: tramas dañadas por señal débil y tramas dañadas por la interferencia de otro transmisor.</li>
+</ul>
+<h3 id="que-esperamos-ver">Qué esperamos ver</h3>
+<ul>
+<li>Al bajar la potencia, que se pierdan más beacons y que en algún punto los pelotones choquen.</li>
+</ul>
+<h2 id="3-donde-vive-cada-cosa">3 · Dónde vive cada cosa</h2>
+<table>
+<thead>
+<tr>
+<th>Qué</th>
+<th>Dónde</th>
+<th>En este caso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Las dos configuraciones nuevas</td>
+<td><code>~/src/plexe/examples/platooning/omnetpp.ini</code>, secciones <code>[Config MultiPhaseTwoPlatoons]</code> y <code>[Config MultiPhaseTwoPlatoonsNoGui]</code></td>
+<td>Se agregan</td>
+</tr>
+<tr>
+<td>El traffic manager alineado</td>
+<td><code>~/src/plexe/src/plexe/traffic/AlignedPlatoonsTrafficManager.h</code>, <code>.cc</code> y <code>.ned</code></td>
+<td>Se crean</td>
+</tr>
+<tr>
+<td>El traffic manager de serie</td>
+<td><code>~/src/plexe/src/plexe/traffic/PlatoonsTrafficManager.h</code>, <code>.cc</code> y <code>.ned</code></td>
+<td>Se copia; no se toca</td>
+</tr>
+<tr>
+<td>Los gráficos de conducción por pelotón</td>
+<td><code>~/src/plexe/examples/platooning/analysis/parse-config</code> y <code>analysis/plot-multiphase-two-platoons.R</code></td>
+<td>Se agrega un bloque y se crea el script</td>
+</tr>
+<tr>
+<td>La extracción de las métricas de comunicación</td>
+<td><code>analysis/extract-communications.py</code></td>
+<td>Se crea</td>
+</tr>
+<tr>
+<td>Los gráficos de comunicación</td>
+<td><code>analysis/plot-multiphase-two-platoons-communications.R</code></td>
+<td>Se crea</td>
+</tr>
+<tr>
+<td>La potencia</td>
+<td><code>omnetpp.ini</code>, línea <code>*.**.nic.mac1609_4.txPower</code></td>
+<td>Se cambia</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Falta el código</p>
+<p>El material de la reunión no trae el código de <code>plot-multiphase-two-platoons.R</code>, <code>extract-communications.py</code> ni <code>plot-multiphase-two-platoons-communications.R</code>. Tampoco el de <code>MultiPhase</code> (ver <a href="../caso-5/">Caso 5</a>).</p>
+</div>
+<h2 id="4-como-se-hizo-paso-a-paso">4 · Cómo se hizo, paso a paso</h2>
 <h3 id="paso-1-configuracion-en-omnetppini">Paso 1 · Configuración en <code>omnetpp.ini</code></h3>
-<p>Se agregan dos configuraciones al final de <code>~/src/plexe/examples/platooning/omnetpp.ini</code>:</p>
+<p>Agrega dos configuraciones al final de <code>~/src/plexe/examples/platooning/omnetpp.ini</code>:</p>
 <div class="language-ini highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">[Config MultiPhaseTwoPlatoons]</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="na">extends</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">MultiPhase</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
@@ -1110,27 +1635,27 @@
 </span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="na">output-scalar-file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">${resultdir}/MultiPhaseTwoPlatoons_${controller}_${headway}_${repetition}.sca</span>
 </span></code></pre></div>
 <ul>
-<li>16 vehículos, 8 por pelotón (<code>platoonSize</code> sigue en 8) y 2 carriles: un pelotón por carril.</li>
-<li><code>nCars</code> y <code>nLanes</code> son variables de iteración ya definidas en <code>[General]</code> (<code>${nCars = 8}</code>, <code>${nLanes = 1}</code>). OMNeT++ no permite redefinirlas, por eso se asignan valores literales.</li>
-<li><code>MultiPhaseTwoPlatoonsNoGui</code> corre con <code>sumo</code>, sin ventana, y guarda los resultados con el mismo nombre que la versión con GUI, para que los scripts de análisis los encuentren.</li>
-<li>Sin la línea <code>**.traffic_type</code>, se usa el traffic manager de serie y no hace falta el paso 2.</li>
+<li>16 vehículos y 2 carriles: un pelotón de 8 por carril.</li>
+<li><code>nCars</code> y <code>nLanes</code> son variables de iteración ya definidas en <code>[General]</code>. OMNeT++ no permite redefinirlas, por eso se asignan valores literales.</li>
+<li><code>MultiPhaseTwoPlatoonsNoGui</code> corre con <code>sumo</code>, sin ventana, y guarda los resultados con el mismo nombre que la versión con ventana.</li>
+<li>La línea <code>**.traffic_type</code> usa el traffic manager alineado del paso 2. Sin ella, se usa el de serie y el paso 2 no hace falta.</li>
 </ul>
 <h3 id="paso-2-alinear-los-pelotones">Paso 2 · Alinear los pelotones</h3>
-<p>El <code>PlatoonsTrafficManager</code> de serie desplaza cada carril al azar entre 0 y 20 m, así que los pelotones no parten lado a lado. Para alinearlos se creó <code>AlignedPlatoonsTrafficManager</code>, una copia con una sola línea distinta:</p>
+<p>El <code>PlatoonsTrafficManager</code> de serie desplaza cada carril al azar entre 0 y 20 m, así que los pelotones no parten lado a lado. Para alinearlos, crea <code>AlignedPlatoonsTrafficManager</code> en <code>~/src/plexe/src/plexe/traffic/</code>: una copia de <code>PlatoonsTrafficManager.h</code>, <code>.cc</code> y <code>.ned</code> con el nombre de la clase cambiado y una sola línea distinta:</p>
 <div class="language-cpp highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1">// PlatoonsTrafficManager.cc (original)</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">l</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">l</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">nLanes</span><span class="p">;</span><span class="w"> </span><span class="n">l</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="n">laneOffset</span><span class="p">[</span><span class="n">l</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">);</span>
 </span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
 </span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1">// AlignedPlatoonsTrafficManager.cc (nuevo)</span>
 </span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">l</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">l</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">nLanes</span><span class="p">;</span><span class="w"> </span><span class="n">l</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="n">laneOffset</span><span class="p">[</span><span class="n">l</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 </span></code></pre></div>
-<p>Archivos nuevos en <code>~/src/plexe/src/plexe/traffic/</code>: <code>AlignedPlatoonsTrafficManager.h</code>, <code>.cc</code> y <code>.ned</code>. Son copias de <code>PlatoonsTrafficManager.*</code> con el nombre de la clase cambiado y la línea anterior. No se modifica ningún archivo existente.</p>
-<p>Como son archivos C++ y NED nuevos, hay que recompilar Plexe (con el entorno cargado, ver <a href="#como-ejecutar">Cómo ejecutar</a>):</p>
+<p>No se modifica ningún archivo existente.</p>
+<p>Como son archivos nuevos de C++ y NED, hay que compilar Plexe. En la terminal donde cargaste los entornos, ejecuta los siguientes comandos:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nb">cd</span><span class="w"> </span>~/src/plexe
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>make<span class="w"> </span>makefiles
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>make<span class="w"> </span>-j<span class="k">$(</span>nproc<span class="k">)</span>
 </span></code></pre></div>
-<h3 id="paso-3-graficos-por-peloton">Paso 3 · Gráficos por pelotón</h3>
-<p>Se agrega este bloque al final de <code>analysis/parse-config</code>:</p>
+<h3 id="paso-3-graficos-de-conduccion-por-peloton">Paso 3 · Gráficos de conducción por pelotón</h3>
+<p>Agrega este bloque al final de <code>analysis/parse-config</code>:</p>
 <div class="language-ini highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">[config]</span>
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="na">config</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">MultiPhaseTwoPlatoons</span>
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="na">out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">MultiPhaseTwoPlatoons</span>
@@ -1143,7 +1668,7 @@
 <div class="language-r highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">platoonA</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">subset</span><span class="p">(</span><span class="n">allData</span><span class="p">,</span><span class="w"> </span><span class="n">nodeId</span><span class="w"> </span><span class="o">%%</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">0</span><span class="p">)</span>
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">platoonB</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">subset</span><span class="p">(</span><span class="n">allData</span><span class="p">,</span><span class="w"> </span><span class="n">nodeId</span><span class="w"> </span><span class="o">%%</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">1</span><span class="p">)</span>
 </span></code></pre></div>
-<p>Genera 8 PDFs en <code>analysis/</code>, 4 por pelotón, con un panel por controlador:</p>
+<p>Genera 8 PDF en <code>analysis/</code>, 4 por pelotón, con un panel por controlador:</p>
 <table>
 <thead>
 <tr>
@@ -1170,17 +1695,40 @@
 </tr>
 </tbody>
 </table>
-<h3 id="como-ejecutar">Cómo ejecutar</h3>
-<p>Preparar la terminal (una vez por terminal):</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nb">source</span><span class="w"> </span>~/src/omnetpp-6.2.0/setenv
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nb">cd</span><span class="w"> </span>~/src/plexe
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>.<span class="w"> </span>./setenv
-</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="nb">export</span><span class="w"> </span><span class="nv">SUMO_HOME</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/src/sumo-1.22.0&quot;</span><span class="w">   </span><span class="c1"># solo si SUMO se compiló desde el código fuente</span>
-</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$SUMO_HOME</span><span class="s2">/bin:</span><span class="nv">$PATH</span><span class="s2">&quot;</span>
-</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="nb">cd</span><span class="w"> </span>~/src/plexe/examples/platooning
+<h3 id="paso-4-registrar-las-metricas-de-comunicacion">Paso 4 · Registrar las métricas de comunicación</h3>
+<p>En <code>[Config MultiPhaseTwoPlatoons]</code>, agrega esta línea para que la MAC grabe <code>SNIRLostPackets</code>:</p>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="na">*.node[*].nic.mac1609_4.SNIRLostPackets.scalar-recording</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">true</span>
 </span></code></pre></div>
-<p>Con GUI, un controlador a la vez. Por ejemplo, PLOEG:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>./run<span class="w"> </span>-u<span class="w"> </span>Cmdenv<span class="w"> </span>-c<span class="w"> </span>MultiPhaseTwoPlatoons<span class="w"> </span>-r<span class="w"> </span><span class="m">3</span>
+<p>Los vectores del protocolo (<code>busyTime</code>, <code>collisions</code>, <code>leaderDelay</code> y <code>frontDelay</code>) ya se graban en todas las configuraciones. Para que <code>collisions</code> no salga siempre en 0, activa también <code>collectCollisionStatistics</code>:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a># PENDIENTE: línea con que se activó collectCollisionStatistics
+</span></code></pre></div>
+<p>Cada corrida se repitió 5 veces con semillas distintas: la línea <code>seed-set = ${repetition}</code> del <code>.ini</code> le da a cada repetición su propia semilla. Así se pasa de 6 a 30 corridas. Los gráficos de conducción usan la primera repetición; <code>SNIRLostPackets</code> muestra el promedio entre repeticiones.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a># PENDIENTE: línea con que se fijaron las 5 repeticiones
+</span></code></pre></div>
+<h3 id="paso-5-correr-y-graficar">Paso 5 · Correr y graficar</h3>
+<p>En la terminal donde cargaste los entornos, ejecuta los siguientes comandos para correr los 6 controladores sin ventanas:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nb">cd</span><span class="w"> </span>~/src/plexe/examples/platooning
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>plexe_run<span class="w"> </span>-u<span class="w"> </span>Cmdenv<span class="w"> </span>-c<span class="w"> </span>MultiPhaseTwoPlatoonsNoGui<span class="w"> </span>-r<span class="w"> </span><span class="m">0</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>plexe_run<span class="w"> </span>-u<span class="w"> </span>Cmdenv<span class="w"> </span>-c<span class="w"> </span>MultiPhaseTwoPlatoonsNoGui<span class="w"> </span>-r<span class="w"> </span><span class="m">1</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>plexe_run<span class="w"> </span>-u<span class="w"> </span>Cmdenv<span class="w"> </span>-c<span class="w"> </span>MultiPhaseTwoPlatoonsNoGui<span class="w"> </span>-r<span class="w"> </span><span class="m">2</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>plexe_run<span class="w"> </span>-u<span class="w"> </span>Cmdenv<span class="w"> </span>-c<span class="w"> </span>MultiPhaseTwoPlatoonsNoGui<span class="w"> </span>-r<span class="w"> </span><span class="m">3</span>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>plexe_run<span class="w"> </span>-u<span class="w"> </span>Cmdenv<span class="w"> </span>-c<span class="w"> </span>MultiPhaseTwoPlatoonsNoGui<span class="w"> </span>-r<span class="w"> </span><span class="m">4</span>
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>plexe_run<span class="w"> </span>-u<span class="w"> </span>Cmdenv<span class="w"> </span>-c<span class="w"> </span>MultiPhaseTwoPlatoonsNoGui<span class="w"> </span>-r<span class="w"> </span><span class="m">5</span>
+</span></code></pre></div>
+<p>En la misma terminal, ejecuta los siguientes comandos para generar los gráficos de conducción y de comunicación:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nb">cd</span><span class="w"> </span>~/src/plexe/examples/platooning/analysis
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>genmakefile.py<span class="w"> </span>parse-config<span class="w"> </span>&gt;<span class="w"> </span>Makefile
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>make
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>Rscript<span class="w"> </span>plot-multiphase-two-platoons.R
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>python3<span class="w"> </span>extract-communications.py
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>Rscript<span class="w"> </span>plot-multiphase-two-platoons-communications.R
+</span></code></pre></div>
+<ul>
+<li><code>extract-communications.py</code> lee los <code>.vec</code> y <code>.sca</code> de todos los controladores con la API de Python de OMNeT++ 6 (<code>omnetpp.scave.results</code>) y escribe un CSV, <code>communications-results/MultiPhaseTwoPlatoons_communications.csv</code>, con las columnas <code>metric</code>, <code>controller</code>, <code>headway</code>, <code>repetition</code>, <code>nodeId</code>, <code>time</code> y <code>value</code>.</li>
+<li><code>plot-multiphase-two-platoons-communications.R</code> lee ese CSV, separa los pelotones por paridad de <code>nodeId</code> y guarda los PDF en <code>analysis/communications-results/</code>: líneas para las cuatro métricas que cambian en el tiempo y barras para <code>SNIRLostPackets</code>. La última versión agrega boxplots de <code>leaderDelay</code> y <code>frontDelay</code> y el total de colisiones.</li>
+</ul>
+<p>Para ver un controlador en <code>sumo-gui</code>, usa <code>-c MultiPhaseTwoPlatoons</code>. Por ejemplo, para Ploeg, en la misma terminal, dentro de <code>~/src/plexe/examples/platooning</code>, ejecuta el siguiente comando:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>./run<span class="w"> </span>-u<span class="w"> </span>Cmdenv<span class="w"> </span>-c<span class="w"> </span>MultiPhaseTwoPlatoons<span class="w"> </span>-r<span class="w"> </span><span class="m">3</span>
 </span></code></pre></div>
 <table>
 <thead>
@@ -1206,24 +1754,118 @@
 </tr>
 </tbody>
 </table>
-<p>Sin GUI, los 6 controladores:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>plexe_run<span class="w"> </span>-u<span class="w"> </span>Cmdenv<span class="w"> </span>-c<span class="w"> </span>MultiPhaseTwoPlatoonsNoGui<span class="w"> </span>-r<span class="w"> </span><span class="m">0</span>
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>plexe_run<span class="w"> </span>-u<span class="w"> </span>Cmdenv<span class="w"> </span>-c<span class="w"> </span>MultiPhaseTwoPlatoonsNoGui<span class="w"> </span>-r<span class="w"> </span><span class="m">1</span>
-</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>plexe_run<span class="w"> </span>-u<span class="w"> </span>Cmdenv<span class="w"> </span>-c<span class="w"> </span>MultiPhaseTwoPlatoonsNoGui<span class="w"> </span>-r<span class="w"> </span><span class="m">2</span>
-</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>plexe_run<span class="w"> </span>-u<span class="w"> </span>Cmdenv<span class="w"> </span>-c<span class="w"> </span>MultiPhaseTwoPlatoonsNoGui<span class="w"> </span>-r<span class="w"> </span><span class="m">3</span>
-</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>plexe_run<span class="w"> </span>-u<span class="w"> </span>Cmdenv<span class="w"> </span>-c<span class="w"> </span>MultiPhaseTwoPlatoonsNoGui<span class="w"> </span>-r<span class="w"> </span><span class="m">4</span>
-</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>plexe_run<span class="w"> </span>-u<span class="w"> </span>Cmdenv<span class="w"> </span>-c<span class="w"> </span>MultiPhaseTwoPlatoonsNoGui<span class="w"> </span>-r<span class="w"> </span><span class="m">5</span>
-</span></code></pre></div>
-<p>Procesar los resultados y generar los 8 PDFs:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nb">cd</span><span class="w"> </span>~/src/plexe/examples/platooning/analysis
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>genmakefile.py<span class="w"> </span>parse-config<span class="w"> </span>&gt;<span class="w"> </span>Makefile
-</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>make
-</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>Rscript<span class="w"> </span>plot-multiphase-two-platoons.R
-</span></code></pre></div>
-<h3 id="lo-que-deberias-observar">Lo que deberías observar</h3>
 <p><img alt="Dos pelotones alineados en sumo-gui" src="../img/caso-6-dos-pelotones.png" /></p>
-<p>Se abre <code>sumo-gui</code> con los dos pelotones lado a lado y alineados: el pelotón A en rojo (carril 0) y el pelotón B en morado (carril 1). Plexe colorea cada vehículo según su pelotón. Con el traffic manager de serie, en cambio, los pelotones aparecen desfasados hasta 20 m.</p>
-<p><strong>Cómo se mide.</strong> Ocupación del canal y tasa de colisiones de paquetes como indicadores de red, y estabilidad de cada pelotón por separado como indicador de control. La comparación relevante es contra la misma configuración con un solo pelotón.</p>
+<p>Los dos pelotones van lado a lado y alineados, uno en rojo y otro en morado. Con el traffic manager de serie partirían desfasados hasta 20 m.</p>
+<h3 id="paso-6-barrido-de-potencia">Paso 6 · Barrido de potencia</h3>
+<p>Baja la potencia en la línea del <a href="../caso-2/#3-donde-vive-cada-cosa">Caso 2</a>: 1, 0.1 y 0.01 mW. Por ejemplo:</p>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="na">*.**.nic.mac1609_4.txPower</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">1mW</span>
+</span></code></pre></div>
+<p>En cada valor, corre y grafica como en el paso 5. La corrida de 100 mW ya tiene <code>collectCollisionStatistics</code> activo: es la única con colisiones distintas de 0.</p>
+<h2 id="5-resultados">5 · Resultados</h2>
+<p>En estas corridas, el líder acelera hasta 110 km/h y en cada frenado baja a 50 km/h (gráficos de velocidad del pelotón A).</p>
+<h3 id="choques-por-potencia">Choques por potencia</h3>
+<table>
+<thead>
+<tr>
+<th>Potencia</th>
+<th>Chocan</th>
+<th>No chocan</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 mW</td>
+<td>Consensus</td>
+<td>ACC (0.3 s), ACC (1.2 s), CACC, Flatbed y Ploeg</td>
+</tr>
+<tr>
+<td>0.1 mW</td>
+<td>CACC, Consensus y Flatbed</td>
+<td>ACC (0.3 s), ACC (1.2 s) y Ploeg</td>
+</tr>
+<tr>
+<td>0.01 mW</td>
+<td>CACC, Consensus, Flatbed y Ploeg</td>
+<td>ACC (0.3 s) y ACC (1.2 s)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Cuando un auto choca, la corrida se detiene para los dos pelotones. Por eso un panel puede terminar antes de tiempo aunque en ese pelotón nadie choque.</li>
+<li>Con 0.1 mW, CACC y Flatbed chocan en el pelotón A cerca de <code>t = 11 s</code>, durante la primera aceleración del líder.</li>
+<li>Con 0.1 y 0.01 mW, Consensus choca cerca de <code>t = 48 s</code>, después del segundo frenado.</li>
+</ul>
+<p>En cada gráfico, cada panel es un controlador y cada color, un auto del pelotón. Si un panel termina antes de <code>t ≈ 70 s</code>, esa corrida se detuvo por un choque (ver <a href="../caso-1/#5-resultados">Caso 1</a>).</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">1 mW</label><label for="__tabbed_1_2">0.1 mW</label><label for="__tabbed_1_3">0.01 mW</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><img alt="Distancia al auto de adelante, pelotón A, 1 mW" src="../img/caso-6-1mw-a-distancia.png" /></p>
+<p><img alt="Distancia al auto de adelante, pelotón B, 1 mW" src="../img/caso-6-1mw-b-distancia.png" /></p>
+<ul>
+<li>Solo el panel de Consensus termina antes de tiempo, cerca de <code>t = 33 s</code>. En el pelotón B la distancia llega a 0; en el A, no.</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<p><img alt="Distancia al auto de adelante, pelotón A, 0.1 mW" src="../img/caso-6-01mw-a-distancia.png" /></p>
+<ul>
+<li>CACC y Flatbed terminan cerca de <code>t = 11 s</code> y Consensus cerca de <code>t = 48 s</code>. Ploeg y los dos ACC llegan al final.</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<p><img alt="Distancia al auto de adelante, pelotón A, 0.01 mW" src="../img/caso-6-001mw-a-distancia.png" /></p>
+<ul>
+<li>CACC y Flatbed terminan cerca de <code>t = 32 s</code>, Ploeg cerca de <code>t = 34 s</code> y Consensus cerca de <code>t = 48 s</code>. Solo los dos ACC llegan al final.</li>
+</ul>
+</div>
+</div>
+</div>
+<h3 id="metricas-de-comunicacion">Métricas de comunicación</h3>
+<p>Los gráficos de 100 mW son de la última versión de los scripts, con colisiones y con repeticiones.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:4"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><input id="__tabbed_2_4" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Ocupación del canal · 100 mW</label><label for="__tabbed_2_2">Colisiones · 100 mW</label><label for="__tabbed_2_3">Paquetes perdidos · 100 mW</label><label for="__tabbed_2_4">Paquetes perdidos · 1 mW</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><img alt="busyTime del pelotón A con 100 mW" src="../img/caso-6-100mw-a-busytime.png" /></p>
+<ul>
+<li>El canal está ocupado unos 0.05 s de cada segundo, cerca del 5 % del tiempo.</li>
+<li>Las líneas de todos los autos se superponen: todos están al alcance de todos y perciben la misma ocupación.</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<p><img alt="collisions del pelotón A con 100 mW" src="../img/caso-6-100mw-a-colisiones.png" /></p>
+<ul>
+<li>Aparecen colisiones aisladas, de 1 a 5 por segundo, con todos los controladores.</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<p><img alt="SNIRLostPackets del pelotón A con 100 mW" src="../img/caso-6-100mw-a-snir.png" /></p>
+<ul>
+<li>Cada auto pierde en promedio entre unos 15 y 35 paquetes en toda la simulación, con mucha variación entre repeticiones.</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<p><img alt="SNIRLostPackets del pelotón A con 1 mW" src="../img/caso-6-1mw-a-snir.png" /></p>
+<ul>
+<li>Los dos ACC y Consensus pierden cientos de paquetes por auto, hasta unos 1600 en ACC (1.2 s). CACC y Flatbed no pierden ninguno, y en Ploeg solo pierden dos autos, unos 15 a 20 cada uno.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Límites de estos resultados</p>
+<ul>
+<li>Las corridas de 1, 0.1 y 0.01 mW se hicieron sin <code>collectCollisionStatistics</code>: en ellas, <code>collisions</code> vale 0.</li>
+<li>De 100 mW solo hay gráficos de comunicación, no de conducción.</li>
+<li>Los gráficos llegan hasta <code>t ≈ 70 s</code>.</li>
+</ul>
+</div>
+<h2 id="6-pendientes">6 · Pendientes</h2>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a># PENDIENTE: código de plot-multiphase-two-platoons.R, extract-communications.py y plot-multiphase-two-platoons-communications.R
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a># PENDIENTE: línea con que se activó collectCollisionStatistics en omnetpp.ini
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a># PENDIENTE: línea con que se fijaron las 5 repeticiones, y comandos para correr las 30 corridas (el informe registra solo -r 0 a -r 5)
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a># PENDIENTE: gráficos de conducción con 100 mW
+</span></code></pre></div>
+<h2 id="7-siguiente-paso">7 · Siguiente paso</h2>
+<p>El <a href="../caso-7/">Caso 7</a> agrega un retardo aleatorio a la comunicación.</p>
 
 
 
