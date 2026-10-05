@@ -1320,51 +1320,314 @@ Con esto, SUMO está instalado y puedes pasar al paso 4.
 
 ### Paso 4: Veins 5.3.1
 
-Veins es el puente: sincroniza el reloj de la simulación de red (OMNeT++) con el de la simulación de tráfico (SUMO), y añade la capa de comunicación vehicular sobre la que Plexe construye sus protocolos.
+Ahora vamos a instalar Veins 5.3.1. Primero lo vamos a descargar (paso 4.1) y después lo vamos a compilar (paso 4.2). Antes de empezar, veamos qué es Veins y para qué lo necesitas.
+
+Hasta aquí instalaste dos simuladores independientes: OMNeT++, que simula redes de comunicación, y SUMO, que simula el tráfico. Veins es lo que los conecta. Mientras corre una simulación, SUMO mueve los vehículos por las calles y OMNeT++ simula los mensajes que esos vehículos se envían entre sí. Los dos simuladores quedan conectados durante toda la simulación y en ambos sentidos: lo que pasa en la red también puede cambiar el tráfico, por ejemplo cuando un vehículo cambia de ruta al recibir un mensaje.
+
+Además de conectar los dos simuladores, Veins trae los modelos de la comunicación inalámbrica entre vehículos, como el estándar IEEE 802.11p.
+
+Plexe, que instalarás en el paso 5, se construye sobre Veins: le agrega la conducción en pelotón (*platooning*), y la comunicación 802.11p que usa es la de Veins. Por eso Veins va antes que Plexe: al compilar Plexe hay que indicarle dónde está la carpeta de Veins.
+
+**Fuente:** [sitio oficial de Veins](https://veins.car2x.org/) (sección *How does Veins work?*) y su página de [características](https://veins.car2x.org/features/); guía oficial de Plexe, [*Compatibility notes*](https://plexe.car2x.org/building/#compatibility-notes) y [*Step 2*](https://plexe.car2x.org/building/#step-2-install-plexe-and-veins).
 
 #### 4.1 Descargar
 
-Se puede clonar el repositorio o bajar el ZIP y descomprimirlo en `~/src/`. La documentación oficial recomienda clonar.
+La guía de Plexe ofrece dos formas de bajar Veins 5.3.1: su archivo ZIP o clonar su repositorio con git. Este manual usa git, porque en este trabajo se modifica el código de Veins: git muestra qué cambiaste respecto del original y, según el [FAQ de Plexe](https://plexe.car2x.org/faq/), permite pasar a una versión nueva sin rehacer esos cambios a mano. Además, la carpeta queda como `~/src/veins`, el nombre que usan los comandos de la guía.
+
+En una terminal de Ubuntu, nueva o la que ya tengas abierta, ejecuta los siguientes comandos:
 
 ```bash
-# PENDIENTE: descarga de Veins 5.3.1 (clonar repositorio o bajar ZIP)
+cd ~/src
+git clone https://github.com/sommer/veins.git
 ```
+
+**Fuente:** guía oficial de Plexe, [*Step 2: Install Plexe and Veins*](https://plexe.car2x.org/building/#step-2-install-plexe-and-veins), que ofrece clonar Veins desde [su repositorio en GitHub](https://github.com/sommer/veins/tree/veins-5.3.1) como alternativa al ZIP, en la carpeta `~/src/`. El comando no está en la guía: es el uso estándar de [`git clone`](https://git-scm.com/docs/git-clone).
+
+**Así debería verse tu terminal:**
+
+```text
+victorjaque@DESKTOP-6VI5783:~$ cd ~/src
+git clone https://github.com/sommer/veins.git
+Cloning into 'veins'...
+remote: Enumerating objects: 26130, done.
+remote: Counting objects: 100% (620/620), done.
+remote: Compressing objects: 100% (222/222), done.
+remote: Total 26130 (delta 530), reused 398 (delta 398), pack-reused 25510 (from 3)
+Receiving objects: 100% (26130/26130), 16.66 MiB | 2.65 MiB/s, done.
+Resolving deltas: 100% (19160/19160), done.
+```
+
+- Terminó bien cuando aparece `Resolving deltas: 100% … done.` y vuelve la línea que termina en `~/src$`.
+- En el equipo de referencia los dos comandos se pegaron juntos en la terminal; por eso `git clone` aparece sin `victorjaque@...$` delante.
+
+`git clone` deja la versión en desarrollo de Veins, que no es la 5.3.1. En el repositorio, cada versión está marcada con una etiqueta; la de esta versión es `veins-5.3.1`. Ahora tienes que cambiarte a ella.
+
+Para eso, en la misma terminal, dentro de `~/src`, ejecuta los siguientes comandos:
+
+```bash
+cd veins
+git checkout veins-5.3.1
+git describe --tags
+```
+
+**Fuente:** la versión 5.3.1 y su etiqueta son las que enlaza la guía de Plexe ([*Step 2*](https://plexe.car2x.org/building/#step-2-install-plexe-and-veins)). Los comandos los agrega este manual: [`git checkout`](https://git-scm.com/docs/git-checkout) cambia a esa versión y [`git describe --tags`](https://git-scm.com/docs/git-describe) muestra en qué versión quedaste.
+
+**Así debería verse tu terminal** (abreviado):
+
+```text
+victorjaque@DESKTOP-6VI5783:~/src$ cd veins
+git checkout veins-5.3.1
+git describe --tags
+Note: switching to 'veins-5.3.1'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+...
+HEAD is now at 6571085f bump version to 5.3.1
+veins-5.3.1
+```
+
+- El aviso sobre *detached HEAD* es normal: significa que quedaste fijo en la versión 5.3.1 y no en una rama. No hagas nada de lo que sugiere.
+- `git describe --tags` responde `veins-5.3.1`: quedaste en la versión correcta.
+
+**Ejemplo real: la descarga de Veins y el cambio a la versión 5.3.1 en el equipo de referencia**
+
+![Terminal con git clone de Veins, git checkout veins-5.3.1 y git describe --tags, en el equipo de referencia](img/instalacion-paso-4-git-veins.png)
 
 #### 4.2 Compilar
 
-Mismo esquema que OMNeT++: configurar y luego construir.
+Ahora vamos a compilar Veins, es decir, a traducir el código que descargaste en el paso 4.1 a código que el computador puede ejecutar. El resultado es la biblioteca de Veins, `libveins.so`: un archivo con todo Veins ya compilado, que Plexe usará al compilarse en el paso 5.
+
+Igual que OMNeT++ en el paso 2.3, se hace en dos etapas: primero `./configure` crea el `Makefile`, el archivo con las instrucciones de compilación, y después `make` sigue esas instrucciones y compila.
+
+Antes hay que cargar el entorno de OMNeT++. El `./configure` de Veins usa `opp_makemake`, una herramienta de OMNeT++, y la terminal solo la encuentra después de `source setenv`.
+
+En una terminal de Ubuntu, nueva o la que ya tengas abierta, ejecuta los siguientes comandos:
 
 ```bash
-# PENDIENTE: configurar y compilar Veins
+cd ~/src/omnetpp-6.2.0
+source setenv
 ```
 
-!!! warning "Requiere el entorno de OMNeT++ cargado"
-    Este paso **falla** si en la terminal actual no cargaste antes el entorno de OMNeT++ (paso 2.2). Si abriste una terminal nueva desde entonces, vuelve a cargarlo.
+**Fuente:** guía oficial de Plexe: [*Step 1*](https://plexe.car2x.org/building/#step-1-install-omnet), con los mismos comandos del paso 2.2, y su sección de macOS, [*Building on Apple processors*](https://plexe.car2x.org/building/#building-on-apple-processors), que indica compilar Veins desde la misma terminal donde se cargó `setenv`. Que `./configure` usa `opp_makemake` está en el [script `configure` de Veins 5.3.1](https://github.com/sommer/veins/blob/veins-5.3.1/configure).
+
+**Así debería verse tu terminal:**
+
+```text
+victorjaque@DESKTOP-6VI5783:~$ cd ~/src/omnetpp-6.2.0
+source setenv
+Activating python virtual environment in '/home/victorjaque/src/omnetpp-6.2.0/.venv'
+Environment for 'omnetpp-6.2.0' in directory '/home/victorjaque/src/omnetpp-6.2.0' is ready.
+```
+
+*Environment for 'omnetpp-6.2.0' … is ready* indica que el entorno quedó cargado. Desde aquí, la línea de la terminal empieza con `(omnetpp/.venv)`.
+
+Ahora configura Veins. En la misma terminal, ejecuta los siguientes comandos:
+
+```bash
+cd ~/src/veins
+./configure
+```
+
+**Fuente:** guía oficial de Plexe, [*Step 2: Install Plexe and Veins*](https://plexe.car2x.org/building/#step-2-install-plexe-and-veins).
+
+**Así debería verse tu terminal:**
+
+```text
+(omnetpp/.venv) victorjaque@DESKTOP-6VI5783:~/src/omnetpp-6.2.0$ cd ~/src/veins
+./configure
+Creating Makefile in /home/victorjaque/src/veins/src...
+```
+
+Es la única línea que muestra `./configure`: indica que creó el `Makefile` en la carpeta `src` de Veins.
+
+Ahora compila. En la misma terminal, dentro de `~/src/veins`, ejecuta el siguiente comando:
+
+```bash
+make -j$(nproc)
+```
+
+**Fuente:** guía oficial de Plexe, [*Step 2*](https://plexe.car2x.org/building/#step-2-install-plexe-and-veins), que indica `make -j <number of cores of your PC>`. El `$(nproc)` lo agrega este manual, igual que en el paso 2.3.2: escribe solo la cantidad de núcleos (28 en el equipo de referencia).
+
+**Así debería verse tu terminal** (inicio y final, abreviado):
+
+```text
+(omnetpp/.venv) victorjaque@DESKTOP-6VI5783:~/src/veins$ make -j$(nproc)
+Creating script "bin/veins_run"
+make[1]: Entering directory '/home/victorjaque/src/veins/src'
+MSGC: veins/base/messages/AirFrame.msg
+MSGC: veins/common.msg
+...
+veins/modules/mac/ieee80211p/Mac1609_4.cc:529:69: warning: format specifies type 'int' but the argument has type 'Channel' [-Wformat]
+  529 |         throw cRuntimeError("This Service Channel doesnt exit: %d", cN);
+...
+1 warning generated.
+...
+veins/modules/messages/TraCITrafficLightMessage_m.cc
+Creating shared library: ../out/clang-debug/src/libveins_dbg.so
+make[1]: Leaving directory '/home/victorjaque/src/veins/src'
+(omnetpp/.venv) victorjaque@DESKTOP-6VI5783:~/src/veins$
+```
+
+- Terminó bien cuando aparece *Creating shared library* y vuelve la línea que termina en `~/src/veins$`.
+- Compila dos veces, igual que OMNeT++: primero en modo *release* y después en modo *debug*, como indica el [`Makefile` de Veins](https://github.com/sommer/veins/blob/veins-5.3.1/Makefile). Por eso quedan dos bibliotecas en `~/src/veins/src`: `libveins.so` y `libveins_dbg.so`.
+- En el equipo de referencia tardó unos 15 segundos.
+
+!!! note "Aviso: format specifies type 'int' but the argument has type 'Channel'"
+    En el equipo de referencia, `make` mostró este aviso (*warning*) en el archivo `Mac1609_4.cc` de Veins, línea 529. El compilador avisa que esa línea usa `%d`, que espera un número entero (`int`), con un valor de tipo `Channel`. Es un aviso, no un error: la compilación siguió y terminó bien. No hay que hacer nada.
+
+**Ejemplo real: la carga del entorno, `./configure` y el inicio de `make` en el equipo de referencia**
+
+![Terminal con cd y source setenv, cd ~/src/veins y ./configure, e inicio de make -j$(nproc) con líneas MSGC, en el equipo de referencia](img/instalacion-paso-4-make-inicio.png)
+
+**Ejemplo real: así termina `make` en el equipo de referencia**
+
+![Final de make en ~/src/veins, con el aviso de Mac1609_4.cc y Creating shared library libveins_dbg.so, en el equipo de referencia](img/instalacion-paso-4-make-fin.png)
+
+Con esto, Veins está instalado y puedes pasar al paso 5.
 
 ---
 
 ### Paso 5: Plexe 3.2
 
-Plexe es la capa que agrega el *platooning*: los controladores longitudinales cooperativos, los protocolos de coordinación y las maniobras.
+Ahora vamos a instalar [Plexe](https://plexe.car2x.org/) 3.2, que agrega la simulación de pelotones de vehículos (*platooning*) sobre SUMO y Veins. Primero lo vamos a descargar (paso 5.1) y después lo vamos a compilar (paso 5.2).
 
 #### 5.1 Descargar
 
-Igual que Veins: clonar el repositorio o bajar el ZIP en `~/src/`. El repositorio es único y las versiones se distinguen mediante etiquetas, así que hay que apuntar a la etiqueta de la versión 3.2.
+Plexe se baja con git, igual que Veins en el paso 4.1. La página de descargas de Plexe también ofrece un ZIP, pero no lo recomienda (*not recommended*).
+
+En una terminal de Ubuntu, nueva o la que ya tengas abierta, ejecuta los siguientes comandos:
 
 ```bash
-# PENDIENTE: descarga de Plexe 3.2 (clonar en la etiqueta plexe-3.2 o bajar ZIP)
+cd ~/src
+git clone https://github.com/michele-segata/plexe.git
 ```
+
+**Fuente:** página oficial de descargas de Plexe, [*Through the git repositories*](https://plexe.car2x.org/download/#through-the-git-repositories). Son sus mismos dos comandos.
+
+**Así debería verse tu terminal:**
+
+```text
+victorjaque@DESKTOP-6VI5783:~$ cd ~/src
+git clone https://github.com/michele-segata/plexe.git
+Cloning into 'plexe'...
+remote: Enumerating objects: 30656, done.
+remote: Counting objects: 100% (1057/1057), done.
+remote: Compressing objects: 100% (457/457), done.
+remote: Total 30656 (delta 820), reused 694 (delta 587), pack-reused 29599 (from 2)
+Receiving objects: 100% (30656/30656), 17.74 MiB | 6.24 MiB/s, done.
+Resolving deltas: 100% (22968/22968), done.
+```
+
+Terminó bien cuando aparece `Resolving deltas: 100% … done.` y vuelve la línea que termina en `~/src$`.
+
+`git clone` deja la última versión del repositorio. Para quedar fijo en la 3.2, cámbiate a su etiqueta, `plexe-3.2`.
+
+En la misma terminal, dentro de `~/src`, ejecuta los siguientes comandos:
+
+```bash
+cd plexe
+git checkout plexe-3.2
+git describe --tags
+```
+
+**Fuente:** la etiqueta `plexe-3.2` la indica la página oficial de descargas de Plexe ([*Through the git repositories*](https://plexe.car2x.org/download/#through-the-git-repositories)). Los comandos los agrega este manual, como en el paso 4.1 ([`git checkout`](https://git-scm.com/docs/git-checkout), [`git describe`](https://git-scm.com/docs/git-describe)).
+
+**Así debería verse tu terminal** (abreviado):
+
+```text
+victorjaque@DESKTOP-6VI5783:~/src$ cd plexe
+git checkout plexe-3.2
+git describe --tags
+Note: switching to 'plexe-3.2'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+...
+HEAD is now at c2d70aff bump to 3.2
+plexe-3.2
+```
+
+El aviso sobre *detached HEAD* es normal, como en el paso 4.1. La última línea, `plexe-3.2`, confirma la versión.
+
+**Ejemplo real: la descarga de Plexe y el cambio a la versión 3.2 en el equipo de referencia**
+
+![Terminal con git clone de Plexe, git checkout plexe-3.2 y git describe --tags, en el equipo de referencia](img/instalacion-paso-5-git-plexe.png)
 
 #### 5.2 Compilar
 
-Aquí aparece la única particularidad del proceso: al configurar Plexe hay que **indicarle explícitamente dónde está la carpeta de Veins** que acabas de construir. Es una ruta relativa desde la carpeta de Plexe.
+Ahora vamos a compilar Plexe, igual que Veins en el paso 4.2: con el entorno de OMNeT++ cargado, primero `./configure` y después `make`. La única diferencia es que a `./configure` hay que indicarle dónde está Veins (`--with-veins=../veins`), porque Plexe se compila enlazado a Veins.
+
+En la misma terminal, ejecuta los siguientes comandos:
 
 ```bash
-# PENDIENTE: configurar Plexe indicando la ruta de Veins, y compilar
+cd ~/src/omnetpp-6.2.0
+source setenv
 ```
 
-!!! warning "La causa más común de fallo en este paso"
-    Si la ruta de Veins que le pasas no existe o apunta a una carpeta que no está compilada, la configuración falla. Verifica el nombre real de tu carpeta de Veins antes de ejecutar el comando: debe coincidir exactamente con lo que escribes.
+**Fuente:** guía oficial de Plexe, [*Step 1*](https://plexe.car2x.org/building/#step-1-install-omnet), como en el paso 4.2.
+
+La salida es la misma del paso 4.2.
+
+En la misma terminal, ejecuta los siguientes comandos:
+
+```bash
+cd ~/src/plexe
+./configure --with-veins=../veins
+```
+
+**Fuente:** guía oficial de Plexe, [*Step 2: Install Plexe and Veins*](https://plexe.car2x.org/building/#step-2-install-plexe-and-veins).
+
+**Así debería verse tu terminal:**
+
+```text
+(omnetpp/.venv) victorjaque@DESKTOP-6VI5783:~/src/omnetpp-6.2.0$ cd ~/src/plexe
+./configure --with-veins=../veins
+Determining Veins version.
+Found Veins version 5.3.1. Okay.
+Creating Makefile in /home/victorjaque/src/plexe/src...
+
+Configure done. You can now run 'make'.
+```
+
+*Found Veins version 5.3.1. Okay.* indica que encontró Veins, y *Configure done* que la configuración terminó bien.
+
+**Ejemplo real: la carga del entorno y `./configure` en el equipo de referencia**
+
+![Terminal con cd y source setenv, cd ~/src/plexe y ./configure --with-veins=../veins, con Found Veins version 5.3.1 y Configure done, en el equipo de referencia](img/instalacion-paso-5-configure.png)
+
+En la misma terminal, dentro de `~/src/plexe`, ejecuta el siguiente comando:
+
+```bash
+make -j$(nproc)
+```
+
+**Fuente:** guía oficial de Plexe, [*Step 2*](https://plexe.car2x.org/building/#step-2-install-plexe-and-veins). El `$(nproc)` lo agrega este manual, como en el paso 4.2.
+
+**Así debería verse tu terminal** (inicio y final, abreviado):
+
+```text
+(omnetpp/.venv) victorjaque@DESKTOP-6VI5783:~/src/plexe$ make -j$(nproc)
+Creating script "bin/plexe_run"
+make[1]: Entering directory '/home/victorjaque/src/plexe/src'
+MSGC: plexe/messages/HelloPlexeMsg.msg
+MSGC: plexe/messages/InterferingBeacon.msg
+...
+plexe/messages/UpdatePlatoonFormationAck_m.cc
+Creating shared library: ../out/clang-debug/src/libplexe_dbg.so
+make[1]: Leaving directory '/home/victorjaque/src/plexe/src'
+(omnetpp/.venv) victorjaque@DESKTOP-6VI5783:~/src/plexe$
+```
+
+Terminó bien cuando aparece *Creating shared library* y vuelve la línea que termina en `~/src/plexe$`. Igual que Veins, compila en *release* y en *debug*: quedan `libplexe.so` y `libplexe_dbg.so` en `~/src/plexe/src`. En el equipo de referencia tardó unos 8 segundos.
+
+**Ejemplo real: así empieza `make` en el equipo de referencia**
+
+![Inicio de make -j$(nproc) en ~/src/plexe, con Creating script bin/plexe_run y líneas MSGC, en el equipo de referencia](img/instalacion-paso-5-make-inicio.png)
+
+**Ejemplo real: así termina `make` en el equipo de referencia**
+
+![Final de make en ~/src/plexe, con Creating shared library libplexe_dbg.so, en el equipo de referencia](img/instalacion-paso-5-make-fin.png)
+
+Con esto, Plexe está instalado y puedes pasar al paso 6.
 
 ---
 
