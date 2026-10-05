@@ -93,3 +93,5 @@ nav:
     - Caso 7 · Retardo estocástico de comunicación: ejemplos/caso-7.md
     - Caso 8 · Event-triggered control sobre el envío de frames: ejemplos/caso-8.md
     - Caso 9 · ETC y retardo en conjunto: ejemplos/caso-9.md
+  - Primera simulación: primera-simulacion.md
+  - Flujo de trabajo: flujo-de-trabajo.md

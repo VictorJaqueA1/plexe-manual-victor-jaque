@@ -1633,52 +1633,383 @@ Con esto, Plexe está instalado y puedes pasar al paso 6.
 
 ### Paso 6: R y Python
 
-Estas herramientas no participan en la simulación. Sirven para **extraer y graficar los resultados** que la simulación produce. Puedes correr Plexe sin ellas, pero no podrás analizar nada de lo que genere.
+Ahora vamos a preparar R y Python, que sirven para extraer y graficar los resultados de las simulaciones. OMNeT++ 6 eliminó su complemento de R, así que los scripts de Plexe para extraer los datos usan una mezcla de R y Python.
 
-OMNeT++ 6 eliminó su complemento de R, así que la extracción de datos hoy funciona con una combinación de scripts de R y de Python.
+**Fuente:** guía oficial de Plexe, [*Step 4: Setup up R and Python*](https://plexe.car2x.org/building/#step-4-setup-up-r-and-python).
 
 #### 6.1 Librerías de R
 
-Se instalan desde la consola de R.
+Ahora vamos a instalar dos librerías de R: `ggplot2` y `data.table`. R ya quedó instalado en el paso 1.2 (paquete `r-base`).
+
+En una terminal de Ubuntu, nueva o la que ya tengas abierta, ejecuta el siguiente comando para abrir la consola de R:
+
+```bash
+R
+```
+
+Dentro de la consola de R, donde la línea empieza con `>`, ejecuta:
 
 ```r
-# PENDIENTE: instalación de las librerías de R para gráficos y manejo de datos
+install.packages(c('ggplot2', 'data.table'))
 ```
+
+**Fuente:** guía oficial de Plexe, [*Step 4: Setup up R and Python*](https://plexe.car2x.org/building/#step-4-setup-up-r-and-python).
+
+R hace dos preguntas. Responde `yes` a las dos:
+
+- *Would you like to use a personal library instead?*: R no puede escribir en la carpeta del sistema y ofrece usar una carpeta tuya.
+- *Would you like to create a personal library … to install packages into?*: crea esa carpeta, `~/R/x86_64-pc-linux-gnu-library/4.3`.
+
+La guía dice que R también pide elegir un *mirror*, es decir, el servidor desde donde descarga. En el equipo de referencia no lo pidió: descargó directamente desde `cloud.r-project.org`.
+
+**Así debería verse tu terminal** (inicio y final, abreviado):
+
+```text
+> install.packages(c('ggplot2', 'data.table'))
+Installing packages into ‘/usr/local/lib/R/site-library’
+(as ‘lib’ is unspecified)
+Warning in install.packages(c("ggplot2", "data.table")) :
+  'lib = "/usr/local/lib/R/site-library"' is not writable
+Would you like to use a personal library instead? (yes/No/cancel) yes
+Would you like to create a personal library
+‘/home/victorjaque/R/x86_64-pc-linux-gnu-library/4.3’
+to install packages into? (yes/No/cancel) yes
+also installing the dependencies ‘glue’, ‘cpp11’, ‘farver’, ‘labeling’, ‘R6’, ‘RColorBrewer’, ‘viridisLite’, ‘cli’, ‘gtable’, ‘isoband’, ‘lifecycle’, ‘rlang’, ‘S7’, ‘scales’, ‘vctrs’, ‘withr’
+
+trying URL 'https://cloud.r-project.org/src/contrib/glue_1.8.1.tar.gz'
+...
+* DONE (ggplot2)
+
+The downloaded source packages are in
+        ‘/tmp/RtmpJGQekE/downloaded_packages’
+> q()
+Save workspace image? [y/n/c]: n
+victorjaque@DESKTOP-6VI5783:~$
+```
+
+- El *Warning … is not writable* es normal: por eso R ofrece la carpeta personal.
+- Terminó bien cuando aparece `* DONE (ggplot2)` y vuelve el `>`.
+- Para salir de R, escribe `q()` y responde `n` cuando pregunte *Save workspace image?*.
+
+**Ejemplo real: el inicio de la instalación en el equipo de referencia**
+
+![Consola de R con install.packages, las dos preguntas respondidas con yes y el inicio de la descarga, en el equipo de referencia](img/instalacion-paso-6-r-inicio.png)
+
+**Ejemplo real: así termina la instalación en el equipo de referencia**
+
+![Final de install.packages con DONE (ggplot2), y salida de R con q(), en el equipo de referencia](img/instalacion-paso-6-r-fin.png)
 
 #### 6.2 Paquete de lectura de resultados de OMNeT++
 
-Este es un paso que suele pasarse por alto, y sin él los scripts de extracción no funcionan: hay que instalar un paquete específico que permite a R leer los archivos de resultados que genera OMNeT++. Se baja como archivo comprimido, **sin descomprimirlo**, y se instala desde la consola de R apuntando al archivo local.
+Ahora vamos a instalar el paquete `omnetpp` de R, que permite a R leer los archivos de resultados de OMNeT++. La guía lo enlaza como archivo comprimido y pide **no descomprimirlo**.
 
-```r
-# PENDIENTE: instalación del paquete de lectura de resultados de OMNeT++ en R
+Primero descárgalo. En una terminal de Ubuntu, nueva o la que ya tengas abierta, ejecuta los siguientes comandos:
+
+```bash
+cd ~/src
+wget http://plexe.car2x.org/download/omnetpp_0.7-1.tar.gz
 ```
 
-!!! note "Error de compilación con compiladores modernos"
-    Al instalar este paquete puede aparecer un error de compilación relacionado con una función eliminada de la biblioteca estándar de C++. Se resuelve indicando a R que compile con un estándar de C++ anterior, mediante una línea en el archivo de configuración de compilación de R.
+**Fuente:** guía oficial de Plexe, [*Step 4: Setup up R and Python*](https://plexe.car2x.org/building/#step-4-setup-up-r-and-python), que enlaza el archivo. El `wget` lo agrega este manual para descargarlo desde la terminal.
+
+**Así debería verse tu terminal:**
+
+```text
+victorjaque@DESKTOP-6VI5783:~$ cd ~/src
+wget http://plexe.car2x.org/download/omnetpp_0.7-1.tar.gz
+--2026-10-05 14:49:56--  http://plexe.car2x.org/download/omnetpp_0.7-1.tar.gz
+Resolving plexe.car2x.org (plexe.car2x.org)... 141.76.82.12
+Connecting to plexe.car2x.org (plexe.car2x.org)|141.76.82.12|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 295715 (289K) [application/x-gzip]
+Saving to: ‘omnetpp_0.7-1.tar.gz’
+
+omnetpp_0.7-1.tar.gz    100%[==============================>] 288.78K   336KB/s    in 0.9s
+
+2026-10-05 14:49:58 (336 KB/s) - ‘omnetpp_0.7-1.tar.gz’ saved [295715/295715]
+```
+
+Terminó bien cuando aparece *saved*: el archivo quedó en `~/src`.
+
+Ahora instálalo. En la misma terminal, dentro de `~/src`, abre R:
+
+```bash
+R
+```
+
+Dentro de la consola de R, ejecuta:
+
+```r
+install.packages("omnetpp_0.7-1.tar.gz", repos=NULL)
+```
+
+**Fuente:** guía oficial de Plexe, [*Step 4: Setup up R and Python*](https://plexe.car2x.org/building/#step-4-setup-up-r-and-python).
+
+**Ejemplo real: la descarga y el inicio de la instalación en el equipo de referencia**
+
+![Terminal con wget de omnetpp_0.7-1.tar.gz e install.packages en la consola de R, en el equipo de referencia](img/instalacion-paso-6-omnetpp-inicio.png)
+
+En Ubuntu 24.04 esta instalación falla:
+
+!!! failure "Error: compilation failed for package ‘omnetpp’"
+    **Cuándo aparece:** al ejecutar `install.packages("omnetpp_0.7-1.tar.gz", repos=NULL)`.
+
+    **Qué significa:** el paquete no compila con un compilador que usa C++17. La guía de Plexe anticipa este problema, aunque cita otro mensaje (`no member named 'mem_fun_ref'`). En el equipo de referencia el mensaje fue este:
+
+    ```text
+    /usr/include/c++/13/bits/stl_tree.h:772:15: error: static assertion failed: comparison object must be invocable as const
+    ...
+    make: *** [/usr/lib/R/etc/Makeconf:198: scave/resultfilemanager.o] Error 1
+    ERROR: compilation failed for package ‘omnetpp’
+    * removing ‘/home/victorjaque/R/x86_64-pc-linux-gnu-library/4.3/omnetpp’
+    Warning message:
+    In install.packages("omnetpp_0.7-1.tar.gz", repos = NULL) :
+      installation of package ‘omnetpp_0.7-1.tar.gz’ had non-zero exit status
+    > q()
+    Save workspace image? [y/n/c]: N
+    ```
+
+    **Ejemplo real: el error en el equipo de referencia**
+
+    ![Error static assertion failed y compilation failed for package omnetpp, en el equipo de referencia](img/instalacion-paso-6-omnetpp-error.png)
+
+**Qué hacer: compilar con C++11**
+
+La guía indica agregar la línea `CXXFLAGS += -std=c++11` al archivo `~/.R/Makevars`. Ese archivo le dice a R con qué opciones compilar los paquetes.
+
+Sal de R con `q()` y responde `n`. Después, en la misma terminal, dentro de `~/src`, ejecuta los siguientes comandos:
+
+```bash
+mkdir -p ~/.R
+echo 'CXXFLAGS += -std=c++11' >> ~/.R/Makevars
+cat ~/.R/Makevars
+```
+
+**Fuente:** la línea y el archivo son de la guía oficial de Plexe, [*Step 4: Setup up R and Python*](https://plexe.car2x.org/building/#step-4-setup-up-r-and-python). Los comandos los agrega este manual: `mkdir -p` crea la carpeta `~/.R` si no existe, `echo … >>` agrega la línea al archivo y `cat` lo muestra.
+
+`cat` debe mostrar la línea `CXXFLAGS += -std=c++11`.
+
+Ahora repite la instalación. En la misma terminal, dentro de `~/src`, abre `R` y ejecuta:
+
+```r
+install.packages("omnetpp_0.7-1.tar.gz", repos=NULL)
+```
+
+**Así debería verse tu terminal** (final, abreviado):
+
+```text
+...
+installing to /home/victorjaque/R/x86_64-pc-linux-gnu-library/4.3/00LOCK-omnetpp/00new/omnetpp/libs
+** R
+** data
+** demo
+** inst
+** byte-compile and prepare package for lazy loading
+** help
+*** installing help indices
+** building package indices
+** testing if installed package can be loaded from temporary location
+** checking absolute paths in shared objects and dynamic libraries
+** testing if installed package can be loaded from final location
+** testing if installed package keeps a record of temporary installation path
+* DONE (omnetpp)
+> q()
+Save workspace image? [y/n/c]: n
+victorjaque@DESKTOP-6VI5783:~/src$
+```
+
+Terminó bien cuando aparece `* DONE (omnetpp)`. Después sal de R con `q()` y responde `n`.
+
+**Ejemplo real: la línea en `~/.R/Makevars` y la nueva instalación en el equipo de referencia**
+
+![Terminal con mkdir, echo y cat de ~/.R/Makevars, y R abierto de nuevo, en el equipo de referencia](img/instalacion-paso-6-makevars.png)
+
+**Ejemplo real: así termina la instalación en el equipo de referencia**
+
+![Final de la instalación con DONE (omnetpp) y salida de R con q(), en el equipo de referencia](img/instalacion-paso-6-omnetpp-fin.png)
+
+Perfecto: solucionaste el error y el paquete `omnetpp` quedó instalado. Ahora puedes pasar al paso 6.3.
 
 #### 6.3 Librerías de Python
 
+Ahora vamos a revisar las librerías de Python que piden los scripts de Plexe: `pandas`, `scipy` y `matplotlib`.
+
+La guía pide instalarlas con este comando:
+
 ```bash
-# PENDIENTE: instalación de las librerías de Python para análisis de datos
+pip install --user pandas scipy matplotlib
 ```
+
+**Fuente:** guía oficial de Plexe, [*Step 4: Setup up R and Python*](https://plexe.car2x.org/building/#step-4-setup-up-r-and-python).
+
+**No necesitas ejecutarlo: en Ubuntu 24.04 falla, y las tres librerías ya están instaladas.** En el equipo de referencia se ejecutó para documentar el error, que es inofensivo.
+
+!!! failure "Error: externally-managed-environment"
+    **Cuándo aparece:** al ejecutar el `pip` de la guía de Plexe en Ubuntu 24.04.
+
+    **Qué significa:** es el mismo error del paso 3.4: Ubuntu 24.04 no deja instalar paquetes con `pip` en el Python del sistema. `pip` no instala nada.
+
+    ```text
+    victorjaque@DESKTOP-6VI5783:~$ pip install --user pandas scipy matplotlib
+    error: externally-managed-environment
+
+    × This environment is externally managed
+    ╰─> To install Python packages system-wide, try apt install
+        python3-xyz, where xyz is the package you are trying to
+        install.
+    ...
+    ```
+
+    **Ejemplo real: el error en el equipo de referencia**
+
+    ![Error externally-managed-environment al ejecutar pip install --user pandas scipy matplotlib, en el equipo de referencia](img/instalacion-paso-6-error-pip.png)
+
+**Qué hacer: nada, solo comprobar que ya están**
+
+Las tres librerías quedaron instaladas en el paso 2.2, en el entorno de Python de OMNeT++ (`.venv`): el archivo `python/requirements.txt` de OMNeT++ 6.2.0 las incluye ([requirements.txt](https://github.com/omnetpp/omnetpp/blob/omnetpp-6.2.0/python/requirements.txt)). Los scripts de Plexe usan ese mismo entorno: [`genmakefile.py`](https://github.com/michele-segata/plexe/blob/plexe-3.2/bin/genmakefile.py) corre con el Python activo (`#!/usr/bin/env python`), y `source setenv` activa el de OMNeT++.
+
+Para comprobarlo, en una terminal de Ubuntu, nueva o la que ya tengas abierta, ejecuta los siguientes comandos:
+
+```bash
+cd ~/src/omnetpp-6.2.0
+source setenv
+python3 -m pip list | grep -iE "^(pandas|scipy|matplotlib) "
+```
+
+**Fuente:** los dos primeros comandos son los del paso 2.2. El tercero lo agrega este manual: [`pip list`](https://pip.pypa.io/en/stable/cli/pip_list/) muestra los paquetes instalados en el entorno activo, y `grep` deja solo las tres librerías.
+
+**Así debería verse tu terminal:**
+
+```text
+(omnetpp/.venv) victorjaque@DESKTOP-6VI5783:~/src/omnetpp-6.2.0$ python3 -m pip list | grep -iE "^(pandas|scipy|matplotlib) "
+matplotlib                3.11.2
+pandas                    2.3.3
+scipy                     1.18.1
+```
+
+Si aparecen las tres líneas, las librerías están instaladas.
+
+**Ejemplo real: la comprobación en el equipo de referencia**
+
+![Salida de pip list filtrada con matplotlib 3.11.2, pandas 2.3.3 y scipy 1.18.1 en el entorno de OMNeT++, en el equipo de referencia](img/instalacion-paso-6-pip-list.png)
+
+Perfecto: las librerías de Python están listas y terminaste el paso 6. Ahora puedes pasar al paso 7.
 
 ---
 
 ### Paso 7: Verificación
 
-Compilar sin errores no garantiza que la instalación esté correcta. Falta comprobar que las cuatro piezas se comunican entre sí, y la forma de saberlo es correr uno de los escenarios de ejemplo que trae Plexe y observar el pelotón en movimiento.
+Ahora vamos a comprobar que la instalación funciona. Para eso vas a correr el ejemplo `platooning`, que viene con Plexe: en él trabajan juntos OMNeT++, SUMO, Veins y Plexe.
 
-Qué deberías ver si todo está bien:
+Si todo está bien, vas a ver tres cosas:
 
-- La ventana de SUMO abriéndose con vehículos circulando en formación.
-- Un pelotón que mantiene distancias regulares y estables entre vehículos.
-- Ningún mensaje de error en la terminal, y archivos de resultados generados al terminar.
+- La ventana de SUMO, con un pelotón de 8 autos en la autopista.
+- La simulación llega hasta el final sin errores en la terminal.
+- Al terminar, quedan archivos de resultados en la carpeta `results`.
+
+Primero carga el entorno de OMNeT++. En una terminal de Ubuntu nueva ejecuta los siguientes comandos:
 
 ```bash
-# PENDIENTE: correr un escenario de ejemplo de Plexe y verificar la salida
+cd ~/src/omnetpp-6.2.0
+source setenv
 ```
 
-Si esto funciona, la instalación está terminada. Los escenarios de ejemplo se describen en detalle en la sección [Ejemplos](ejemplos/index.md).
+**Fuente:** guía oficial de Plexe, [*Step 1: Install OMNeT++*](https://plexe.car2x.org/building/#step-1-install-omnet), como en el paso 2.2.
+
+Ahora carga el entorno de Plexe. En la misma terminal, ejecuta los siguientes comandos:
+
+```bash
+cd ~/src/plexe
+. ./setenv
+```
+
+**Fuente:** tutorial oficial de Plexe, [*Step 0. Building Plexe*](https://plexe.car2x.org/tutorial/#step-0-building-plexe).
+
+Este `setenv` deja disponible `plexe_run`, el programa que corre las simulaciones. Si todo está bien, no muestra nada.
+
+Ahora corre el ejemplo. En la misma terminal, dentro de `~/src/plexe`, ejecuta los siguientes comandos:
+
+```bash
+cd examples/platooning
+plexe_run -u Cmdenv -c Sinusoidal -r 2
+```
+
+**Fuente:** tutorial oficial de Plexe, [*Running the example*](https://plexe.car2x.org/tutorial/#running-the-example).
+
+`-c Sinusoidal -r 2` elige el escenario `Sinusoidal` con el controlador CACC. Según el tutorial, se abre SUMO con una autopista vacía, en `t = 1 s` aparece el pelotón de 8 autos y la simulación se detiene a los 60 s. En el equipo de referencia tardó alrededor de 1 minuto.
+
+**Así debería verse tu terminal** (inicio, abreviado):
+
+```text
+(omnetpp/.venv) victorjaque@DESKTOP-6VI5783:~/src/plexe$ cd examples/platooning
+plexe_run -u Cmdenv -c Sinusoidal -r 2
+OMNeT++ Discrete Event Simulation  (C) 1992-2025 Andras Varga, OpenSim Ltd.
+Version: 6.2.0, build: 250714-83e173e93a, edition: Academic Public License -- NOT FOR COMMERCIAL USE
+...
+Loading NED files from ../../../veins/src/veins:  44
+Loading NED files from ../../src/plexe:  37
+Loading NED files from .:  1
+
+Preparing for running configuration Sinusoidal, run #2...
+Scenario: $nCars=8, $platoonSize=8, $nLanes=1, $ploegH=0.5, $controller=1, $headway=0.1, $leaderHeadway=1.2, $leaderSpeed=100, $beaconInterval=0.1, $priority=4, $packetSize=200, $sController="CACC", $0=5, $1=0, $repetition=0
+...
+Running simulation...
+** Event #0   t=0   Elapsed: 6e-06s (0m 00s)  0% completed  (0% total)
+```
+
+- *Loading NED files* de Veins, de Plexe y del ejemplo indica que OMNeT++ encontró los tres.
+- *Scenario* muestra los parámetros de la corrida: 8 autos, controlador `CACC`.
+
+**Ejemplo real: el inicio de la simulación en el equipo de referencia**
+
+![Terminal con source setenv de OMNeT++ y de Plexe, plexe_run -u Cmdenv -c Sinusoidal -r 2 y el inicio de la simulación, en el equipo de referencia](img/instalacion-paso-7-inicio.png)
+
+**Ejemplo real: la ventana de SUMO durante la simulación en el equipo de referencia**
+
+![Ventana de SUMO 1.22.0 con freeway.sumo.cfg y el pelotón de 8 autos rojos en la autopista, en el equipo de referencia](img/instalacion-paso-7-sumo.png)
+
+!!! note "En el escenario Sinusoidal casi no se nota el movimiento"
+    En este escenario el líder acelera y frena de forma sinusoidal, con una amplitud de 10 km/h en torno a 100 km/h (ver [Primera simulación](primera-simulacion.md)). En el equipo de referencia, en la ventana de SUMO no se notaba bien esa aceleración y ese frenado. En cambio, en el escenario `Braking` (`-c Braking`), donde el líder frena a 8 m/s², sí se ve el frenado del pelotón.
+
+**Así debería verse tu terminal** (final, abreviado):
+
+```text
+...
+** Event #322665   t=60   Elapsed: 61.8753s (1m 01s)  100% completed  (100% total)
+     Speed:     ev/sec=5404.62   simsec/sec=0.987506   ev/simsec=5472.99
+     Messages:  created: 344030   present: 149   in FES: 26
+
+<!> Simulation time limit reached -- at t=60s, event #322665
+
+Calling finish() at end of Run #2...
+
+End.
+```
+
+Terminó bien cuando aparece *Simulation time limit reached -- at t=60s* y después *End.*
+
+Al final, revisa los resultados. En la misma terminal, dentro de `~/src/plexe/examples/platooning`, ejecuta el siguiente comando:
+
+```bash
+ls results
+```
+
+**Fuente:** el tutorial oficial indica que los resultados quedan en la carpeta `results` ([*Running the example*](https://plexe.car2x.org/tutorial/#running-the-example)). El comando [`ls`](https://manpages.ubuntu.com/manpages/noble/man1/ls.1.html) lo agrega este manual para listarlos.
+
+**Así debería verse tu terminal:**
+
+```text
+(omnetpp/.venv) victorjaque@DESKTOP-6VI5783:~/src/plexe/examples/platooning$ ls results
+Sinusoidal_1_0.1_0.sca  Sinusoidal_1_0.1_0.vci  Sinusoidal_1_0.1_0.vec
+```
+
+Deben aparecer tres archivos de resultados de la corrida `Sinusoidal`.
+
+**Ejemplo real: así termina la simulación en el equipo de referencia**
+
+![Final de la simulación con Simulation time limit reached at t=60s, End., y ls results con los archivos .sca, .vci y .vec, en el equipo de referencia](img/instalacion-paso-7-fin.png)
+
+Perfecto: Plexe funciona y la instalación está terminada. Para seguir con el ejemplo completo y graficar sus resultados, pasa a [Primera simulación](primera-simulacion.md).
 
 ---
 
