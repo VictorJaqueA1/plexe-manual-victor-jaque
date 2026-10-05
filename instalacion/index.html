@@ -3293,65 +3293,467 @@
 <p>Con esto, SUMO está instalado y puedes pasar al paso 4.</p>
 <hr />
 <h3 id="paso-4-veins-531">Paso 4: Veins 5.3.1</h3>
-<p>Veins es el puente: sincroniza el reloj de la simulación de red (OMNeT++) con el de la simulación de tráfico (SUMO), y añade la capa de comunicación vehicular sobre la que Plexe construye sus protocolos.</p>
+<p>Ahora vamos a instalar Veins 5.3.1. Primero lo vamos a descargar (paso 4.1) y después lo vamos a compilar (paso 4.2). Antes de empezar, veamos qué es Veins y para qué lo necesitas.</p>
+<p>Hasta aquí instalaste dos simuladores independientes: OMNeT++, que simula redes de comunicación, y SUMO, que simula el tráfico. Veins es lo que los conecta. Mientras corre una simulación, SUMO mueve los vehículos por las calles y OMNeT++ simula los mensajes que esos vehículos se envían entre sí. Los dos simuladores quedan conectados durante toda la simulación y en ambos sentidos: lo que pasa en la red también puede cambiar el tráfico, por ejemplo cuando un vehículo cambia de ruta al recibir un mensaje.</p>
+<p>Además de conectar los dos simuladores, Veins trae los modelos de la comunicación inalámbrica entre vehículos, como el estándar IEEE 802.11p.</p>
+<p>Plexe, que instalarás en el paso 5, se construye sobre Veins: le agrega la conducción en pelotón (<em>platooning</em>), y la comunicación 802.11p que usa es la de Veins. Por eso Veins va antes que Plexe: al compilar Plexe hay que indicarle dónde está la carpeta de Veins.</p>
+<p><strong>Fuente:</strong> <a href="https://veins.car2x.org/">sitio oficial de Veins</a> (sección <em>How does Veins work?</em>) y su página de <a href="https://veins.car2x.org/features/">características</a>; guía oficial de Plexe, <a href="https://plexe.car2x.org/building/#compatibility-notes"><em>Compatibility notes</em></a> y <a href="https://plexe.car2x.org/building/#step-2-install-plexe-and-veins"><em>Step 2</em></a>.</p>
 <h4 id="41-descargar">4.1 Descargar</h4>
-<p>Se puede clonar el repositorio o bajar el ZIP y descomprimirlo en <code>~/src/</code>. La documentación oficial recomienda clonar.</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-66-1"><a id="__codelineno-66-1" name="__codelineno-66-1" href="#__codelineno-66-1"></a><span class="c1"># PENDIENTE: descarga de Veins 5.3.1 (clonar repositorio o bajar ZIP)</span>
+<p>La guía de Plexe ofrece dos formas de bajar Veins 5.3.1: su archivo ZIP o clonar su repositorio con git. Este manual usa git, porque en este trabajo se modifica el código de Veins: git muestra qué cambiaste respecto del original y, según el <a href="https://plexe.car2x.org/faq/">FAQ de Plexe</a>, permite pasar a una versión nueva sin rehacer esos cambios a mano. Además, la carpeta queda como <code>~/src/veins</code>, el nombre que usan los comandos de la guía.</p>
+<p>En una terminal de Ubuntu, nueva o la que ya tengas abierta, ejecuta los siguientes comandos:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-66-1"><a id="__codelineno-66-1" name="__codelineno-66-1" href="#__codelineno-66-1"></a><span class="nb">cd</span><span class="w"> </span>~/src
+</span><span id="__span-66-2"><a id="__codelineno-66-2" name="__codelineno-66-2" href="#__codelineno-66-2"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/sommer/veins.git
 </span></code></pre></div>
+<p><strong>Fuente:</strong> guía oficial de Plexe, <a href="https://plexe.car2x.org/building/#step-2-install-plexe-and-veins"><em>Step 2: Install Plexe and Veins</em></a>, que ofrece clonar Veins desde <a href="https://github.com/sommer/veins/tree/veins-5.3.1">su repositorio en GitHub</a> como alternativa al ZIP, en la carpeta <code>~/src/</code>. El comando no está en la guía: es el uso estándar de <a href="https://git-scm.com/docs/git-clone"><code>git clone</code></a>.</p>
+<p><strong>Así debería verse tu terminal:</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-67-1"><a id="__codelineno-67-1" name="__codelineno-67-1" href="#__codelineno-67-1"></a>victorjaque@DESKTOP-6VI5783:~$ cd ~/src
+</span><span id="__span-67-2"><a id="__codelineno-67-2" name="__codelineno-67-2" href="#__codelineno-67-2"></a>git clone https://github.com/sommer/veins.git
+</span><span id="__span-67-3"><a id="__codelineno-67-3" name="__codelineno-67-3" href="#__codelineno-67-3"></a>Cloning into &#39;veins&#39;...
+</span><span id="__span-67-4"><a id="__codelineno-67-4" name="__codelineno-67-4" href="#__codelineno-67-4"></a>remote: Enumerating objects: 26130, done.
+</span><span id="__span-67-5"><a id="__codelineno-67-5" name="__codelineno-67-5" href="#__codelineno-67-5"></a>remote: Counting objects: 100% (620/620), done.
+</span><span id="__span-67-6"><a id="__codelineno-67-6" name="__codelineno-67-6" href="#__codelineno-67-6"></a>remote: Compressing objects: 100% (222/222), done.
+</span><span id="__span-67-7"><a id="__codelineno-67-7" name="__codelineno-67-7" href="#__codelineno-67-7"></a>remote: Total 26130 (delta 530), reused 398 (delta 398), pack-reused 25510 (from 3)
+</span><span id="__span-67-8"><a id="__codelineno-67-8" name="__codelineno-67-8" href="#__codelineno-67-8"></a>Receiving objects: 100% (26130/26130), 16.66 MiB | 2.65 MiB/s, done.
+</span><span id="__span-67-9"><a id="__codelineno-67-9" name="__codelineno-67-9" href="#__codelineno-67-9"></a>Resolving deltas: 100% (19160/19160), done.
+</span></code></pre></div>
+<ul>
+<li>Terminó bien cuando aparece <code>Resolving deltas: 100% … done.</code> y vuelve la línea que termina en <code>~/src$</code>.</li>
+<li>En el equipo de referencia los dos comandos se pegaron juntos en la terminal; por eso <code>git clone</code> aparece sin <code>victorjaque@...$</code> delante.</li>
+</ul>
+<p><code>git clone</code> deja la versión en desarrollo de Veins, que no es la 5.3.1. En el repositorio, cada versión está marcada con una etiqueta; la de esta versión es <code>veins-5.3.1</code>. Ahora tienes que cambiarte a ella.</p>
+<p>Para eso, en la misma terminal, dentro de <code>~/src</code>, ejecuta los siguientes comandos:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-68-1"><a id="__codelineno-68-1" name="__codelineno-68-1" href="#__codelineno-68-1"></a><span class="nb">cd</span><span class="w"> </span>veins
+</span><span id="__span-68-2"><a id="__codelineno-68-2" name="__codelineno-68-2" href="#__codelineno-68-2"></a>git<span class="w"> </span>checkout<span class="w"> </span>veins-5.3.1
+</span><span id="__span-68-3"><a id="__codelineno-68-3" name="__codelineno-68-3" href="#__codelineno-68-3"></a>git<span class="w"> </span>describe<span class="w"> </span>--tags
+</span></code></pre></div>
+<p><strong>Fuente:</strong> la versión 5.3.1 y su etiqueta son las que enlaza la guía de Plexe (<a href="https://plexe.car2x.org/building/#step-2-install-plexe-and-veins"><em>Step 2</em></a>). Los comandos los agrega este manual: <a href="https://git-scm.com/docs/git-checkout"><code>git checkout</code></a> cambia a esa versión y <a href="https://git-scm.com/docs/git-describe"><code>git describe --tags</code></a> muestra en qué versión quedaste.</p>
+<p><strong>Así debería verse tu terminal</strong> (abreviado):</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-69-1"><a id="__codelineno-69-1" name="__codelineno-69-1" href="#__codelineno-69-1"></a>victorjaque@DESKTOP-6VI5783:~/src$ cd veins
+</span><span id="__span-69-2"><a id="__codelineno-69-2" name="__codelineno-69-2" href="#__codelineno-69-2"></a>git checkout veins-5.3.1
+</span><span id="__span-69-3"><a id="__codelineno-69-3" name="__codelineno-69-3" href="#__codelineno-69-3"></a>git describe --tags
+</span><span id="__span-69-4"><a id="__codelineno-69-4" name="__codelineno-69-4" href="#__codelineno-69-4"></a>Note: switching to &#39;veins-5.3.1&#39;.
+</span><span id="__span-69-5"><a id="__codelineno-69-5" name="__codelineno-69-5" href="#__codelineno-69-5"></a>
+</span><span id="__span-69-6"><a id="__codelineno-69-6" name="__codelineno-69-6" href="#__codelineno-69-6"></a>You are in &#39;detached HEAD&#39; state. You can look around, make experimental
+</span><span id="__span-69-7"><a id="__codelineno-69-7" name="__codelineno-69-7" href="#__codelineno-69-7"></a>...
+</span><span id="__span-69-8"><a id="__codelineno-69-8" name="__codelineno-69-8" href="#__codelineno-69-8"></a>HEAD is now at 6571085f bump version to 5.3.1
+</span><span id="__span-69-9"><a id="__codelineno-69-9" name="__codelineno-69-9" href="#__codelineno-69-9"></a>veins-5.3.1
+</span></code></pre></div>
+<ul>
+<li>El aviso sobre <em>detached HEAD</em> es normal: significa que quedaste fijo en la versión 5.3.1 y no en una rama. No hagas nada de lo que sugiere.</li>
+<li><code>git describe --tags</code> responde <code>veins-5.3.1</code>: quedaste en la versión correcta.</li>
+</ul>
+<p><strong>Ejemplo real: la descarga de Veins y el cambio a la versión 5.3.1 en el equipo de referencia</strong></p>
+<p><img alt="Terminal con git clone de Veins, git checkout veins-5.3.1 y git describe --tags, en el equipo de referencia" src="../img/instalacion-paso-4-git-veins.png" /></p>
 <h4 id="42-compilar">4.2 Compilar</h4>
-<p>Mismo esquema que OMNeT++: configurar y luego construir.</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-67-1"><a id="__codelineno-67-1" name="__codelineno-67-1" href="#__codelineno-67-1"></a><span class="c1"># PENDIENTE: configurar y compilar Veins</span>
+<p>Ahora vamos a compilar Veins, es decir, a traducir el código que descargaste en el paso 4.1 a código que el computador puede ejecutar. El resultado es la biblioteca de Veins, <code>libveins.so</code>: un archivo con todo Veins ya compilado, que Plexe usará al compilarse en el paso 5.</p>
+<p>Igual que OMNeT++ en el paso 2.3, se hace en dos etapas: primero <code>./configure</code> crea el <code>Makefile</code>, el archivo con las instrucciones de compilación, y después <code>make</code> sigue esas instrucciones y compila.</p>
+<p>Antes hay que cargar el entorno de OMNeT++. El <code>./configure</code> de Veins usa <code>opp_makemake</code>, una herramienta de OMNeT++, y la terminal solo la encuentra después de <code>source setenv</code>.</p>
+<p>En una terminal de Ubuntu, nueva o la que ya tengas abierta, ejecuta los siguientes comandos:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-70-1"><a id="__codelineno-70-1" name="__codelineno-70-1" href="#__codelineno-70-1"></a><span class="nb">cd</span><span class="w"> </span>~/src/omnetpp-6.2.0
+</span><span id="__span-70-2"><a id="__codelineno-70-2" name="__codelineno-70-2" href="#__codelineno-70-2"></a><span class="nb">source</span><span class="w"> </span>setenv
 </span></code></pre></div>
-<div class="admonition warning">
-<p class="admonition-title">Requiere el entorno de OMNeT++ cargado</p>
-<p>Este paso <strong>falla</strong> si en la terminal actual no cargaste antes el entorno de OMNeT++ (paso 2.2). Si abriste una terminal nueva desde entonces, vuelve a cargarlo.</p>
+<p><strong>Fuente:</strong> guía oficial de Plexe: <a href="https://plexe.car2x.org/building/#step-1-install-omnet"><em>Step 1</em></a>, con los mismos comandos del paso 2.2, y su sección de macOS, <a href="https://plexe.car2x.org/building/#building-on-apple-processors"><em>Building on Apple processors</em></a>, que indica compilar Veins desde la misma terminal donde se cargó <code>setenv</code>. Que <code>./configure</code> usa <code>opp_makemake</code> está en el <a href="https://github.com/sommer/veins/blob/veins-5.3.1/configure">script <code>configure</code> de Veins 5.3.1</a>.</p>
+<p><strong>Así debería verse tu terminal:</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-71-1"><a id="__codelineno-71-1" name="__codelineno-71-1" href="#__codelineno-71-1"></a>victorjaque@DESKTOP-6VI5783:~$ cd ~/src/omnetpp-6.2.0
+</span><span id="__span-71-2"><a id="__codelineno-71-2" name="__codelineno-71-2" href="#__codelineno-71-2"></a>source setenv
+</span><span id="__span-71-3"><a id="__codelineno-71-3" name="__codelineno-71-3" href="#__codelineno-71-3"></a>Activating python virtual environment in &#39;/home/victorjaque/src/omnetpp-6.2.0/.venv&#39;
+</span><span id="__span-71-4"><a id="__codelineno-71-4" name="__codelineno-71-4" href="#__codelineno-71-4"></a>Environment for &#39;omnetpp-6.2.0&#39; in directory &#39;/home/victorjaque/src/omnetpp-6.2.0&#39; is ready.
+</span></code></pre></div>
+<p><em>Environment for 'omnetpp-6.2.0' … is ready</em> indica que el entorno quedó cargado. Desde aquí, la línea de la terminal empieza con <code>(omnetpp/.venv)</code>.</p>
+<p>Ahora configura Veins. En la misma terminal, ejecuta los siguientes comandos:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-72-1"><a id="__codelineno-72-1" name="__codelineno-72-1" href="#__codelineno-72-1"></a><span class="nb">cd</span><span class="w"> </span>~/src/veins
+</span><span id="__span-72-2"><a id="__codelineno-72-2" name="__codelineno-72-2" href="#__codelineno-72-2"></a>./configure
+</span></code></pre></div>
+<p><strong>Fuente:</strong> guía oficial de Plexe, <a href="https://plexe.car2x.org/building/#step-2-install-plexe-and-veins"><em>Step 2: Install Plexe and Veins</em></a>.</p>
+<p><strong>Así debería verse tu terminal:</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-73-1"><a id="__codelineno-73-1" name="__codelineno-73-1" href="#__codelineno-73-1"></a>(omnetpp/.venv) victorjaque@DESKTOP-6VI5783:~/src/omnetpp-6.2.0$ cd ~/src/veins
+</span><span id="__span-73-2"><a id="__codelineno-73-2" name="__codelineno-73-2" href="#__codelineno-73-2"></a>./configure
+</span><span id="__span-73-3"><a id="__codelineno-73-3" name="__codelineno-73-3" href="#__codelineno-73-3"></a>Creating Makefile in /home/victorjaque/src/veins/src...
+</span></code></pre></div>
+<p>Es la única línea que muestra <code>./configure</code>: indica que creó el <code>Makefile</code> en la carpeta <code>src</code> de Veins.</p>
+<p>Ahora compila. En la misma terminal, dentro de <code>~/src/veins</code>, ejecuta el siguiente comando:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-74-1"><a id="__codelineno-74-1" name="__codelineno-74-1" href="#__codelineno-74-1"></a>make<span class="w"> </span>-j<span class="k">$(</span>nproc<span class="k">)</span>
+</span></code></pre></div>
+<p><strong>Fuente:</strong> guía oficial de Plexe, <a href="https://plexe.car2x.org/building/#step-2-install-plexe-and-veins"><em>Step 2</em></a>, que indica <code>make -j &lt;number of cores of your PC&gt;</code>. El <code>$(nproc)</code> lo agrega este manual, igual que en el paso 2.3.2: escribe solo la cantidad de núcleos (28 en el equipo de referencia).</p>
+<p><strong>Así debería verse tu terminal</strong> (inicio y final, abreviado):</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-75-1"><a id="__codelineno-75-1" name="__codelineno-75-1" href="#__codelineno-75-1"></a>(omnetpp/.venv) victorjaque@DESKTOP-6VI5783:~/src/veins$ make -j$(nproc)
+</span><span id="__span-75-2"><a id="__codelineno-75-2" name="__codelineno-75-2" href="#__codelineno-75-2"></a>Creating script &quot;bin/veins_run&quot;
+</span><span id="__span-75-3"><a id="__codelineno-75-3" name="__codelineno-75-3" href="#__codelineno-75-3"></a>make[1]: Entering directory &#39;/home/victorjaque/src/veins/src&#39;
+</span><span id="__span-75-4"><a id="__codelineno-75-4" name="__codelineno-75-4" href="#__codelineno-75-4"></a>MSGC: veins/base/messages/AirFrame.msg
+</span><span id="__span-75-5"><a id="__codelineno-75-5" name="__codelineno-75-5" href="#__codelineno-75-5"></a>MSGC: veins/common.msg
+</span><span id="__span-75-6"><a id="__codelineno-75-6" name="__codelineno-75-6" href="#__codelineno-75-6"></a>...
+</span><span id="__span-75-7"><a id="__codelineno-75-7" name="__codelineno-75-7" href="#__codelineno-75-7"></a>veins/modules/mac/ieee80211p/Mac1609_4.cc:529:69: warning: format specifies type &#39;int&#39; but the argument has type &#39;Channel&#39; [-Wformat]
+</span><span id="__span-75-8"><a id="__codelineno-75-8" name="__codelineno-75-8" href="#__codelineno-75-8"></a>  529 |         throw cRuntimeError(&quot;This Service Channel doesnt exit: %d&quot;, cN);
+</span><span id="__span-75-9"><a id="__codelineno-75-9" name="__codelineno-75-9" href="#__codelineno-75-9"></a>...
+</span><span id="__span-75-10"><a id="__codelineno-75-10" name="__codelineno-75-10" href="#__codelineno-75-10"></a>1 warning generated.
+</span><span id="__span-75-11"><a id="__codelineno-75-11" name="__codelineno-75-11" href="#__codelineno-75-11"></a>...
+</span><span id="__span-75-12"><a id="__codelineno-75-12" name="__codelineno-75-12" href="#__codelineno-75-12"></a>veins/modules/messages/TraCITrafficLightMessage_m.cc
+</span><span id="__span-75-13"><a id="__codelineno-75-13" name="__codelineno-75-13" href="#__codelineno-75-13"></a>Creating shared library: ../out/clang-debug/src/libveins_dbg.so
+</span><span id="__span-75-14"><a id="__codelineno-75-14" name="__codelineno-75-14" href="#__codelineno-75-14"></a>make[1]: Leaving directory &#39;/home/victorjaque/src/veins/src&#39;
+</span><span id="__span-75-15"><a id="__codelineno-75-15" name="__codelineno-75-15" href="#__codelineno-75-15"></a>(omnetpp/.venv) victorjaque@DESKTOP-6VI5783:~/src/veins$
+</span></code></pre></div>
+<ul>
+<li>Terminó bien cuando aparece <em>Creating shared library</em> y vuelve la línea que termina en <code>~/src/veins$</code>.</li>
+<li>Compila dos veces, igual que OMNeT++: primero en modo <em>release</em> y después en modo <em>debug</em>, como indica el <a href="https://github.com/sommer/veins/blob/veins-5.3.1/Makefile"><code>Makefile</code> de Veins</a>. Por eso quedan dos bibliotecas en <code>~/src/veins/src</code>: <code>libveins.so</code> y <code>libveins_dbg.so</code>.</li>
+<li>En el equipo de referencia tardó unos 15 segundos.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Aviso: format specifies type 'int' but the argument has type 'Channel'</p>
+<p>En el equipo de referencia, <code>make</code> mostró este aviso (<em>warning</em>) en el archivo <code>Mac1609_4.cc</code> de Veins, línea 529. El compilador avisa que esa línea usa <code>%d</code>, que espera un número entero (<code>int</code>), con un valor de tipo <code>Channel</code>. Es un aviso, no un error: la compilación siguió y terminó bien. No hay que hacer nada.</p>
 </div>
+<p><strong>Ejemplo real: la carga del entorno, <code>./configure</code> y el inicio de <code>make</code> en el equipo de referencia</strong></p>
+<p><img alt="Terminal con cd y source setenv, cd ~/src/veins y ./configure, e inicio de make -j$(nproc) con líneas MSGC, en el equipo de referencia" src="../img/instalacion-paso-4-make-inicio.png" /></p>
+<p><strong>Ejemplo real: así termina <code>make</code> en el equipo de referencia</strong></p>
+<p><img alt="Final de make en ~/src/veins, con el aviso de Mac1609_4.cc y Creating shared library libveins_dbg.so, en el equipo de referencia" src="../img/instalacion-paso-4-make-fin.png" /></p>
+<p>Con esto, Veins está instalado y puedes pasar al paso 5.</p>
 <hr />
 <h3 id="paso-5-plexe-32">Paso 5: Plexe 3.2</h3>
-<p>Plexe es la capa que agrega el <em>platooning</em>: los controladores longitudinales cooperativos, los protocolos de coordinación y las maniobras.</p>
+<p>Ahora vamos a instalar <a href="https://plexe.car2x.org/">Plexe</a> 3.2, que agrega la simulación de pelotones de vehículos (<em>platooning</em>) sobre SUMO y Veins. Primero lo vamos a descargar (paso 5.1) y después lo vamos a compilar (paso 5.2).</p>
 <h4 id="51-descargar">5.1 Descargar</h4>
-<p>Igual que Veins: clonar el repositorio o bajar el ZIP en <code>~/src/</code>. El repositorio es único y las versiones se distinguen mediante etiquetas, así que hay que apuntar a la etiqueta de la versión 3.2.</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-68-1"><a id="__codelineno-68-1" name="__codelineno-68-1" href="#__codelineno-68-1"></a><span class="c1"># PENDIENTE: descarga de Plexe 3.2 (clonar en la etiqueta plexe-3.2 o bajar ZIP)</span>
+<p>Plexe se baja con git, igual que Veins en el paso 4.1. La página de descargas de Plexe también ofrece un ZIP, pero no lo recomienda (<em>not recommended</em>).</p>
+<p>En una terminal de Ubuntu, nueva o la que ya tengas abierta, ejecuta los siguientes comandos:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-76-1"><a id="__codelineno-76-1" name="__codelineno-76-1" href="#__codelineno-76-1"></a><span class="nb">cd</span><span class="w"> </span>~/src
+</span><span id="__span-76-2"><a id="__codelineno-76-2" name="__codelineno-76-2" href="#__codelineno-76-2"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/michele-segata/plexe.git
 </span></code></pre></div>
+<p><strong>Fuente:</strong> página oficial de descargas de Plexe, <a href="https://plexe.car2x.org/download/#through-the-git-repositories"><em>Through the git repositories</em></a>. Son sus mismos dos comandos.</p>
+<p><strong>Así debería verse tu terminal:</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-77-1"><a id="__codelineno-77-1" name="__codelineno-77-1" href="#__codelineno-77-1"></a>victorjaque@DESKTOP-6VI5783:~$ cd ~/src
+</span><span id="__span-77-2"><a id="__codelineno-77-2" name="__codelineno-77-2" href="#__codelineno-77-2"></a>git clone https://github.com/michele-segata/plexe.git
+</span><span id="__span-77-3"><a id="__codelineno-77-3" name="__codelineno-77-3" href="#__codelineno-77-3"></a>Cloning into &#39;plexe&#39;...
+</span><span id="__span-77-4"><a id="__codelineno-77-4" name="__codelineno-77-4" href="#__codelineno-77-4"></a>remote: Enumerating objects: 30656, done.
+</span><span id="__span-77-5"><a id="__codelineno-77-5" name="__codelineno-77-5" href="#__codelineno-77-5"></a>remote: Counting objects: 100% (1057/1057), done.
+</span><span id="__span-77-6"><a id="__codelineno-77-6" name="__codelineno-77-6" href="#__codelineno-77-6"></a>remote: Compressing objects: 100% (457/457), done.
+</span><span id="__span-77-7"><a id="__codelineno-77-7" name="__codelineno-77-7" href="#__codelineno-77-7"></a>remote: Total 30656 (delta 820), reused 694 (delta 587), pack-reused 29599 (from 2)
+</span><span id="__span-77-8"><a id="__codelineno-77-8" name="__codelineno-77-8" href="#__codelineno-77-8"></a>Receiving objects: 100% (30656/30656), 17.74 MiB | 6.24 MiB/s, done.
+</span><span id="__span-77-9"><a id="__codelineno-77-9" name="__codelineno-77-9" href="#__codelineno-77-9"></a>Resolving deltas: 100% (22968/22968), done.
+</span></code></pre></div>
+<p>Terminó bien cuando aparece <code>Resolving deltas: 100% … done.</code> y vuelve la línea que termina en <code>~/src$</code>.</p>
+<p><code>git clone</code> deja la última versión del repositorio. Para quedar fijo en la 3.2, cámbiate a su etiqueta, <code>plexe-3.2</code>.</p>
+<p>En la misma terminal, dentro de <code>~/src</code>, ejecuta los siguientes comandos:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-78-1"><a id="__codelineno-78-1" name="__codelineno-78-1" href="#__codelineno-78-1"></a><span class="nb">cd</span><span class="w"> </span>plexe
+</span><span id="__span-78-2"><a id="__codelineno-78-2" name="__codelineno-78-2" href="#__codelineno-78-2"></a>git<span class="w"> </span>checkout<span class="w"> </span>plexe-3.2
+</span><span id="__span-78-3"><a id="__codelineno-78-3" name="__codelineno-78-3" href="#__codelineno-78-3"></a>git<span class="w"> </span>describe<span class="w"> </span>--tags
+</span></code></pre></div>
+<p><strong>Fuente:</strong> la etiqueta <code>plexe-3.2</code> la indica la página oficial de descargas de Plexe (<a href="https://plexe.car2x.org/download/#through-the-git-repositories"><em>Through the git repositories</em></a>). Los comandos los agrega este manual, como en el paso 4.1 (<a href="https://git-scm.com/docs/git-checkout"><code>git checkout</code></a>, <a href="https://git-scm.com/docs/git-describe"><code>git describe</code></a>).</p>
+<p><strong>Así debería verse tu terminal</strong> (abreviado):</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-79-1"><a id="__codelineno-79-1" name="__codelineno-79-1" href="#__codelineno-79-1"></a>victorjaque@DESKTOP-6VI5783:~/src$ cd plexe
+</span><span id="__span-79-2"><a id="__codelineno-79-2" name="__codelineno-79-2" href="#__codelineno-79-2"></a>git checkout plexe-3.2
+</span><span id="__span-79-3"><a id="__codelineno-79-3" name="__codelineno-79-3" href="#__codelineno-79-3"></a>git describe --tags
+</span><span id="__span-79-4"><a id="__codelineno-79-4" name="__codelineno-79-4" href="#__codelineno-79-4"></a>Note: switching to &#39;plexe-3.2&#39;.
+</span><span id="__span-79-5"><a id="__codelineno-79-5" name="__codelineno-79-5" href="#__codelineno-79-5"></a>
+</span><span id="__span-79-6"><a id="__codelineno-79-6" name="__codelineno-79-6" href="#__codelineno-79-6"></a>You are in &#39;detached HEAD&#39; state. You can look around, make experimental
+</span><span id="__span-79-7"><a id="__codelineno-79-7" name="__codelineno-79-7" href="#__codelineno-79-7"></a>...
+</span><span id="__span-79-8"><a id="__codelineno-79-8" name="__codelineno-79-8" href="#__codelineno-79-8"></a>HEAD is now at c2d70aff bump to 3.2
+</span><span id="__span-79-9"><a id="__codelineno-79-9" name="__codelineno-79-9" href="#__codelineno-79-9"></a>plexe-3.2
+</span></code></pre></div>
+<p>El aviso sobre <em>detached HEAD</em> es normal, como en el paso 4.1. La última línea, <code>plexe-3.2</code>, confirma la versión.</p>
+<p><strong>Ejemplo real: la descarga de Plexe y el cambio a la versión 3.2 en el equipo de referencia</strong></p>
+<p><img alt="Terminal con git clone de Plexe, git checkout plexe-3.2 y git describe --tags, en el equipo de referencia" src="../img/instalacion-paso-5-git-plexe.png" /></p>
 <h4 id="52-compilar">5.2 Compilar</h4>
-<p>Aquí aparece la única particularidad del proceso: al configurar Plexe hay que <strong>indicarle explícitamente dónde está la carpeta de Veins</strong> que acabas de construir. Es una ruta relativa desde la carpeta de Plexe.</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-69-1"><a id="__codelineno-69-1" name="__codelineno-69-1" href="#__codelineno-69-1"></a><span class="c1"># PENDIENTE: configurar Plexe indicando la ruta de Veins, y compilar</span>
+<p>Ahora vamos a compilar Plexe, igual que Veins en el paso 4.2: con el entorno de OMNeT++ cargado, primero <code>./configure</code> y después <code>make</code>. La única diferencia es que a <code>./configure</code> hay que indicarle dónde está Veins (<code>--with-veins=../veins</code>), porque Plexe se compila enlazado a Veins.</p>
+<p>En la misma terminal, ejecuta los siguientes comandos:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-80-1"><a id="__codelineno-80-1" name="__codelineno-80-1" href="#__codelineno-80-1"></a><span class="nb">cd</span><span class="w"> </span>~/src/omnetpp-6.2.0
+</span><span id="__span-80-2"><a id="__codelineno-80-2" name="__codelineno-80-2" href="#__codelineno-80-2"></a><span class="nb">source</span><span class="w"> </span>setenv
 </span></code></pre></div>
-<div class="admonition warning">
-<p class="admonition-title">La causa más común de fallo en este paso</p>
-<p>Si la ruta de Veins que le pasas no existe o apunta a una carpeta que no está compilada, la configuración falla. Verifica el nombre real de tu carpeta de Veins antes de ejecutar el comando: debe coincidir exactamente con lo que escribes.</p>
-</div>
+<p><strong>Fuente:</strong> guía oficial de Plexe, <a href="https://plexe.car2x.org/building/#step-1-install-omnet"><em>Step 1</em></a>, como en el paso 4.2.</p>
+<p>La salida es la misma del paso 4.2.</p>
+<p>En la misma terminal, ejecuta los siguientes comandos:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-81-1"><a id="__codelineno-81-1" name="__codelineno-81-1" href="#__codelineno-81-1"></a><span class="nb">cd</span><span class="w"> </span>~/src/plexe
+</span><span id="__span-81-2"><a id="__codelineno-81-2" name="__codelineno-81-2" href="#__codelineno-81-2"></a>./configure<span class="w"> </span>--with-veins<span class="o">=</span>../veins
+</span></code></pre></div>
+<p><strong>Fuente:</strong> guía oficial de Plexe, <a href="https://plexe.car2x.org/building/#step-2-install-plexe-and-veins"><em>Step 2: Install Plexe and Veins</em></a>.</p>
+<p><strong>Así debería verse tu terminal:</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-82-1"><a id="__codelineno-82-1" name="__codelineno-82-1" href="#__codelineno-82-1"></a>(omnetpp/.venv) victorjaque@DESKTOP-6VI5783:~/src/omnetpp-6.2.0$ cd ~/src/plexe
+</span><span id="__span-82-2"><a id="__codelineno-82-2" name="__codelineno-82-2" href="#__codelineno-82-2"></a>./configure --with-veins=../veins
+</span><span id="__span-82-3"><a id="__codelineno-82-3" name="__codelineno-82-3" href="#__codelineno-82-3"></a>Determining Veins version.
+</span><span id="__span-82-4"><a id="__codelineno-82-4" name="__codelineno-82-4" href="#__codelineno-82-4"></a>Found Veins version 5.3.1. Okay.
+</span><span id="__span-82-5"><a id="__codelineno-82-5" name="__codelineno-82-5" href="#__codelineno-82-5"></a>Creating Makefile in /home/victorjaque/src/plexe/src...
+</span><span id="__span-82-6"><a id="__codelineno-82-6" name="__codelineno-82-6" href="#__codelineno-82-6"></a>
+</span><span id="__span-82-7"><a id="__codelineno-82-7" name="__codelineno-82-7" href="#__codelineno-82-7"></a>Configure done. You can now run &#39;make&#39;.
+</span></code></pre></div>
+<p><em>Found Veins version 5.3.1. Okay.</em> indica que encontró Veins, y <em>Configure done</em> que la configuración terminó bien.</p>
+<p><strong>Ejemplo real: la carga del entorno y <code>./configure</code> en el equipo de referencia</strong></p>
+<p><img alt="Terminal con cd y source setenv, cd ~/src/plexe y ./configure --with-veins=../veins, con Found Veins version 5.3.1 y Configure done, en el equipo de referencia" src="../img/instalacion-paso-5-configure.png" /></p>
+<p>En la misma terminal, dentro de <code>~/src/plexe</code>, ejecuta el siguiente comando:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-83-1"><a id="__codelineno-83-1" name="__codelineno-83-1" href="#__codelineno-83-1"></a>make<span class="w"> </span>-j<span class="k">$(</span>nproc<span class="k">)</span>
+</span></code></pre></div>
+<p><strong>Fuente:</strong> guía oficial de Plexe, <a href="https://plexe.car2x.org/building/#step-2-install-plexe-and-veins"><em>Step 2</em></a>. El <code>$(nproc)</code> lo agrega este manual, como en el paso 4.2.</p>
+<p><strong>Así debería verse tu terminal</strong> (inicio y final, abreviado):</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-84-1"><a id="__codelineno-84-1" name="__codelineno-84-1" href="#__codelineno-84-1"></a>(omnetpp/.venv) victorjaque@DESKTOP-6VI5783:~/src/plexe$ make -j$(nproc)
+</span><span id="__span-84-2"><a id="__codelineno-84-2" name="__codelineno-84-2" href="#__codelineno-84-2"></a>Creating script &quot;bin/plexe_run&quot;
+</span><span id="__span-84-3"><a id="__codelineno-84-3" name="__codelineno-84-3" href="#__codelineno-84-3"></a>make[1]: Entering directory &#39;/home/victorjaque/src/plexe/src&#39;
+</span><span id="__span-84-4"><a id="__codelineno-84-4" name="__codelineno-84-4" href="#__codelineno-84-4"></a>MSGC: plexe/messages/HelloPlexeMsg.msg
+</span><span id="__span-84-5"><a id="__codelineno-84-5" name="__codelineno-84-5" href="#__codelineno-84-5"></a>MSGC: plexe/messages/InterferingBeacon.msg
+</span><span id="__span-84-6"><a id="__codelineno-84-6" name="__codelineno-84-6" href="#__codelineno-84-6"></a>...
+</span><span id="__span-84-7"><a id="__codelineno-84-7" name="__codelineno-84-7" href="#__codelineno-84-7"></a>plexe/messages/UpdatePlatoonFormationAck_m.cc
+</span><span id="__span-84-8"><a id="__codelineno-84-8" name="__codelineno-84-8" href="#__codelineno-84-8"></a>Creating shared library: ../out/clang-debug/src/libplexe_dbg.so
+</span><span id="__span-84-9"><a id="__codelineno-84-9" name="__codelineno-84-9" href="#__codelineno-84-9"></a>make[1]: Leaving directory &#39;/home/victorjaque/src/plexe/src&#39;
+</span><span id="__span-84-10"><a id="__codelineno-84-10" name="__codelineno-84-10" href="#__codelineno-84-10"></a>(omnetpp/.venv) victorjaque@DESKTOP-6VI5783:~/src/plexe$
+</span></code></pre></div>
+<p>Terminó bien cuando aparece <em>Creating shared library</em> y vuelve la línea que termina en <code>~/src/plexe$</code>. Igual que Veins, compila en <em>release</em> y en <em>debug</em>: quedan <code>libplexe.so</code> y <code>libplexe_dbg.so</code> en <code>~/src/plexe/src</code>. En el equipo de referencia tardó unos 8 segundos.</p>
+<p><strong>Ejemplo real: así empieza <code>make</code> en el equipo de referencia</strong></p>
+<p><img alt="Inicio de make -j$(nproc) en ~/src/plexe, con Creating script bin/plexe_run y líneas MSGC, en el equipo de referencia" src="../img/instalacion-paso-5-make-inicio.png" /></p>
+<p><strong>Ejemplo real: así termina <code>make</code> en el equipo de referencia</strong></p>
+<p><img alt="Final de make en ~/src/plexe, con Creating shared library libplexe_dbg.so, en el equipo de referencia" src="../img/instalacion-paso-5-make-fin.png" /></p>
+<p>Con esto, Plexe está instalado y puedes pasar al paso 6.</p>
 <hr />
 <h3 id="paso-6-r-y-python">Paso 6: R y Python</h3>
-<p>Estas herramientas no participan en la simulación. Sirven para <strong>extraer y graficar los resultados</strong> que la simulación produce. Puedes correr Plexe sin ellas, pero no podrás analizar nada de lo que genere.</p>
-<p>OMNeT++ 6 eliminó su complemento de R, así que la extracción de datos hoy funciona con una combinación de scripts de R y de Python.</p>
+<p>Ahora vamos a preparar R y Python, que sirven para extraer y graficar los resultados de las simulaciones. OMNeT++ 6 eliminó su complemento de R, así que los scripts de Plexe para extraer los datos usan una mezcla de R y Python.</p>
+<p><strong>Fuente:</strong> guía oficial de Plexe, <a href="https://plexe.car2x.org/building/#step-4-setup-up-r-and-python"><em>Step 4: Setup up R and Python</em></a>.</p>
 <h4 id="61-librerias-de-r">6.1 Librerías de R</h4>
-<p>Se instalan desde la consola de R.</p>
-<div class="language-r highlight"><pre><span></span><code><span id="__span-70-1"><a id="__codelineno-70-1" name="__codelineno-70-1" href="#__codelineno-70-1"></a><span class="c1"># PENDIENTE: instalación de las librerías de R para gráficos y manejo de datos</span>
+<p>Ahora vamos a instalar dos librerías de R: <code>ggplot2</code> y <code>data.table</code>. R ya quedó instalado en el paso 1.2 (paquete <code>r-base</code>).</p>
+<p>En una terminal de Ubuntu, nueva o la que ya tengas abierta, ejecuta el siguiente comando para abrir la consola de R:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-85-1"><a id="__codelineno-85-1" name="__codelineno-85-1" href="#__codelineno-85-1"></a>R
 </span></code></pre></div>
+<p>Dentro de la consola de R, donde la línea empieza con <code>&gt;</code>, ejecuta:</p>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-86-1"><a id="__codelineno-86-1" name="__codelineno-86-1" href="#__codelineno-86-1"></a><span class="nf">install.packages</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s">&#39;ggplot2&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;data.table&#39;</span><span class="p">))</span>
+</span></code></pre></div>
+<p><strong>Fuente:</strong> guía oficial de Plexe, <a href="https://plexe.car2x.org/building/#step-4-setup-up-r-and-python"><em>Step 4: Setup up R and Python</em></a>.</p>
+<p>R hace dos preguntas. Responde <code>yes</code> a las dos:</p>
+<ul>
+<li><em>Would you like to use a personal library instead?</em>: R no puede escribir en la carpeta del sistema y ofrece usar una carpeta tuya.</li>
+<li><em>Would you like to create a personal library … to install packages into?</em>: crea esa carpeta, <code>~/R/x86_64-pc-linux-gnu-library/4.3</code>.</li>
+</ul>
+<p>La guía dice que R también pide elegir un <em>mirror</em>, es decir, el servidor desde donde descarga. En el equipo de referencia no lo pidió: descargó directamente desde <code>cloud.r-project.org</code>.</p>
+<p><strong>Así debería verse tu terminal</strong> (inicio y final, abreviado):</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-87-1"><a id="__codelineno-87-1" name="__codelineno-87-1" href="#__codelineno-87-1"></a>&gt; install.packages(c(&#39;ggplot2&#39;, &#39;data.table&#39;))
+</span><span id="__span-87-2"><a id="__codelineno-87-2" name="__codelineno-87-2" href="#__codelineno-87-2"></a>Installing packages into ‘/usr/local/lib/R/site-library’
+</span><span id="__span-87-3"><a id="__codelineno-87-3" name="__codelineno-87-3" href="#__codelineno-87-3"></a>(as ‘lib’ is unspecified)
+</span><span id="__span-87-4"><a id="__codelineno-87-4" name="__codelineno-87-4" href="#__codelineno-87-4"></a>Warning in install.packages(c(&quot;ggplot2&quot;, &quot;data.table&quot;)) :
+</span><span id="__span-87-5"><a id="__codelineno-87-5" name="__codelineno-87-5" href="#__codelineno-87-5"></a>  &#39;lib = &quot;/usr/local/lib/R/site-library&quot;&#39; is not writable
+</span><span id="__span-87-6"><a id="__codelineno-87-6" name="__codelineno-87-6" href="#__codelineno-87-6"></a>Would you like to use a personal library instead? (yes/No/cancel) yes
+</span><span id="__span-87-7"><a id="__codelineno-87-7" name="__codelineno-87-7" href="#__codelineno-87-7"></a>Would you like to create a personal library
+</span><span id="__span-87-8"><a id="__codelineno-87-8" name="__codelineno-87-8" href="#__codelineno-87-8"></a>‘/home/victorjaque/R/x86_64-pc-linux-gnu-library/4.3’
+</span><span id="__span-87-9"><a id="__codelineno-87-9" name="__codelineno-87-9" href="#__codelineno-87-9"></a>to install packages into? (yes/No/cancel) yes
+</span><span id="__span-87-10"><a id="__codelineno-87-10" name="__codelineno-87-10" href="#__codelineno-87-10"></a>also installing the dependencies ‘glue’, ‘cpp11’, ‘farver’, ‘labeling’, ‘R6’, ‘RColorBrewer’, ‘viridisLite’, ‘cli’, ‘gtable’, ‘isoband’, ‘lifecycle’, ‘rlang’, ‘S7’, ‘scales’, ‘vctrs’, ‘withr’
+</span><span id="__span-87-11"><a id="__codelineno-87-11" name="__codelineno-87-11" href="#__codelineno-87-11"></a>
+</span><span id="__span-87-12"><a id="__codelineno-87-12" name="__codelineno-87-12" href="#__codelineno-87-12"></a>trying URL &#39;https://cloud.r-project.org/src/contrib/glue_1.8.1.tar.gz&#39;
+</span><span id="__span-87-13"><a id="__codelineno-87-13" name="__codelineno-87-13" href="#__codelineno-87-13"></a>...
+</span><span id="__span-87-14"><a id="__codelineno-87-14" name="__codelineno-87-14" href="#__codelineno-87-14"></a>* DONE (ggplot2)
+</span><span id="__span-87-15"><a id="__codelineno-87-15" name="__codelineno-87-15" href="#__codelineno-87-15"></a>
+</span><span id="__span-87-16"><a id="__codelineno-87-16" name="__codelineno-87-16" href="#__codelineno-87-16"></a>The downloaded source packages are in
+</span><span id="__span-87-17"><a id="__codelineno-87-17" name="__codelineno-87-17" href="#__codelineno-87-17"></a>        ‘/tmp/RtmpJGQekE/downloaded_packages’
+</span><span id="__span-87-18"><a id="__codelineno-87-18" name="__codelineno-87-18" href="#__codelineno-87-18"></a>&gt; q()
+</span><span id="__span-87-19"><a id="__codelineno-87-19" name="__codelineno-87-19" href="#__codelineno-87-19"></a>Save workspace image? [y/n/c]: n
+</span><span id="__span-87-20"><a id="__codelineno-87-20" name="__codelineno-87-20" href="#__codelineno-87-20"></a>victorjaque@DESKTOP-6VI5783:~$
+</span></code></pre></div>
+<ul>
+<li>El <em>Warning … is not writable</em> es normal: por eso R ofrece la carpeta personal.</li>
+<li>Terminó bien cuando aparece <code>* DONE (ggplot2)</code> y vuelve el <code>&gt;</code>.</li>
+<li>Para salir de R, escribe <code>q()</code> y responde <code>n</code> cuando pregunte <em>Save workspace image?</em>.</li>
+</ul>
+<p><strong>Ejemplo real: el inicio de la instalación en el equipo de referencia</strong></p>
+<p><img alt="Consola de R con install.packages, las dos preguntas respondidas con yes y el inicio de la descarga, en el equipo de referencia" src="../img/instalacion-paso-6-r-inicio.png" /></p>
+<p><strong>Ejemplo real: así termina la instalación en el equipo de referencia</strong></p>
+<p><img alt="Final de install.packages con DONE (ggplot2), y salida de R con q(), en el equipo de referencia" src="../img/instalacion-paso-6-r-fin.png" /></p>
 <h4 id="62-paquete-de-lectura-de-resultados-de-omnet">6.2 Paquete de lectura de resultados de OMNeT++</h4>
-<p>Este es un paso que suele pasarse por alto, y sin él los scripts de extracción no funcionan: hay que instalar un paquete específico que permite a R leer los archivos de resultados que genera OMNeT++. Se baja como archivo comprimido, <strong>sin descomprimirlo</strong>, y se instala desde la consola de R apuntando al archivo local.</p>
-<div class="language-r highlight"><pre><span></span><code><span id="__span-71-1"><a id="__codelineno-71-1" name="__codelineno-71-1" href="#__codelineno-71-1"></a><span class="c1"># PENDIENTE: instalación del paquete de lectura de resultados de OMNeT++ en R</span>
+<p>Ahora vamos a instalar el paquete <code>omnetpp</code> de R, que permite a R leer los archivos de resultados de OMNeT++. La guía lo enlaza como archivo comprimido y pide <strong>no descomprimirlo</strong>.</p>
+<p>Primero descárgalo. En una terminal de Ubuntu, nueva o la que ya tengas abierta, ejecuta los siguientes comandos:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-88-1"><a id="__codelineno-88-1" name="__codelineno-88-1" href="#__codelineno-88-1"></a><span class="nb">cd</span><span class="w"> </span>~/src
+</span><span id="__span-88-2"><a id="__codelineno-88-2" name="__codelineno-88-2" href="#__codelineno-88-2"></a>wget<span class="w"> </span>http://plexe.car2x.org/download/omnetpp_0.7-1.tar.gz
 </span></code></pre></div>
-<div class="admonition note">
-<p class="admonition-title">Error de compilación con compiladores modernos</p>
-<p>Al instalar este paquete puede aparecer un error de compilación relacionado con una función eliminada de la biblioteca estándar de C++. Se resuelve indicando a R que compile con un estándar de C++ anterior, mediante una línea en el archivo de configuración de compilación de R.</p>
+<p><strong>Fuente:</strong> guía oficial de Plexe, <a href="https://plexe.car2x.org/building/#step-4-setup-up-r-and-python"><em>Step 4: Setup up R and Python</em></a>, que enlaza el archivo. El <code>wget</code> lo agrega este manual para descargarlo desde la terminal.</p>
+<p><strong>Así debería verse tu terminal:</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-89-1"><a id="__codelineno-89-1" name="__codelineno-89-1" href="#__codelineno-89-1"></a>victorjaque@DESKTOP-6VI5783:~$ cd ~/src
+</span><span id="__span-89-2"><a id="__codelineno-89-2" name="__codelineno-89-2" href="#__codelineno-89-2"></a>wget http://plexe.car2x.org/download/omnetpp_0.7-1.tar.gz
+</span><span id="__span-89-3"><a id="__codelineno-89-3" name="__codelineno-89-3" href="#__codelineno-89-3"></a>--2026-10-05 14:49:56--  http://plexe.car2x.org/download/omnetpp_0.7-1.tar.gz
+</span><span id="__span-89-4"><a id="__codelineno-89-4" name="__codelineno-89-4" href="#__codelineno-89-4"></a>Resolving plexe.car2x.org (plexe.car2x.org)... 141.76.82.12
+</span><span id="__span-89-5"><a id="__codelineno-89-5" name="__codelineno-89-5" href="#__codelineno-89-5"></a>Connecting to plexe.car2x.org (plexe.car2x.org)|141.76.82.12|:80... connected.
+</span><span id="__span-89-6"><a id="__codelineno-89-6" name="__codelineno-89-6" href="#__codelineno-89-6"></a>HTTP request sent, awaiting response... 200 OK
+</span><span id="__span-89-7"><a id="__codelineno-89-7" name="__codelineno-89-7" href="#__codelineno-89-7"></a>Length: 295715 (289K) [application/x-gzip]
+</span><span id="__span-89-8"><a id="__codelineno-89-8" name="__codelineno-89-8" href="#__codelineno-89-8"></a>Saving to: ‘omnetpp_0.7-1.tar.gz’
+</span><span id="__span-89-9"><a id="__codelineno-89-9" name="__codelineno-89-9" href="#__codelineno-89-9"></a>
+</span><span id="__span-89-10"><a id="__codelineno-89-10" name="__codelineno-89-10" href="#__codelineno-89-10"></a>omnetpp_0.7-1.tar.gz    100%[==============================&gt;] 288.78K   336KB/s    in 0.9s
+</span><span id="__span-89-11"><a id="__codelineno-89-11" name="__codelineno-89-11" href="#__codelineno-89-11"></a>
+</span><span id="__span-89-12"><a id="__codelineno-89-12" name="__codelineno-89-12" href="#__codelineno-89-12"></a>2026-10-05 14:49:58 (336 KB/s) - ‘omnetpp_0.7-1.tar.gz’ saved [295715/295715]
+</span></code></pre></div>
+<p>Terminó bien cuando aparece <em>saved</em>: el archivo quedó en <code>~/src</code>.</p>
+<p>Ahora instálalo. En la misma terminal, dentro de <code>~/src</code>, abre R:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-90-1"><a id="__codelineno-90-1" name="__codelineno-90-1" href="#__codelineno-90-1"></a>R
+</span></code></pre></div>
+<p>Dentro de la consola de R, ejecuta:</p>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-91-1"><a id="__codelineno-91-1" name="__codelineno-91-1" href="#__codelineno-91-1"></a><span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;omnetpp_0.7-1.tar.gz&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">repos</span><span class="o">=</span><span class="kc">NULL</span><span class="p">)</span>
+</span></code></pre></div>
+<p><strong>Fuente:</strong> guía oficial de Plexe, <a href="https://plexe.car2x.org/building/#step-4-setup-up-r-and-python"><em>Step 4: Setup up R and Python</em></a>.</p>
+<p><strong>Ejemplo real: la descarga y el inicio de la instalación en el equipo de referencia</strong></p>
+<p><img alt="Terminal con wget de omnetpp_0.7-1.tar.gz e install.packages en la consola de R, en el equipo de referencia" src="../img/instalacion-paso-6-omnetpp-inicio.png" /></p>
+<p>En Ubuntu 24.04 esta instalación falla:</p>
+<div class="admonition failure">
+<p class="admonition-title">Error: compilation failed for package ‘omnetpp’</p>
+<p><strong>Cuándo aparece:</strong> al ejecutar <code>install.packages("omnetpp_0.7-1.tar.gz", repos=NULL)</code>.</p>
+<p><strong>Qué significa:</strong> el paquete no compila con un compilador que usa C++17. La guía de Plexe anticipa este problema, aunque cita otro mensaje (<code>no member named 'mem_fun_ref'</code>). En el equipo de referencia el mensaje fue este:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-92-1"><a id="__codelineno-92-1" name="__codelineno-92-1" href="#__codelineno-92-1"></a>/usr/include/c++/13/bits/stl_tree.h:772:15: error: static assertion failed: comparison object must be invocable as const
+</span><span id="__span-92-2"><a id="__codelineno-92-2" name="__codelineno-92-2" href="#__codelineno-92-2"></a>...
+</span><span id="__span-92-3"><a id="__codelineno-92-3" name="__codelineno-92-3" href="#__codelineno-92-3"></a>make: *** [/usr/lib/R/etc/Makeconf:198: scave/resultfilemanager.o] Error 1
+</span><span id="__span-92-4"><a id="__codelineno-92-4" name="__codelineno-92-4" href="#__codelineno-92-4"></a>ERROR: compilation failed for package ‘omnetpp’
+</span><span id="__span-92-5"><a id="__codelineno-92-5" name="__codelineno-92-5" href="#__codelineno-92-5"></a>* removing ‘/home/victorjaque/R/x86_64-pc-linux-gnu-library/4.3/omnetpp’
+</span><span id="__span-92-6"><a id="__codelineno-92-6" name="__codelineno-92-6" href="#__codelineno-92-6"></a>Warning message:
+</span><span id="__span-92-7"><a id="__codelineno-92-7" name="__codelineno-92-7" href="#__codelineno-92-7"></a>In install.packages(&quot;omnetpp_0.7-1.tar.gz&quot;, repos = NULL) :
+</span><span id="__span-92-8"><a id="__codelineno-92-8" name="__codelineno-92-8" href="#__codelineno-92-8"></a>  installation of package ‘omnetpp_0.7-1.tar.gz’ had non-zero exit status
+</span><span id="__span-92-9"><a id="__codelineno-92-9" name="__codelineno-92-9" href="#__codelineno-92-9"></a>&gt; q()
+</span><span id="__span-92-10"><a id="__codelineno-92-10" name="__codelineno-92-10" href="#__codelineno-92-10"></a>Save workspace image? [y/n/c]: N
+</span></code></pre></div>
+<p><strong>Ejemplo real: el error en el equipo de referencia</strong></p>
+<p><img alt="Error static assertion failed y compilation failed for package omnetpp, en el equipo de referencia" src="../img/instalacion-paso-6-omnetpp-error.png" /></p>
 </div>
-<h4 id="63-librerias-de-python">6.3 Librerías de Python</h4>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-72-1"><a id="__codelineno-72-1" name="__codelineno-72-1" href="#__codelineno-72-1"></a><span class="c1"># PENDIENTE: instalación de las librerías de Python para análisis de datos</span>
+<p><strong>Qué hacer: compilar con C++11</strong></p>
+<p>La guía indica agregar la línea <code>CXXFLAGS += -std=c++11</code> al archivo <code>~/.R/Makevars</code>. Ese archivo le dice a R con qué opciones compilar los paquetes.</p>
+<p>Sal de R con <code>q()</code> y responde <code>n</code>. Después, en la misma terminal, dentro de <code>~/src</code>, ejecuta los siguientes comandos:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-93-1"><a id="__codelineno-93-1" name="__codelineno-93-1" href="#__codelineno-93-1"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>~/.R
+</span><span id="__span-93-2"><a id="__codelineno-93-2" name="__codelineno-93-2" href="#__codelineno-93-2"></a><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;CXXFLAGS += -std=c++11&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.R/Makevars
+</span><span id="__span-93-3"><a id="__codelineno-93-3" name="__codelineno-93-3" href="#__codelineno-93-3"></a>cat<span class="w"> </span>~/.R/Makevars
 </span></code></pre></div>
+<p><strong>Fuente:</strong> la línea y el archivo son de la guía oficial de Plexe, <a href="https://plexe.car2x.org/building/#step-4-setup-up-r-and-python"><em>Step 4: Setup up R and Python</em></a>. Los comandos los agrega este manual: <code>mkdir -p</code> crea la carpeta <code>~/.R</code> si no existe, <code>echo … &gt;&gt;</code> agrega la línea al archivo y <code>cat</code> lo muestra.</p>
+<p><code>cat</code> debe mostrar la línea <code>CXXFLAGS += -std=c++11</code>.</p>
+<p>Ahora repite la instalación. En la misma terminal, dentro de <code>~/src</code>, abre <code>R</code> y ejecuta:</p>
+<div class="language-r highlight"><pre><span></span><code><span id="__span-94-1"><a id="__codelineno-94-1" name="__codelineno-94-1" href="#__codelineno-94-1"></a><span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;omnetpp_0.7-1.tar.gz&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">repos</span><span class="o">=</span><span class="kc">NULL</span><span class="p">)</span>
+</span></code></pre></div>
+<p><strong>Así debería verse tu terminal</strong> (final, abreviado):</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-95-1"><a id="__codelineno-95-1" name="__codelineno-95-1" href="#__codelineno-95-1"></a>...
+</span><span id="__span-95-2"><a id="__codelineno-95-2" name="__codelineno-95-2" href="#__codelineno-95-2"></a>installing to /home/victorjaque/R/x86_64-pc-linux-gnu-library/4.3/00LOCK-omnetpp/00new/omnetpp/libs
+</span><span id="__span-95-3"><a id="__codelineno-95-3" name="__codelineno-95-3" href="#__codelineno-95-3"></a>** R
+</span><span id="__span-95-4"><a id="__codelineno-95-4" name="__codelineno-95-4" href="#__codelineno-95-4"></a>** data
+</span><span id="__span-95-5"><a id="__codelineno-95-5" name="__codelineno-95-5" href="#__codelineno-95-5"></a>** demo
+</span><span id="__span-95-6"><a id="__codelineno-95-6" name="__codelineno-95-6" href="#__codelineno-95-6"></a>** inst
+</span><span id="__span-95-7"><a id="__codelineno-95-7" name="__codelineno-95-7" href="#__codelineno-95-7"></a>** byte-compile and prepare package for lazy loading
+</span><span id="__span-95-8"><a id="__codelineno-95-8" name="__codelineno-95-8" href="#__codelineno-95-8"></a>** help
+</span><span id="__span-95-9"><a id="__codelineno-95-9" name="__codelineno-95-9" href="#__codelineno-95-9"></a>*** installing help indices
+</span><span id="__span-95-10"><a id="__codelineno-95-10" name="__codelineno-95-10" href="#__codelineno-95-10"></a>** building package indices
+</span><span id="__span-95-11"><a id="__codelineno-95-11" name="__codelineno-95-11" href="#__codelineno-95-11"></a>** testing if installed package can be loaded from temporary location
+</span><span id="__span-95-12"><a id="__codelineno-95-12" name="__codelineno-95-12" href="#__codelineno-95-12"></a>** checking absolute paths in shared objects and dynamic libraries
+</span><span id="__span-95-13"><a id="__codelineno-95-13" name="__codelineno-95-13" href="#__codelineno-95-13"></a>** testing if installed package can be loaded from final location
+</span><span id="__span-95-14"><a id="__codelineno-95-14" name="__codelineno-95-14" href="#__codelineno-95-14"></a>** testing if installed package keeps a record of temporary installation path
+</span><span id="__span-95-15"><a id="__codelineno-95-15" name="__codelineno-95-15" href="#__codelineno-95-15"></a>* DONE (omnetpp)
+</span><span id="__span-95-16"><a id="__codelineno-95-16" name="__codelineno-95-16" href="#__codelineno-95-16"></a>&gt; q()
+</span><span id="__span-95-17"><a id="__codelineno-95-17" name="__codelineno-95-17" href="#__codelineno-95-17"></a>Save workspace image? [y/n/c]: n
+</span><span id="__span-95-18"><a id="__codelineno-95-18" name="__codelineno-95-18" href="#__codelineno-95-18"></a>victorjaque@DESKTOP-6VI5783:~/src$
+</span></code></pre></div>
+<p>Terminó bien cuando aparece <code>* DONE (omnetpp)</code>. Después sal de R con <code>q()</code> y responde <code>n</code>.</p>
+<p><strong>Ejemplo real: la línea en <code>~/.R/Makevars</code> y la nueva instalación en el equipo de referencia</strong></p>
+<p><img alt="Terminal con mkdir, echo y cat de ~/.R/Makevars, y R abierto de nuevo, en el equipo de referencia" src="../img/instalacion-paso-6-makevars.png" /></p>
+<p><strong>Ejemplo real: así termina la instalación en el equipo de referencia</strong></p>
+<p><img alt="Final de la instalación con DONE (omnetpp) y salida de R con q(), en el equipo de referencia" src="../img/instalacion-paso-6-omnetpp-fin.png" /></p>
+<p>Perfecto: solucionaste el error y el paquete <code>omnetpp</code> quedó instalado. Ahora puedes pasar al paso 6.3.</p>
+<h4 id="63-librerias-de-python">6.3 Librerías de Python</h4>
+<p>Ahora vamos a revisar las librerías de Python que piden los scripts de Plexe: <code>pandas</code>, <code>scipy</code> y <code>matplotlib</code>.</p>
+<p>La guía pide instalarlas con este comando:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-96-1"><a id="__codelineno-96-1" name="__codelineno-96-1" href="#__codelineno-96-1"></a>pip<span class="w"> </span>install<span class="w"> </span>--user<span class="w"> </span>pandas<span class="w"> </span>scipy<span class="w"> </span>matplotlib
+</span></code></pre></div>
+<p><strong>Fuente:</strong> guía oficial de Plexe, <a href="https://plexe.car2x.org/building/#step-4-setup-up-r-and-python"><em>Step 4: Setup up R and Python</em></a>.</p>
+<p><strong>No necesitas ejecutarlo: en Ubuntu 24.04 falla, y las tres librerías ya están instaladas.</strong> En el equipo de referencia se ejecutó para documentar el error, que es inofensivo.</p>
+<div class="admonition failure">
+<p class="admonition-title">Error: externally-managed-environment</p>
+<p><strong>Cuándo aparece:</strong> al ejecutar el <code>pip</code> de la guía de Plexe en Ubuntu 24.04.</p>
+<p><strong>Qué significa:</strong> es el mismo error del paso 3.4: Ubuntu 24.04 no deja instalar paquetes con <code>pip</code> en el Python del sistema. <code>pip</code> no instala nada.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-97-1"><a id="__codelineno-97-1" name="__codelineno-97-1" href="#__codelineno-97-1"></a>victorjaque@DESKTOP-6VI5783:~$ pip install --user pandas scipy matplotlib
+</span><span id="__span-97-2"><a id="__codelineno-97-2" name="__codelineno-97-2" href="#__codelineno-97-2"></a>error: externally-managed-environment
+</span><span id="__span-97-3"><a id="__codelineno-97-3" name="__codelineno-97-3" href="#__codelineno-97-3"></a>
+</span><span id="__span-97-4"><a id="__codelineno-97-4" name="__codelineno-97-4" href="#__codelineno-97-4"></a>× This environment is externally managed
+</span><span id="__span-97-5"><a id="__codelineno-97-5" name="__codelineno-97-5" href="#__codelineno-97-5"></a>╰─&gt; To install Python packages system-wide, try apt install
+</span><span id="__span-97-6"><a id="__codelineno-97-6" name="__codelineno-97-6" href="#__codelineno-97-6"></a>    python3-xyz, where xyz is the package you are trying to
+</span><span id="__span-97-7"><a id="__codelineno-97-7" name="__codelineno-97-7" href="#__codelineno-97-7"></a>    install.
+</span><span id="__span-97-8"><a id="__codelineno-97-8" name="__codelineno-97-8" href="#__codelineno-97-8"></a>...
+</span></code></pre></div>
+<p><strong>Ejemplo real: el error en el equipo de referencia</strong></p>
+<p><img alt="Error externally-managed-environment al ejecutar pip install --user pandas scipy matplotlib, en el equipo de referencia" src="../img/instalacion-paso-6-error-pip.png" /></p>
+</div>
+<p><strong>Qué hacer: nada, solo comprobar que ya están</strong></p>
+<p>Las tres librerías quedaron instaladas en el paso 2.2, en el entorno de Python de OMNeT++ (<code>.venv</code>): el archivo <code>python/requirements.txt</code> de OMNeT++ 6.2.0 las incluye (<a href="https://github.com/omnetpp/omnetpp/blob/omnetpp-6.2.0/python/requirements.txt">requirements.txt</a>). Los scripts de Plexe usan ese mismo entorno: <a href="https://github.com/michele-segata/plexe/blob/plexe-3.2/bin/genmakefile.py"><code>genmakefile.py</code></a> corre con el Python activo (<code>#!/usr/bin/env python</code>), y <code>source setenv</code> activa el de OMNeT++.</p>
+<p>Para comprobarlo, en una terminal de Ubuntu, nueva o la que ya tengas abierta, ejecuta los siguientes comandos:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-98-1"><a id="__codelineno-98-1" name="__codelineno-98-1" href="#__codelineno-98-1"></a><span class="nb">cd</span><span class="w"> </span>~/src/omnetpp-6.2.0
+</span><span id="__span-98-2"><a id="__codelineno-98-2" name="__codelineno-98-2" href="#__codelineno-98-2"></a><span class="nb">source</span><span class="w"> </span>setenv
+</span><span id="__span-98-3"><a id="__codelineno-98-3" name="__codelineno-98-3" href="#__codelineno-98-3"></a>python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>list<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-iE<span class="w"> </span><span class="s2">&quot;^(pandas|scipy|matplotlib) &quot;</span>
+</span></code></pre></div>
+<p><strong>Fuente:</strong> los dos primeros comandos son los del paso 2.2. El tercero lo agrega este manual: <a href="https://pip.pypa.io/en/stable/cli/pip_list/"><code>pip list</code></a> muestra los paquetes instalados en el entorno activo, y <code>grep</code> deja solo las tres librerías.</p>
+<p><strong>Así debería verse tu terminal:</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-99-1"><a id="__codelineno-99-1" name="__codelineno-99-1" href="#__codelineno-99-1"></a>(omnetpp/.venv) victorjaque@DESKTOP-6VI5783:~/src/omnetpp-6.2.0$ python3 -m pip list | grep -iE &quot;^(pandas|scipy|matplotlib) &quot;
+</span><span id="__span-99-2"><a id="__codelineno-99-2" name="__codelineno-99-2" href="#__codelineno-99-2"></a>matplotlib                3.11.2
+</span><span id="__span-99-3"><a id="__codelineno-99-3" name="__codelineno-99-3" href="#__codelineno-99-3"></a>pandas                    2.3.3
+</span><span id="__span-99-4"><a id="__codelineno-99-4" name="__codelineno-99-4" href="#__codelineno-99-4"></a>scipy                     1.18.1
+</span></code></pre></div>
+<p>Si aparecen las tres líneas, las librerías están instaladas.</p>
+<p><strong>Ejemplo real: la comprobación en el equipo de referencia</strong></p>
+<p><img alt="Salida de pip list filtrada con matplotlib 3.11.2, pandas 2.3.3 y scipy 1.18.1 en el entorno de OMNeT++, en el equipo de referencia" src="../img/instalacion-paso-6-pip-list.png" /></p>
+<p>Perfecto: las librerías de Python están listas y terminaste el paso 6. Ahora puedes pasar al paso 7.</p>
 <hr />
 <h3 id="paso-7-verificacion">Paso 7: Verificación</h3>
-<p>Compilar sin errores no garantiza que la instalación esté correcta. Falta comprobar que las cuatro piezas se comunican entre sí, y la forma de saberlo es correr uno de los escenarios de ejemplo que trae Plexe y observar el pelotón en movimiento.</p>
-<p>Qué deberías ver si todo está bien:</p>
+<p>Ahora vamos a comprobar que la instalación funciona. Para eso vas a correr el ejemplo <code>platooning</code>, que viene con Plexe: en él trabajan juntos OMNeT++, SUMO, Veins y Plexe.</p>
+<p>Si todo está bien, vas a ver tres cosas:</p>
 <ul>
-<li>La ventana de SUMO abriéndose con vehículos circulando en formación.</li>
-<li>Un pelotón que mantiene distancias regulares y estables entre vehículos.</li>
-<li>Ningún mensaje de error en la terminal, y archivos de resultados generados al terminar.</li>
+<li>La ventana de SUMO, con un pelotón de 8 autos en la autopista.</li>
+<li>La simulación llega hasta el final sin errores en la terminal.</li>
+<li>Al terminar, quedan archivos de resultados en la carpeta <code>results</code>.</li>
 </ul>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-73-1"><a id="__codelineno-73-1" name="__codelineno-73-1" href="#__codelineno-73-1"></a><span class="c1"># PENDIENTE: correr un escenario de ejemplo de Plexe y verificar la salida</span>
+<p>Primero carga el entorno de OMNeT++. En una terminal de Ubuntu nueva ejecuta los siguientes comandos:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-100-1"><a id="__codelineno-100-1" name="__codelineno-100-1" href="#__codelineno-100-1"></a><span class="nb">cd</span><span class="w"> </span>~/src/omnetpp-6.2.0
+</span><span id="__span-100-2"><a id="__codelineno-100-2" name="__codelineno-100-2" href="#__codelineno-100-2"></a><span class="nb">source</span><span class="w"> </span>setenv
 </span></code></pre></div>
-<p>Si esto funciona, la instalación está terminada. Los escenarios de ejemplo se describen en detalle en la sección <a href="../ejemplos/">Ejemplos</a>.</p>
+<p><strong>Fuente:</strong> guía oficial de Plexe, <a href="https://plexe.car2x.org/building/#step-1-install-omnet"><em>Step 1: Install OMNeT++</em></a>, como en el paso 2.2.</p>
+<p>Ahora carga el entorno de Plexe. En la misma terminal, ejecuta los siguientes comandos:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-101-1"><a id="__codelineno-101-1" name="__codelineno-101-1" href="#__codelineno-101-1"></a><span class="nb">cd</span><span class="w"> </span>~/src/plexe
+</span><span id="__span-101-2"><a id="__codelineno-101-2" name="__codelineno-101-2" href="#__codelineno-101-2"></a>.<span class="w"> </span>./setenv
+</span></code></pre></div>
+<p><strong>Fuente:</strong> tutorial oficial de Plexe, <a href="https://plexe.car2x.org/tutorial/#step-0-building-plexe"><em>Step 0. Building Plexe</em></a>.</p>
+<p>Este <code>setenv</code> deja disponible <code>plexe_run</code>, el programa que corre las simulaciones. Si todo está bien, no muestra nada.</p>
+<p>Ahora corre el ejemplo. En la misma terminal, dentro de <code>~/src/plexe</code>, ejecuta los siguientes comandos:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-102-1"><a id="__codelineno-102-1" name="__codelineno-102-1" href="#__codelineno-102-1"></a><span class="nb">cd</span><span class="w"> </span>examples/platooning
+</span><span id="__span-102-2"><a id="__codelineno-102-2" name="__codelineno-102-2" href="#__codelineno-102-2"></a>plexe_run<span class="w"> </span>-u<span class="w"> </span>Cmdenv<span class="w"> </span>-c<span class="w"> </span>Sinusoidal<span class="w"> </span>-r<span class="w"> </span><span class="m">2</span>
+</span></code></pre></div>
+<p><strong>Fuente:</strong> tutorial oficial de Plexe, <a href="https://plexe.car2x.org/tutorial/#running-the-example"><em>Running the example</em></a>.</p>
+<p><code>-c Sinusoidal -r 2</code> elige el escenario <code>Sinusoidal</code> con el controlador CACC. Según el tutorial, se abre SUMO con una autopista vacía, en <code>t = 1 s</code> aparece el pelotón de 8 autos y la simulación se detiene a los 60 s. En el equipo de referencia tardó alrededor de 1 minuto.</p>
+<p><strong>Así debería verse tu terminal</strong> (inicio, abreviado):</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-103-1"><a id="__codelineno-103-1" name="__codelineno-103-1" href="#__codelineno-103-1"></a>(omnetpp/.venv) victorjaque@DESKTOP-6VI5783:~/src/plexe$ cd examples/platooning
+</span><span id="__span-103-2"><a id="__codelineno-103-2" name="__codelineno-103-2" href="#__codelineno-103-2"></a>plexe_run -u Cmdenv -c Sinusoidal -r 2
+</span><span id="__span-103-3"><a id="__codelineno-103-3" name="__codelineno-103-3" href="#__codelineno-103-3"></a>OMNeT++ Discrete Event Simulation  (C) 1992-2025 Andras Varga, OpenSim Ltd.
+</span><span id="__span-103-4"><a id="__codelineno-103-4" name="__codelineno-103-4" href="#__codelineno-103-4"></a>Version: 6.2.0, build: 250714-83e173e93a, edition: Academic Public License -- NOT FOR COMMERCIAL USE
+</span><span id="__span-103-5"><a id="__codelineno-103-5" name="__codelineno-103-5" href="#__codelineno-103-5"></a>...
+</span><span id="__span-103-6"><a id="__codelineno-103-6" name="__codelineno-103-6" href="#__codelineno-103-6"></a>Loading NED files from ../../../veins/src/veins:  44
+</span><span id="__span-103-7"><a id="__codelineno-103-7" name="__codelineno-103-7" href="#__codelineno-103-7"></a>Loading NED files from ../../src/plexe:  37
+</span><span id="__span-103-8"><a id="__codelineno-103-8" name="__codelineno-103-8" href="#__codelineno-103-8"></a>Loading NED files from .:  1
+</span><span id="__span-103-9"><a id="__codelineno-103-9" name="__codelineno-103-9" href="#__codelineno-103-9"></a>
+</span><span id="__span-103-10"><a id="__codelineno-103-10" name="__codelineno-103-10" href="#__codelineno-103-10"></a>Preparing for running configuration Sinusoidal, run #2...
+</span><span id="__span-103-11"><a id="__codelineno-103-11" name="__codelineno-103-11" href="#__codelineno-103-11"></a>Scenario: $nCars=8, $platoonSize=8, $nLanes=1, $ploegH=0.5, $controller=1, $headway=0.1, $leaderHeadway=1.2, $leaderSpeed=100, $beaconInterval=0.1, $priority=4, $packetSize=200, $sController=&quot;CACC&quot;, $0=5, $1=0, $repetition=0
+</span><span id="__span-103-12"><a id="__codelineno-103-12" name="__codelineno-103-12" href="#__codelineno-103-12"></a>...
+</span><span id="__span-103-13"><a id="__codelineno-103-13" name="__codelineno-103-13" href="#__codelineno-103-13"></a>Running simulation...
+</span><span id="__span-103-14"><a id="__codelineno-103-14" name="__codelineno-103-14" href="#__codelineno-103-14"></a>** Event #0   t=0   Elapsed: 6e-06s (0m 00s)  0% completed  (0% total)
+</span></code></pre></div>
+<ul>
+<li><em>Loading NED files</em> de Veins, de Plexe y del ejemplo indica que OMNeT++ encontró los tres.</li>
+<li><em>Scenario</em> muestra los parámetros de la corrida: 8 autos, controlador <code>CACC</code>.</li>
+</ul>
+<p><strong>Ejemplo real: el inicio de la simulación en el equipo de referencia</strong></p>
+<p><img alt="Terminal con source setenv de OMNeT++ y de Plexe, plexe_run -u Cmdenv -c Sinusoidal -r 2 y el inicio de la simulación, en el equipo de referencia" src="../img/instalacion-paso-7-inicio.png" /></p>
+<p><strong>Ejemplo real: la ventana de SUMO durante la simulación en el equipo de referencia</strong></p>
+<p><img alt="Ventana de SUMO 1.22.0 con freeway.sumo.cfg y el pelotón de 8 autos rojos en la autopista, en el equipo de referencia" src="../img/instalacion-paso-7-sumo.png" /></p>
+<div class="admonition note">
+<p class="admonition-title">En el escenario Sinusoidal casi no se nota el movimiento</p>
+<p>En este escenario el líder acelera y frena de forma sinusoidal, con una amplitud de 10 km/h en torno a 100 km/h (ver <a href="../primera-simulacion/">Primera simulación</a>). En el equipo de referencia, en la ventana de SUMO no se notaba bien esa aceleración y ese frenado. En cambio, en el escenario <code>Braking</code> (<code>-c Braking</code>), donde el líder frena a 8 m/s², sí se ve el frenado del pelotón.</p>
+</div>
+<p><strong>Así debería verse tu terminal</strong> (final, abreviado):</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-104-1"><a id="__codelineno-104-1" name="__codelineno-104-1" href="#__codelineno-104-1"></a>...
+</span><span id="__span-104-2"><a id="__codelineno-104-2" name="__codelineno-104-2" href="#__codelineno-104-2"></a>** Event #322665   t=60   Elapsed: 61.8753s (1m 01s)  100% completed  (100% total)
+</span><span id="__span-104-3"><a id="__codelineno-104-3" name="__codelineno-104-3" href="#__codelineno-104-3"></a>     Speed:     ev/sec=5404.62   simsec/sec=0.987506   ev/simsec=5472.99
+</span><span id="__span-104-4"><a id="__codelineno-104-4" name="__codelineno-104-4" href="#__codelineno-104-4"></a>     Messages:  created: 344030   present: 149   in FES: 26
+</span><span id="__span-104-5"><a id="__codelineno-104-5" name="__codelineno-104-5" href="#__codelineno-104-5"></a>
+</span><span id="__span-104-6"><a id="__codelineno-104-6" name="__codelineno-104-6" href="#__codelineno-104-6"></a>&lt;!&gt; Simulation time limit reached -- at t=60s, event #322665
+</span><span id="__span-104-7"><a id="__codelineno-104-7" name="__codelineno-104-7" href="#__codelineno-104-7"></a>
+</span><span id="__span-104-8"><a id="__codelineno-104-8" name="__codelineno-104-8" href="#__codelineno-104-8"></a>Calling finish() at end of Run #2...
+</span><span id="__span-104-9"><a id="__codelineno-104-9" name="__codelineno-104-9" href="#__codelineno-104-9"></a>
+</span><span id="__span-104-10"><a id="__codelineno-104-10" name="__codelineno-104-10" href="#__codelineno-104-10"></a>End.
+</span></code></pre></div>
+<p>Terminó bien cuando aparece <em>Simulation time limit reached -- at t=60s</em> y después <em>End.</em></p>
+<p>Al final, revisa los resultados. En la misma terminal, dentro de <code>~/src/plexe/examples/platooning</code>, ejecuta el siguiente comando:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-105-1"><a id="__codelineno-105-1" name="__codelineno-105-1" href="#__codelineno-105-1"></a>ls<span class="w"> </span>results
+</span></code></pre></div>
+<p><strong>Fuente:</strong> el tutorial oficial indica que los resultados quedan en la carpeta <code>results</code> (<a href="https://plexe.car2x.org/tutorial/#running-the-example"><em>Running the example</em></a>). El comando <a href="https://manpages.ubuntu.com/manpages/noble/man1/ls.1.html"><code>ls</code></a> lo agrega este manual para listarlos.</p>
+<p><strong>Así debería verse tu terminal:</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-106-1"><a id="__codelineno-106-1" name="__codelineno-106-1" href="#__codelineno-106-1"></a>(omnetpp/.venv) victorjaque@DESKTOP-6VI5783:~/src/plexe/examples/platooning$ ls results
+</span><span id="__span-106-2"><a id="__codelineno-106-2" name="__codelineno-106-2" href="#__codelineno-106-2"></a>Sinusoidal_1_0.1_0.sca  Sinusoidal_1_0.1_0.vci  Sinusoidal_1_0.1_0.vec
+</span></code></pre></div>
+<p>Deben aparecer tres archivos de resultados de la corrida <code>Sinusoidal</code>.</p>
+<p><strong>Ejemplo real: así termina la simulación en el equipo de referencia</strong></p>
+<p><img alt="Final de la simulación con Simulation time limit reached at t=60s, End., y ls results con los archivos .sca, .vci y .vec, en el equipo de referencia" src="../img/instalacion-paso-7-fin.png" /></p>
+<p>Perfecto: Plexe funciona y la instalación está terminada. Para seguir con el ejemplo completo y graficar sus resultados, pasa a <a href="../primera-simulacion/">Primera simulación</a>.</p>
 <hr />
 <h2 id="6-otros-sistemas">6 · Otros sistemas</h2>
 <p>Este manual documenta Ubuntu 24.04 porque es el entorno del laboratorio. Para referencia, así se sitúan los demás casos:</p>

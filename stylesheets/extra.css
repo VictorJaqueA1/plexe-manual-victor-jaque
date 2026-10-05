@@ -247,3 +247,21 @@
 @media screen and (max-width: 76.1875em) {
   .mp-drop__menu { display: none !important; }
 }
+
+/* =========================================================
+   Espacio para las siete pestañas
+   Con "Primera simulación" y "Flujo de trabajo" la fila de arriba
+   no alcanzaba y la última pestaña quedaba bajo el ícono de modo
+   oscuro. Solo en escritorio, que es donde se ven las pestañas.
+   ========================================================= */
+@media screen and (min-width: 76.25em) {
+  /* Espacio entre pestañas: Material usa .6rem a cada lado */
+  .mp-nav .md-tabs__item { padding-left: .5rem; padding-right: .5rem; }
+
+  /* Barra de búsqueda más corta: Material usa 11.7rem.
+     Al hacer clic se sigue abriendo a su ancho completo. */
+  .md-search__inner { width: 9rem; }
+
+  /* Menos espacio entre la búsqueda y GitHub: Material usa 1.4rem */
+  [dir="ltr"] .md-header__source { margin-left: .6rem; }
+}

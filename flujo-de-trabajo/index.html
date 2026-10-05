@@ -890,6 +890,24 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Flujo de trabajo
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -906,6 +924,91 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-preparar-la-terminal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1 · Preparar la terminal
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-configurar-omnetppini" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2 · Configurar: omnetpp.ini
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-correr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3 · Correr
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-resultados-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4 · Resultados: results/
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-procesar-de-vec-a-csv" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5 · Procesar: de .vec a CSV
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-graficar-scripts-en-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6 · Graficar: scripts en analysis/
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -931,6 +1034,80 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-preparar-la-terminal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1 · Preparar la terminal
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-configurar-omnetppini" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2 · Configurar: omnetpp.ini
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-correr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3 · Correr
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-resultados-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4 · Resultados: results/
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-procesar-de-vec-a-csv" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5 · Procesar: de .vec a CSV
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-graficar-scripts-en-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6 · Graficar: scripts en analysis/
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -950,6 +1127,113 @@
 
 
 <h1 id="como-fue-mi-flujo-de-trabajo">Cómo fue mi flujo de trabajo</h1>
+<p>Ahora vamos a ver cómo trabajé con Plexe durante el semestre. Casi todo se hizo sobre el ejemplo <code>platooning</code>, el del <a href="https://plexe.car2x.org/tutorial/">tutorial 1 de Plexe</a> y de la <a href="../primera-simulacion/">Primera simulación</a>, dentro de su carpeta <code>~/src/plexe/examples/platooning</code>. Qué hay en esa carpeta está en <a href="../arquitectura/#anatomia-de-un-escenario">Arquitectura › Anatomía de un escenario</a>.</p>
+<p>Cada prueba siguió los mismos pasos:</p>
+<pre class="mermaid"><code>flowchart LR
+    A["1 · Preparar&lt;br/&gt;la terminal"] --&gt; B["2 · Configurar&lt;br/&gt;omnetpp.ini"]
+    B --&gt; C["3 · Correr&lt;br/&gt;plexe_run"]
+    C --&gt; D["4 · Resultados&lt;br/&gt;results/"]
+    D --&gt; E["5 · Procesar&lt;br/&gt;make en analysis/"]
+    E --&gt; F["6 · Graficar&lt;br/&gt;scripts en analysis/"]
+    F -.-&gt;|otro valor| B</code></pre>
+<h2 id="1-preparar-la-terminal">1 · Preparar la terminal</h2>
+<p>Ahora vamos a preparar la terminal, lo primero de cada sesión.</p>
+<p>En una terminal de Ubuntu, nueva o la que ya tengas abierta, ejecuta los siguientes comandos:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">cd</span><span class="w"> </span>~/src/omnetpp-6.2.0
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">source</span><span class="w"> </span>setenv
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nb">cd</span><span class="w"> </span>~/src/plexe
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>.<span class="w"> </span>./setenv
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="nb">cd</span><span class="w"> </span>examples/platooning
+</span></code></pre></div>
+<p><strong>Fuente:</strong> guía oficial de Plexe (<a href="https://plexe.car2x.org/building/#step-1-install-omnet"><em>Step 1: Install OMNeT++</em></a>) y tutorial oficial (<a href="https://plexe.car2x.org/tutorial/#step-0-building-plexe"><em>Step 0</em></a> y <a href="https://plexe.car2x.org/tutorial/#running-the-example"><em>Running the example</em></a>). Se explica en <a href="../primera-simulacion/#1-antes-de-empezar">Primera simulación › Antes de empezar</a>.</p>
+<p>No hay que levantar a mano un servidor para SUMO: en cada corrida, Plexe abre SUMO como servidor TraCI y se conecta a él. Lo hace <code>PlexeScenarioManagerForker</code>, el que <a href="https://github.com/michele-segata/plexe/blob/plexe-3.2/src/plexe/PlexeScenario.ned"><code>PlexeScenario.ned</code></a> usa por defecto.</p>
+<h2 id="2-configurar-omnetppini">2 · Configurar: <code>omnetpp.ini</code></h2>
+<p>Ahora vamos al archivo más importante del ejemplo, <code>omnetpp.ini</code>. Define el experimento completo, y casi todo lo que cambia de una prueba a otra se cambia ahí.</p>
+<ul>
+<li>Es un archivo de texto de OMNeT++, en formato INI: secciones como <code>[General]</code> o <code>[Config Braking]</code>, y líneas <code>parámetro = valor</code>.</li>
+<li>Tiene, entre otras cosas, la cantidad de autos, la velocidad, el controlador de cada corrida, la potencia y el bitrate de la radio, el intervalo de beacons y el nombre de los archivos de resultados.</li>
+<li>Una línea con <code>${...}</code> crea una corrida por cada valor.</li>
+<li>Cambiar un valor no obliga a recompilar: basta con volver a correr.</li>
+</ul>
+<p>Cada línea se puede rastrear hasta el código. Por ejemplo, el <code>h</code> de Ploeg:</p>
+<table>
+<thead>
+<tr>
+<th>Archivo</th>
+<th>Línea</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>omnetpp.ini</code></td>
+<td><code>*.node[*].scenario.ploegH = ${ploegH = 0.5}s</code></td>
+</tr>
+<tr>
+<td><code>src/plexe/scenarios/BBaseScenario.ned</code></td>
+<td><code>double ploegH @unit("s") = default(0.5s);</code></td>
+</tr>
+<tr>
+<td><code>src/plexe/scenarios/BaseScenario.cc</code></td>
+<td><code>ploegH = par("ploegH").doubleValue();</code></td>
+</tr>
+<tr>
+<td><code>src/plexe/scenarios/BaseScenario.cc</code></td>
+<td><code>plexeTraciVehicle-&gt;setPloegCACCParameters(ploegKp, ploegKd, ploegH);</code></td>
+</tr>
+</tbody>
+</table>
+<p>El <code>.ned</code> declara el parámetro y su valor por defecto, <code>par("ploegH")</code> lo lee en C++, y la última línea lo manda a SUMO, donde vive el controlador (<a href="../controladores/#1-donde-viven-los-controladores">Controladores</a>). Lo mismo pasa con los tipos: <code>*.node[*].scenario_type = "BrakingScenario"</code> elige la clase de <code>src/plexe/scenarios/BrakingScenario.*</code>.</p>
+<p><strong>Fuente:</strong> <a href="https://github.com/michele-segata/plexe/blob/plexe-3.2/examples/platooning/omnetpp.ini#L121"><code>omnetpp.ini</code></a>, <a href="https://github.com/michele-segata/plexe/blob/plexe-3.2/src/plexe/scenarios/BBaseScenario.ned#L45"><code>BBaseScenario.ned</code></a> y <a href="https://github.com/michele-segata/plexe/blob/plexe-3.2/src/plexe/scenarios/BaseScenario.cc#L49"><code>BaseScenario.cc</code></a> de Plexe 3.2; <a href="https://plexe.car2x.org/documentation/#scenarios-folder">documentación de Plexe</a>, carpeta <code>scenarios/</code>.</p>
+<h2 id="3-correr">3 · Correr</h2>
+<p>Ahora vamos a correr las simulaciones, una por cada corrida que interesa.</p>
+<p>En la misma terminal, dentro de <code>~/src/plexe/examples/platooning</code>, ejecuta el siguiente comando:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>plexe_run<span class="w"> </span>-u<span class="w"> </span>Cmdenv<span class="w"> </span>-c<span class="w"> </span>BrakingNoGui<span class="w"> </span>-r<span class="w"> </span><span class="m">3</span>
+</span></code></pre></div>
+<p><strong>Fuente:</strong> tutorial oficial, <a href="https://plexe.car2x.org/tutorial/#running-the-example"><em>Running the example</em></a>.</p>
+<ul>
+<li><code>-c</code> elige la configuración: <code>Braking</code> abre la ventana de SUMO y <code>BrakingNoGui</code> no.</li>
+<li><code>-r</code> elige la corrida: aquí, la 3, que usa Ploeg.</li>
+<li><code>./run</code> hace lo mismo que <code>plexe_run</code>.</li>
+</ul>
+<p>El detalle está en <a href="../primera-simulacion/#3-correr-la-simulacion">Primera simulación › Correr la simulación</a>.</p>
+<h2 id="4-resultados-results">4 · Resultados: <code>results/</code></h2>
+<p>Ahora vamos a ver dónde quedan los resultados. Cada corrida deja dos archivos en <code>results/</code>: un <code>.vec</code>, con los valores a lo largo del tiempo, y un <code>.sca</code>, con los escalares. El nombre lleva el escenario, <code>controller</code>, <code>headway</code> y la repetición (<a href="../primera-simulacion/#5-donde-quedan-los-resultados">Primera simulación › Dónde quedan los resultados</a>).</p>
+<div class="admonition warning">
+<p class="admonition-title">Una corrida nueva puede borrar la anterior</p>
+<p>Si cambias un parámetro que no está en el nombre del archivo, como <code>ploegH</code>, la corrida nueva escribe sobre el mismo archivo. Guarda los gráficos antes de cambiarlo.</p>
+</div>
+<p><strong>Fuente:</strong> líneas <code>output-vector-file</code> y <code>output-scalar-file</code> de <a href="https://github.com/michele-segata/plexe/blob/plexe-3.2/examples/platooning/omnetpp.ini"><code>omnetpp.ini</code></a>.</p>
+<h2 id="5-procesar-de-vec-a-csv">5 · Procesar: de <code>.vec</code> a CSV</h2>
+<p>Ahora vamos a convertir los resultados en tablas que se puedan graficar.</p>
+<p>En la misma terminal, dentro de <code>~/src/plexe/examples/platooning</code>, ejecuta los siguientes comandos:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nb">cd</span><span class="w"> </span>analysis
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>genmakefile.py<span class="w"> </span>parse-config<span class="w"> </span>&gt;<span class="w"> </span>Makefile
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>make
+</span></code></pre></div>
+<p><strong>Fuente:</strong> tutorial oficial, <a href="https://plexe.car2x.org/tutorial/#plotting-the-results"><em>Plotting the results</em></a>.</p>
+<p><code>make</code> toma cada <code>.vec</code> de <code>results/</code> y lo pasa por scripts que están en <code>~/src/plexe/bin/</code>, no en el ejemplo:</p>
+<ol>
+<li><code>opp_scavetool index</code> crea su índice, un <code>.vci</code>.</li>
+<li><code>generic-parser.py</code> lo convierte a <code>.csv</code>, con las columnas que pide <code>map-config</code>.</li>
+<li><code>csv-to-rdata.R</code> pasa ese <code>.csv</code> a <code>.Rdata</code> y lo borra.</li>
+<li><code>merge.R</code> junta todo en un archivo por escenario: <code>results/Braking.Rdata</code> y <code>results/Sinusoidal.Rdata</code>.</li>
+</ol>
+<p>Todo queda en <code>results/</code>. Para quedarse con un CSV en vez de <code>.Rdata</code>, se agrega <code>type = csv</code> en cada sección <code>[config]</code> de <code>parse-config</code>: el resultado es, por ejemplo, <code>results/Braking.csv</code>.</p>
+<p><strong>Fuente:</strong> <a href="https://github.com/michele-segata/plexe/blob/plexe-3.2/bin/genmakefile.py"><code>bin/genmakefile.py</code></a> y <a href="https://github.com/michele-segata/plexe/blob/plexe-3.2/bin/merge.R"><code>bin/merge.R</code></a> de Plexe 3.2.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a># PENDIENTE: qué script usé para pasar los resultados a CSV y en qué carpeta estaba
+</span></code></pre></div>
+<h2 id="6-graficar-scripts-en-analysis">6 · Graficar: scripts en <code>analysis/</code></h2>
+<p>Ahora vamos a ver los datos. Los scripts de gráficos están en <code>analysis/</code> y leen lo que el paso anterior dejó en <code>results/</code>.</p>
+<p>En la misma terminal, dentro de <code>~/src/plexe/examples/platooning/analysis</code>, ejecuta el siguiente comando:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>Rscript<span class="w"> </span>plot-braking.R
+</span></code></pre></div>
+<p><strong>Fuente:</strong> tutorial oficial, <a href="https://plexe.car2x.org/tutorial/#plotting-the-results"><em>Plotting the results</em></a>.</p>
+<ul>
+<li><code>plot-braking.R</code> lee <code>../results/Braking.Rdata</code> y deja cuatro PDF en <code>analysis/</code>: velocidad, distancia, aceleración y aceleración del controlador.</li>
+<li>Para un gráfico propio, se copia uno de estos scripts y se modifica la copia, como <code>plot-braking-ploeg.R</code> en el <a href="../ejemplos/caso-1/#paso-4-graficar-solo-ploeg">Caso 1</a>.</li>
+</ul>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a># PENDIENTE: mis scripts de gráficos (nombre, lenguaje y qué grafica cada uno)
+</span></code></pre></div>
 
 
 
